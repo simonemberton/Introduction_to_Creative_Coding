@@ -3,10 +3,20 @@
 ## Anatomy of a Sketch
 
 
-### Task 0 - Download the p5complete.zip folder from p5js.org
+### Task 0 - Download the p5.zip folder on the link p5complete.zip from p5js.org
+
+- Hopefully you already did this last week! 
+
+- Then copy the folder called "empty-example" in the same enclosing folder, rename it to something like "tutorial-1".
+
+
 
 
 ### Task 1 - Ready, setup(); and draw();
+
+#### As discussed in our lecture, what are the two most basic building block functions to get our p5 sketch going?
+
+That's right, it's our old friends:
 
 ```javascript
 function setup(){
@@ -19,11 +29,33 @@ function draw() {
 }
 ```
 
-What do we need to draw? 
 
-Setting background
+#### What do we need to draw on? 
 
-Draw a basic shape
+Paper? A wall? Or perhaps a canvas:
+
+```javascript
+createCanvas(800,600);
+```
+
+Where do you need to put this createCanvas function?
+
+#### Setting background
+
+#### Draw a basic shape
+
+```javascript
+function setup(){
+
+}
+
+
+function draw() {
+
+}
+```
+
+
 
 
 
