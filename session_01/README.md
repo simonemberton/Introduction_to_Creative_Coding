@@ -42,7 +42,7 @@ Where do you need to put this createCanvas function?
 
 #### Setting background
 
-The other thing we need to do is set the background colour. Try putting this in the ```javascript setup() ``` function
+The other thing we need to do is set the background colour. Try putting this in the ``` setup() ``` function
 
 ```javascript
 background(0);
