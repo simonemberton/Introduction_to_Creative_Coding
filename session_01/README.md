@@ -42,6 +42,20 @@ Where do you need to put this createCanvas function?
 
 #### Setting background
 
+The other thing we need to do is set the background colour. Try putting this in the ```javascript setup() ``` function
+
+```javascript
+background(0);
+```
+
+ or 
+
+ ```javascript
+background(255);
+```
+
+What's the difference? Why do you think this is?
+
 #### Draw a basic shape
 
 ```javascript
