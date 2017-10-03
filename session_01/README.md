@@ -279,22 +279,22 @@ Then
 
 ```javascript
 	ellipse(100,70,60,60);
-	```
+```
 Then
 
 ```javascript
 	ellipse(81,70,16,16); 
-	```
+```
 Then
 
 ```javascript
 	ellipse(119,70,16,16); 
-	```
+```
 Then
 
 ```javascript
 	line(90,120,80,105);
-	```
+```
 Then
 
 ```javascript
