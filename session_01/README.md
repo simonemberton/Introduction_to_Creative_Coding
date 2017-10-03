@@ -300,11 +300,11 @@ OK, it's important you add the following bits of code into the ```draw()``` line
 
 ### Task 7 - Repetition
 
-#### Try repeating the draw shape function call loads of times by copying and pasting. Make sure you have different multiplication values each time.
+Try repeating the draw shape function call loads of times by copying and pasting. Make sure you have different multiplication values each time.
 
 ### Task 8 - Play
 
-#### Try experimenting with different shapes (ellipse/rect/triangle), fills and multiplication values to see what kind of patterns and pictures you can create with these simple geometric shapes!
+Try experimenting with different shapes (ellipse/rect/triangle), fills and multiplication values to see what kind of patterns and pictures you can create with these simple geometric shapes!
 
 For instance, what happens when you do this:
 
@@ -312,6 +312,7 @@ For instance, what happens when you do this:
 fill(random(0,255),random(0,255),random(0,255));
 ```
 
+Also, what happens when you take out ```noLoop()```?
 
 
 
