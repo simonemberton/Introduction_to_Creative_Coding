@@ -46,7 +46,7 @@ What do the values 800 and 600 relate to?
 
 Remember to add the semi-colon at the end to signify the end of the statement!
 
-FYI if you don't define this exlicitly, a default canvas will be made with size 100 x 100
+FYI if you don't define this explicitly, a default canvas will be made with size 100 x 100.
 
 #### Setting background
 
@@ -85,7 +85,7 @@ text("Hello World!", 0,50);
 
 This is your first computer program, nice one!
 
-Now, have a read of [this](https://p5js.org/examples/structure-coordinates.html) as it will help you understand a bit about the coordinate system used in p5.js - we talked about this in It is important 
+Now, have a read of [this](https://p5js.org/examples/structure-coordinates.html) as it will help you understand a bit about the coordinate system used in p5.js - we talked about this in class.
 
 What do the parameters being passed to the ```text()``` function relate to? Hint: [this](https://p5js.org/reference/#/p5/text) will help you learn more...
 
@@ -142,7 +142,7 @@ statement in your ```draw()``` function.
 
 We declare a variable by using the ```var``` keyword. And when we declare it, we have to give it a **unique** name. 
 
-At the very top of your sketch.js file, on the first line, write the following:
+At the very top of your sketch.js file, on the first line before ```setup()```, write the following:
 
 ```javascript
 var rectWidth = 25;
@@ -267,14 +267,50 @@ Try refreshing the page over and over. What is happening? Are you seeing a new r
 
 Try multiplying rectWidth and rectHeight by some small numbers like 2 or 3. Remember to keep refreshing to see the shape drawn in a different random spot.
 
-### Task 6 - Repetition
+### Task 6 - Basic Procedural Drawing
 
-#### Try repeating the function call loads of times by copying and pasting. Make sure you have different multiplication values each time.
+OK, it's important you add the following bits of code into the ```draw()``` line by line and refresh the page each time to see what's going on...
 
-### Task 7 - Play
+```javascript
+	rectMode(CENTER);
+	rect(100,100,20,100);
+	```
+```javascript
+	ellipse(100,70,60,60);
+	```
+```javascript
+	ellipse(81,70,16,16); 
+	```
+```javascript
+	ellipse(119,70,16,16); 
+	```
+```javascript
+	line(90,120,80,105);
+	```
+```javascript
+	line(110,120,120,105);
+```
+```javascript
+	line(90,150,80,160);
+```
+```javascript
+	line(110,150,120,160);
+```
 
-#### Try experimenting with different shapes, fills and multiplication values to see what kind of patterns and pictures you can create with these simple geometric shapes!
 
+### Task 7 - Repetition
+
+#### Try repeating the draw shape function call loads of times by copying and pasting. Make sure you have different multiplication values each time.
+
+### Task 8 - Play
+
+#### Try experimenting with different shapes (ellipse/rect/triangle), fills and multiplication values to see what kind of patterns and pictures you can create with these simple geometric shapes!
+
+For instance, what happens when you do this:
+
+```javascript
+fill(random(0,255),random(0,255),random(0,255));
+```
 
 
 
