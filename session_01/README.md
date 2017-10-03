@@ -188,7 +188,7 @@ Now try messing around with other values, what happens when you multiply somethi
 
 ### Task 5 - Make it Functional
 
-#### OK, the last piece of our abstract thinking puzzle for the day. Remember that functions are reusable blocks of code? Well this is going to involve us "wrapping" some functionality into a function, so we can call it over and over. We'll also be looking at a new function called ```random()```.
+OK, the last piece of our abstract thinking puzzle for the day. Remember that functions are reusable blocks of code? Well this is going to involve us "wrapping" some functionality into a function, so we can call it over and over. We'll also be looking at a new function called ```random()```.
 
 - First of all, in the ```setup()``` function, add the line:
 
