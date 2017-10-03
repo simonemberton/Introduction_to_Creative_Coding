@@ -269,7 +269,7 @@ Try multiplying rectWidth and rectHeight by some small numbers like 2 or 3. Reme
 
 ### Task 6 - Basic Procedural Drawing
 
-OK, it's important you add the following bits of code into the ```draw()``` line by line and refresh the page each time to see what's going on...
+OK, it's important you add the following bits of code into the ```draw()``` function line by line and refresh the page each time to see what's going on... (and please don't copy once again)
 
 ```javascript
 	rectMode(CENTER);
