@@ -226,7 +226,7 @@ OK, so here is where we're going to stick some randomness into our function. Add
 so it looks like this:
 
 ```javascript
-function drawShape(width,height) {
+function drawShape(recWidth,recHeight) {
 	var xPos = random(0, width);
 	var yPos = random(0, height);
 
@@ -239,7 +239,7 @@ What we're doing here is declaring a new random number in the range between 0 an
 OK, now just add one more line into your ```drawShape()``` function:
 
 ```javascript
-	rect(xPos,yPos,width,height);
+	rect(xPos,yPos,recWidth,recHeight);
 ```
 
 So, now your function should look like this:
@@ -249,7 +249,7 @@ function drawShape(width,height) {
 	var xPos = random(0, width);
 	var yPos = random(0, height);
 
-	rect(xPos,yPos,width,height);
+	rect(xPos,yPos,recWidth,recHeight);
 }
 ```
 
