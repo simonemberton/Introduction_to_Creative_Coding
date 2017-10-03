@@ -245,11 +245,11 @@ OK, now just add one more line into your ```drawShape()``` function:
 So, now your function should look like this:
 
 ```javascript
-function drawShape(width,height) {
+function drawShape(rectWidth,rectHeight) {
 	var xPos = random(0, width);
 	var yPos = random(0, height);
 
-	rect(xPos,yPos,recWidth,recHeight);
+	rect(xPos,yPos,rectWidth,rectHeight);
 }
 ```
 
