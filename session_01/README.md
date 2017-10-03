@@ -101,7 +101,7 @@ Hint: [this](https://p5js.org/reference/#/p5/ellipse) will give you more info on
 ### Task 2 - All the 2D Shapes, well, quite a few anyway...
 
 
-####Here's where we get a bit free to play. Your task now is to try adding the following shape functions to your code one by one. What happens if you have more than one?
+#### Here's where we get a bit free to play. Your task now is to try adding the following shape functions to your code one by one. What happens if you have more than one?
 
 Have a look on [here](https://p5js.org/reference/) at the 2D primitives section to find out more info about each of the shape functions and their parameters.
 
