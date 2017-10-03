@@ -274,7 +274,7 @@ OK, it's important you add the following bits of code into the ```draw()``` line
 ```javascript
 	rectMode(CENTER);
 	rect(100,100,20,100);
-	```
+```
 Then
 
 ```javascript
