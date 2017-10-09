@@ -84,4 +84,6 @@ For this task you need to make use of ```mouseIsPressed``` and an ```if``` state
 
 [HINT](https://p5js.org/reference/#/p5/mouseIsPressed)
 
-Now add another ```if``` statement so that something else happens when a key is pressed.
+* Add another ```if``` statement so that something else happens when a key is pressed.
+
+* Finally, write your own function that is called inside the draw() function.  Make the input to your function different depending on whether a mouse or key is pressed.
