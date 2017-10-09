@@ -39,10 +39,18 @@ If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) y
 
 [HINT](https://p5js.org/reference/#/p5/pmouseX)
 
+### Task 3 - Calculate speed of movement
 
-### Task 3 - Draw fluidly
+We're now going to use the difference between the current and previous mouse locations to calcuate the speed that the mouse cursor is moving.  We will then use this value to change the weight of the line we are drawing.  We want to do this on each frame so we'll add the following lines of code to our draw() function:
 
-In the lecture we talked about 'easing'.  This technique can be used to make our drawn object lag behind the location of the mouse and makes for a more fluid drawing style.
+```
+	var weight = dist(mouseX, mouseY, pmouseX, pmouseY);
+	strokeWeight(weight);	
+```
+
+### Task 4 - Draw fluidly
+
+The following technique called 'easing' can be used to make our drawn object lag behind the location of the mouse and makes for a more fluid drawing style.
 
 Try this code:
 
@@ -64,15 +72,16 @@ function draw() {
 }
 ```
 
-* See how the numbers that are output to the console change as you move and stop moving.
-  
+* See how the difference between the two numbers that are output to the console are greater when you move the mouse and then come closer together as you stop moving.
+
+* Change the code from Task 3 so that lines on both axis (X and Y) are drawn with the easing technique.
+
 * Try changing the value of the ```easing``` variable and see how it changes the movement.
 
-* Add some code so that the easing also happens on the Y axis.
-
-
-### Task 4 - Conditionals
+### Task 5 - Conditionals
 
 For this task you need to make use of ```mouseIsPressed``` and an ```if``` statement.  If the mouse is pressed make something happen e.g. the screen changes colour or an object is drawn.
 
 [HINT](https://p5js.org/reference/#/p5/mouseIsPressed)
+
+Now add another ```if``` statement so that something else happens when a key is pressed.
