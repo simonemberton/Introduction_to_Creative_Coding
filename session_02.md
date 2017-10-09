@@ -42,7 +42,7 @@ If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) y
 
 ### Task 3 - Draw fluidly
 
-In the lecture we talked about 'easing'.  This technique can be used to make our dawn object lag behind the location of the mouse and makes for a more fluid drawing style.
+In the lecture we talked about 'easing'.  This technique can be used to make our drawn object lag behind the location of the mouse and makes for a more fluid drawing style.
 
 Try this code:
 
