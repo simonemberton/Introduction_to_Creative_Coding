@@ -78,7 +78,7 @@ function draw() {
 
 ### Task 5 - Conditionals
 
-For this task we're going to make use of ```mouseIsPressed``` and an ```if``` statement.  Look at the following code:
+Look at the following code:
 
 ```javascript
 function setup() {
