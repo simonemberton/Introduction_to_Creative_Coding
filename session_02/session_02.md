@@ -105,7 +105,7 @@ We're changing the colour of the line depending on whether the mouse is pressed.
 
 * Add an ```if else``` statement so that something else happens when a key is pressed.
 
-* Using ```if``` or ```if else``` statements make somethign happen on screen when you press specific keys.
+* Using ```if``` or ```if else``` statements make different things happen on screen when you press specific keys.
 
 [HINT](https://p5js.org/reference/#/p5/keyTyped)
 
