@@ -58,19 +58,19 @@ var x = 0;
 var easing = 0.01;
 
 function setup(){
-  createCanvas(500,500);
+  	createCanvas(500,500);
 }
 
 
 function draw() {
 	var targetX = mouseX;
-    x += (targetX - x) * easing;
+	x += (targetX - x) * easing;
   	ellipse(x, 40, 12, 12);
-    print(targetX + " : " + x);
+    	print(targetX + " : " + x);
 }
 ```
 
-* See how the difference between the two numbers that are output to the console are greater when you move the mouse and then come closer together as you stop moving.
+* See how the difference between the two numbers that are output to the console are greater when you move the mouse and then comes closer together as you stop moving.
 
 * Change the code from Task 3 so that lines on both axis (X and Y) are drawn with the easing technique.
 
@@ -78,10 +78,35 @@ function draw() {
 
 ### Task 5 - Conditionals
 
-For this task you need to make use of ```mouseIsPressed``` and an ```if``` statement.  If the mouse is pressed make something happen e.g. the screen changes colour or an object is drawn.
+For this task we're going to make use of ```mouseIsPressed``` and an ```if``` statement.  Look at the following code:
 
-[HINT](https://p5js.org/reference/#/p5/mouseIsPressed)
+```javascript
+function setup() {
+	createCanvas(500, 500);
+	strokeWeight(30);
+	background(204);
+}
 
-* Add another ```if``` statement so that something else happens when a key is pressed.
+function draw() {
+	stroke(102);
+	line(40,0,70,height);
+
+	if (mouseIsPressed == true){
+		stroke(0);
+	} else {
+		stroke(255);
+	}
+
+  	line(0,70,width,50);
+}
+```
+
+We're changing the colour of the line depending on whether the mouse is pressed.
+
+* Add an ```if else``` statement so that something else happens when a key is pressed.
+
+* Using ```if``` or ```if else``` statements make somethign happen on screen when you press specific keys.
+
+[HINT](https://p5js.org/reference/#/p5/keyTyped)
 
 * Finally, write your own function that is called inside the draw() function.  Make the input to your function different depending on whether a mouse or key is pressed.
