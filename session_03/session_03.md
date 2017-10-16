@@ -61,9 +61,9 @@ function herringBone(x_, y_, unit) {
 
 Don't forget to call the function inside the for loop!
 
-* Try creating a new variable that increases/decreases on each frame which is also used as input to your function (e.g. to change the scale).
+* Try making at least three more functions each with a different pattern.  
 
-* Try making a few more functions with different patterns.
+* Try creating a new variable that increases/decreases on each frame which can also used as input to your function (e.g. to change the scale).
 
 ### Task 4 - Flip through functions
 
@@ -72,7 +72,7 @@ Finally, wrap it all up by using a switch/case statement which allows you to sel
 ```javascript
 switch(key){
     case "1": 	
-		function1(x,y,unit);
+	function1(x,y,unit);
     break;
     case "2": 
     	function2(x,y,unit);
@@ -85,15 +85,3 @@ switch(key){
     break;
 	    }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
