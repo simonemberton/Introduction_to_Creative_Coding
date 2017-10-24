@@ -166,7 +166,7 @@ This is actually almost exactly the same way that p5 does it, but it's interesti
 
 ### Task 3 - PacPerson
 
-The following is an example from the p5.js book. Give it a go and try changing some of the values, particularly x[i] and y in the draw() function for loop.
+The following is an example from the p5.js book. Give it a go (DO NOT COPY AND PASTE) and try changing some of the values, particularly x[i] and y in the draw() function for loop.
 
 ```javascript
 
