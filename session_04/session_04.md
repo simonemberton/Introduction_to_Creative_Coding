@@ -17,8 +17,8 @@ function setup() {
     //define x here...
 
     console.log(x);
-}```
-
+}
+```
 Try defining x as a ```let``` or a ```var```. 
 
 What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block?
