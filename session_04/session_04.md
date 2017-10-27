@@ -70,7 +70,7 @@ console.log(myArr);
 
 Now, how do you open the console?
 
-OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos.
+OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos. Let's initialise it to the value of 0.
 
 We also need to stop p5 from drawing the edges round our rectangles, so we'll turn stroke off:
 
