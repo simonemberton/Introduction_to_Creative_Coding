@@ -43,7 +43,7 @@ Set the background to white.
 
 Make it so that the sketch only executes the ```draw()``` function once. (What function do we need to do that?)
 
-Fill the array values from zero to 255:
+Fill the array values from zero to 255, all of the following has to happen in the ```setup()``` function:
 
 Do you remember the structure?
 
@@ -108,7 +108,7 @@ How smooth is that gradient? What happens if you change the value 256 (on both l
 What happens if you change fill to be:
 
 ```javascript
-fill(myArr[i],0 120);
+fill(myArr[i],0, 120);
 ```
 
 Try changing the values. Fill is now in Red-Blue-Green (RGB) mode.
