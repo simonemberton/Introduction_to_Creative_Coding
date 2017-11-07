@@ -69,7 +69,7 @@ Save the sketch and refresh the page. Your shape will likely move down and to th
 
 OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for OR in computer programming is ```||```.
 
-So let's right two if statements first:
+So let's write two if statements first:
 
 ```javascript
 if(x > (width-size) || x < size){ // if x is greater than the width (minus size) OR if x is less than size
@@ -93,7 +93,7 @@ if(y > (height-size) || y < size){
             yDir = yDir * -1; // flip between positive 1 and negative 1
 }
 ```
-So you're if statements in your ```move()``` function should now look like the above. And your whole ```move()``` function should look like below:
+So your if statements in your ```move()``` function should now look like the above. And your whole ```move()``` function should look like below:
 
 ```javascript
 function move() {
@@ -230,7 +230,7 @@ move() {
     }
 ```
 
-So, you're MovingShape class should look a little something like this now:
+So, your MovingShape class should look a little something like this now:
 
 ```javascript
 class MovingShape {
