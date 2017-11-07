@@ -17,7 +17,7 @@ What we're going to build first, is one rectangle in the centre of the screen. S
 First of all, we need to define a bunch of variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
 
 ```javascript
-var x,y,size
+var x,y,size;
 ```
 
 Then directly below, we're going to declare some variables for later on once we get our rectangle moving:
