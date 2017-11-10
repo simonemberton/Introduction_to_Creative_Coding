@@ -47,6 +47,7 @@ OK it would be good to actually see something now. In the ```display()``` functi
 
 ```javascript
 stroke(10);
+rectMode(CENTER);
 fill(0);
 rect(x, y,size,size);
 ```
@@ -265,6 +266,7 @@ class MovingShape {
 
     display() {
         stroke(10);
+        rectMode(CENTER);
         fill(0);
         rect(this.x, this.y,this.size,this.size)
     }
