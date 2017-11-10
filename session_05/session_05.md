@@ -73,11 +73,11 @@ OK so you see the issue we have here? We need to *constrain* the movement of our
 So let's write two if statements first:
 
 ```javascript
-if(x > (width-(size/2)) || x < (size/2)){ // if x is greater than the width (minus size) OR if x is less than size
+if(x > (width-size) || x < size){ // if x is greater than the width (minus size) OR if x is less than size
 
 }
 
-if(y > (height-(size/2)) || y < (size/2)){ // if y is greater than the height (minus size) OR if y is less than size
+if(y > (height-size) || y < size){ // if y is greater than the height (minus size) OR if y is less than size
 
 }
 ```
@@ -85,12 +85,12 @@ if(y > (height-(size/2)) || y < (size/2)){ // if y is greater than the height (m
 What we're doing here is setting up conditional statements that are constantly testing whether our shape's position is hitting the boundaries of our canvas. Now we need to put in some code that changes the direction of travel inside our if statements. If we want to change direction, we need to change our xDir and yDir variables from a negative to a positive, or vice versa. That way, if our shape is travelling right (positive) and reaches the right hand edge of the screen, we can change xDir to -1 so that means xSpeed * xDir will be a negative value and our shape will start travelling left. The same goes for the y value...
 
 ```javascript
-if(x > (width-(size/2)) || x < (size/2)){
+if(x > (width-size) || x < size){
             xDir = xDir * -1; // flip between positive 1 and negative 1
             
 }
 
-if(y > (height-(size/2)) || y < (size/2)){
+if(y > (height-size) || y < size){
             yDir = yDir * -1; // flip between positive 1 and negative 1
 }
 ```
@@ -102,12 +102,12 @@ function move() {
         x = x + (xSpeed * xDir);
         y = y + (ySpeed * yDir);
 
-        if(x > (width-(size/2)) || x < (size/2)){
+        if(x > (width-size) || x < size){
             xDir = xDir * -1;
             
         }
 
-        if(y > (height-(size/2)) || y < (size/2)){
+        if(y > (height-size) || y < size){
             yDir = yDir * -1;
         }
 }
@@ -205,7 +205,7 @@ class MovingShape {
     }
 }
 ```
-OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names:
+OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names. We're also going to divide size by two now so look out for this change:
 
 
 ```javascript
