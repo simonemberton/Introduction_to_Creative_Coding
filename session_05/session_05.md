@@ -72,11 +72,11 @@ OK so you see the issue we have here? We need to *constrain* the movement of our
 So let's write two if statements first:
 
 ```javascript
-if(x > (width-size) || x < size){ // if x is greater than the width (minus size) OR if x is less than size
+if(x > (width-(size/2)) || x < (size/2)){ // if x is greater than the width (minus size) OR if x is less than size
 
 }
 
-if(y > (height-size) || y < size){ // if y is greater than the height (minus size) OR if y is less than size
+if(y > (height-(size/2)) || y < (size/2)){ // if y is greater than the height (minus size) OR if y is less than size
 
 }
 ```
@@ -84,12 +84,12 @@ if(y > (height-size) || y < size){ // if y is greater than the height (minus siz
 What we're doing here is setting up conditional statements that are constantly testing whether our shape's position is hitting the boundaries of our canvas. Now we need to put in some code that changes the direction of travel inside our if statements. If we want to change direction, we need to change our xDir and yDir variables from a negative to a positive, or vice versa. That way, if our shape is travelling right (positive) and reaches the right hand edge of the screen, we can change xDir to -1 so that means xSpeed * xDir will be a negative value and our shape will start travelling left. The same goes for the y value...
 
 ```javascript
-if(x > (width-size) || x < size){
+if(x > (width-(size/2)) || x < (size/2)){
             xDir = xDir * -1; // flip between positive 1 and negative 1
             
 }
 
-if(y > (height-size) || y < size){
+if(y > (height-(size/2)) || y < (size/2)){
             yDir = yDir * -1; // flip between positive 1 and negative 1
 }
 ```
@@ -101,12 +101,12 @@ function move() {
         x = x + (xSpeed * xDir);
         y = y + (ySpeed * yDir);
 
-        if(x > (width-size) || x < size){
+        if(x > (width-(size/2)) || x < (size/2)){
             xDir = xDir * -1;
             
         }
 
-        if(y > (height-size) || y < size){
+        if(y > (height-(size/2)) || y < (size/2)){
             yDir = yDir * -1;
         }
 }
@@ -123,6 +123,7 @@ At the very top of your ```draw()``` function, add the following code:
 
 ```javascript
 noStroke(); // no outline
+rectMode(CORNER); // draw from top left corner
 fill( 255, 255, 255, 80); //white 80 on the alpha channel
 rect(0, 0, width, height); // draw a rectangle over the whole canvas
 ```
@@ -212,12 +213,12 @@ move() {
         this.x = this.x + (this.xSpeed * this.xDir);
         this.y = this.y + (this.ySpeed * this.yDir);
 
-        if(this.x > (width-this.size) || this.x < this.size){
+        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
             this.xDir = this.xDir * -1;
             
         }
 
-        if(this.y > (height-this.size) || this.y < this.size){
+        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
             this.yDir = this.yDir * -1;
         }
 
@@ -225,6 +226,7 @@ move() {
 
     display() {
         stroke(10);
+        rectMode(CENTER);
         fill(0);
         rect(this.x, this.y,this.size,this.size)
     }
@@ -250,12 +252,12 @@ class MovingShape {
         this.x = this.x + (this.xSpeed * this.xDir);
         this.y = this.y + (this.ySpeed * this.yDir);
 
-        if(this.x > (width-this.size) || this.x < this.size){
+        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
             this.xDir = this.xDir * -1;
             
         }
 
-        if(this.y > (height-this.size) || this.y < this.size){
+        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
             this.yDir = this.yDir * -1;
         }
 
