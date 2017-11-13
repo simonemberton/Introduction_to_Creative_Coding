@@ -44,48 +44,47 @@ Look at the following code
 
 ```javascript
 
-var bugs = []; // array of Bug objects
-
 function setup() {
+  var dots = []; // array of Jitter objects
   createcanvas(710, 400);
   noFill()
   Stroke(255);
   // Create objects
   for (var i = 0; i < 50; i++) {
-    bugs.push(new Bug(random(w), random(h), random(10, 30)));
+    dots.push(new Jitter(random(w), random(h), random(10, 30)));
   }
 }
 
 // create new object when mouse is pressed
 function mousepressed() {
   var r = random(10, 30)
-  var b = new Bug(mouseX, mouseY, r);
-  bugs.push(b);
+  var b = new Jitter(mouseX, mouseY, r);
+  dots.push(b);
 }
 
 function draw() {
   background(0);
   // move and display all the objects
-  for (var i = 0; i < bugs.length; i++) {
-    bugs[i].move();
-    bugs[i].display();
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].move();
+    dots[i].display();
   }
 }
 
-// Bug class
-function Bug(x_, y_, r_) {
-  this.x = x;
-  this.y = y;
-  this.diameter = r;
-  this.speed = 2;
+// Jitter class
+function Jitter(x_, y_, r_) {
+  x = x;
+  y = y;
+  diameter = r;
+  speed = 2;
 
-  this.move = function() {
-    this.x += random(-this.speed, this.speed);
-    this.y += random(-this.speed, this.speed)
+  move = function() {
+    x += random(-speed, speed);
+    y += random(-speed, speed)
   };
 
-  this.display = function() {
-    ellipse(this.x, this.y, this.diameter, this.diameter);
+  display = function() {
+    ellipse(x, y, diameter, diameter);
   };
 }
 
