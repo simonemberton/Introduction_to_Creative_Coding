@@ -72,20 +72,23 @@ function draw() {
 }
 
 // Jitter class
-function Jitter(x_, y_, r_) {
-  x = x;
-  y = y;
-  diameter = r;
-  speed = 2;
+class Jitter {
+  constructor(x_, y_, r_) {
+    x = x;
+    y = y;
+    diameter = r;
+    speed = 2;
 
-  move = function() {
+  }
+
+  move() {
     x += random(-speed, speed);
     y += random(-speed, speed)
-  };
+  }
 
-  display = function() {
+  display() {
     ellipse(x, y, diameter, diameter);
-  };
+  }
 }
 
 ```
@@ -99,10 +102,10 @@ Making use of the following code
 ```javascript
  
 function setup(){
-    console.log(LetterCapitalize("hello world"));
+    console.log(letterCapitalize("hello world"));
 }
 
-function LetterCapitalize(str) { 
+function letterCapitalize(str) { 
 
     // code goes here  
     
@@ -110,4 +113,4 @@ function LetterCapitalize(str) {
 }
 ```
    
-your challange is to write some more code inside the ```LetterCapitalize(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
+your challange is to write some more code inside the ```letterCapitalize(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
