@@ -27,7 +27,7 @@ Open your page with the browser, congratulations, you’ve written your first pi
 
 We're going to create a pop up alert in our browser.
 
-In the head of your add a pair of script tags.
+In the head of your page add a pair of script tags.
 
 Create a function called sayHello in the script tags.
 
