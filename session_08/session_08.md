@@ -86,7 +86,7 @@ function stop() {
 }
 ```
 
-In the ```rotateDiv()``` function, declare a var called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
+In the ```rotateDiv()``` function, declare a ```var``` called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
 
 Add the statement ```divAnim01.style.transform = "rotate(" + deg + “deg)";```. This will work for chrome, and will perform the actual rotation using the CSS3 rotate function. In the code below, all the other transform functions are also defined for other browsers.
 
