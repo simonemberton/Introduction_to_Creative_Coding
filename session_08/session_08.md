@@ -1,4 +1,4 @@
-# Session 07
+# Session 08
 
 ## HTML, Pure JavaScript and Interaction with the DOM
 
