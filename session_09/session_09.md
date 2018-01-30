@@ -26,9 +26,7 @@ Now we're going to incorporate both the audio and video inputs into one sketch. 
 
 Once you've got that working, instead of drawing still images on top of each other we're going to draw two more images to the right hand side of the first, so that you have three images horizonatlly across the page. Make sure you make the canvas bigger or you won't be able to see them.  
 
-Write some code so that the first image is taken when the clap is detected, the second image half a second after the first and the third image half a second after that.  
-
-You'll also need to make sure no new claps are detected while waiting for the second and third image to be captured.  For this we'll need to set up a timer so that you know how long has passed since the first clap.  You can use the [```millis()```](https://p5js.org/reference/#/p5/millis) function for this.  You'll also need to use a variable that keeps track of the current state of the program so that only one image is captured each time the state changes.
+Write some code so that the first image is taken when the clap is detected, the second image half a second after the first and the third image half a second after that.  You'll need to make sure no new claps are detected while waiting for the second and third image to be captured.  For this we'll need to set up a timer so that you know how long has passed since the first clap.  You can use the [```millis()```](https://p5js.org/reference/#/p5/millis) function for this.  You'll also need to use a variable that keeps track of the current state of the program so that only one image is captured each time the state changes.
 
 ### Task 4 - Open task 
 Taking input data from the camera and microphone do something cool. For example try using some part of the audio signal (e.g. amplitude, [frequency](https://p5js.org/examples/sound-frequency-spectrum.html)) to modify the camera input in some way.  Look at [this](https://p5js.org/examples/dom-video-pixels.html) example for some inspiration.
