@@ -4,7 +4,9 @@
 
 ### Task 1 - HTML Page
 
-Create a new folder on your machine called DOM_DEMO_01 or something that is in line with your previous naming system
+In line with doing some independent learning, some of the following instructions are structured to get you to do your own research to find the answers.
+
+Create a new folder on your machine called DOM_DEMO_01 or something that is in line with your previous naming system.
 
 Create a new index.html with all the necessary mark up that is required:
 
@@ -111,7 +113,15 @@ function rotateDiv() {
 
 http://www.w3schools.com/js/js_htmldom.asp
 
-### Task 5 - Advanced: Sidenav tutorial
+### Task 5 - Explore the p5 DOM libary
+
+Can you get some examples working on your own?
+
+Is it easier to use the p5 library or just the inbuilt JS functionality?
+
+https://p5js.org/reference/#/libraries/p5.dom
+
+### Task 6 - Advanced: Sidenav tutorial
 
 https://www.w3schools.com/howto/howto_js_sidenav.asp
 
