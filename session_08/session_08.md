@@ -1,4 +1,4 @@
-# Session 07
+# Session 08
 
 ## HTML, Pure JavaScript and Interaction with the DOM
 
@@ -29,7 +29,7 @@ Open your page with the browser, congratulations, you’ve written your first pi
 
 We're going to create a pop up alert in our browser.
 
-In the head of your add a pair of script tags.
+In the head of your page add a pair of script tags.
 
 Create a function called sayHello in the script tags.
 
@@ -88,7 +88,7 @@ function stop() {
 }
 ```
 
-In the ```rotateDiv()``` function, declare a var called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
+In the ```rotateDiv()``` function, declare a ```var``` called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
 
 Add the statement ```divAnim01.style.transform = "rotate(" + deg + “deg)";```. This will work for chrome, and will perform the actual rotation using the CSS3 rotate function. In the code below, all the other transform functions are also defined for other browsers.
 
