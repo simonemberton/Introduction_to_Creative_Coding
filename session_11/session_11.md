@@ -238,6 +238,8 @@ checkEdges() {
   }
 ```
 
+[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
+
 ### Task 5 - State Change
 
 One other thing, I want to just show you quickly how to change the state of your piece. Let's add a toggle function to invert the colours of the piece:
