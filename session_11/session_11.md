@@ -238,7 +238,7 @@ checkEdges() {
   }
 ```
 
-[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
+
 
 ### Task 5 - State Change
 
@@ -268,6 +268,8 @@ display() {
     ellipse(this.pos.x, this.pos.y,this.mass*2,this.mass*2);
   }
 ```
+
+[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
 
 ### Task 6 - Parameter Mapping
 
