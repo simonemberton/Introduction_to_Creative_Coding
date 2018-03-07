@@ -41,7 +41,7 @@ We don't actually need a draw function here.
 
 #### Soundfile
 
-Let's add the abilitu to pause and play our song based on toggling with a mouse click.
+Let's add the ability to pause and play our song based on toggling with a mouse click.
 
 
 ```javascript
