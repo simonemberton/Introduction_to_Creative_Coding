@@ -84,7 +84,7 @@ And finally let's toggle between fading the oscillator in and out. We have to us
 function mouseClicked() {
   if (mouseX > 0 && mouseX < width && mouseY < height && mouseY > 0) { //check if we're in the canvas
     if (!playing) {// what does the ! operator mean?
-      // ramp amplitude to 0.5 over 0.05 seconds
+      // ramp amplitude to 0.5 over 0.5 seconds
       osc.amp(0.5, 0.5);
       playing = true;
     } else {
