@@ -149,7 +149,7 @@ reverb = new p5.Reverb();
 osc.disconnect(); // so we'll only hear reverb...
 reverb.process(osc, 10, 2);
 ```
-
+Now try the same process for adding a delay. Delay is an echo that repeats the sound using a feedback loop. Have a look [here](https://p5js.org/reference/#/p5.Delay) for how to use it.
 
 ### Task 4 - Event Driven Sound
 
