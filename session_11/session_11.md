@@ -108,7 +108,7 @@ Go back to your original sound file play back sketch. Comment out the ```noLoop(
 
 Then change the ```song.play()``` to ```song.loop()```;
 
-OK so we're going to map the Y position of the mouse to the playback rate of the audio file. Anything with a negative number will play the sound in reverse, which is pretty cool! Remember that Y= 0 is at the 
+OK so we're going to map the Y position of the mouse to the playback rate of the audio file. Anything with a negative number will play the sound in reverse, which is pretty cool! Remember that Y=0 is at the top.
 
 ```javascript
 function draw() {
@@ -133,7 +133,7 @@ function draw() {
 
 #### Sound Effects
 
-Let's try some reverberation. Reverb is an effect that mimics the way real world sound is reflected of objects and surfaces in the environment.
+Let's try some reverberation. Reverb is an effect that mimics the way real world sound is reflected off objects and surfaces in the environment.
 
 We need a global variable for our first audio effect, we're going to make a reverb:
 
