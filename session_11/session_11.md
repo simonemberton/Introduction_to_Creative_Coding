@@ -258,7 +258,7 @@ function mousePressed() {
 }
 
 ```
-Now we just need to set our particile colour in the display function of the particle:
+Now we just need to set our particle colour in the display function of the particle:
 
 ```javascript
 display() {
