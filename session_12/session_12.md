@@ -12,7 +12,7 @@ http://api.open-notify.org/iss-now.json
 
 You might also want to install a JSON formatter for your browser so that it's easier to read.  For example for Chrome you could use something like [this](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en). 
 
-The following two p5 programs are examples which use the space station data and visualise it in ways that you've already seen which working with sesnor data via an Arduino.  Yes that's right, you're already familar with visualising data!  Get these sketches up and running and have a play with them.  Have a look at the data that is being logged to the console.  Also, notice how you use dot notation to access data when working with objects/JSON.
+The following two p5 programs are examples which use the space station data and visualise it in ways that you've already seen which working with sensor data via an Arduino.  Yes that's right, you're already familar with visualising data!  Get these sketches up and running and have a play with them.  Have a look at the data that is being logged to the console.  Also, notice how you use dot notation to access data when working with objects/JSON.
 
 ```javascript
 // global variables
