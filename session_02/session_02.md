@@ -41,9 +41,9 @@ If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) y
 
 We're now going to use the difference between the current and previous mouse locations to calcuate the speed that the mouse cursor is moving.  We will then use this value to change the weight of the line we are drawing.  We want to do this on each frame so we'll add the following lines of code to our draw() function:
 
-```
-	var weight = dist(mouseX, mouseY, pmouseX, pmouseY);
-	strokeWeight(weight);	
+```javascript
+var weight = dist(mouseX, mouseY, pmouseX, pmouseY);
+strokeWeight(weight);	
 ```
 
 ### Task 4 - Draw fluidly
