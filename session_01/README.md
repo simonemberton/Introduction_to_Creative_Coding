@@ -206,7 +206,7 @@ function setup(){
 ```
 This just means our ```draw()``` function is only called once now, like ```setup()``` is.
 
-Now, beneath the ```draw()``` function, write a new function called "makeShape". Add two parameters that will be passed to this function called width and height:
+Now, beneath the ```draw()``` function, write a new function called "drawShape". Add two parameters that will be passed to this function called width and height:
 
 **remember the syntax of how to write this stuff, it has to be exactly correct otherwise the script interpreter won't know what to do with it**
 
