@@ -46,7 +46,7 @@ Let's add the ability to pause and play our song based on toggling with a mouse 
 
 ```javascript
 
-function mousePressed() {
+function mouseClicked() {
   if (song.isPlaying()) {
     song.stop();
   } else {
@@ -210,6 +210,16 @@ function setup() {
     }
 }
 ```
+
+And then, just because Google have been annoying, we need to just add a block that allows us to start the audio processing when there is some user interaction. For some reason, Google have made it so that, to access the Web Audio API you need to provide some positive interaction:
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
+  }
+```
+
+
 Finally, we just need to update our checkEdges function to trigger our envelope and make a sound when the particle hits the edge of the canvas:
 
 ```javascript
@@ -242,10 +252,11 @@ checkEdges() {
 
 ### Task 5 - State Change
 
-One other thing, I want to just show you quickly how to change the state of your piece. Let's add a toggle function to invert the colours of the piece:
+One other thing, I want to just show you quickly how to change the state of your piece. This uses an if statement to toggle between two states. But you coud also use a switch statement to cycle between multiple states by using a counter. That is for you to figure out though! Let's add a toggle function to invert the colours of the piece:
 
 ```javascript
 function mousePressed() {
+  getAudioContext().resume();
    if (!clicked) {
     bgColour = 255;
     particleColour = 0;
