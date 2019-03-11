@@ -153,7 +153,7 @@ Now try the same process for adding a delay. Delay is an echo that repeats the s
 
 ### Task 4 - Event Driven Sound
 
-So let's pick up from our last session where we created a [particle system with forces](../session_10/session_10.md). Make sure you start this off only making 5 particles, sound is very CPU intensive in the browser!
+So let's pick up from the session where we created a [particle system with forces](../session_10/session_10.md). Make sure you start this off only making 5 particles, sound is very CPU intensive in the browser!
 
 #### Synthesis
 
