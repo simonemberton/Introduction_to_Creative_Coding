@@ -179,7 +179,7 @@ constructor(startX, startY, startMass){
     this.vel = createVector(random(0.5,2.5), random(0.5,2.5));
     this.acc = createVector(0, 0);
     /// new stuff
-    this.osc =  new p5.Oscillator(waveArray[Math.round(random(0, waveArray.length))]); //make a new oscillator with a random waveform type
+    this.osc =  new p5.Oscillator(waveArray[Math.round(random(0, waveArray.length-1))]); //make a new oscillator with a random waveform type
     this.envelope = new p5.Envelope(); // make a new envelope
     this.envelope.setADSR(0.001, 0.5, 0.05, 0.9); // set attackTime, decayTime, sustainLevel, releaseTime
     this.note = Math.round(random(0, scaleArray.length)); //select a random MIDI note from our scaleArray
