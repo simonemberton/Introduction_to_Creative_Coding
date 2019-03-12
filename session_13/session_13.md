@@ -24,7 +24,7 @@ function draw() {
 	rotateY(count);
 	count = count + (0.003);
 
-	fill(255);
+	stroke(255);
 	drawEdges();
 }
 
