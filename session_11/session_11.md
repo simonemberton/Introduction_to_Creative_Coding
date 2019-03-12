@@ -160,7 +160,7 @@ So let's pick up from the session where we created a [particle system with force
 Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
 
 ```javascript
-var scaleArray = [60, 62, 64, 67, 71, 72, 74, 76, 77]; //array of MIDI note numbers
+var scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
 var waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
 var bgColour = 0; //inital background colour
 var particleColour = 255; //inital particle colour
