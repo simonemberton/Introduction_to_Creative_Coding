@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
 	background(0);
-	pointLight(255,255,255, 0, -100, 0);
+	ambientLight(255,255,255);
 
 	rotateY(count);
 	count = count + (0.003);
