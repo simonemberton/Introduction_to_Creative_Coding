@@ -2,8 +2,6 @@
 
 ## Exploring concepts of 3D space
 
-### Task 1 - 3D in p5
-
 First off have a quick look at [this](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5) information describing the main differences when working in p5's WEBGL mode.  You might find it useful to refer back to this page during the following tasks.
 
 ### Task 1 - Draw the edges of our space
