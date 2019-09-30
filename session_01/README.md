@@ -226,9 +226,9 @@ OK, so here is where we're going to stick some randomness into our function. Add
 so it looks like this:
 
 ```javascript
-function drawShape(recWidth,recHeight) {
-	let xPos = random(0, width);
-	let yPos = random(0, height);
+function drawShape(rectWidth,rectHeight) {
+	let xPos = random(0, rectWidth);
+	let yPos = random(0, rectHeight);
 
 }
 
@@ -246,8 +246,8 @@ So, now your function should look like this:
 
 ```javascript
 function drawShape(rectWidth,rectHeight) {
-	let xPos = random(0, width);
-	let yPos = random(0, height);
+	let xPos = random(0, rectWidth);
+	let yPos = random(0, rectHeight);
 
 	rect(xPos,yPos,rectWidth,rectHeight);
 }
