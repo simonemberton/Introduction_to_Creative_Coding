@@ -30,7 +30,7 @@ function draw() {
 
 }
 ```
-##### **Please do not copy and paste code - you will only learn by typing it out correctly**
+<span style="font-size:4em;">**Please do not copy and paste code - you will only learn by typing it out correctly**</span>
 
 #### What do we need to draw on? 
 
