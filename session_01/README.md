@@ -239,7 +239,7 @@ What we're doing here is declaring a new random number in the range between 0 an
 OK, now just add one more line into your ```drawShape()``` function:
 
 ```javascript
-	rect(xPos,yPos,recWidth,recHeight);
+	rect(xPos,yPos,rectWidth,rectHeight);
 ```
 
 So, now your function should look like this:
