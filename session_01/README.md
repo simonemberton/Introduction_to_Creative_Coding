@@ -211,7 +211,7 @@ Now, beneath the ```draw()``` function, write a new function called "drawShape".
 **remember the syntax of how to write this stuff, it has to be exactly correct otherwise the script interpreter won't know what to do with it**
 
 ```javascript
-function drawShape(width,height) {
+function drawShape(rectangleWidth,rectangleHeight) {
 
 }
 ```
@@ -219,16 +219,16 @@ function drawShape(width,height) {
 OK, so here is where we're going to stick some randomness into our function. Add the following lines into the top of the function:
 
 ```javascript
-	let xPos = random(0, width);
-	let yPos = random(0, height);
+	let xPos = random(0, rectangleWidth);
+	let yPos = random(0, rectangleHeight);
 ```
 
 so it looks like this:
 
 ```javascript
-function drawShape(rectWidth,rectHeight) {
-	let xPos = random(0, rectWidth);
-	let yPos = random(0, rectHeight);
+function drawShape(rectangleWidth,rectangleHeight) {
+	let xPos = random(0, rectangleWidth);
+	let yPos = random(0, rectangleHeight);
 
 }
 
@@ -239,7 +239,7 @@ What we're doing here is declaring a new random number in the range between 0 an
 OK, now just add one more line into your ```drawShape()``` function:
 
 ```javascript
-	rect(xPos,yPos,rectWidth,rectHeight);
+	rect(xPos,yPos,rectangleWidth,rectangleHeight);
 ```
 
 So, now your function should look like this:
