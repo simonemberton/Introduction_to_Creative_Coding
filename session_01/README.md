@@ -30,7 +30,7 @@ function draw() {
 
 }
 ```
-#####**Please do not copy and paste code - you will only learn by typing it out correctly**
+####**Please do not copy and paste code - you will only learn by typing it out correctly**
 
 #### What do we need to draw on? 
 
