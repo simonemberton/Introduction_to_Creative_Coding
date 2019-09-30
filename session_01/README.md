@@ -30,7 +30,7 @@ function draw() {
 
 }
 ```
-**please do not copy and paste code - you will only learn by typing it out correctly**
+#####**Please do not copy and paste code - you will only learn by typing it out correctly**
 
 #### What do we need to draw on? 
 
@@ -140,13 +140,13 @@ rect(25,50,25,25);
 
 statement in your ```draw()``` function.
 
-We declare a variable by using the ```var``` keyword. And when we declare it, we have to give it a **unique** name. 
+We declare a variable by using the ```let``` keyword. And when we declare it, we have to give it a **unique** name. 
 
 At the very top of your sketch.js file, on the first line before ```setup()```, write the following:
 
 ```javascript
-var rectWidth = 25;
-var rectHeight = 25;
+let rectWidth = 25;
+let rectHeight = 25;
 ```
 
 Now, update your ```rect()``` function as follows:
@@ -219,16 +219,16 @@ function drawShape(width,height) {
 OK, so here is where we're going to stick some randomness into our function. Add the following lines into the top of the function:
 
 ```javascript
-	var xPos = random(0, width);
-	var yPos = random(0, height);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 ```
 
 so it looks like this:
 
 ```javascript
 function drawShape(recWidth,recHeight) {
-	var xPos = random(0, width);
-	var yPos = random(0, height);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 
 }
 
@@ -246,8 +246,8 @@ So, now your function should look like this:
 
 ```javascript
 function drawShape(rectWidth,rectHeight) {
-	var xPos = random(0, width);
-	var yPos = random(0, height);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 
 	rect(xPos,yPos,rectWidth,rectHeight);
 }
