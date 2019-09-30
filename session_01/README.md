@@ -219,16 +219,16 @@ function drawShape(rectangleWidth,rectangleHeight) {
 OK, so here is where we're going to stick some randomness into our function. Add the following lines into the top of the function:
 
 ```javascript
-	let xPos = random(0, rectangleWidth);
-	let yPos = random(0, rectangleHeight);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 ```
 
 so it looks like this:
 
 ```javascript
 function drawShape(rectangleWidth,rectangleHeight) {
-	let xPos = random(0, rectangleWidth);
-	let yPos = random(0, rectangleHeight);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 
 }
 
@@ -246,8 +246,8 @@ So, now your function should look like this:
 
 ```javascript
 function drawShape(rectangleWidth,rectangleHeight) {
-	let xPos = random(0, rectangleWidth);
-	let yPos = random(0, rectangleHeight);
+	let xPos = random(0, width);
+	let yPos = random(0, height);
 
 	rect(xPos,yPos,rectangleWidth,rectangleHeight);
 }
