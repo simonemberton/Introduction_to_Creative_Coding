@@ -33,7 +33,7 @@ Inside the draw function we're going to use the ```line()``` function.
 
 Notice how we now need to specify [```strokeWeight()```](https://p5js.org/reference/#/p5/strokeWeight) and [```stroke()```](https://p5js.org/reference/#/p5/stroke) as we're drawing a line.  Again have a look at their reference pages if you're not sure what they do.
 
-If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) you'll notice it takes four location values.  Can you remember a way to input the location of the mouse on the previous frame?
+If you look at `line()`'s reference [page](https://p5js.org/reference/#/p5/line) you'll notice it takes four location values.  Can you remember a way to input the location of the mouse on the previous frame?
 
 [HINT](https://p5js.org/reference/#/p5/pmouseX)
 
