@@ -42,7 +42,7 @@ If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) y
 We're now going to use the difference between the current and previous mouse locations to calcuate the speed that the mouse cursor is moving.  We will then use this value to change the weight of the line we are drawing.  We want to do this on each frame so we'll add the following lines of code to our draw() function:
 
 ```javascript
-var weight = dist(mouseX, mouseY, pmouseX, pmouseY);
+let weight = dist(mouseX, mouseY, pmouseX, pmouseY);
 strokeWeight(weight);	
 ```
 
@@ -54,8 +54,8 @@ Try this code:
 
 ```javascript
 
-var x = 0;
-var easing = 0.01;
+let x = 0;
+let easing = 0.01;
 
 function setup(){
   	createCanvas(500,500);
@@ -63,7 +63,7 @@ function setup(){
 
 
 function draw() {
-	var targetX = mouseX;
+	let targetX = mouseX;
 	x += (targetX - x) * easing;
   	ellipse(x, 40, 12, 12);
     	print(targetX + " : " + x);
