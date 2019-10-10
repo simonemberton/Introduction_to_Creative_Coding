@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-var x = 25;
+let x = 25;
 while (x < width){
 	ellipse(x,25,50,50);
 	x = x+50;
