@@ -8,7 +8,7 @@ Create a new sketch and run the following code
 
 ```javascript
 
-var angle = 0;
+let angle = 0;
 
 function setup(){
 	createCanvas(500,500);
@@ -40,8 +40,8 @@ Try writing some code to draw another spinning rectangle in the bottom righthand
 Create a new sketch and run the following code
 
 ```javascript
-var b1;
-var b2;
+let b1;
+let b2;
 
 function setup(){
 	createCanvas(500,500);
@@ -127,16 +127,3 @@ spin(val) {
 ```
 
 Now try and add some code to the ```display()``` method which will do the rotating and finally call the ```spin()``` method when any circles intersect with each other.
-
-
-
-
-
-
-
-
-
-
-
-
-
