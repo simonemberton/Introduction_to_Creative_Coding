@@ -10,7 +10,7 @@ Run the following code
 
 ```javascript
 
-var x = 0;
+let x = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -43,27 +43,27 @@ Look at the following code
 ```javascript
 
 function setup() {
-  var dots = []; // array of Jitter objects
+  let dots = []; // array of Jitter objects
   createcanvas(710, 400);
   noFill()
   Stroke(255);
   // Create objects
-  for (var i = 0; i < 50; i++) {
+  for (let i = 0; i < 50; i++) {
     dots.push(new Jitter(random(w), random(h), random(10, 30)));
   }
 }
 
 // create new object when mouse is pressed
 function mousepressed() {
-  var r = random(10, 30)
-  var b = new Jitter(mouseX, mouseY, r);
+  let r = random(10, 30)
+  let b = new Jitter(mouseX, mouseY, r);
   dots.push(b);
 }
 
 function draw() {
   background(0);
   // move and display all the objects
-  for (var i = 0; i < dots.length; i++) {
+  for (let i = 0; i < dots.length; i++) {
     dots[i].move();
     dots[i].display();
   }
