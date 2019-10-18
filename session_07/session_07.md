@@ -118,7 +118,7 @@ You'll notice now that the ```changeColor()``` isn't working as we intended.  We
 
 Now let's put together our transformations and intersections.  Instead of changing the colour of the circles when they intersect we want to rotate them.  Obviously you can't see a whether or not a circle is rotating so first off draw a line through the middle of the circle.
 
-Next create a new variable in Bubbble's constructor ```this.angle = 1;``` and a new method of our Bubble class called ```spin()``` as follows
+Next create a new variable in Bubble's constructor ```this.angle = 1;``` and a new method of our Bubble class called ```spin()``` as follows
 
 ```javascript
 spin(val) {
