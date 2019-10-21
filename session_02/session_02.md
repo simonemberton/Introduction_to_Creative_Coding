@@ -33,7 +33,7 @@ Inside the draw function we're going to use the ```line()``` function.
 
 Notice how we now need to specify [```strokeWeight()```](https://p5js.org/reference/#/p5/strokeWeight) and [```stroke()```](https://p5js.org/reference/#/p5/stroke) as we're drawing a line.  Again have a look at their reference pages if you're not sure what they do.
 
-If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) you'll notice it takes four location values.  Can you remember a way to input the location of the mouse on the previous frame?
+If you look at `line()`'s reference [page](https://p5js.org/reference/#/p5/line) you'll notice it takes four location values.  Can you remember a way to input the location of the mouse on the previous frame?
 
 [HINT](https://p5js.org/reference/#/p5/pmouseX)
 
@@ -42,7 +42,7 @@ If you look at line()'s reference [page](https://p5js.org/reference/#/p5/line) y
 We're now going to use the difference between the current and previous mouse locations to calcuate the speed that the mouse cursor is moving.  We will then use this value to change the weight of the line we are drawing.  We want to do this on each frame so we'll add the following lines of code to our draw() function:
 
 ```javascript
-var weight = dist(mouseX, mouseY, pmouseX, pmouseY);
+let weight = dist(mouseX, mouseY, pmouseX, pmouseY);
 strokeWeight(weight);	
 ```
 
@@ -54,8 +54,8 @@ Try this code:
 
 ```javascript
 
-var x = 0;
-var easing = 0.01;
+let x = 0;
+let easing = 0.01;
 
 function setup(){
   	createCanvas(500,500);
@@ -63,7 +63,7 @@ function setup(){
 
 
 function draw() {
-	var targetX = mouseX;
+	let targetX = mouseX;
 	x += (targetX - x) * easing;
   	ellipse(x, 40, 12, 12);
     	print(targetX + " : " + x);
@@ -109,4 +109,43 @@ We're changing the colour of the line depending on whether the mouse is pressed.
 
 [HINT](https://p5js.org/reference/#/p5/keyTyped)
 
-* Finally, write your own function that is called inside the draw() function.  Make the input to your function different depending on whether a mouse or key is pressed.
+### Task 6 - Find the cursor
+
+For this task start by creating a new sketch with the following code:
+
+```javascript
+let x;
+
+function setup() {
+	createCanvas(500, 500);
+	x = width/2;
+}
+
+function draw() {
+	background(204);
+  	line(x,0,x,height);
+}
+```
+Now you need to add some code to the `draw()` function.  This code will check to see if the mouse cursor is on the left or right of the line and then move the line towards the cursor.
+
+### Extra task
+
+* Write your own function that is called inside the draw() function.  Make the input to your function different depending on whether a mouse or key is pressed.
+
+If you're looking for some help or inspiration for this task watch [THIS](https://www.youtube.com/watch?v=zkc417YapfE&list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA) Daniel Shiffman tutorial. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

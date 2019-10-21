@@ -8,7 +8,7 @@ Create a new sketch and run the following code
 
 ```javascript
 
-var angle = 0;
+let angle = 0;
 
 function setup(){
 	createCanvas(500,500);
@@ -40,8 +40,8 @@ Try writing some code to draw another spinning rectangle in the bottom righthand
 Create a new sketch and run the following code
 
 ```javascript
-var b1;
-var b2;
+let b1;
+let b2;
 
 function setup(){
 	createCanvas(500,500);
@@ -118,7 +118,7 @@ You'll notice now that the ```changeColor()``` isn't working as we intended.  We
 
 Now let's put together our transformations and intersections.  Instead of changing the colour of the circles when they intersect we want to rotate them.  Obviously you can't see a whether or not a circle is rotating so first off draw a line through the middle of the circle.
 
-Next create a new variable in Bubbble's constructor ```this.angle = 1;``` and a new method of our Bubble class called ```spin()``` as follows
+Next create a new variable in Bubble's constructor ```this.angle = 1;``` and a new method of our Bubble class called ```spin()``` as follows
 
 ```javascript
 spin(val) {
@@ -127,16 +127,3 @@ spin(val) {
 ```
 
 Now try and add some code to the ```display()``` method which will do the rotating and finally call the ```spin()``` method when any circles intersect with each other.
-
-
-
-
-
-
-
-
-
-
-
-
-

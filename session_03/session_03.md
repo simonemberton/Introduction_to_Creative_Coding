@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-var x = 25;
+let x = 25;
 while (x < width){
 	ellipse(x,25,50,50);
 	x = x+50;
@@ -61,7 +61,7 @@ function herringBone(x_, y_, unit) {
 
 Don't forget to call the function inside the for loop!
 
-* Try making at least three more functions each with a different pattern.  
+* Try making at least three more functions each with a different pattern.  If you're looking for inspiration for one of your patterns you could code along with [THIS](https://www.youtube.com/watch?v=bEyTZ5ZZxZs) coding challenge by Daniel Shiffman of the Coding Train.
 
 * Try creating a new variable that increases/decreases on each frame which can also used as input to your function (e.g. to change the scale).
 
