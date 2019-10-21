@@ -33,7 +33,7 @@ Create an empty sketch, you can reuse the one from the above task if you want.
 Declare an empty array that can be accessed globally within the sketch, where does this need to go?
 
 ```javascript
-var myArr = [];
+let myArr = [];
 ```
 
 
@@ -170,7 +170,7 @@ The following is an example from the p5.js book. Give it a go (DO NOT COPY AND P
 
 ```javascript
 
-var x = [];
+let x = [];
 
 function setup() {
     createCanvas(800,600);
@@ -213,10 +213,10 @@ Declare a set of global variables (at the top of your sketch) as follows:
 
 ```javascript
 
-var myArr = [];
-var mySentence = "I like/love creative coding, so far";
-var chopper;
-var likeLove;
+let myArr = [];
+let mySentence = "I like/love creative coding, so far";
+let chopper;
+let likeLove;
 
 ```
 
@@ -290,7 +290,7 @@ likeLove = chopper[1].split("/");
 chopper[1] = likeLove[1];
 ```
 
-Can you see what's happneing here? What do you need to change the sentence to "like" instead of "love"?
+Can you see what's happening here? What do you need to change the sentence to "like" instead of "love"?
 
 <!---
 ### Task 5 - Iterating backwards
