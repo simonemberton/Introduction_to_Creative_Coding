@@ -292,17 +292,17 @@ chopper[1] = likeLove[1];
 
 Can you see what's happening here? What do you need to change the sentence to "like" instead of "love"?
 
-<!---
+
 ### Task 5 - Iterating backwards
 
 This next code snippet is also another example from the book. Give it a shot - by typing it out, not copying and pasting - and comment the code (using //) on each line to explain what is happening...
 
 ```javascript
 
-var num = 120;
+let num = 120;
 
-var x = [];
-var y = [];
+let x = [];
+let y = [];
 
 function setup() {
     createCanvas(800,600);
@@ -330,4 +330,4 @@ function draw() {
     }
 }
 ```
---->
+
