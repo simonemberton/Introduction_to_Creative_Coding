@@ -17,13 +17,13 @@ What we're going to build first, is one rectangle in the centre of the screen. S
 First of all, we need to define a bunch of variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
 
 ```javascript
-var x,y,size;
+let x,y,size;
 ```
 
 Then directly below, we're going to declare some variables for later on once we get our rectangle moving:
 
 ```javascript 
-var xSpeed,ySpeed,xDir,yDir;
+let xSpeed,ySpeed,xDir,yDir;
 ```
 These will relate to the speed of the object as it moves and whether it is travelling in a positive direction (to the right on the x axis and down on the y) or in a negative direction (to the left on the x axis and up on the y).
 
@@ -279,7 +279,7 @@ Alright, so final part of this section, let's make an object, or two!
 In order to do that, we need to make a variable. Near the top of the sketch, in global scope, define a variable called shapey1:
 
 ```javascript
-var shapey1;
+let shapey1;
 ```
 
 In ```setup()```, let's assign an instance of our MovingShape object (the class that we have defined) by using the ```new``` keyword:
@@ -309,7 +309,7 @@ Remember how we were filling arrays last time? We can do exactly the same thing 
 Let's define a global array. At the top of the sketch:
 
 ```javascript
-var shapeArr = [];
+let shapeArr = [];
 ```
 
 Then in ```setup()```, let's add our objects:
