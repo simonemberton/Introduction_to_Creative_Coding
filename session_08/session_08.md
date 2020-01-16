@@ -109,11 +109,27 @@ function rotateDiv() {
 }
 ```
 
-### Task 4 - DOM Tutorial Online
+### Task 4 Stretch Task: Multiplication Calculator 
+
+Create a web form that takes in two numbers and multiplies them together when the form is submitted.
+
+It should look something like this:
+
+![alt text](calculator.png "Calculator")
+
+Here are some resources for you to follow:
+
+[Little tutorial](https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-10.php)
+
+[Maths in Js](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Math)
+
+There are many different ways of doing this. One solution will be posted on Blackboard at the end of the session.
+
+### Task 5 - DOM Tutorial Online
 
 http://www.w3schools.com/js/js_htmldom.asp
 
-### Task 5 - Explore the p5 DOM libary
+### Task 6 - Explore the p5 DOM libary
 
 Can you get some examples working on your own?
 
@@ -121,7 +137,7 @@ Is it easier to use the p5 library or just the inbuilt JS functionality?
 
 https://p5js.org/reference/#/libraries/p5.dom
 
-### Task 6 - Advanced: Sidenav tutorial
+### Task 7 - Advanced: Sidenav tutorial
 
 https://www.w3schools.com/howto/howto_js_sidenav.asp
 
