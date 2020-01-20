@@ -39,7 +39,7 @@ In the body, create a button with the text "Don't Press!" inside, which calls th
 
 Run your page and you have done your first piece of interactive pure JS coding. 
 
-Try saving the script in the head as a separate .js file called demo.js and use the src attribute to embed it in the html page.
+Try saving the script in the head as a separate .js file called demo.js and use the '''html<script>html''' tag's src attribute to embed it in the html page.
 
 
 ### Task 3 - Animating a div
