@@ -71,7 +71,7 @@ Declare two further variables called rotation and rotationInterval and leave the
 
 Define three functions, one called ```start()```, one called ```stop()``` and one called ```rotateDiv()```.
 
-Inside the ```start()``` function, assign the ```let``` of rotationInterval to the method ```setInterval("rotateDiv()", 10);``` 
+Inside the ```start()``` function, assign the variable rotationInterval to the method ```setInterval("rotateDiv()", 10);``` 
 And also write the statement ```console.log(“start”);``` This will call the ```rotateDiv()``` function every 10 milliseconds.
 
 Inside the ```stop()``` function, write the statement ```clearInterval(rotationInterval);``` And also write the statement ```console.log(“stop”);``` This will clear the calling of the ```rotateDiv()``` function.
