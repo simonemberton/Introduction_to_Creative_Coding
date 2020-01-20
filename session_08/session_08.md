@@ -54,16 +54,16 @@ Add two buttons, one for start and one for stop.
 
 For the onclick attribute add the ```start()``` and ```stop()``` values for the corresponding buttons, these will link to functions in your JavaScript file.
 
-In your new demo.js file that is linked in your html, declare a ```var``` called deg and initialise it to 0.
+In your new demo.js file that is linked in your html, declare a ```let``` called deg and initialise it to 0.
 
-Declare another ```var``` called rotationDiff and initialise it to 1.
+Declare another ```let``` called rotationDiff and initialise it to 1.
 
 ```javascript
-var deg = 0; // starting point
-var rotationDiff = 1;
+let deg = 0; // starting point
+let rotationDiff = 1;
 
-var rotation;
-var rotationInterval;
+let rotation;
+let rotationInterval;
 
 ```
 
@@ -71,7 +71,7 @@ Declare two further variables called rotation and rotationInterval and leave the
 
 Define three functions, one called ```start()```, one called ```stop()``` and one called ```rotateDiv()```.
 
-Inside the ```start()``` function, assign the ```var``` of rotationInterval to the method ```setInterval("rotateDiv()", 10);``` 
+Inside the ```start()``` function, assign the ```let``` of rotationInterval to the method ```setInterval("rotateDiv()", 10);``` 
 And also write the statement ```console.log(“start”);``` This will call the ```rotateDiv()``` function every 10 milliseconds.
 
 Inside the ```stop()``` function, write the statement ```clearInterval(rotationInterval);``` And also write the statement ```console.log(“stop”);``` This will clear the calling of the ```rotateDiv()``` function.
@@ -88,13 +88,13 @@ function stop() {
 }
 ```
 
-In the ```rotateDiv()``` function, declare a ```var``` called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
+In the ```rotateDiv()``` function, declare a ```let``` called divAnim01 and assign it to the id in your html document by using the method ```document.getElementById(“divAnim01");```
 
 Add the statement ```divAnim01.style.transform = "rotate(" + deg + “deg)";```. This will work for chrome, and will perform the actual rotation using the CSS3 rotate function. In the code below, all the other transform functions are also defined for other browsers.
 
 ```javascript
 function rotateDiv() {
-    var divAnim01 = document.getElementById("divAnim01");
+    let divAnim01 = document.getElementById("divAnim01");
 
     //divAnim01.style.webkitTransform = "rotate(" + deg + "deg)";
     divAnim01.style.transform = "rotate(" + deg + "deg)";
