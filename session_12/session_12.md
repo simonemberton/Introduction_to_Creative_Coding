@@ -12,12 +12,12 @@ http://api.open-notify.org/iss-now.json
 
 You might also want to install a JSON formatter for your browser so that it's easier to read.  For example for Chrome you could use something like [this](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en). 
 
-The following two p5 programs are examples which use the space station data and visualise it in ways that you've already seen which working with sensor data via an Arduino.  Yes that's right, you're already familar with visualising data!  Get these sketches up and running and have a play with them.  Have a look at the data that is being logged to the console.  Also, notice how you use dot notation to access data when working with objects/JSON.
+The following two p5 programs are examples which use the space station data and visualise it in ways that you've already seen when working with sensor data via an Arduino.  Yes that's right, you're already familiar with visualising data!  Get these sketches up and running and have a play with them.  Have a look at the data that is being logged to the console.  Also, notice how you use dot notation to access data when working with objects/JSON.
 
 ```javascript
 // global variables
-var iss_position;
-var xPos = 0;
+let iss_position;
+let xPos = 0;
 
 function setup(){
 	createCanvas(windowWidth, windowHeight); // creates a canvas element
@@ -38,11 +38,11 @@ function draw(){
 	// console.log(iss_position.latitude); // print latitude value to console
 	// console.log(iss_position.longitude); // print longitude value to console
 
-	var mappedLat = map(iss_position.latitude, 90, -90, 0, height); // max and min latitude 90 -90 mapped to screen size
+	let mappedLat = map(iss_position.latitude, 90, -90, 0, height); // max and min latitude 90 -90 mapped to screen size
 	stroke(0,200,255);
 	point(xPos, mappedLat); // draw a point at this location
 
-	var mappedLong = map(iss_position.longitude, -180, 180, 0, height); // max and min longitude -180 180 mapped to screen size
+	let mappedLong = map(iss_position.longitude, -180, 180, 0, height); // max and min longitude -180 180 mapped to screen size
 	stroke(200,255,0);
 	point(xPos, mappedLong);
 	
@@ -61,9 +61,9 @@ function draw(){
 
 ```javascript
 // global variables
-var iss_position;
-var circPlot = 0;
-var cx, cy;
+let iss_position;
+let circPlot = 0;
+let cx, cy;
 
 function setup(){
 	createCanvas(windowWidth, windowHeight); // creates a canvas element
@@ -88,8 +88,8 @@ function draw(){
 	// console.log(iss_position.latitude); // print latitude value to console
 	// console.log(iss_position.longitude); // print longitude value to console
 
-	var mappedLat = map(iss_position.latitude, 90, -90, 0, height/2); // max and min latitude 90 -90 mapped to screen size
-	var mappedLong = map(iss_position.longitude, -180, 180, 0, height/2); // max and min longitude -180 180 mapped to screen size
+	let mappedLat = map(iss_position.latitude, 90, -90, 0, height/2); // max and min latitude 90 -90 mapped to screen size
+	let mappedLong = map(iss_position.longitude, -180, 180, 0, height/2); // max and min longitude -180 180 mapped to screen size
 
 	// wrap around a circle
 	if(circPlot > 360) {
@@ -97,11 +97,11 @@ function draw(){
 	} else {
 		circPlot++;
 	}
-	var angle = radians(circPlot);
-	var x = cx + cos(angle) * mappedLat;
-	var y = cy + sin(angle) * mappedLat;
-	var x2 = cx + cos(angle) * mappedLong;
-	var y2 = cy + sin(angle) * mappedLong;
+	let angle = radians(circPlot);
+	let x = cx + cos(angle) * mappedLat;
+	let y = cy + sin(angle) * mappedLat;
+	let x2 = cx + cos(angle) * mappedLong;
+	let y2 = cy + sin(angle) * mappedLong;
 
 	// draw shapes
 	strokeWeight(0.5);
@@ -143,7 +143,7 @@ Now you’re able to access the current weather data let's get it into a p5 proj
 Here's some code to start you off:
 
 ```javascript
-	var weather; // global variable
+	let weather; // global variable
 
 	function setup(){
 		createCanvas(400, 400); // creates a canvas element
@@ -201,7 +201,7 @@ Going back to our ```sketch.js``` file let's create three variables for the vari
 We're going to call a function (```callAPI()```) everytime the submit button is pressed.  We'll use the id that we assigned to our text box (```#submit```) so that we know when it's been pressed, we'll also create a new variable that holds the city name input to the text box (```#city```).  Write the following code in the ```setup()``` function:
 
 ```javascript
-	var button = select('#submit');
+	let button = select('#submit');
 	button.mousepressed(callAPI);
 
 	input = select(#city); 
@@ -211,7 +211,7 @@ Now let's create a new function called ```callAPI``` which includes all the elem
 
 ```javascript
     function callAPI(){
-        var newUrl = urlBeforeCity + input.value() + urlAfterCity;
+        let newUrl = urlBeforeCity + input.value() + urlAfterCity;
         loadJSON(newUrl, gotData);
     }
 ```
@@ -229,4 +229,3 @@ This example also has a weather vane in the corner but I'm sure it's not as good
 ### Extra challenge
 
 * Add code from recent weeks so that your weather vane has sonified particles that are attracted to it.
-
