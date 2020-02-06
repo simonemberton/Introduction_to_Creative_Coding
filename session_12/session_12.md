@@ -210,10 +210,10 @@ We're going to call a function (```callAPI()```) everytime the submit button is 
 Now let's create a new function called ```callAPI``` which includes all the elements that make up the API call.  We can use ```input.value()``` to get the city that is input by the user.  In this function we'll also need the ```loadJSON()``` function to make the call to the API.
 
 ```javascript
-    function callAPI(){
-        let newUrl = urlBeforeCity + input.value() + urlAfterCity;
+function callAPI(){
+	let newUrl = urlBeforeCity + input.value() + urlAfterCity;
         loadJSON(newUrl, gotData);
-    }
+}
 ```
 
 If you've managed to get all that working you should now be able to change the direction and scale of your weather vane depending on the city you search for.
