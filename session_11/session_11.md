@@ -11,7 +11,7 @@ OK, first things first, let's load a sound file and play it. Make a new blank sk
 Let's define a variable called ```song``` and a function to preload a .mp3 file. You can find loads of sounds at www.freesound.org. Make sure you save it to the same folder as your sketch.
 
 ```javascript
-var song;
+let song;
 
 function preload() {
   song = loadSound("PATH TO YOUR SOUND FILE");  
@@ -57,13 +57,13 @@ function mouseClicked() {
 
 #### Synthesis
 
-With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The var ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
+With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The let ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
 
 Let's make a new sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load?
 
 ```javascript
-var osc;
-var playing = true;
+let osc;
+let playing = true;
 ```
 
 Next in our setup function let's make our oscillator and start it with a frequency of concert pitch A:
@@ -112,7 +112,7 @@ OK so we're going to map the Y position of the mouse to the playback rate of the
 
 ```javascript
 function draw() {
-  var speed = map(mouseY, 0.1, height, 2, -2);
+  let speed = map(mouseY, 0.1, height, 2, -2);
   speed = constrain(speed, -2, 2);
   song.rate(speed);
 }
@@ -124,7 +124,7 @@ We can do the same in the draw function of our synthesis patch:
 
 ```javascript
 function draw() {
-  var speed = map(mouseY, 0.1, height, 2000, 100);
+  let speed = map(mouseY, 0.1, height, 2000, 100);
   speed = constrain(speed, 100, 2000);
   osc.freq(speed);
 }
@@ -138,7 +138,7 @@ Let's try some reverberation. Reverb is an effect that mimics the way real world
 We need a global variable for our first audio effect, we're going to make a reverb:
 
 ```javascript
-var reverb;
+let reverb;
 ```
 
 Then, in setup(), try adding this:
@@ -160,13 +160,13 @@ So let's pick up from the session where we created a [particle system with force
 Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
 
 ```javascript
-var scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
-var waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
-var bgColour = 0; //inital background colour
-var particleColour = 255; //inital particle colour
-var clicked = false; //flag to check whether mouse has been clicked
+let scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
+let waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
+let bgColour = 0; //inital background colour
+let particleColour = 255; //inital particle colour
+let clicked = false; //flag to check whether mouse has been clicked
 
-var delay, reverb; // our effects.
+let delay, reverb; // our effects.
 ```
 
 In our particle constructor. We're going to make an oscillator that is controlled by an envelope.
