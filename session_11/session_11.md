@@ -2,7 +2,23 @@
 
 ## Adding Sound
 
-You will need to use a local server such as Mongoose, XAMPP or MAMP for this tutorial. Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
+### Task 0 - Local Server
+
+- You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
+
+- Then, make sure you start your work (make a blank sketch with relevant files and folders) on the local disk of the machine you are working on. This means working in the Documents folder in your username path. Once you have made a blank sketch in the Documents folder, then continue to the next point:
+
+- OK, now open the terminal application by hitting cmd+spacebar to open spotlight, then type "terminal" and hit enter.
+
+- In terminal, type the letters "cd" and then spacebar. "cd" means current directory, and you are telling the terminal to "look" at a particular file... Now drag your blank sketch folder that you just made into the terminal window. You will see that it populates with the file path of the folder.
+
+- Hit enter, you are now telling the terminal application to "look" inside that folder.
+
+- Still in terminal, now type ```python -m SimpleHTTPServer 8000``` and hit enter. You should see a response saying "Serving HTTP on 0.0.0.0 port 8000 ..."
+
+- Now head open Chrome and in the address bar type localhost:8000 and it will load your page. You may not see anything yet if it's a blank sketch!
+
+- Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
 
 ### Task 1 - Soundfile
 
