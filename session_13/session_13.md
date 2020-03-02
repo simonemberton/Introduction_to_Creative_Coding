@@ -9,9 +9,9 @@ First off have a quick look at [this](https://github.com/processing/p5.js/wiki/G
 Start from the following code:
 
 ```javascript
-var negEdge = -100;
-var posEdge = 100;
-var count = 0;
+let negEdge = -100;
+let posEdge = 100;
+let count = 0;
 
 function setup() {
 	createCanvas(500,500, WEBGL);
@@ -41,9 +41,9 @@ In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/li
 Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value inout to ```box()``` chnages its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
 
 ```javascript
-var xVal = random(negEdge,posEdge);
-var yVal = random(negEdge,posEdge);
-var zVal = random(negEdge,posEdge);
+let xVal = random(negEdge,posEdge);
+let yVal = random(negEdge,posEdge);
+let zVal = random(negEdge,posEdge);
 
 push();
 translate(xVal, yVal, zVal);
@@ -54,9 +54,9 @@ pop();
 Next add the following code so that we change the colour of the box depending on it's location in the 3D space where each dimension is mapped to a different colour channel.
 
 ```javascript
-var red = map(xVal, -100, 100, 0, 255);
-var green = map(yVal, -100, 100, 0, 255);
-var blue = map(zVal, -100, 100, 0, 255);
+let red = map(xVal, -100, 100, 0, 255);
+let green = map(yVal, -100, 100, 0, 255);
+let blue = map(zVal, -100, 100, 0, 255);
 ambientMaterial(red, green, blue);
 ```
 
@@ -132,6 +132,3 @@ Now in the ```setup()``` function fill the ```shapes``` array with both Shape an
 ### Extra challenge
 
 Make another class that also inherits from ```Shape``` but behaves differently to ```Sphere```.
-
-
-
