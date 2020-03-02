@@ -49,9 +49,17 @@ function setup() {
 }
 ```
 
-Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMER address.
+Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMBER address.
 
 We don't actually need a draw function here.
+
+So, if you're using Chrome, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. This is frustrating but we just need to get around it by adding (beneath setup()):
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
+}
+```
 
 ### Task 2 - Mouse Interaction 1
 
