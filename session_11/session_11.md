@@ -298,6 +298,8 @@ display() {
 
 [Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
 
+Stretch goal: instead of only having 2 states and toggling between them, how can you make more? HINT: use a [switch statement](https://www.w3schools.com/js/js_switch.asp)..
+
 ### Task 6 - Parameter Mapping
 
 What kind of parameters from the objects in your sketch can you map to sound?
