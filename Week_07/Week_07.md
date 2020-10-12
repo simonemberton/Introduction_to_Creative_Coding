@@ -1,4 +1,4 @@
-# Session 06
+# Week 07
 
 ## Debugging and problem solving
 

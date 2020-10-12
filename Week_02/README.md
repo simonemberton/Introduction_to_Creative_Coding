@@ -1,4 +1,4 @@
-# Session 01
+# Week 02
 
 ## Anatomy of a Sketch
 

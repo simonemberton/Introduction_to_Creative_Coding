@@ -1,4 +1,4 @@
-# Session 08
+# Week 12
 
 ## HTML, Pure JavaScript and Interaction with the DOM
 

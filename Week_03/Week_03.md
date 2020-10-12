@@ -1,4 +1,4 @@
-# Session 02
+# Week 03
 
 ## Basic Interactivity
 

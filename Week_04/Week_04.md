@@ -1,4 +1,4 @@
-# Session 03
+# Week 03
 
 ## Changing behaviours based on input
 

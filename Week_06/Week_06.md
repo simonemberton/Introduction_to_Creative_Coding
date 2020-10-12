@@ -1,4 +1,4 @@
-# Session 05
+# Week 06
 
 ## Object Orientation in JavaScript
 

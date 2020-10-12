@@ -1,4 +1,4 @@
-# Session 04
+# Week 05
 
 ## More on Scope; Fun with Arrays...
 
