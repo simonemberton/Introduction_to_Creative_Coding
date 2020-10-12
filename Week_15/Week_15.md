@@ -2,7 +2,23 @@
 
 ## Adding Sound
 
-You will need to use a local server such as Mongoose, XAMPP or MAMP for this tutorial. Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
+### Task 0 - Local Server
+
+- You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
+
+- Then, make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path. Once you have made a blank sketch in the Documents folder, then continue to the next point:
+
+- OK, now open the terminal application by hitting cmd+spacebar to open spotlight, then type "terminal" and hit enter.
+
+- In terminal, type the letters "cd" and then spacebar. "cd" means current directory, and you are telling the terminal to "look" at a particular file... Now drag your p5 folder that you just made into the terminal window. You will see that it populates with the file path of the folder.
+
+- Hit enter, you are now telling the terminal application to "look" inside that folder.
+
+- Still in terminal, now type ```python -m SimpleHTTPServer 8000``` and hit enter. You should see a response saying "Serving HTTP on 0.0.0.0 port 8000 ..."
+
+- Now head open Chrome and in the address bar type localhost:8000/empty-example and it will load your page. You may not see anything yet if it's a blank sketch!
+
+- Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
 
 ### Task 1 - Soundfile
 
@@ -11,7 +27,7 @@ OK, first things first, let's load a sound file and play it. Make a new blank sk
 Let's define a variable called ```song``` and a function to preload a .mp3 file. You can find loads of sounds at www.freesound.org. Make sure you save it to the same folder as your sketch.
 
 ```javascript
-var song;
+let song;
 
 function preload() {
   song = loadSound("PATH TO YOUR SOUND FILE");  
@@ -33,9 +49,17 @@ function setup() {
 }
 ```
 
-Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMER address.
+Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMBER address.
 
 We don't actually need a draw function here.
+
+So, if you're using Chrome, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. This is frustrating but we just need to get around it by adding (beneath setup()):
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
+}
+```
 
 ### Task 2 - Mouse Interaction 1
 
@@ -57,13 +81,13 @@ function mouseClicked() {
 
 #### Synthesis
 
-With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The var ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
+With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The let ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
 
 Let's make a new sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load?
 
 ```javascript
-var osc;
-var playing = true;
+let osc;
+let playing = true;
 ```
 
 Next in our setup function let's make our oscillator and start it with a frequency of concert pitch A:
@@ -112,7 +136,7 @@ OK so we're going to map the Y position of the mouse to the playback rate of the
 
 ```javascript
 function draw() {
-  var speed = map(mouseY, 0.1, height, 2, -2);
+  let speed = map(mouseY, 0.1, height, 2, -2);
   speed = constrain(speed, -2, 2);
   song.rate(speed);
 }
@@ -124,7 +148,7 @@ We can do the same in the draw function of our synthesis patch:
 
 ```javascript
 function draw() {
-  var speed = map(mouseY, 0.1, height, 2000, 100);
+  let speed = map(mouseY, 0.1, height, 2000, 100);
   speed = constrain(speed, 100, 2000);
   osc.freq(speed);
 }
@@ -138,7 +162,7 @@ Let's try some reverberation. Reverb is an effect that mimics the way real world
 We need a global variable for our first audio effect, we're going to make a reverb:
 
 ```javascript
-var reverb;
+let reverb;
 ```
 
 Then, in setup(), try adding this:
@@ -160,13 +184,13 @@ So let's pick up from the session where we created a [particle system with force
 Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
 
 ```javascript
-var scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
-var waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
-var bgColour = 0; //inital background colour
-var particleColour = 255; //inital particle colour
-var clicked = false; //flag to check whether mouse has been clicked
+let scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
+let waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
+let bgColour = 0; //inital background colour
+let particleColour = 255; //inital particle colour
+let clicked = false; //flag to check whether mouse has been clicked
 
-var delay, reverb; // our effects.
+let delay, reverb; // our effects.
 ```
 
 In our particle constructor. We're going to make an oscillator that is controlled by an envelope.
@@ -281,6 +305,8 @@ display() {
 ```
 
 [Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
+
+Stretch goal: instead of only having 2 states and toggling between them, how can you make more? HINT: use a [switch statement](https://www.w3schools.com/js/js_switch.asp)..
 
 ### Task 6 - Parameter Mapping
 

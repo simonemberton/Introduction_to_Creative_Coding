@@ -2,10 +2,13 @@
 
 ## Interaction beyond keyboard and mouse 
 
-
 ### Task 1 - Create audio-responsive visualisation
 
-Have a look at the [`p5.AudioIn`](https://p5js.org/reference/#/p5.AudioIn) example and get it working on your machine.
+Have a look at the [`p5.AudioIn`](https://p5js.org/reference/#/p5.AudioIn) example and get it working on your machine.  If you use the Firefox browser this example should work straight away.
+
+If you are using Google's Chrome browser you'll get an error about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://p5js.org/reference/#/p5.sound/userStartAudio) function inside the `setup()` function after `mic.start()`.
+
+Depending on which browser you are using you may also need to set up a local server to access audio data from the microphone.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).
 
 In this example the `getLevel()` function is being used to access the volume or amplitude coming into the microphone.  Print these values to the console while making some noises.  Can you see how they change?  
 
