@@ -25,7 +25,7 @@ function setup(){
 
 
 function draw() {
-  line();
+  line(...,...,...,...);
 }
 ```
 
