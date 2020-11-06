@@ -46,16 +46,16 @@ Now try and write a nested for loop so that ellipses are drawn across the whole 
 Write a function that takes the x, y locations of your nested for loop as input.  Here is an example of my ```herringBone()``` function.
 
 ```javascript
-function herringBone(x_, y_, unit) {
+function herringBone(xVal, yVal, unit) {
 	stroke(0);
 	strokeWeight(1);
 
-	line(x_, y_, x_-unit, y_+unit);
-	line(x_, y_, x_+unit, y_+unit);
-	line(x_, y_-unit, x_-unit, y_);
-	line(x_, y_-unit, x_+unit, y_);
-	line(x_, y_-unit, x_, y_+unit);
-	line(x_+unit, y_-unit, x_+unit, y_+unit);
+	line(xVal, yVal, xVal - unit, yVal + unit);
+	line(xVal, yVal, xVal + unit, yVal + unit);
+	line(xVal, yVal - unit, xVal - unit, yVal);
+	line(xVal, yVal - unit, xVal + unit, yVal);
+	line(xVal, yVal - unit, xVal, yVal + unit);
+	line(xVal + unit, yVal - unit, xVal + unit, yVal + unit);
 } 
 ```
 
