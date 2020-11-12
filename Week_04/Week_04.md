@@ -47,7 +47,7 @@ Write a function that takes the x, y locations of your nested for loop as input.
 
 ```javascript
 function herringBone(xVal, yVal, unit) {
-	stroke(0);
+	stroke(255);
 	strokeWeight(1);
 
 	line(xVal, yVal, xVal - unit, yVal + unit);
