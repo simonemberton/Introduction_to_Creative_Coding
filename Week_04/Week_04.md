@@ -26,7 +26,7 @@ while (x < width){
 Your task is to convert it into a for loop.  Do you remember the structure?
 
 ```javascript
-for (init; test; update) {
+for (initialise; test; update) {
     statements
 }
 ```
