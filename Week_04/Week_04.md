@@ -1,4 +1,4 @@
-# Week 03
+# Week 04
 
 ## Changing behaviours based on input
 
@@ -43,7 +43,7 @@ Now try and write a nested for loop so that ellipses are drawn across the whole 
 
 ### Task 3 - Repetitive functions
 
-Write a function that takes the x, y locations of your nested for loop as input.  Here is an example of my ```herringBone()``` function.
+Write a function that takes the x, y locations of your nested for loop as input.  Here is an example of my ```herringBone()``` function.  I used a unit value of 25. 
 
 ```javascript
 function herringBone(xVal, yVal, unit) {
