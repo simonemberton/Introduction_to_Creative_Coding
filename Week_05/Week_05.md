@@ -193,7 +193,7 @@ function draw() {
 }
 
 ```
-
+![pacperson](./images/task3.png "PacPerson")
 
 ### Task 4 - Stringalingaling
 
@@ -294,6 +294,7 @@ chopper[1] = likeLove[1];
 
 Can you see what's happening here? What do you need to change the sentence to "like" instead of "love"?
 
+![chopper](./images/task4.png "Chopper")
 
 ### Task 5 - Iterating backwards
 
@@ -332,4 +333,4 @@ function draw() {
     }
 }
 ```
-
+![trails](./images/task5.png "trails")
