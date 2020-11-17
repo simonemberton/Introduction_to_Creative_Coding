@@ -113,6 +113,8 @@ fill(myArr[i],0, 120);
 
 Try changing the values. Fill is now in Red-Blue-Green (RGB) mode.
 
+![gradient](/task2.png "GradientImage")
+
 Now we can try using one of the in built methods, in ```setup()```, beneath where you pushed all the values to the array, write the following line:
 
 ```javascript
