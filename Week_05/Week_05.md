@@ -5,6 +5,8 @@
 
 ### Task 1 - Let it be
 
+This is a very quick task to further test out how ```let``` and ```var``` work in their different ways...
+
 Create a blank sketch, what needs to be included? Is your new folder in the right place?
 
 Work through the examples given in the lecture regarding ```let``` and ```var```. 
@@ -21,7 +23,7 @@ function setup() {
 ```
 Try defining x as a ```let``` or a ```var```. 
 
-What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block?
+What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block by trying to console.log() it?
 
 
 ### Task 2 - Array Methods
