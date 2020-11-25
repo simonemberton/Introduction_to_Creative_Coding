@@ -2,6 +2,8 @@
 
 ## Object Orientation in JavaScript
 
+![funwithclasses](./images/classes.png "FunWithClasses")
+
 
 ### Task 1 - Starting Point Sketch
 
@@ -406,7 +408,7 @@ class MovingCircle extends MovingShape {
 
 So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
 
-When you get here, come and find me for a high five.
+When you get here, come and find me for a digital high five.
 
 Now let's play:
 
