@@ -2,7 +2,7 @@
 
 ## Object Orientation in JavaScript
 
-    
+![funwithclasses](./images/classes.png "funwithclasses")
 
 
 ### Task 1 - Starting Point Sketch
