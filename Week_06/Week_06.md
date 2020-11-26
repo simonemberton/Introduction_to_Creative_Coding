@@ -2,7 +2,7 @@
 
 ## Object Orientation in JavaScript
 
-![funwithclasses](./images/classes.png "FunWithClasses")
+    
 
 
 ### Task 1 - Starting Point Sketch
@@ -114,7 +114,8 @@ function move() {
         }
 }
 ```
-Save and refresh, how's it looking?!
+Save and refresh, how's it looking?! Can you see a shape moving around the screen? Ask for assistance if not...
+
 
 ### Task 3 - VFX
 
@@ -301,6 +302,10 @@ So we're using the DOT operator to call the methods ```move()``` and ```display(
 
 OK, now it's your turn, define shapey2 and assign a new object instance to it. Then add the correct lines for moving and displaying shapey2...
 
+What happens if we want more shapes though?
+
+![moreshapes](./images/capture1.JPG "moreshapes")
+
 
 ### Task 5 - An Array of Objects
 
@@ -332,6 +337,8 @@ for(let i = 0; i < 200; i++) {
 
 Whoa.
 
+![array](./images/capture.JPG "array")
+
 ### Task 6 - Passing Arguments to the Constructor
 
 So we're cooking on gas now, but we can see that all our objects start from the same position. It would be cool if they all started from different positions. And also if they had different sizes.
@@ -359,6 +366,8 @@ for(let i = 0; i < 200; i++) {
         shapeArr.push(new MovingShape(random(0,width),random(0,height),random(1,40)));  // add a new MovingShape to our array each loop at random pos and with random size   
 }
 ```
+
+![arguments](./images/capture3.JPG "arguments")
 
 ### Task 7 - The Inheritors
 
@@ -407,6 +416,8 @@ class MovingCircle extends MovingShape {
 ```
 
 So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
+
+![inherit](./images/capture4.JPG "inherit")
 
 When you get here, come and find me for a digital high five.
 
