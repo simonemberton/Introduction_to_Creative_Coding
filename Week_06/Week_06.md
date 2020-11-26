@@ -2,10 +2,10 @@
 
 ## Object Orientation in JavaScript
 
-![funwithclasses](./images/classes.png "funwithclasses")
+
 
 <p align="center">
-  <img width="460" height="300" src="./images/classes.png">
+  <img width="500" height="400" src="./images/classes.png">
 </p>
 
 
@@ -308,7 +308,11 @@ OK, now it's your turn, define shapey2 and assign a new object instance to it. T
 
 What happens if we want more shapes though?
 
-![moreshapes](./images/capture1.JPG "moreshapes")
+
+
+<p align="center">
+  <img width="500" height="400" src="./images/capture1.JPG">
+</p>
 
 
 ### Task 5 - An Array of Objects
@@ -341,7 +345,10 @@ for(let i = 0; i < 200; i++) {
 
 Whoa.
 
-![array](./images/capture.JPG "array")
+
+<p align="center">
+  <img width="500" height="400" src="./images/capture.jpg">
+</p>
 
 ### Task 6 - Passing Arguments to the Constructor
 
@@ -371,7 +378,11 @@ for(let i = 0; i < 200; i++) {
 }
 ```
 
-![arguments](./images/capture3.JPG "arguments")
+
+<p align="center">
+  <img width="500" height="400" src="./images/capture3.jpg">
+</p>
+
 
 ### Task 7 - The Inheritors
 
@@ -421,7 +432,9 @@ class MovingCircle extends MovingShape {
 
 So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
 
-![inherit](./images/capture4.JPG "inherit")
+<p align="center">
+  <img width="500" height="400" src="./images/capture4.jpg">
+</p>
 
 When you get here, come and find me for a digital high five.
 
