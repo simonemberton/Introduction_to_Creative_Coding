@@ -4,6 +4,10 @@
 
 ![funwithclasses](./images/classes.png "funwithclasses")
 
+<p align="center">
+  <img width="460" height="300" src="./images/classes.png">
+</p>
+
 
 ### Task 1 - Starting Point Sketch
 
