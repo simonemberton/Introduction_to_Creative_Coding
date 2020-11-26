@@ -347,7 +347,7 @@ Whoa.
 
 
 <p align="center">
-  <img width="500" height="400" src="./images/capture.jpg">
+  <img width="500" height="400" src="./images/capture.JPG">
 </p>
 
 ### Task 6 - Passing Arguments to the Constructor
@@ -380,7 +380,7 @@ for(let i = 0; i < 200; i++) {
 
 
 <p align="center">
-  <img width="500" height="400" src="./images/capture3.jpg">
+  <img width="500" height="400" src="./images/capture3.JPG">
 </p>
 
 
@@ -433,7 +433,7 @@ class MovingCircle extends MovingShape {
 So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
 
 <p align="center">
-  <img width="500" height="400" src="./images/capture4.jpg">
+  <img width="500" height="400" src="./images/capture4.JPG">
 </p>
 
 When you get here, come and find me for a digital high five.
