@@ -347,7 +347,7 @@ Whoa.
 
 
 <p align="center">
-  <img width="500" height="400" src="./images/capture.JPG">
+  <img width="500" height="400" src="./images/Capture.JPG">
 </p>
 
 ### Task 6 - Passing Arguments to the Constructor
