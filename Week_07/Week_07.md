@@ -93,7 +93,7 @@ class Jitter {
 
 If you try running this code you'll see that it was written in a hurry and is littered with errors.  Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that is runs successfully.  When finished you should be able to create a new object each time you press the mouse.
 
-### Task 3 - Problem solving challenge
+### Extra task - Problem solving challenge
 
 Making use of the following code
 
