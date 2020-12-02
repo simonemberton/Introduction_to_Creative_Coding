@@ -97,7 +97,7 @@ class Jitter {
 
 ```
 
-If you try running this code you'll see that it was written in a hurry and is littered with errors.  Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that is runs successfully.  When finished you should be able to create a new object each time you press the mouse.  The final sketch should look like this screenshot and you can see an example of this code running [HERE](http://simonemberton.panel.uwe.ac.uk/Week07/Task02/)
+If you try running this code you'll see that it was written in a hurry and is littered with errors, although it is quite similar to the demo code you saw in last week's session. Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that is runs successfully.  When finished you should be able to create a new object each time you press the mouse.  The final sketch should look like this screenshot and you can see an example of this code running [HERE](http://simonemberton.panel.uwe.ac.uk/Week07/Task02/).
 
 <p align="center">
   <img width="709" height="399" src="./images/Task2.png">
