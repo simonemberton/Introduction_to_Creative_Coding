@@ -122,3 +122,9 @@ function letterCapitalise(str) {
 ```
    
 your challenge is to write some more code inside the ```letterCapitalise(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
+
+There are a number of ways that you could complete this task but if you're really stuck below are some links to the functions that I made use of in my solution.
+[LINK1](https://www.w3schools.com/jsref/jsref_split.asp)
+[LINK2](https://www.w3schools.com/jsref/jsref_substring.asp)
+[LINK3](https://www.w3schools.com/jsref/jsref_touppercase.asp)
+[LINK4](https://www.w3schools.com/jsref/jsref_join.asp)
