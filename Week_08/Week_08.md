@@ -29,7 +29,7 @@ function draw() {
 
 You should be able to see a red rectangle in the top lefthand corner spinning really fast!  The reason it's spinning so fast is that we're using the default input to the ```angle``` function which is radians and there are only 2`*`pi (around 6.2813) radians in a circle.
 
-In the ```setup()``` function let's change the measure are angles to degrees with the following ```angleMode(DEGREES);```.  Now our rectangle is rotating a bit more slowly.
+In the ```setup()``` function let's change the measure of angles from radians to degrees with the following ```angleMode(DEGREES);```.  Now our rectangle is rotating a bit more slowly.
 
 Try writing some code to draw another spinning rectangle in the bottom righthand corner. 
 
