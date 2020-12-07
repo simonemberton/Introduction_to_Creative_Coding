@@ -102,7 +102,7 @@ class Bubble {
 }
 ```
 
-You should be able to see two blue circles bouncing around the canvas.  Your task is to write some code inside the draw function which detects whether or not the two circles are intersecting and if they are change their colour (i.e. calls the ```changeColor()``` method of the Bubble class). 
+You should be able to see two blue circles bouncing around the canvas.  Your task is to write some code inside the draw function which detects whether or not the two circles are intersecting and if they are change their colour (i.e. call the ```changeColor()``` method of the Bubble class). 
 
 ### Task 3 - Intersects
 
