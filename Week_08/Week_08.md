@@ -108,7 +108,9 @@ class Bubble {
 }
 ```
 
-You should be able to see two blue circles bouncing around the canvas.  Your task is to write some code inside the draw function which detects whether or not the two circles are intersecting and if they are change their colour (i.e. call the ```changeColor()``` method of the Bubble class). 
+You should be able to see two blue circles bouncing around the canvas.  Your task is to write some code inside the draw function which detects whether or not the two circles are intersecting and if they are change their colour (i.e. call the ```changeColor()``` method of the Bubble class).
+
+[HINT](https://p5js.org/reference/#/p5/dist)
 
 ### Task 3 - Intersects
 
@@ -122,7 +124,7 @@ The result of this task should look something like [this](http://simonemberton.p
 
 ### Task 4 - Array of bubbles
 
-At the moment we've only got two circles bouncing around.  Imagine we want to create a few more bubble objects but don't want to have to write a lot more lines of code.  Let's create an empty array at the top of our sketch, include a for loop inside the ```setup()``` function which fills our array with new Bubble objects and in the ```draw()``` function write another for loop which calls the ```move()``` and ```display()``` methods.  
+At the moment we've only got two circles bouncing around.  Imagine we want to create a few more bubble objects but don't want to have to write a lot more lines of code.  Yes that's right we can use an array.  Please check back to the code from Task 5 of [Week_06](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/Week_06/Week_06.md) if you can't remember how to do this. Let's create an empty array at the top of our sketch, include a for loop inside the ```setup()``` function which fills our array with new Bubble objects and in the ```draw()``` function write another for loop which calls the ```move()``` and ```display()``` methods.  
 
 You'll notice now that the ```changeColor()``` isn't working as we intended.  We need to add another loop so that we can check through both arrays to see if there are any intersections.  Don't forget we don't want to check if a circle is intersecting with itself! 
 
@@ -134,7 +136,7 @@ If you got that working you shoudl now be able to create as many bubble objects 
 
 ### Task 5 - Spin
 
-Now let's put together our transformations and intersections.  Instead of changing the colour of the circles when they intersect we want to rotate them.  Obviously you can't see a whether or not a circle is rotating so first off draw a line through the middle of the circle.
+Now let's put together our transformations and intersections.  Instead of changing the colour of the circles when they intersect we want to rotate them.  Obviously you can't see a whether or not a circle is rotating so first off draw a line through the middle of the circle. You'll need to use ```push()```, ```translate()``` and ```pop()``` to do this.
 
 Next create a new variable in Bubble's constructor ```this.angle = 1;``` and a new method of our Bubble class called ```spin()``` as follows:
 
@@ -146,7 +148,7 @@ spin(val) {
 
 Now try and add some code to the ```display()``` method which will do the rotating and finally call the ```spin()``` method when any circles intersect with each other.
 
-If you've completed this task your canvas should look somehting like this:
+If you've completed this task your canvas should look something like this:
 
 <p align="center">
   <img width="497" height="497" src="./images/Task5.png">
