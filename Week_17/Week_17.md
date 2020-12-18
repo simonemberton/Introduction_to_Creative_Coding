@@ -36,6 +36,12 @@ function drawEdges() {
 
 In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/line) or [vertices](https://p5js.org/reference/#/p5/vertex) to draw a cube that will define the edges of our 3D space.  Use the global variables ```negEdge``` and ```posEdge``` as the negative and positive edge values. 
 
+The output of this task should look like [this]():
+
+<p align="center">
+  <img width="498" height="498" src="./images/Task1.png">
+</p>
+
 ### Task 2 - Draw our first 3D shape
 
 Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value input to ```box()``` changes its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
@@ -59,6 +65,11 @@ let green = map(yVal, -100, 100, 0, 255);
 let blue = map(zVal, -100, 100, 0, 255);
 ambientMaterial(red, green, blue);
 ```
+The output of this task should look like [this]():
+
+<p align="center">
+  <img width="499" height="497" src="./images/Task2.png">
+</p>
 
 ### Task 3 - 3D Shape class
 
@@ -115,6 +126,12 @@ In the ```draw()``` function create another for loop which iterates through each
 
 Finally, add the sound effects that we used a few weeks ago in Task 4 of the sound [workshop](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/session_11/session_11.md) so that each time an object hits an edge a sound is made.  You can see the 2D example [here](https://simonemberton.panel.uwe.ac.uk/p5/semester_02/week_18/Task4/).
 
+The output of this task should look like [this]():
+
+<p align="center">
+  <img width="499" height="496" src="./images/Task3.png">
+</p>
+
 ### Task 4 - Inheritance
 
 Create a new file called ```Sphere.js``` and save it in the same folder, don't forget to link to this file in your ```index.html``` file.
@@ -128,6 +145,13 @@ checkEdges() {
 ```
 
 Now in the ```setup()``` function fill the ```shapes``` array with both Shape and Sphere objects.  Try using an if statement and the modulo operator so that when iterating through the for loop when ```i``` is odd you create a ```Shape``` object and when even a ```Sphere``` object. 
+
+The output of this task should look like [this]():
+
+<p align="center">
+  <img width="499" height="498" src="./images/Task4.png">
+</p>
+
 
 ### Extra challenge
 
