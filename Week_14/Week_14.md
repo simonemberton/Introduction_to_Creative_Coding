@@ -182,6 +182,11 @@ applyForce(force) {
 	this.acc.add(force);
 }
 ```
+The output of this task should look like this and you can see this code running [HERE]().
+
+<p align="center">
+  <img width="497" height="495" src="./images/Task3.png">
+</p>
 
 
 ### Task 4 - Arrays of particles
