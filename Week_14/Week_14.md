@@ -6,7 +6,7 @@
 
 <!-- 1_1 -->
 
-The following code makes use of code from last semester and if you get it working you should see a circle moving around the screen.
+Start a new project and copy the following code to your `sketch.js` file.  This example reuses some of the code that was introduced last semester and shows a circle bouncing around the screen.
 
 ```javascript
 
@@ -73,6 +73,9 @@ class Particle {
 
 }
 ```
+<p align="center">
+  <img width="497" height="499" src="./images/Task1.png">
+</p>
 
 <!-- 1_2 Convert to vectors -->
 
