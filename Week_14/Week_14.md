@@ -182,25 +182,42 @@ applyForce(force) {
 	this.acc.add(force);
 }
 ```
-The output of this task should look like this and you can see this code running [HERE]().
+The output of this task should have a small ellipse orbiting around a larger central ellipse. You can see this code running [HERE]().
 
 <p align="center">
   <img width="497" height="495" src="./images/Task3.png">
 </p>
 
-
 ### Task 4 - Arrays of particles
 
 <!-- 4 -->
-Remember back to last term when we had an [array of Bubble objects](http://simonemberton.panel.uwe.ac.uk/p5/semester_01/session_07/Task5/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
+Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task02/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
+
+If you can get that working it should look something like [this]():
+
+<p align="center">
+  <img width="495" height="496" src="./images/Task4.png">
+</p>
 
 ### Extra challenges
 
 <!-- 5_1 -->
 * Try making each particle that you create in ```setup()``` have a different mass.
 
+<p align="center">
+  <img width="496" height="497" src="./images/Task5_1.png">
+</p>
+
 <!-- 5_2 -->
 * Try adding more attractors (not too many though or things get a bit out of control!).
 
+<p align="center">
+  <img width="496" height="497" src="./images/Task5_2.png">
+</p>
+
 <!-- 5_3 -->
 * Make the attractors move around the screen (now you'll start to see 'interesting' behaviours emerging).
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task5_3.png">
+</p>
