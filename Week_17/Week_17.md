@@ -38,7 +38,7 @@ In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/li
 
 ### Task 2 - Draw our first 3D shape
 
-Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value inout to ```box()``` chnages its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
+Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value input to ```box()``` changes its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
 
 ```javascript
 let xVal = random(negEdge,posEdge);
