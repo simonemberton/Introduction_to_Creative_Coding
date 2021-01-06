@@ -1,6 +1,4 @@
 
-<!-- add screenshots and links to demo code -->
-
 # Week 14
 
 ## Interaction beyond keyboard and mouse
@@ -9,11 +7,13 @@ For this week's task we're going to make an interactive audio-visualiser.  This 
 
 ### Task 1 - Microphone input
 
-If you are using a recent version of p5 you'll need to run a local server for this worksheet.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).  
+If you are using a recent version of p5 you'll need to run a local server for this worksheet.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).  When using a local server you may find that any changes you mkae to the code do not show up in the browser, this may be due to the browser cache and can be remedied with a hard refresh (Cmd+Shift+R on a Mac, and Ctrl+F5 on a PC).
 
 Have a look at the [`p5.AudioIn`](https://p5js.org/reference/#/p5.AudioIn) example and get it working on your machine. You might want to make the canvas bigger as on this example it's really tiny. At the time of writing there was an issue with `p5.AudioIn` (in the latest version of p5.sound) and Firefox, so please use Chrome or Safari.
 
 Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
+
+If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you;re doing you can start from the code of this [`getLevel()` example](https://p5js.org/reference/#/p5.Amplitude/getLevel).
 
 I'm going to base my audio-visualiser off of [Demo 3](https://tympanus.net/Development/AudioVisualizers/index3.html).  This example consists on rotating points and lines that move in time to the music.  
 
@@ -33,7 +33,7 @@ for (let i = 0; i < noOfPoints; i++) {
 }
 ```
 
-Now I want to use the values coming in from the micrphone to move the points.  If you look at the code you'll see that the `getLevel()` function is being used to access the volume level (amplitude) coming into the microphone.  `console.log()` the values in the `micLevel` variable to the console while making some noises and see how they change.  In particular look for the extremes. What are the values when there is only background ambience? What are the values when you make a loud clapping noise?
+Now I want to use the values coming in from the micrphone to move the points.  If you look at the code you'll see that the `getLevel()` function is being used to access the volume level (amplitude) coming into the microphone.  `console.log()` the values in the `micLevel` variable to the console while making some noises and see how they change.  Note that you'll have to tap on the canvas to start the audio before you see these values.  In particular look for the extremes. What are the values when there is only background ambience? What are the values when you make a loud clapping noise?
 
 Next you'll need to use the `map()` function to map the minimum and maximum values from the microphone to the minimum and maximum values that you want the points to move to.
 
@@ -117,7 +117,7 @@ strokeWeight(6);
 stroke(255);
 point(mappedBass, height/4);
 ```
-Now you should be able to see each of the points reacting slightly differently to different parts of the music.
+Now you should be able to see each of the points reacting slightly differently to different parts of the music.  If you can't see all three points try adjusting the map function values so that it works well for you.
 
 Let's make those differences a bit more pronounced by adding a scaling factor to each of the circles of points.  We'll create some more `map()` functions so that we have a bit more control over the exact values to use.
 ```javascript
@@ -173,7 +173,7 @@ To make this library work we need to add a link to the code in our `index.html` 
 <script src="https://tetoki.eu/vida/vida/p5.vida.min.js"></script>
 ```
 
-Now copy paste the following code to your `sketch.js` file:
+Now copy paste the following code to replace the content of your `sketch.js` file:
 ```javascript
 let myCapture; // camera
 let myVida;    // VIDA
@@ -291,5 +291,3 @@ Here is a screenshot of the end of Task 4 and a [link](https://simonemberton.pan
 <p align="center">
   <img width="496" height="497" src="./images/Task4.png">
 </p>
-
-
