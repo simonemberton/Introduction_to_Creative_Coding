@@ -109,7 +109,13 @@ function rotateDiv() {
 }
 ```
 
-### Task 4 Stretch Task: Multiplication Calculator 
+### Task 4 - Independent Learning Challenge: Explore the way that p5 interacts with the DOM
+
+Can you get some examples working on your own? In a blank sketch, try creating a slider, then try creating a button.
+
+The link is [here](https://p5js.org/reference/), scroll down to the section called DOM and check out some of the examples.
+
+### Task 5 Stretch Task: Multiplication Calculator 
 
 Create a web form that takes in two numbers and multiplies them together when the form is submitted.
 
@@ -125,21 +131,15 @@ Here are some resources for you to follow:
 
 There are many different ways of doing this. One solution will be posted on Blackboard at the end of the session.
 
-### Task 5 - DOM Tutorial Online
+<!--### Task 6 - DOM Tutorial Online-->
 
-http://www.w3schools.com/js/js_htmldom.asp
+<!--http://www.w3schools.com/js/js_htmldom.asp-->
 
-### Task 6 - Explore the p5 DOM libary
 
-Can you get some examples working on your own?
 
-Is it easier to use the p5 library or just the inbuilt JS functionality?
+<!--### Task 7 - Advanced: Sidenav tutorial-->
 
-https://p5js.org/reference/#/libraries/p5.dom
-
-### Task 7 - Advanced: Sidenav tutorial
-
-https://www.w3schools.com/howto/howto_js_sidenav.asp
+<!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
 
 
 
