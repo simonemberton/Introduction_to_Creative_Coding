@@ -1,134 +1,227 @@
 # Week 17
 
-## Exploring concepts of 3D space
+## Adding more complex behaviours to your particle system
 
-First off have a quick look at [this](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5) information describing the main differences when working in p5's WEBGL mode.  You might find it useful to refer back to this page during the following tasks.
+### Task 1 - Vectors
 
-### Task 1 - Draw the edges of our space
+<!-- 1_1 -->
 
-Start from the following code:
+Start a new project and copy the following code to your `sketch.js` file.  This example reuses some of the code that was introduced last semester and shows a circle bouncing around the screen.
 
 ```javascript
-let negEdge = -100;
-let posEdge = 100;
-let count = 0;
+
+let p1;
 
 function setup() {
-	createCanvas(500,500, WEBGL);
+	createCanvas(500,500);
+	p1 = new Particle(random(50,width-50),random(50,height-50)); 
 }
 
 function draw() {
 	background(0);
-	ambientLight(255,255,255);
 
-	rotateY(count);
-	count = count + (0.003);
-
-	stroke(255);
-	drawEdges();
-}
-
-function drawEdges() {
-	// draw lines here 
+	p1.update();
+	p1.display();
+	p1.checkEdges();
 
 }
-```
 
-In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/line) or [vertices](https://p5js.org/reference/#/p5/vertex) to draw a cube that will define the edges of our 3D space.  Use the global variables ```negEdge``` and ```posEdge``` as the negative and positive edge values. 
 
-### Task 2 - Draw our first 3D shape
-
-Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value inout to ```box()``` chnages its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
-
-```javascript
-let xVal = random(negEdge,posEdge);
-let yVal = random(negEdge,posEdge);
-let zVal = random(negEdge,posEdge);
-
-push();
-translate(xVal, yVal, zVal);
-box(10);
-pop();
-```
-
-Next add the following code so that we change the colour of the box depending on it's location in the 3D space where each dimension is mapped to a different colour channel.
-
-```javascript
-let red = map(xVal, -100, 100, 0, 255);
-let green = map(yVal, -100, 100, 0, 255);
-let blue = map(zVal, -100, 100, 0, 255);
-ambientMaterial(red, green, blue);
-```
-
-### Task 3 - 3D Shape class
-
-Create a new file called ```Shape.js```, copy the following code into it and save it in the current working directory. Make sure you link to this file in the ```index.html```.
-
-```javascript
-class Shape {
+class Particle {
 	
 	constructor(startX, startY){
 		this.x = startX;
 		this.y = startY;
-		this.r = 8;
+		this.r = 10;
 
-		this.xVel = random(0.1,1);
-		this.yVel = random(0.1,1);
+		this.xVel = random(0.5,2.5);
+		this.yVel = random(0.5,2.5);
 	}
-	
+
+
 	update() {
 		this.x = this.x + this.xVel;
 		this.y = this.y + this.yVel;
 	}
 
 	display() {
-	
+		stroke(255);
+		strokeWeight(2);
+		noFill();
+		ellipse(this.x, this.y,this.r*2,this.r*2);
 	}
 
 	checkEdges() {
-		if (this.x > posEdge-(this.r/2)) {
-		  	this.xVel *= -1;
-			this.x = posEdge-(this.r/2);
-		} else if (this.x < negEdge+(this.r/2)) {
-		  	this.xVel *= -1;
-			this.x = negEdge+(this.r/2);
+
+		if (this.x > (width-this.r)) {
+		  this.xVel *= -1;
+		  this.x = width-this.r;
+		} else if (this.x < (0+this.r)) {
+		  this.xVel *= -1;
+		  this.x = 0+this.r;
 		}
 
-		if (this.y > posEdge-(this.r/2)) {
-			this.yVel *= -1;
-			this.y = posEdge-(this.r/2);
-		} else if (this.y < negEdge+(this.r/2)) {
-			this.yVel *= -1;
-			this.y = negEdge+(this.r/2);
+		if (this.y > (height-this.r)) {
+		  this.yVel *= -1;
+		  this.y = height-this.r;
+		} else if (this.y < (0+this.r)) {
+		  this.yVel *= -1;
+		  this.y = 0+this.r;
 		}
-		
+
 	}
 
 }
 ```
+<p align="center">
+  <img width="497" height="499" src="./images/Task1.png">
+</p>
 
-As you can see this class is for 2D, can you change it so that it works for 3D? 
+<!-- 1_2 Convert to vectors -->
 
-We'll also need to make some changes in our ```sketch.js``` file.  Create a new global array ```var shapes = [];```.  In the ```setup()``` function create a for loop which fills our ```shapes``` array with instances of our ```Shape``` class and provides three random values between ```negEdge``` and ```posEdge``` as the start locations for our object in each of the three dimensions. 
-
-In the ```draw()``` function create another for loop which iterates through each of the objects in our ```shapes``` array and calls each of the class methods e.g. ```update()```, ```display()``` and ```checkEdges()```.  You'll also need to move the code that we just previously wrote for drawing and colouring a box to the ```display()``` method.
-
-Finally, add the sound effects that we used a few weeks ago in Task 4 of the sound [workshop](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/session_11/session_11.md) so that each time an object hits an edge a sound is made.  You can see the 2D example [here](https://simonemberton.panel.uwe.ac.uk/p5/semester_02/week_18/Task4/).
-
-### Task 4 - Inheritance
-
-Create a new file called ```Sphere.js``` and save it in the same folder, don't forget to link to this file in your ```index.html``` file.
-
-In this file create a ```Sphere``` class which extends the ```Shape``` class.  Remember you've done this [before](http://davemeckin.panel.uwe.ac.uk/tut5demo/tut5/).  If you look at this example notice your need to use the ```extends``` keyword.  In the constructor you need to use the line ```super(startX,startY,startZ);``` to get access to the initiation values from the Shape class.  Now change the ```update()``` and ```display()``` methods so that this class has its own behaviours i.e. moves and looks different.  For the methods that you want to keep the same as the parent class you must again use the ```super``` keyword e.g.:
+Your task is to convert this code so that we are working with vectors.  For example instead of ```this.x``` and ```this.y``` use  
 
 ```javascript
-checkEdges() {
-	super.checkEdges();
+this.pos = createVector( ... , ... );
+```
+
+In the update function it's not possible to add position and velocity vectors using the addition operator ```this.pos = this.pos + this.vel;```.  You'll need to make use of p5's [add function for vectors](https://p5js.org/reference/#/p5.Vector/add).
+
+Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week17/Task1/).
+
+### Task 2 - May the force be with you
+
+<!-- 2 Acceleration - update randomly each frame -->
+
+Now that we're working with vectors let's introduce some forces to our simulation.  In the constructor of our particle class let's make a new vector for acceleration e.g.
+
+```javascript 
+this.acc = createVector(0,0);
+```
+
+We'll also need a new class method to apply the forces
+
+```javascript
+applyForce(force) {
+	this.acc.add(force);
+} 
+```
+
+and in the ```update()``` function we'll add the acceleration to the velocity on each frame, we'll also set the acceleration to zero so that this value doesn't accumulate.
+
+```javascript
+update() {
+	this.vel.add(this.acc);
+	this.pos.add(this.vel);
+	this.acc.set(0, 0);
 }
 ```
 
-Now in the ```setup()``` function fill the ```shapes``` array with both Shape and Sphere objects.  Try using an if statement and the modulo operator so that when iterating through the for loop when ```i``` is odd you create a ```Shape``` object and when even a ```Sphere``` object. 
+Now let's call the ```applyForce()``` function inside ```draw()``` and pass in random values which change on each frame.  Try changing the range of random values that are input to the function and see how it changes the direction and magnitude of the force.
 
-### Extra challenge
+Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week17/Task2/).
 
-Make another class that also inherits from ```Shape``` but behaves differently to ```Sphere```.
+### Task 3 - Gravitational Attraction
+
+<!-- 3 Accelerate towards an object (give code for this function) -->
+The following code is a slightly modified Attractor class from Daniel's Shiffman's book the [Nature of Code](https://github.com/shiffman/The-Nature-of-Code-Examples-p5.js)
+
+```javascript
+class Attractor {
+
+  constructor(x, y) {
+    this.pos = createVector(x, y);
+    this.mass = 20;
+    this.G = 1;
+  }
+
+  calculateAttraction(p) {
+    // Calculate direction of force
+    let force = p5.Vector.sub(this.pos, p.pos);
+    // Distance between objects
+    let distance = force.mag();
+    // Artificial constraint
+    distance = constrain(distance, 5, 25);
+    // Normalize vector (distance doesn't matter here, we just want this vector for direction)
+    force.normalize();
+    // Calculate gravitional force magnitude
+    let strength = (this.G * this.mass * p.mass) / (distance * distance);
+    // Get force vector -> magnitude * direction
+    force.mult(strength);
+    return force;
+  }
+
+  display() {
+    ellipseMode(CENTER);
+    strokeWeight(2);
+    stroke(255);
+    ellipse(this.pos.x, this.pos.y, this.mass*2, this.mass*2);
+  }
+}
+
+/*
+# Nature_of_Code_p5js
+
+Study files of - Daniel Shiffman's Nature of Code course on:
+https://www.kadenze.com/courses/the-nature-of-code/info
+
+
+More info:
+https://github.com/shiffman/The-Nature-of-Code
+http://natureofcode.com/
+
+Gravitational Attraction
+*/
+```
+
+Add this to your project.  You might want to put it in its own separtate file and then link to it in the ```index.html``` file.
+
+Now add a ```mass``` variable to your particle class. This value is used in the ```calculateAttraction()``` function inside the ```Attractor``` class.  Try changing the value assigned to the ```mass``` variable and see how it changes the force of attraction towards the central ellipse.
+
+We'll also use mass in the particles ```applyForce()``` function so that the mass of each particle is used in the calculation of the force acting on it as in Newton's second law of motion (this will be useful when we start to add more particles of varied mass)
+
+```javascript
+applyForce(force) {
+	let f = p5.Vector.div(force, this.mass);
+	this.acc.add(force);
+}
+```
+The output of this task should have a small ellipse orbiting around a larger central ellipse. You can see this code running [here](https://simonemberton.panel.uwe.ac.uk/Week17/Task3/).
+
+<p align="center">
+  <img width="497" height="495" src="./images/Task3.png">
+</p>
+
+### Task 4 - Arrays of particles
+
+<!-- 4 -->
+Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task02/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
+
+If you can get that working it should look something like [this](https://simonemberton.panel.uwe.ac.uk/Week17/Task4/):
+
+<p align="center">
+  <img width="495" height="496" src="./images/Task4.png">
+</p>
+
+### Extra challenges
+
+<!-- 5_1 -->
+* Try making each particle that you create in ```setup()``` have a different mass. Code example [here](https://simonemberton.panel.uwe.ac.uk/Week17/Task5_1/).
+
+<p align="center">
+  <img width="496" height="497" src="./images/Task5_1.png">
+</p>
+
+<!-- 5_2 -->
+* Try adding more attractors (not too many though or things get a bit out of control!). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week17/Task5_2/).
+
+<p align="center">
+  <img width="496" height="497" src="./images/Task5_2.png">
+</p>
+
+<!-- 5_3 -->
+* Make the attractors move around the screen (now you'll start to see 'interesting' behaviours emerging). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week17/Task5_3/).
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task5_3.png">
+</p>
