@@ -48,7 +48,7 @@ We're going to spin a HTML element round... you know, for laughs and that? And p
 
 Create a div in the body of your html file with an id of “divAnim01”: https://www.w3schools.com/tags/tag_div.asp
 
-Insert some text and an image inside the div tags. https://www.w3schools.com/tags/tag_img.asp
+Insert some text and an image inside the div tags. https://www.w3schools.com/tags/tag_img.asp. It's up to you to choose an image and download it. We chose the p5 logo from [here](https://medium.com/processing-foundation/making-p5-js-accessible-e2ce366e05a0).
 
 Add two buttons, one for start and one for stop.
 
@@ -108,6 +108,9 @@ function rotateDiv() {
     
 }
 ```
+Here's what you might be looking at now:
+
+![alt text](spinningdiv.gif "SpinningDiv")
 
 ### Task 4 - Independent Learning Challenge: Explore the way that p5 interacts with the DOM
 
