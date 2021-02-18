@@ -156,20 +156,6 @@ Have a think. Try some things out. I guess you're going to need some if statemen
 You should aim to spend approximately 20-30 minutes on this challenge.
 
 
-<details>
-<summary>Want to see the code?</summary>
-<br>
-This is what our final draw function looks like:
-<br><br>
-<figure>
-<code>
-<pre>
-
-
-</pre>
-</code>
-</figure>
-</details>
 
 <details>
 <summary>Want to see the code?</summary>
@@ -230,8 +216,9 @@ You should be spending around 15 minutes on this before checking our solution.
 <br>
 This is what our mousePressed function looks like:
 <br><br>
-<pre>
-<code>
+<p>
+  
+```javascript
 function mousePressed() {
   
   if(!gameOver) {
@@ -251,8 +238,8 @@ function mousePressed() {
     }
  
 }
-</code>
-</pre>
+```
+</p>
 </details>
 
 Woohoo well done, you've got a super simple minimal geometric game structure now!
