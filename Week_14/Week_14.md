@@ -161,8 +161,9 @@ You should aim to spend approximately 20-30 minutes on this challenge.
 <br>
 This is what our final draw function looks like:
 <br><br>
-<pre>
+
 <code>
+<pre>
 function draw() {
   background(220);
   if(!gameOver) {
@@ -189,8 +190,9 @@ function draw() {
     
   }
 }
-</code>
+
 </pre>
+</code>
 </details>
 
 
