@@ -43,7 +43,7 @@ Your `draw()` function should now look something like the following:
 function draw(){
   background(0);
   fill(255);
-  noStroke(); // so that the text below have a large stroke value
+  noStroke(); // so that the text below doesn't have a large stroke value
   text('tap to start', width/2, 20);
 
   let micLevel = mic.getLevel();
