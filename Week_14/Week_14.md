@@ -164,6 +164,22 @@ This is what our final draw function looks like:
 <figure>
 <code>
 <pre>
+
+
+</pre>
+</code>
+</figure>
+</details>
+
+<details>
+<summary>Want to see the code?</summary>
+
+<br>
+This is what our final draw function looks like:
+<br><br>
+<p>
+
+```javascript
 function draw() {
   background(220);
 
@@ -191,11 +207,10 @@ function draw() {
     
   }
 }
+```
 
-</pre>
-</code>
-</figure>
-</details>
+</p>
+</details>  
 
 
 As you'll see, once we get to our "Game Over" screen. There's currently no way back to start the game again other than to refresh the page, which isn't so great.
