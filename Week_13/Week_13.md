@@ -243,7 +243,7 @@ Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.pan
   <img width="497" height="498" src="./images/Task3_2.png">
 </p>
 
-### Task 4 - Finshing touches
+### Task 4 - Finishing touches
 
 The audio-visualiser is nearly there but I want to add a few finishing touches as it still feels a bit static.  
 
