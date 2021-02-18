@@ -6,7 +6,7 @@ This exercise leans heavily on [this tutorial](https://kellylougheed.medium.com/
 
 OK we're going to be creating a game where we have to click on randomly appearing circles. It's basically a minimal geometric version of whackamole!
 
-[This](http://davemeckin.panel.uwe.ac.uk/Week_14_Demo/) is what we're going to be making. 
+[This](https://davemeckin.panel.uwe.ac.uk/Week_14_Demo/) is what we're going to be making. 
 
 ### Task 1 - Timing and Drawing a Random Circle
 
