@@ -161,7 +161,7 @@ You should aim to spend approximately 20-30 minutes on this challenge.
 <br>
 This is what our final draw function looks like:
 <br><br>
-
+<figure>
 <code>
 <pre>
 function draw() {
@@ -194,6 +194,7 @@ function draw() {
 
 </pre>
 </code>
+</figure>
 </details>
 
 
