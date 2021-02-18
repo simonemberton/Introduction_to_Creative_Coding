@@ -166,6 +166,7 @@ This is what our final draw function looks like:
 <pre>
 function draw() {
   background(220);
+
   if(!gameOver) {
     noStroke();
     fill(r, g, b);
@@ -179,11 +180,11 @@ function draw() {
       timer --;
       newCircle();
     }
-    if (timer === 0) { // set game over to true when timer runs out
+    if (timer == 0) {
       
       gameOver = true;
     }
-  } else { // game over is true
+  } else {
     textSize(100);
     textAlign(CENTER, CENTER);
     text("GAME OVER", width/2, height/2);
