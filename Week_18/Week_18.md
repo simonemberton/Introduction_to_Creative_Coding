@@ -1,4 +1,4 @@
-# Week 19
+# Week 18
 
 ## Exploring concepts of 3D space
 
@@ -36,7 +36,7 @@ function drawEdges() {
 
 In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/line) or [vertices](https://p5js.org/reference/#/p5/vertex) to draw a cube that will define the edges of our 3D space.  Use the global variables ```negEdge``` and ```posEdge``` as the negative and positive edge values. 
 
-The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task1/):
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task1/):
 
 <p align="center">
   <img width="498" height="498" src="./images/Task1.png">
@@ -65,7 +65,7 @@ let green = map(yVal, -100, 100, 0, 255);
 let blue = map(zVal, -100, 100, 0, 255);
 ambientMaterial(red, green, blue);
 ```
-The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task2/):
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task2/):
 
 <p align="center">
   <img width="499" height="497" src="./images/Task2.png">
@@ -126,7 +126,7 @@ In the ```draw()``` function create another for loop which iterates through each
 
 Finally, add the sound effects that we used a few weeks ago in Task 4 of the sound [workshop](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/Week_15/Week_15.md) so that each time an object hits an edge a sound is made.
 
-The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task3/):
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/):
 
 <p align="center">
   <img width="499" height="496" src="./images/Task3.png">
@@ -146,7 +146,7 @@ checkEdges() {
 
 Now in the ```setup()``` function fill the ```shapes``` array with both Shape and Sphere objects.  Try using an if statement and the modulo operator so that when iterating through the for loop when ```i``` is odd you create a ```Shape``` object and when even a ```Sphere``` object. 
 
-The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task4/):
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task4/):
 
 <p align="center">
   <img width="499" height="498" src="./images/Task4.png">
