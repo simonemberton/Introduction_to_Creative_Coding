@@ -153,7 +153,7 @@ let gameOver = false;
 
 Have a think. Try some things out. I guess you're going to need some if statements. Where would they go? What conditions do they need to test?
 
-You should aim to spend approximately 20-30 minutes on this challenge.
+You should aim to spend approximately 20-30 minutes on this challenge. If you are doing this worksheet in the session, ask a member of staff for some help if you want to talk your ideas over. Do this before looking at the drop down below!
 
 
 
@@ -209,7 +209,7 @@ So we want to:
 - If it isn't, we want to keep drawing circles and incrementing the score.
 - If the game is over, we want to be able to click near the centre of the canvas, where the "Game Over" text is, to reset the timer, score and <code>gameOver</code> boolean flag.
 
-You should be spending around 15 minutes on this before checking our solution.
+You should be spending around 15 minutes on this before checking our solution. Same goes again if you are doing this worksheet in the timetabled session, ask for some help or to talk your ideas over. Only look at the dropdown after you have spent time trying to work out the problem using your logic skills.
 
 <details>
 <summary>Want to see the code?</summary>
