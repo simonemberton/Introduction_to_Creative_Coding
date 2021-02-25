@@ -182,7 +182,7 @@ function draw() {
       timer --;
       newCircle();
     }
-    if (timer == 0) {
+    if (timer === 0) {
       
       gameOver = true;
     }
