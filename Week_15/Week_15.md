@@ -90,7 +90,7 @@ function keyPressed() {
 Nice, now we should have our minimal Bird that falls to the floor if we don't do anything, but flies up when we press spacebar!
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task01.png">
+  <img src="./images/Task01.png">
 </p>
 
 ### Task 2 - Pipes and Timing
