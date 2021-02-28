@@ -1,322 +1,436 @@
 # Week 15
 
-## Adding Sound
+## A More Complex Game Exercise
 
-### Task 0 - Local Server
+This exercise leans heavily on [this tutorial](https://thecodingtrain.com/CodingChallenges/031-flappybird.html) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". One key syntax difference between how we are working in this tutorial and how Dan Shiffman does it, is that we are using JavaScript Classes, in line with how we've been learning, where Dan Shiffman uses functions.
 
-- You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
+We're going to create a very simple minimal version of [Flappy Bird](https://flappybird.io/), but our version is going to:
 
-- Then, make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path. Once you have made a blank sketch in the Documents folder, then continue to the next point:
+ - Have a health value that decreases when you hit a pipe. 
+ - An interaction mechanic changes increases the level of difficulty over time.
 
-- OK, now open the terminal application by hitting cmd+spacebar to open spotlight, then type "terminal" and hit enter.
+[This](http://davemeckin.panel.uwe.ac.uk/Week_15_Demo/) is what we're going to be making. 
 
-- In terminal, type the letters "cd" and then spacebar. "cd" means current directory, and you are telling the terminal to "look" at a particular file... Now drag your p5 folder that you just made into the terminal window. You will see that it populates with the file path of the folder.
+For this week's tutorial, we are going to work with some starter code. This is because we want to demonstrate a few particular concepts. If you would like to understand more about how all the code works, please do watch the Shiffman tutorial linked above after you've followed this worksheet. 
 
-- Hit enter, you are now telling the terminal application to "look" inside that folder.
+Please download and work from the week_15_startercode.zip file in the Blackboard Learning Materials section for this week. Unzip the folder and place it in your Semester 2->Week 15 folder which should be located with all your other Introduction to Creative Coding materials.
 
-- Still in terminal, now type ```python -m SimpleHTTPServer 8000``` and hit enter. You should see a response saying "Serving HTTP on 0.0.0.0 port 8000 ..."
 
-- Now head open Chrome and in the address bar type localhost:8000/empty-example and it will load your page. You may not see anything yet if it's a blank sketch!
+### Task 0 - Familiarisation
 
-- Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
+OK so the folder structure here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. First of all, take a look in index.html and see that we're using the script tags to include the pipe.js and bird.js files.
 
-### Task 1 - Soundfile
+Now also open the pipe.js and bird.js files. Take a look through the code and see what's going on, can you work out what each of them are going to do? And how we're going to use them? No worries if it's a bit unclear right now, all will be revealed as we get making our game...
 
-OK, first things first, let's load a sound file and play it. Make a new blank sketch with required folder structure - how many times have you done this now?! Muscle memory should hopefully be kicking in...
 
-Let's define a variable called ```song``` and a function to preload a .mp3 file. You can find loads of sounds at www.freesound.org. Make sure you save it to the same folder as your sketch.
+### Task 1 - The Birrrd
+
+#### Setting Up
+
+Right, now open our sketch.js file. This is just a blank sketch with our setup() and draw() functions. OK let's get into it and declare all the variables we're going to need for our game. The names should give you a clear idea of what function each variable will perform:
 
 ```javascript
-let song;
-
-function preload() {
-  song = loadSound("PATH TO YOUR SOUND FILE");  
-}
-
+let bird;
+let pipes = [];
+let pipeInterval = 120;
+let timer = 0;
+let timerInterval = 60;
+let level = 0;
+let health = 10;
 ```
 
-Now, let's make a setup function that initialises a bunch of stuff and plays our song.
+Great, now let's update our setup() function to create the canvas; make our bird and add a new pipe into our pipe array. We'll use the pipe array in the next task. We're also going to turn the outline off using noStroke():
 
 ```javascript
 function setup() {
-  createCanvas(480, 270);
-  background(0);
-  fill(255);
-  textAlign(CENTER);
-  text("click to play/pause", width/2, height/2);
-  song.play();
-  noLoop();
+  createCanvas(windowWidth, windowHeight);
+  bird = new Bird();
+  pipes.push(new Pipe());
+  noStroke();
+}
+```
+Now let's update our draw()function by setting our background colour and added a call to a new function called runGame(). We're going to pass an argument of 1 to that function, this will be used later in Task 5, where we get you to do a bit of thinking yourselves!
+
+```javascript
+function draw(){
+
+  background(220);
+  runGame(1);
+
 }
 ```
 
-Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMBER address.
 
-We don't actually need a draw function here.
+#### Running Our Game in a Separate Function
 
-So, if you're using Chrome, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. This is frustrating but we just need to get around it by adding (beneath setup()):
+If you tried to run the code, you'd notice that we'd get an error because we haven't actually declared our runGame() function yet. So let's do that! In that function for now, we're just going to add calls to the Bird's methods of update() and show(). You'll also notice we've got the argument being passed into runGame called intervalScale which we're going to use in Task 5:
 
 ```javascript
-function mousePressed() {
-  getAudioContext().resume();
+function runGame(intervalScale){
+
+  bird.update();
+  bird.show();
+
 }
 ```
+#### Interaction
 
-### Task 2 - Mouse Interaction 1
-
-#### Soundfile
-
-Let's add the ability to pause and play our song based on toggling with a mouse click.
-
+Cool so we've got a bird! But at the moment it just falls to the floor! Not much use, right? So let's add our interaction using the spacebar key. We want to add the keyPressed() function ***below*** the draw() function:
 
 ```javascript
+function keyPressed() {
 
-function mouseClicked() {
-  if (song.isPlaying()) {
-    song.stop();
-  } else {
-    song.play();
+  if (keyCode === 32) {
+    bird.up();
+    //console.log("SPACE");
   }
 }
 ```
 
-#### Synthesis
+Nice, now we should have our minimal Bird that falls to the floor if we don't do anything, but flies up when we press spacebar!
 
-With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The let ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
+<p align="center">
+  <img width="497" height="499" src="./images/Task01.png">
+</p>
 
-Let's make a new sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load?
+### Task 2 - Pipes and Timing
 
-```javascript
-let osc;
-let playing = true;
-```
-
-Next in our setup function let's make our oscillator and start it with a frequency of concert pitch A:
+It's not much of a game yet, so let's go ahead and add some obstacles. We're using an array of pipes, so we want to be **iterating** through that array using a for loop. And one important thing to note is that we always want to be iterating from the end of the array down to the beginning, because we're going to be adding stuff to the end first by using push() later on. So, let's update our runGame() function to iterate over the pipes array and call both the update() and show() functions:
 
 ```javascript
-function setup() {
-  createCanvas(200, 200);
-  osc = new p5.Oscillator();
-  osc.setType('sine');
-  osc.freq(440);
-  osc.start();
+function runGame(intervalScale){
+
+  for (var i = pipes.length-1; i >= 0; i--) {
+    pipes[i].show();
+    pipes[i].update();
+  }
+
+  bird.update();
+  bird.show();
+
+ 
 }
 ```
 
-And finally let's toggle between fading the oscillator in and out. We have to use our ```playing``` flag to check if it is playing and act accordingly.
+Right, now let's test for whether our Bird collides with a pipe. All the collision testing code is in the pipe.js file. It's pretty similar to what we were doing last week but because there are two sections to the pipe, we have to nest some if statements:
+
+This makes it easy for us to now call the hits() method of each pipe. We're going to do this still in the for loop:
 
 ```javascript
-function mouseClicked() {
-  if (mouseX > 0 && mouseX < width && mouseY < height && mouseY > 0) { //check if we're in the canvas
-    if (!playing) {// what does the ! operator mean?
-      // ramp amplitude to 0.5 over 0.5 seconds
-      osc.amp(0.5, 0.5);
-      playing = true;
+ if (pipes[i].hits(bird)) {
+      console.log("HIT");
+    }
+```
+
+Still in the for loop, let's remove pipe from our pipes array if not on screen anymore using the splice method:
+
+```javascript
+if (pipes[i].offscreen()) {
+      pipes.splice(i, 1);
+    }
+```
+
+Now, we're moving our of that for loop and at the bottom of runGame(), let's add a bit of timing code in the same manner as we did last week, for adding a new pipe at a given interval: 
+
+```javascript
+ if (frameCount % pipeInterval === 0) {
+            pipes.push(new Pipe());
+  }
+```
+
+Hopefully those steps were clear and you've written all that code out, but just in case you want to check, take a look at what runGame() is looking like:
+
+<details>
+<summary>Want to see the code?</summary>
+<br>
+This is what our runGame() function looks like now:
+<br><br>
+<p>
+  
+```javascript
+function runGame(intervalScale){
+
+  for (var i = pipes.length-1; i >= 0; i--) {
+    pipes[i].show();
+    pipes[i].update();
+
+    if (pipes[i].hits(bird)) {
+      console.log("HIT");
+    }
+
+    if (pipes[i].offscreen()) {
+      pipes.splice(i, 1);
+    }
+  }
+
+  bird.update();
+  bird.show();
+
+  if (frameCount % pipeInterval == 0) {
+            pipes.push(new Pipe());
+  }
+}
+```
+</p>
+</details>
+
+Nice, so we should have some pipes that turn red if we collide with them now!
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task02.png">
+</p>
+
+### Task 3 - Creating Our State Machine
+
+OK now we're going to update our draw() function such that our game will operate differently, depending on what level we're on. [here](https://www.youtube.com/watch?v=-Yicg2TTMPs) is a nice little explanation of what we're creating using an oven as an example. Our state machine is going to have 5 states based on what our level variable is doing:
+
+- Game Over
+- Splash Screen
+- Level 1
+- Level 2
+- Level 3
+
+So let's use a switch case statement to implement those states in our draw() function:
+
+```javascript
+function draw() {
+  background(220);
+  switch(level) {
+    case -1:
+        textSize(120);
+        fill(255,0,0);
+        textAlign(CENTER, CENTER);
+        text("GAME OVER! \n Press Enter to Start", width/2, height/2);
+
+    break;
+
+    case 0:
+        textSize(100);
+        fill("#0f82af");
+        textAlign(CENTER, CENTER);
+        text("Press Enter to Start", width/2, height/2);
+        //console.log("enter screen");
+    break;
+
+    case 1:
+        runGame(1);
+         
+    break;
+
+    case 2:
+        runGame(1);
+          
+    break;
+    
+     case 3:
+        runGame(1);
+         
+    break;
+  }
+ 
+}
+```
+
+You'll notice that all three of our levels currently have the same argument being passed to our runGame() function. This is because we're going to get you to do some logical thinking later on to update these values...
+
+Great, but now our game doesn't actually function because all that happens is that we enter our splash screen and don't go anywhere! So let's update our keyPressed function to listen out for the enter key and to reset all necessary values for beginning our game:
+
+```javascript
+function keyPressed() {
+
+  if (keyCode === ENTER) {
+    level = 1;
+    health = 10;
+    pipes = [];
+    timer = 0;
+    console.log("START");
+  }
+
+  if (keyCode === 32) {
+    bird.up();
+    //console.log("SPACE");
+  }
+}
+```
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task03.png">
+</p>
+
+Nice, now we're cooking...
+
+### Task 4 - Changing Level
+
+We do now need to add the mechanics for changing our levels though.
+
+So let's think about our main timer. We want to use the same code as we did to time adding new pipes. So, **at the very bottom of runGame()**, let's add the following:
+
+
+```javascript
+if (frameCount % timerInterval == 0) {
+    timer ++;
+    //console.log(timer);
+  }
+```
+
+We also need to think about adding some feedback to our players, so they can know how they're doing on the game. So let's add this, just like we had last week. Again we're doing this at the very bottom of runGame() because we want to draw this last so that our pipes don't obscure it:
+
+```javascript
+ textSize(30);
+    fill("#0f82af");
+    textAlign(LEFT, CENTER);
+    text("Health: " + nf(health, 1, 2), 10, 30);
+    text("Level: " + level, 200, 30);
+```
+Let's make sure our health gets changed when we collide, so update our collision condition to reduce health by 0.1 each frame we're collisding:
+
+```javascript
+if (pipes[i].hits(bird)) {
+      console.log("HIT");
+      health -= 0.1;
+    }
+```
+
+Cool, so you should be seeing the health now reducing every time you hit a pipe.
+
+But we still haven't started changing our levels based on the timer yet. 
+
+We're going to write our own function for that. So first of all, let's add the call to a function called testLevel() **at the top of runGame()**:
+
+```javascript
+testLevel();
+```
+
+
+#### Challenge:
+Set our timer ranges in order to select which level we are on
+
+If our health is above 0
+  Level 1 if timer is between 0 and 20
+  Level 2 if timer is greater than 20 and less than or equal to 40
+  Level 3 if timer is greater than 40 
+
+<details>
+<summary>Want to see the code?</summary>
+<br>
+This is what our testLevel() function looks like :
+<br><br>
+<p>
+  
+```javascript
+function testLevel(){
+  if(health <= 0) {
+      level = -1;
     } else {
-      // ramp amplitude to 0 over 0.5 seconds
-      osc.amp(0, 0.5);
-      playing = false;
-    }
-  }
-}
-```
-
-What happens if you want to change the tone of the oscillator? How would you do that? [HINT](https://p5js.org/reference/#/p5.Oscillator/setType)
-
-### Task 3 - Mouse Interaction 2
-
-Now let's try mapping some mouse interaction to the frequency of our sound generators.
-
-#### Soundfile
-
-Go back to your original sound file play back sketch. Comment out the ```noLoop()``` line.
-
-Then change the ```song.play()``` to ```song.loop()```;
-
-OK so we're going to map the Y position of the mouse to the playback rate of the audio file. Anything with a negative number will play the sound in reverse, which is pretty cool! Remember that Y=0 is at the top.
-
-```javascript
-function draw() {
-  let speed = map(mouseY, 0.1, height, 2, -2);
-  speed = constrain(speed, -2, 2);
-  song.rate(speed);
-}
-```
-
-#### Synthesis
-
-We can do the same in the draw function of our synthesis patch:
-
-```javascript
-function draw() {
-  let speed = map(mouseY, 0.1, height, 2000, 100);
-  speed = constrain(speed, 100, 2000);
-  osc.freq(speed);
-}
-```
-
-
-#### Sound Effects
-
-Let's try some reverberation. Reverb is an effect that mimics the way real world sound is reflected off objects and surfaces in the environment.
-
-We need a global variable for our first audio effect, we're going to make a reverb:
-
-```javascript
-let reverb;
-```
-
-Then, in setup(), try adding this:
-
-```javascript
-//other code making oscillator.
-reverb = new p5.Reverb();
-osc.disconnect(); // so we'll only hear reverb...
-reverb.process(osc, 10, 2);
-```
-Now try the same process for adding a delay. Delay is an echo that repeats the sound using a feedback loop. Have a look [here](https://p5js.org/reference/#/p5.Delay) for how to use it.
-
-### Task 4 - Event Driven Sound
-
-So let's pick up from the session where we created a [particle system with forces](../session_10/session_10.md). Make sure you start this off only making 5 particles, sound is very CPU intensive in the browser!
-
-#### Synthesis
-
-Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
-
-```javascript
-let scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
-let waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
-let bgColour = 0; //inital background colour
-let particleColour = 255; //inital particle colour
-let clicked = false; //flag to check whether mouse has been clicked
-
-let delay, reverb; // our effects.
-```
-
-In our particle constructor. We're going to make an oscillator that is controlled by an envelope.
-
-```javascript
-constructor(startX, startY, startMass){
-    this.mass = startMass;
-    this.r = 10;
-    this.pos = createVector(startX, startY);
-    this.vel = createVector(random(0.5,2.5), random(0.5,2.5));
-    this.acc = createVector(0, 0);
-    /// new stuff
-    this.osc =  new p5.Oscillator(waveArray[Math.round(random(0, waveArray.length-1))]); //make a new oscillator with a random waveform type
-    this.envelope = new p5.Envelope(); // make a new envelope
-    this.envelope.setADSR(0.001, 0.5, 0.05, 0.9); // set attackTime, decayTime, sustainLevel, releaseTime
-    this.note = Math.round(random(0, scaleArray.length)); //select a random MIDI note from our scaleArray
-    this.envelope.setRange(0.5, 0); //set volume range on the envelope
-    this.osc.amp(this.envelope); //map amplitude of envelope to the oscillator
-    this.freqValue = midiToFreq(scaleArray[this.note]); // convert our MIDI note to a frequency value for the oscillator
-    this.osc.freq(this.freqValue); //set the oscillator frequency
-    this.osc.start(); 
-  }
-```
-Then in setup we need to update what's in there:
-
-```javascript
-function setup() {
-  createCanvas(windowWidth, windowHeight); // create a canvas that fills the window
-  delay = new p5.Delay(); // make delay
-  reverb = new p5.Reverb(); // make reverb
-  for (let i = 0; i < 10; i++) {
-      particles[i] = new Particle(random(50,width-50),random(50,height-50),random(4,8));
-
-      ////
-      delay.process(particles[i].osc, .22, .75, 2900); // hook our particle oscillator up to the delay
-      reverb.process(particles[i].osc, 10, 8); // hook our particle oscillator up to the reverb
-    }
-
-    for (let i = 0; i < 1; i++) {
-      attractors[i] = new Attractor(random(0,width),random(0,height));
+       if(timer <= 20) {
+          level = 1;
+        } else if (timer > 20 && timer <= 40) {
+          level = 2;
+        } else if (timer > 40) {
+          level = 3;
+        }
     }
 }
 ```
+</p>
+</details>
 
-And then, just because Google have been annoying, we need to just add a block that allows us to start the audio processing when there is some user interaction. For some reason, Google have made it so that, to access the Web Audio API you need to provide some positive interaction:
 
+So now we have some pretty complex code in our runGame() and testLevel() functions:
+
+
+<details>
+<summary>Want to see the code?</summary>
+<br>
+This is what our runGame() and testLevel() functions look like now:
+<br><br>
+<p>
+  
 ```javascript
-function mousePressed() {
-  getAudioContext().resume();
-  }
-```
+function runGame(intervalScale){
+    testLevel();
 
+  for (var i = pipes.length-1; i >= 0; i--) {
+    pipes[i].show();
+    pipes[i].update();
 
-Finally, we just need to update our checkEdges function to trigger our envelope and make a sound when the particle hits the edge of the canvas:
-
-```javascript
-checkEdges() {
-
-    if (this.pos.x > (width-this.r)) {
-      this.vel.x *= -1;
-      this.pos.x = width-this.r;
-      this.envelope.play(this.osc, 0, 0.1);
-    } else if (this.pos.x < (0+this.r)) {
-      this.vel.x *= -1;
-      this.pos.x = 0+this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+    if (pipes[i].hits(bird)) {
+      console.log("HIT");
+      health -= 0.1;
     }
 
-    if (this.pos.y > (height-this.r)) {
-      this.vel.y *= -1;
-      this.pos.y = height-this.r;
-      this.envelope.play(this.osc, 0, 0.1);
-    } else if (this.pos.y < (0+this.r)) {
-      this.vel.y *= -1;
-      this.pos.y = 0+this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+    if (pipes[i].offscreen()) {
+      pipes.splice(i, 1);
     }
-
   }
-```
 
+  bird.update();
+  bird.show();
 
-
-### Task 5 - State Change
-
-One other thing, I want to just show you quickly how to change the state of your piece. This uses an if statement to toggle between two states. But you coud also use a switch statement to cycle between multiple states by using a counter. That is for you to figure out though! Let's add a toggle function to invert the colours of the piece:
-
-```javascript
-function mousePressed() {
-  getAudioContext().resume();
-   if (!clicked) {
-    bgColour = 255;
-    particleColour = 0;
-    clicked = true;
-  } else {
-    bgColour = 0;
-    particleColour = 255;
-    clicked = false;
+  if (frameCount % pipeInterval == 0) {
+            pipes.push(new Pipe());
   }
+
+  if (frameCount % timerInterval == 0) {
+    timer ++;
+    //console.log(timer);
+  }
+
+    textSize(30);
+    fill("#0f82af");
+    textAlign(LEFT, CENTER);
+    text("Health: " + nf(health, 1, 2), 10, 30);
+    text("Level: " + level, 200, 30);
+     
+
 }
 
+function testLevel(){
+  if(health <= 0) {
+      level = -1;
+    } else {
+       if(timer <= 10) {
+          level = 1;
+        } else if (timer > 20 && timer <= 40) {
+          level = 2;
+        } else if (timer > 40) {
+          level = 3;
+        }
+    }
+}
 ```
-Now we just need to set our particle colour in the display function of the particle:
+</p>
+</details>
+
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task04_01.png">
+</p>
+
+And:
+
+<p align="center">
+  <img width="497" height="499" src="./images/Task04_02.png">
+</p>
+
+### Task 5 - Increasing Difficulty Based on the Timer
+
+
+Now we're going to use the intervalScale argument being passed to runGame() to increase the difficulty. What we're doing here is reducing the interval at which a new pipe is drawn, thus making it harder:
 
 ```javascript
-display() {
-    stroke(particleColour);
-    strokeWeight(2);
-    noFill();
-    ellipse(this.pos.x, this.pos.y,this.mass*2,this.mass*2);
+if (frameCount % (pipeInterval*intervalScale) == 0) {
+            pipes.push(new Pipe());
   }
 ```
 
-[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
+OK, now what do you have to do to the different calls to runGame() in the switch case statement in the draw() function? HINT it should be less than the number we currently have for level 1, in levels 2 and 3...
 
-Stretch goal: instead of only having 2 states and toggling between them, how can you make more? HINT: use a [switch statement](https://www.w3schools.com/js/js_switch.asp)..
+Nice one! Now you've got a fairly complex game with timing and dexterity mechanics as well as levels!
 
-### Task 6 - Parameter Mapping
+### Task 6 - Stretch Goals
 
-What kind of parameters from the objects in your sketch can you map to sound?
-
-What about:
-
-- Speed to volume? [HINT](https://p5js.org/reference/#/p5.SoundFile/setVolume)
-- X Position to pan? [HINT](https://p5js.org/examples/sound-pan-sound.html)
-- Y Position to filter frequency? [HINT](https://p5js.org/reference/#/p5.Filter)
-
-etc etc etc
+- Can you change the shapes being drawn?
+- Can you make the game harder by increasing the velocity at which the pipes are moving depending on the level?
+- How can you really make this game your own in terms of colour scheme and fonts etc?
 

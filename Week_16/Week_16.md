@@ -1,227 +1,322 @@
 # Week 16
 
-## Adding more complex behaviours to your particle system
+## Adding Sound
 
-### Task 1 - Vectors
+### Task 0 - Local Server
 
-<!-- 1_1 -->
+- You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
 
-Start a new project and copy the following code to your `sketch.js` file.  This example reuses some of the code that was introduced last semester and shows a circle bouncing around the screen.
+- Then, make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path. Once you have made a blank sketch in the Documents folder, then continue to the next point:
+
+- OK, now open the terminal application by hitting cmd+spacebar to open spotlight, then type "terminal" and hit enter.
+
+- In terminal, type the letters "cd" and then spacebar. "cd" means current directory, and you are telling the terminal to "look" at a particular file... Now drag your p5 folder that you just made into the terminal window. You will see that it populates with the file path of the folder.
+
+- Hit enter, you are now telling the terminal application to "look" inside that folder.
+
+- Still in terminal, now type ```python -m SimpleHTTPServer 8000``` and hit enter. You should see a response saying "Serving HTTP on 0.0.0.0 port 8000 ..."
+
+- Now head open Chrome and in the address bar type localhost:8000/empty-example and it will load your page. You may not see anything yet if it's a blank sketch!
+
+- Make sure that when you load your page, you are loading via the localhost address rather than the file path address.
+
+### Task 1 - Soundfile
+
+OK, first things first, let's load a sound file and play it. Make a new blank sketch with required folder structure - how many times have you done this now?! Muscle memory should hopefully be kicking in...
+
+Let's define a variable called ```song``` and a function to preload a .mp3 file. You can find loads of sounds at www.freesound.org. Make sure you save it to the same folder as your sketch.
 
 ```javascript
+let song;
 
-let p1;
+function preload() {
+  song = loadSound("PATH TO YOUR SOUND FILE");  
+}
 
+```
+
+Now, let's make a setup function that initialises a bunch of stuff and plays our song.
+
+```javascript
 function setup() {
-	createCanvas(500,500);
-	p1 = new Particle(random(50,width-50),random(50,height-50)); 
+  createCanvas(480, 270);
+  background(0);
+  fill(255);
+  textAlign(CENTER);
+  text("click to play/pause", width/2, height/2);
+  song.play();
+  noLoop();
 }
+```
 
+Try running your sketch by opening your index.html page via the localhost:YOUR PORT NUMBER address.
+
+We don't actually need a draw function here.
+
+So, if you're using Chrome, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. This is frustrating but we just need to get around it by adding (beneath setup()):
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
+}
+```
+
+### Task 2 - Mouse Interaction 1
+
+#### Soundfile
+
+Let's add the ability to pause and play our song based on toggling with a mouse click.
+
+
+```javascript
+
+function mouseClicked() {
+  if (song.isPlaying()) {
+    song.stop();
+  } else {
+    song.play();
+  }
+}
+```
+
+#### Synthesis
+
+With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The let ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
+
+Let's make a new sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load?
+
+```javascript
+let osc;
+let playing = true;
+```
+
+Next in our setup function let's make our oscillator and start it with a frequency of concert pitch A:
+
+```javascript
+function setup() {
+  createCanvas(200, 200);
+  osc = new p5.Oscillator();
+  osc.setType('sine');
+  osc.freq(440);
+  osc.start();
+}
+```
+
+And finally let's toggle between fading the oscillator in and out. We have to use our ```playing``` flag to check if it is playing and act accordingly.
+
+```javascript
+function mouseClicked() {
+  if (mouseX > 0 && mouseX < width && mouseY < height && mouseY > 0) { //check if we're in the canvas
+    if (!playing) {// what does the ! operator mean?
+      // ramp amplitude to 0.5 over 0.5 seconds
+      osc.amp(0.5, 0.5);
+      playing = true;
+    } else {
+      // ramp amplitude to 0 over 0.5 seconds
+      osc.amp(0, 0.5);
+      playing = false;
+    }
+  }
+}
+```
+
+What happens if you want to change the tone of the oscillator? How would you do that? [HINT](https://p5js.org/reference/#/p5.Oscillator/setType)
+
+### Task 3 - Mouse Interaction 2
+
+Now let's try mapping some mouse interaction to the frequency of our sound generators.
+
+#### Soundfile
+
+Go back to your original sound file play back sketch. Comment out the ```noLoop()``` line.
+
+Then change the ```song.play()``` to ```song.loop()```;
+
+OK so we're going to map the Y position of the mouse to the playback rate of the audio file. Anything with a negative number will play the sound in reverse, which is pretty cool! Remember that Y=0 is at the top.
+
+```javascript
 function draw() {
-	background(0);
-
-	p1.update();
-	p1.display();
-	p1.checkEdges();
-
-}
-
-
-class Particle {
-	
-	constructor(startX, startY){
-		this.x = startX;
-		this.y = startY;
-		this.r = 10;
-
-		this.xVel = random(0.5,2.5);
-		this.yVel = random(0.5,2.5);
-	}
-
-
-	update() {
-		this.x = this.x + this.xVel;
-		this.y = this.y + this.yVel;
-	}
-
-	display() {
-		stroke(255);
-		strokeWeight(2);
-		noFill();
-		ellipse(this.x, this.y,this.r*2,this.r*2);
-	}
-
-	checkEdges() {
-
-		if (this.x > (width-this.r)) {
-		  this.xVel *= -1;
-		  this.x = width-this.r;
-		} else if (this.x < (0+this.r)) {
-		  this.xVel *= -1;
-		  this.x = 0+this.r;
-		}
-
-		if (this.y > (height-this.r)) {
-		  this.yVel *= -1;
-		  this.y = height-this.r;
-		} else if (this.y < (0+this.r)) {
-		  this.yVel *= -1;
-		  this.y = 0+this.r;
-		}
-
-	}
-
-}
-```
-<p align="center">
-  <img width="497" height="499" src="./images/Task1.png">
-</p>
-
-<!-- 1_2 Convert to vectors -->
-
-Your task is to convert this code so that we are working with vectors.  For example instead of ```this.x``` and ```this.y``` use  
-
-```javascript
-this.pos = createVector( ... , ... );
-```
-
-In the update function it's not possible to add position and velocity vectors using the addition operator ```this.pos = this.pos + this.vel;```.  You'll need to make use of p5's [add function for vectors](https://p5js.org/reference/#/p5.Vector/add).
-
-Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week16/Task1/).
-
-### Task 2 - May the force be with you
-
-<!-- 2 Acceleration - update randomly each frame -->
-
-Now that we're working with vectors let's introduce some forces to our simulation.  In the constructor of our particle class let's make a new vector for acceleration e.g.
-
-```javascript 
-this.acc = createVector(0,0);
-```
-
-We'll also need a new class method to apply the forces
-
-```javascript
-applyForce(force) {
-	this.acc.add(force);
-} 
-```
-
-and in the ```update()``` function we'll add the acceleration to the velocity on each frame, we'll also set the acceleration to zero so that this value doesn't accumulate.
-
-```javascript
-update() {
-	this.vel.add(this.acc);
-	this.pos.add(this.vel);
-	this.acc.set(0, 0);
+  let speed = map(mouseY, 0.1, height, 2, -2);
+  speed = constrain(speed, -2, 2);
+  song.rate(speed);
 }
 ```
 
-Now let's call the ```applyForce()``` function inside ```draw()``` and pass in random values which change on each frame.  Try changing the range of random values that are input to the function and see how it changes the direction and magnitude of the force.
+#### Synthesis
 
-Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week16/Task2/).
-
-### Task 3 - Gravitational Attraction
-
-<!-- 3 Accelerate towards an object (give code for this function) -->
-The following code is a slightly modified Attractor class from Daniel's Shiffman's book the [Nature of Code](https://github.com/shiffman/The-Nature-of-Code-Examples-p5.js)
+We can do the same in the draw function of our synthesis patch:
 
 ```javascript
-class Attractor {
+function draw() {
+  let speed = map(mouseY, 0.1, height, 2000, 100);
+  speed = constrain(speed, 100, 2000);
+  osc.freq(speed);
+}
+```
 
-  constructor(x, y) {
-    this.pos = createVector(x, y);
-    this.mass = 20;
-    this.G = 1;
+
+#### Sound Effects
+
+Let's try some reverberation. Reverb is an effect that mimics the way real world sound is reflected off objects and surfaces in the environment.
+
+We need a global variable for our first audio effect, we're going to make a reverb:
+
+```javascript
+let reverb;
+```
+
+Then, in setup(), try adding this:
+
+```javascript
+//other code making oscillator.
+reverb = new p5.Reverb();
+osc.disconnect(); // so we'll only hear reverb...
+reverb.process(osc, 10, 2);
+```
+Now try the same process for adding a delay. Delay is an echo that repeats the sound using a feedback loop. Have a look [here](https://p5js.org/reference/#/p5.Delay) for how to use it.
+
+### Task 4 - Event Driven Sound
+
+So let's pick up from the session where we created a [particle system with forces](../session_10/session_10.md). Make sure you start this off only making 5 particles, sound is very CPU intensive in the browser!
+
+#### Synthesis
+
+Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
+
+```javascript
+let scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
+let waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
+let bgColour = 0; //inital background colour
+let particleColour = 255; //inital particle colour
+let clicked = false; //flag to check whether mouse has been clicked
+
+let delay, reverb; // our effects.
+```
+
+In our particle constructor. We're going to make an oscillator that is controlled by an envelope.
+
+```javascript
+constructor(startX, startY, startMass){
+    this.mass = startMass;
+    this.r = 10;
+    this.pos = createVector(startX, startY);
+    this.vel = createVector(random(0.5,2.5), random(0.5,2.5));
+    this.acc = createVector(0, 0);
+    /// new stuff
+    this.osc =  new p5.Oscillator(waveArray[Math.round(random(0, waveArray.length-1))]); //make a new oscillator with a random waveform type
+    this.envelope = new p5.Envelope(); // make a new envelope
+    this.envelope.setADSR(0.001, 0.5, 0.05, 0.9); // set attackTime, decayTime, sustainLevel, releaseTime
+    this.note = Math.round(random(0, scaleArray.length)); //select a random MIDI note from our scaleArray
+    this.envelope.setRange(0.5, 0); //set volume range on the envelope
+    this.osc.amp(this.envelope); //map amplitude of envelope to the oscillator
+    this.freqValue = midiToFreq(scaleArray[this.note]); // convert our MIDI note to a frequency value for the oscillator
+    this.osc.freq(this.freqValue); //set the oscillator frequency
+    this.osc.start(); 
   }
+```
+Then in setup we need to update what's in there:
 
-  calculateAttraction(p) {
-    // Calculate direction of force
-    let force = p5.Vector.sub(this.pos, p.pos);
-    // Distance between objects
-    let distance = force.mag();
-    // Artificial constraint
-    distance = constrain(distance, 5, 25);
-    // Normalize vector (distance doesn't matter here, we just want this vector for direction)
-    force.normalize();
-    // Calculate gravitional force magnitude
-    let strength = (this.G * this.mass * p.mass) / (distance * distance);
-    // Get force vector -> magnitude * direction
-    force.mult(strength);
-    return force;
+```javascript
+function setup() {
+  createCanvas(windowWidth, windowHeight); // create a canvas that fills the window
+  delay = new p5.Delay(); // make delay
+  reverb = new p5.Reverb(); // make reverb
+  for (let i = 0; i < 10; i++) {
+      particles[i] = new Particle(random(50,width-50),random(50,height-50),random(4,8));
+
+      ////
+      delay.process(particles[i].osc, .22, .75, 2900); // hook our particle oscillator up to the delay
+      reverb.process(particles[i].osc, 10, 8); // hook our particle oscillator up to the reverb
+    }
+
+    for (let i = 0; i < 1; i++) {
+      attractors[i] = new Attractor(random(0,width),random(0,height));
+    }
+}
+```
+
+And then, just because Google have been annoying, we need to just add a block that allows us to start the audio processing when there is some user interaction. For some reason, Google have made it so that, to access the Web Audio API you need to provide some positive interaction:
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
   }
+```
 
-  display() {
-    ellipseMode(CENTER);
+
+Finally, we just need to update our checkEdges function to trigger our envelope and make a sound when the particle hits the edge of the canvas:
+
+```javascript
+checkEdges() {
+
+    if (this.pos.x > (width-this.r)) {
+      this.vel.x *= -1;
+      this.pos.x = width-this.r;
+      this.envelope.play(this.osc, 0, 0.1);
+    } else if (this.pos.x < (0+this.r)) {
+      this.vel.x *= -1;
+      this.pos.x = 0+this.r;
+      this.envelope.play(this.osc, 0, 0.1);
+    }
+
+    if (this.pos.y > (height-this.r)) {
+      this.vel.y *= -1;
+      this.pos.y = height-this.r;
+      this.envelope.play(this.osc, 0, 0.1);
+    } else if (this.pos.y < (0+this.r)) {
+      this.vel.y *= -1;
+      this.pos.y = 0+this.r;
+      this.envelope.play(this.osc, 0, 0.1);
+    }
+
+  }
+```
+
+
+
+### Task 5 - State Change
+
+One other thing, I want to just show you quickly how to change the state of your piece. This uses an if statement to toggle between two states. But you coud also use a switch statement to cycle between multiple states by using a counter. That is for you to figure out though! Let's add a toggle function to invert the colours of the piece:
+
+```javascript
+function mousePressed() {
+  getAudioContext().resume();
+   if (!clicked) {
+    bgColour = 255;
+    particleColour = 0;
+    clicked = true;
+  } else {
+    bgColour = 0;
+    particleColour = 255;
+    clicked = false;
+  }
+}
+
+```
+Now we just need to set our particle colour in the display function of the particle:
+
+```javascript
+display() {
+    stroke(particleColour);
     strokeWeight(2);
-    stroke(255);
-    ellipse(this.pos.x, this.pos.y, this.mass*2, this.mass*2);
+    noFill();
+    ellipse(this.pos.x, this.pos.y,this.mass*2,this.mass*2);
   }
-}
-
-/*
-# Nature_of_Code_p5js
-
-Study files of - Daniel Shiffman's Nature of Code course on:
-https://www.kadenze.com/courses/the-nature-of-code/info
-
-
-More info:
-https://github.com/shiffman/The-Nature-of-Code
-http://natureofcode.com/
-
-Gravitational Attraction
-*/
 ```
 
-Add this to your project.  You might want to put it in its own separtate file and then link to it in the ```index.html``` file.
+[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
 
-Now add a ```mass``` variable to your particle class. This value is used in the ```calculateAttraction()``` function inside the ```Attractor``` class.  Try changing the value assigned to the ```mass``` variable and see how it changes the force of attraction towards the central ellipse.
+Stretch goal: instead of only having 2 states and toggling between them, how can you make more? HINT: use a [switch statement](https://www.w3schools.com/js/js_switch.asp)..
 
-We'll also use mass in the particles ```applyForce()``` function so that the mass of each particle is used in the calculation of the force acting on it as in Newton's second law of motion (this will be useful when we start to add more particles of varied mass)
+### Task 6 - Parameter Mapping
 
-```javascript
-applyForce(force) {
-	let f = p5.Vector.div(force, this.mass);
-	this.acc.add(force);
-}
-```
-The output of this task should have a small ellipse orbiting around a larger central ellipse. You can see this code running [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task3/).
+What kind of parameters from the objects in your sketch can you map to sound?
 
-<p align="center">
-  <img width="497" height="495" src="./images/Task3.png">
-</p>
+What about:
 
-### Task 4 - Arrays of particles
+- Speed to volume? [HINT](https://p5js.org/reference/#/p5.SoundFile/setVolume)
+- X Position to pan? [HINT](https://p5js.org/examples/sound-pan-sound.html)
+- Y Position to filter frequency? [HINT](https://p5js.org/reference/#/p5.Filter)
 
-<!-- 4 -->
-Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task02/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
+etc etc etc
 
-If you can get that working it should look something like [this](https://simonemberton.panel.uwe.ac.uk/Week16/Task4/):
-
-<p align="center">
-  <img width="495" height="496" src="./images/Task4.png">
-</p>
-
-### Extra challenges
-
-<!-- 5_1 -->
-* Try making each particle that you create in ```setup()``` have a different mass. Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_1/).
-
-<p align="center">
-  <img width="496" height="497" src="./images/Task5_1.png">
-</p>
-
-<!-- 5_2 -->
-* Try adding more attractors (not too many though or things get a bit out of control!). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_2/).
-
-<p align="center">
-  <img width="496" height="497" src="./images/Task5_2.png">
-</p>
-
-<!-- 5_3 -->
-* Make the attractors move around the screen (now you'll start to see 'interesting' behaviours emerging). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_3/).
-
-<p align="center">
-  <img width="497" height="499" src="./images/Task5_3.png">
-</p>
