@@ -177,7 +177,7 @@ function runGame(intervalScale){
 Nice, so we should have some pipes that turn red if we collide with them now!
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task02.png">
+  <img src="./images/Task02.png">
 </p>
 
 ### Task 3 - Creating Our State Machine
@@ -254,7 +254,7 @@ function keyPressed() {
 ```
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task03.png">
+  <img  src="./images/Task03.png">
 </p>
 
 Nice, now we're cooking...
@@ -404,13 +404,13 @@ function testLevel(){
 
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task04_01.png">
+  <img  src="./images/Task04_01.png">
 </p>
 
 And:
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task04_02.png">
+  <img  src="./images/Task04_02.png">
 </p>
 
 ### Task 5 - Increasing Difficulty Based on the Timer
