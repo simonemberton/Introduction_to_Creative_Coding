@@ -433,4 +433,5 @@ Nice one! Now you've got a fairly complex game with timing and dexterity mechani
 - Can you change the shapes being drawn?
 - Can you make the game harder by increasing the velocity at which the pipes are moving depending on the level?
 - How can you really make this game your own in terms of colour scheme and fonts etc?
+- Can you use the microphone input to control the bird's flight?
 
