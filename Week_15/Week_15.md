@@ -9,7 +9,7 @@ We're going to create a very simple minimal version of [Flappy Bird](https://fla
  - Have a health value that decreases when you hit a pipe. 
  - An interaction mechanic changes increases the level of difficulty over time.
 
-[This](http://davemeckin.panel.uwe.ac.uk/Week_15_Demo/) is what we're going to be making. 
+[This](https://davemeckin.panel.uwe.ac.uk/Week_15_Demo/) is what we're going to be making. 
 
 For this week's tutorial, we are going to work with some starter code. This is because we want to demonstrate a few particular concepts. If you would like to understand more about how all the code works, please do watch the Shiffman tutorial linked above after you've followed this worksheet. 
 
