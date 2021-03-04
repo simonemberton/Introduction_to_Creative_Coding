@@ -351,7 +351,7 @@ This is what our runGame() and testLevel() functions look like now:
 function runGame(intervalScale){
     testLevel();
 
-  for (var i = pipes.length-1; i >= 0; i--) {
+  for (let i = pipes.length-1; i >= 0; i--) {
     pipes[i].show();
     pipes[i].update();
 
