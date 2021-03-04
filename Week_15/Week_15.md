@@ -305,10 +305,11 @@ testLevel();
 #### Challenge:
 Set our timer ranges in order to select which level we are on
 
-If our health is above 0
-  Level 1 if timer is between 0 and 20
-  Level 2 if timer is greater than 20 and less than or equal to 40
-  Level 3 if timer is greater than 40 
+
+* If our health is above 0
+   - Level 1 if timer is between 0 and 20
+   - Level 2 if timer is greater than 20 and less than or equal to 40
+   - Level 3 if timer is greater than 40 
 
 <details>
 <summary>Want to see the code?</summary>
