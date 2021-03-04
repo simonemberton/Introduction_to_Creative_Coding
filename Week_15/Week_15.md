@@ -282,7 +282,7 @@ We also need to think about adding some feedback to our players, so they can kno
     text("Health: " + nf(health, 1, 2), 10, 30);
     text("Level: " + level, 200, 30);
 ```
-Let's make sure our health gets changed when we collide, so update our collision condition to reduce health by 0.1 each frame we're collisding:
+Let's make sure our health gets changed when we collide, so update our collision condition to reduce health by 0.1 each frame we're colliding:
 
 ```javascript
 if (pipes[i].hits(bird)) {
