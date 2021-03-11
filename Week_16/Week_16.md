@@ -176,7 +176,7 @@ Gravitational Attraction
 
 Add this to your project.  You might want to put it in its own separate file and then link to it in the ```index.html``` file.
 
-You'll need to create a new variable for your attractor and create an instance of this object in the `setup()` function.
+You'll need to create a new variable for your attractor and create an instance of this object in the `setup()` function.  You'll also want to call the `display()` method for this object in the `draw()` function.
 
 Now add a ```mass``` variable to your particle class. This value is used in the ```calculateAttraction()``` function inside the ```Attractor``` class.  Try changing the value assigned to the ```mass``` variable and see how it changes the force of attraction towards the central ellipse.
 
