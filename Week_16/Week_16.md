@@ -176,7 +176,12 @@ Gravitational Attraction
 
 Add this to your project.  You might want to put it in its own separate file and then link to it in the ```index.html``` file.
 
-You'll need to create a new variable for your attractor and create an instance of this object in the `setup()` function.  You'll also want to call the `display()` method for this object in the `draw()` function.
+You'll need to create a new variable (I've called mine `a1`) for your attractor and create an instance of this object in the `setup()` function.  Inside the `draw()` function we'll call the `calculateAttraction()` function to calculate the attraction between our particle and attractor objects and then use this `force` value in our `applyForce()` function like this:
+```javascript
+let force = a1.calculateAttraction(p1);
+p1.applyForce(force);
+```
+You'll also want to call the `display()` method for your attractor object in the `draw()` function.
 
 Now add a ```mass``` variable to your particle class. This value is used in the ```calculateAttraction()``` function inside the ```Attractor``` class.  Try changing the value assigned to the ```mass``` variable and see how it changes the force of attraction towards the central ellipse.
 
