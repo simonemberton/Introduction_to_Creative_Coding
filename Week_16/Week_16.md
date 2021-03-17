@@ -85,7 +85,9 @@ Your task is to convert this code so that we are working with vectors.  For exam
 this.pos = createVector( ... , ... );
 ```
 
-In the update function it's not possible to add position and velocity vectors using the addition operator ```this.pos = this.pos + this.vel;```.  You'll need to make use of p5's [add function for vectors](https://p5js.org/reference/#/p5.Vector/add).  If you're still feeling unsure about vectors and how to do maths with them in p5.js I recommend watching these two Coding Train videos on [What is a Vector?](https://www.youtube.com/watch?v=bKEaK7WNLzM&list=PLRqwX-V7Uu6ZV4yEcW3uDwOgGXKUUsPOM&index=11&ab_channel=TheCodingTrain) and [Vector Math](https://www.youtube.com/watch?v=Rob0pbE7kks&list=PLRqwX-V7Uu6ZV4yEcW3uDwOgGXKUUsPOM&index=12&ab_channel=TheCodingTrain).
+In the update function it's not possible to add position and velocity vectors using the addition operator ```this.pos = this.pos + this.vel;```.  You'll need to make use of p5's [add function for vectors](https://p5js.org/reference/#/p5.Vector/add).  
+
+If you're feeling unsure about vectors and how to do maths with them in p5.js I recommend watching these two Coding Train videos on [What is a Vector?](https://www.youtube.com/watch?v=bKEaK7WNLzM&list=PLRqwX-V7Uu6ZV4yEcW3uDwOgGXKUUsPOM&index=11&ab_channel=TheCodingTrain) and [Vector Math](https://www.youtube.com/watch?v=Rob0pbE7kks&list=PLRqwX-V7Uu6ZV4yEcW3uDwOgGXKUUsPOM&index=12&ab_channel=TheCodingTrain).
 
 Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week16/Task1/).
 
