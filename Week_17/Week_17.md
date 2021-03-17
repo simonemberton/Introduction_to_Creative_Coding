@@ -177,23 +177,25 @@ Now try the same process for adding a delay. Delay is an echo that repeats the s
 
 ### Task 4 - Event Driven Sound
 
-So let's pick up from the session where we created a [particle system with forces](../session_10/session_10.md). Make sure you start this off only making 5 particles, sound is very CPU intensive in the browser!
+So let's pick up from the session where we created a [particle system with forces](../week_16/week_16.md). 
+
+If you did not complete the task, it is definitely a good idea if you do. But for time's sake we've given you some starter code which is in the learning materials on Blackboard. Using a local server, open the index.html in your browser. Then open sketchStarter.js in your code editor of choice.
+
+Make sure you start this off only making 5 particles (numParticles = 5), sound is very CPU intensive in the browser!
+
+You should see though, that our particles just float of screen right now. So what we're going to do is constrain their movement and trigger a sound when they hit the edge of the canvas...
 
 #### Synthesis
 
-Let's declare some global variables. We need to create an array some MIDI notes; an array of strings with different waveforms that our oscillator can make; then some initial colours and a flag to check whether our mouse has been clicked.
+Let's declare some global variables. We need to create an array some note values; a flag to check whether our mouse has been clicked and some empty variables that we are going to add our audio effects to later on.
 
 ```javascript
-let scaleArray = [60, 62, 64, 67, 71, 72, 74, 77]; //array of MIDI note numbers
-let waveArray = ['sine','square','sawtooth','triangle']; //sound wave sources
-let bgColour = 0; //inital background colour
-let particleColour = 255; //inital particle colour
+let scaleArray = ['C4', 'D4', 'E4', 'G4', 'A4', 'C5', 'D5', 'F5', 'G5']; // Array of musical notes 
 let clicked = false; //flag to check whether mouse has been clicked
-
 let delay, reverb; // our effects.
 ```
 
-In our particle constructor. We're going to make an oscillator that is controlled by an envelope.
+Now, in our Particle constructor. Let's add some code so that randomly pick a note from the note array. We're going to make a MonoSynth, which is an oscillator whose amplitude is controlled by an envelope, just as we made in the previous task, but it's packaged up nicely for us. 
 
 ```javascript
 constructor(startX, startY, startMass){
@@ -202,31 +204,29 @@ constructor(startX, startY, startMass){
     this.pos = createVector(startX, startY);
     this.vel = createVector(random(0.5,2.5), random(0.5,2.5));
     this.acc = createVector(0, 0);
-    /// new stuff
-    this.osc =  new p5.Oscillator(waveArray[Math.round(random(0, waveArray.length-1))]); //make a new oscillator with a random waveform type
-    this.envelope = new p5.Envelope(); // make a new envelope
-    this.envelope.setADSR(0.001, 0.5, 0.05, 0.9); // set attackTime, decayTime, sustainLevel, releaseTime
-    this.note = Math.round(random(0, scaleArray.length)); //select a random MIDI note from our scaleArray
-    this.envelope.setRange(0.5, 0); //set volume range on the envelope
-    this.osc.amp(this.envelope); //map amplitude of envelope to the oscillator
-    this.freqValue = midiToFreq(scaleArray[this.note]); // convert our MIDI note to a frequency value for the oscillator
-    this.osc.freq(this.freqValue); //set the oscillator frequency
-    this.osc.start(); 
+    ///*** new stuff ***///
+    this.note = scaleArray[Math.round(random(0, scaleArray.length))]; //randomly pick an element from the note array
+    this.synth = new p5.MonoSynth(); // create a new MonoSynth
   }
 ```
-Then in setup we need to update what's in there:
+Then in setup we need to update what's in there so we:  
+
+- Add the line to suspend the audio context, because we will need a mousePressed gesture to start the audio afterwards.
+- Connect the MonoSynth in each particle to our reverb and delay effects.
+
 
 ```javascript
 function setup() {
   createCanvas(windowWidth, windowHeight); // create a canvas that fills the window
+  getAudioContext().suspend(); // Ensuring our audio is stopped, before being triggered on mousePress below. Stupid Chrome :)
   delay = new p5.Delay(); // make delay
   reverb = new p5.Reverb(); // make reverb
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < numParticles; i++) {
       particles[i] = new Particle(random(50,width-50),random(50,height-50),random(4,8));
 
       ////
-      delay.process(particles[i].osc, .22, .75, 2900); // hook our particle oscillator up to the delay
-      reverb.process(particles[i].osc, 10, 8); // hook our particle oscillator up to the reverb
+      delay.process(particles[i].synth, .22, .75, 2900); // hook our particle synth up to the delay
+      reverb.process(particles[i].synth, 10, 8); // hook our particle synth up to the reverb
     }
 
     for (let i = 0; i < 1; i++) {
@@ -235,16 +235,16 @@ function setup() {
 }
 ```
 
-And then, just because Google have been annoying, we need to just add a block that allows us to start the audio processing when there is some user interaction. For some reason, Google have made it so that, to access the Web Audio API you need to provide some positive interaction:
+And then, just because Google have been annoying, we need to just add a block that allows us to start the audio processing when there is some user interaction. For some reason, Google have made it so that, to access the Web Audio API you need to provide some positive interaction. So let's update our mousePressed function:
 
 ```javascript
 function mousePressed() {
-  getAudioContext().resume();
+  userStartAudio();
   }
 ```
 
 
-Finally, we just need to update our checkEdges function to trigger our envelope and make a sound when the particle hits the edge of the canvas:
+Finally, we just need to update our checkEdges function to trigger our envelope and make a sound when the particle hits the edge of the canvas (and stop them from leaving!):
 
 ```javascript
 checkEdges() {
@@ -252,21 +252,21 @@ checkEdges() {
     if (this.pos.x > (width-this.r)) {
       this.vel.x *= -1;
       this.pos.x = width-this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+      this.synth.play(this.note); // play our note on collision with the outside of the canvas
     } else if (this.pos.x < (0+this.r)) {
       this.vel.x *= -1;
       this.pos.x = 0+this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+      this.synth.play(this.note); // play our note on collision with the outside of the canvas
     }
 
     if (this.pos.y > (height-this.r)) {
       this.vel.y *= -1;
       this.pos.y = height-this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+      this.synth.play(this.note); // play our note on collision with the outside of the canvas
     } else if (this.pos.y < (0+this.r)) {
       this.vel.y *= -1;
       this.pos.y = 0+this.r;
-      this.envelope.play(this.osc, 0, 0.1);
+      this.synth.play(this.note); // play our note on collision with the outside of the canvas
     }
 
   }
@@ -276,39 +276,38 @@ checkEdges() {
 
 ### Task 5 - State Change
 
-One other thing, I want to just show you quickly how to change the state of your piece. This uses an if statement to toggle between two states. But you coud also use a switch statement to cycle between multiple states by using a counter. That is for you to figure out though! Let's add a toggle function to invert the colours of the piece:
+One other thing, I want to just show you quickly how to change the state of your piece. This uses an if statement to toggle between two states. But you coud also use a switch statement to cycle between multiple states by using a counter as did in week 15. Let's add a toggle function to invert the colours of the piece and change the waveform of the synths to create a distinct audio-visual difference:
 
 ```javascript
 function mousePressed() {
-  getAudioContext().resume();
+  userStartAudio();
    if (!clicked) {
     bgColour = 255;
     particleColour = 0;
     clicked = true;
+    for (let i = 0; i < numParticles; i++) {
+      particles[i].synth.oscillator.setType("sawtooth"); // Changing the waveform of our synth's oscillator
+    }
   } else {
     bgColour = 0;
     particleColour = 255;
     clicked = false;
+    for (let i = 0; i < numParticles; i++) {
+      particles[i].synth.oscillator.setType("sine"); // Changing the waveform of our synth's oscillator
+    }
   }
 }
 
 ```
-Now we just need to set our particle colour in the display function of the particle:
 
-```javascript
-display() {
-    stroke(particleColour);
-    strokeWeight(2);
-    noFill();
-    ellipse(this.pos.x, this.pos.y,this.mass*2,this.mass*2);
-  }
-```
 
-[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This could be submitted to fit the brief...
+[Here](http://davemeckin.panel.uwe.ac.uk/Week_18_Demo/sketch_folder/) is my version of the final piece. This fits the brief and could be submitted. But obviously we want you to make your own work!
+
+
+
+### Task 6 - Stretch Goals
 
 Stretch goal: instead of only having 2 states and toggling between them, how can you make more? HINT: use a [switch statement](https://www.w3schools.com/js/js_switch.asp)..
-
-### Task 6 - Parameter Mapping
 
 What kind of parameters from the objects in your sketch can you map to sound?
 
