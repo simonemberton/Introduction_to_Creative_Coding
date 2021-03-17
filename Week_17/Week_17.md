@@ -181,7 +181,7 @@ So let's pick up from the session where we created a [particle system with force
 
 If you did not complete the task, it is definitely a good idea if you do. But for time's sake we've given you some starter code which is in the learning materials on Blackboard. Using a local server, open the index.html in your browser. Then open sketchStarter.js in your code editor of choice.
 
-[Here](https://davemeckin.panel.uwe.ac.uk/Week_17_Demo) is my version of the final piece. This fits the brief and could be submitted. But obviously we want you to make your own work!
+[Here](https://davemeckin.panel.uwe.ac.uk/Week_17_Demo) is my version of the final piece. This fits the brief and could be submitted. But obviously we want you to make your own work! (Remember you have to click the mouse to start the audio)
 
 Make sure you start this off only making 5 particles (numParticles = 5), sound is very CPU intensive in the browser!
 
