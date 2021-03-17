@@ -35,10 +35,11 @@ function preload() {
 
 ```
 
-Now, let's make a setup function that initialises a bunch of stuff and plays our song.
+Now, let's make a setup function that initialises a bunch of stuff and plays our song. You'll see that we suspend our audioContext, this is just because some browsers require a user gesture to start audio processing.
 
 ```javascript
 function setup() {
+  getAudioContext().suspend(); // Ensuring our audio is stopped, before being triggered on mousePress below. Stupid Chrome :)
   createCanvas(480, 270);
   background(0);
   fill(255);
@@ -53,11 +54,11 @@ Try running your sketch by opening your index.html page via the localhost:YOUR P
 
 We don't actually need a draw function here.
 
-So, if you're using Chrome, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. This is frustrating but we just need to get around it by adding (beneath setup()):
+So, you may see that in the console it is coming up with a warning saying that AudioContext was not allowed to start. Some browsers have been designed to stop audio automatically playing. This is frustrating, but we just need to get around it by adding a mousePressed function (beneath setup()) that starts audio for us:
 
 ```javascript
 function mousePressed() {
-  getAudioContext().resume();
+  userStartAudio();
 }
 ```
 
@@ -65,12 +66,13 @@ function mousePressed() {
 
 #### Soundfile
 
-Let's add the ability to pause and play our song based on toggling with a mouse click.
+Let's add the ability to pause and play our song based on toggling with a mouse button press.
 
 
 ```javascript
 
-function mouseClicked() {
+function mousePressed() {
+  userStartAudio();
   if (song.isPlaying()) {
     song.stop();
   } else {
@@ -83,7 +85,9 @@ function mouseClicked() {
 
 With synthsis it's slighty different. We have to make an oscillator and make our own system of checking whether it's playing or not. So we start off with a couple of variables. The let ```playing``` is just going to go between true and false, what's that type of variable called? [HINT](https://en.wikipedia.org/wiki/Boolean_data_type).
 
-Let's make a new sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load?
+Let's make a new blank sketch, call it sketchSynth.js or something. Remember what you have to do in index.html to get this file to load? You will need to change from sketch.js to sketchSynth.js somewhere...
+
+OK, now let's create a couple of global variabls:
 
 ```javascript
 let osc;
@@ -94,18 +98,20 @@ Next in our setup function let's make our oscillator and start it with a frequen
 
 ```javascript
 function setup() {
+  getAudioContext().suspend(); // Ensuring our audio is stopped, before being triggered on mousePress below. Stupid Chrome :)
   createCanvas(200, 200);
-  osc = new p5.Oscillator();
-  osc.setType('sine');
-  osc.freq(440);
-  osc.start();
+  osc = new p5.Oscillator(); //create our oscillator
+  osc.setType('sine'); // try other waveforms such as 'sawtooth' 'square' 'triangle'
+  osc.freq(440); // set the frequency to be 440 Hz or concert pitch A
+  osc.start(); // start our oscillator making sound
 }
 ```
 
 And finally let's toggle between fading the oscillator in and out. We have to use our ```playing``` flag to check if it is playing and act accordingly.
 
 ```javascript
-function mouseClicked() {
+function mousePressed() {
+  userStartAudio();
   if (mouseX > 0 && mouseX < width && mouseY < height && mouseY > 0) { //check if we're in the canvas
     if (!playing) {// what does the ! operator mean?
       // ramp amplitude to 0.5 over 0.5 seconds
@@ -181,7 +187,7 @@ So let's pick up from the session where we created a [particle system with force
 
 If you did not complete the task, it is definitely a good idea if you do. But for time's sake we've given you some starter code which is in the learning materials on Blackboard. Using a local server, open the index.html in your browser. Then open sketchStarter.js in your code editor of choice.
 
-[Here](https://davemeckin.panel.uwe.ac.uk/Week_17_Demo) is my version of the final piece. This fits the brief and could be submitted. But obviously we want you to make your own work! (Remember you have to click the mouse to start the audio)
+[Here](https://davemeckin.panel.uwe.ac.uk/Week_17_Demo) is my version of the final piece. This fits the brief and could be submitted. But obviously we want you to make your own work! (Remember you have to click the mouse to start the audio).
 
 Make sure you start this off only making 5 particles (numParticles = 5), sound is very CPU intensive in the browser!
 
@@ -197,7 +203,7 @@ let clicked = false; //flag to check whether mouse has been clicked
 let delay, reverb; // our effects.
 ```
 
-Now, in our Particle constructor. Let's add some code so that randomly pick a note from the note array. We're going to make a MonoSynth, which is an oscillator whose amplitude is controlled by an envelope, just as we made in the previous task, but it's packaged up nicely for us. 
+Now, in our Particle constructor. Let's add some code so that randomly pick a note from the note array. We're going to make a MonoSynth, which is an oscillator whose amplitude is controlled by an envelope, and it's packaged up nicely for us in a single object. 
 
 ```javascript
 constructor(startX, startY, startMass){
