@@ -6,7 +6,10 @@
 
 - You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
 
-- Then, make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path. Once you have made a blank sketch in the Documents folder, then continue to the next point:
+
+- Make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path and keeping within your ITCC folder structure. Once you have made a blank sketch in your "Week 17 folder", carry on to the next point:
+
+- If you are happy with the Chrome Extension, just use that and move on to Task 1. Otherwise, if you are on Mac we have some instructions below for using the Mac terminal. If you are on Windows please follow the tutorial on the link above...
 
 - OK, now open the terminal application by hitting cmd+spacebar to open spotlight, then type "terminal" and hit enter.
 
@@ -183,7 +186,7 @@ Now try the same process for adding a delay. Delay is an echo that repeats the s
 
 ### Task 4 - Event Driven Sound
 
-So let's pick up from the session where we created a [particle system with forces](../week_16/week_16.md). 
+So let's pick up from the session where we created a particle system with forces. 
 
 If you did not complete the task, it is definitely a good idea if you do. But for time's sake we've given you some starter code which is in the learning materials on Blackboard. Using a local server, open the index.html in your browser. Then open sketchStarter.js in your code editor of choice.
 
