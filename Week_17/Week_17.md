@@ -25,6 +25,8 @@
 
 ### Task 1 - Soundfile
 
+***Make sure the link to the p5.sound library is uncommented in your index.html***
+
 OK, first things first, let's load a sound file and play it. Make a new blank sketch with required folder structure - how many times have you done this now?! Muscle memory should hopefully be kicking in...
 
 Let's define a variable called ```song``` and a function to preload a .mp3 file. You can find loads of sounds at www.freesound.org. Make sure you save it to the same folder as your sketch.
