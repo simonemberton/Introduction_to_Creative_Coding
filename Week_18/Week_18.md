@@ -124,7 +124,7 @@ We'll also need to make some changes in our ```sketch.js``` file.  Create a new 
 
 In the ```draw()``` function create another for loop which iterates through each of the objects in our ```shapes``` array and calls each of the class methods e.g. ```update()```, ```display()``` and ```checkEdges()```.  You'll also need to move the code that we just previously wrote for drawing and colouring a box to the ```display()``` method.
 
-Finally, add the sound effects that we used a few weeks ago in Task 4 of the sound [workshop](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/Week_15/Week_15.md) so that each time an object hits an edge a sound is made.
+Finally, add the sound effects that you used last week in Task 4 of the sound [workshop](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/Week_17/Week_17.md) so that each time an object hits an edge a sound is made.
 
 The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/):
 
