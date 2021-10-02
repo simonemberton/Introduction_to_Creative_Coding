@@ -1,445 +1,338 @@
 # Week 06
 
-## Object Orientation in JavaScript
+## More on Scope; Fun with Arrays...
 
 
+### Task 1 - Let it be
 
-<p align="center">
-  <img width="500" height="400" src="./images/classes.png">
-</p>
+This is a very quick task to further test out how ```let``` and ```var``` work in their different ways...
+
+Create a blank sketch, what needs to be included? Is your new folder in the right place?
+
+Work through the examples given in the lecture regarding ```let``` and ```var```. 
+
+Do [some more reading](https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var-to-declare-a-variable) on this if you're still a bit unclear. The first answer on the stack overflow forum is very helpful.
+
+```javascript
+function setup() {
+    console.log(x);
+    //define x here...
+
+    console.log(x);
+}
+```
+Try defining x as a ```let``` or a ```var```. 
+
+What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block by trying to console.log() it?
 
 
-### Task 1 - Starting Point Sketch
+### Task 2 - Array Methods
+
+Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".
+
+Create an empty sketch, you can reuse the one from the above task if you want.
+
+Declare an empty array that can be accessed globally within the sketch, where does this need to go?
+
+```javascript
+let myArr = [];
+```
 
 
-Create a blank sketch with a canvas 1200px wide and 800px high.
+Now, in the ```setup()``` function, create a canvas that is 1024px wide and 400px high.
 
 Set the background to white.
 
-*Below* the ```draw``` function, create two new functions, one called ```move()``` and one called ```display()```.
+Make it so that the sketch only executes the ```draw()``` function once. (What function do we need to do that?)
 
-What we're going to build first, is one rectangle in the centre of the screen. Seems simple enough but we're also going to add some bits that we'll use later.
+Fill the array values from zero to 255, all of the following has to happen in the ```setup()``` function:
 
-First of all, we need to define a bunch of variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
-
-```javascript
-let x,y,size;
-```
-
-Then directly below, we're going to declare some variables for later on once we get our rectangle moving:
-
-```javascript 
-let xSpeed,ySpeed,xDir,yDir;
-```
-These will relate to the speed of the object as it moves and whether it is travelling in a positive direction (to the right on the x axis and down on the y) or in a negative direction (to the left on the x axis and up on the y).
-
-In ```setup()```, we're going to initialise our variables. First, we'll do the position and size:
-
-```javascript 
-x = width/2; //middle
-y = height/2; //centre
-size = 10;
-```
-
-Now, we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our 
-
-```javascript 
-xSpeed = random(0.3,5);
-ySpeed = random(0.3,5);
-xDir = 1;
-yDir = 1;
-```
-OK it would be good to actually see something now. In the ```display()``` function you created earlier, let's make it draw our rectangle:
+Do you remember the structure?
 
 ```javascript
-stroke(10);
-rectMode(CENTER);
-fill(0);
-rect(x, y,size,size);
-```
-OK, now call ```display()``` from ```draw()``` and you should see you shape in the middle of the screen when you refresh the page.
-
-
-### Task 2 - Moving
-
-OK, here goes the animation part. There will be logic and there will be maths, please shout someone if you want clarification.
-
-So first of all we want to move our shape. In order to do this, we need to change the x and y positions of the shape every time a new frame happens. So we're going to call the ```move()``` function from the ```draw()``` function. Make sure you add this *before* the call to ```display()```.
-
-Now, in ```move()```, we're going to add some simple maths to add to our shape's x and y positions every time it is called (don't copy):
-
-```javascript
-x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir (positive 1 or negative 1)
-y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir (positive 1 or negative 1)
-```
-Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to been seen again!
-
-OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for OR in computer programming is ```||```.
-
-So let's write two if statements first:
-
-```javascript
-if(x > (width-size) || x < size){ // if x is greater than the width (minus size) OR if x is less than size
-
+for (init; test; update) {
+    statements
 }
+```
+We already have our empty array, do you remember what in built array function we need to use to add elements to it? [HINT](https://www.youtube.com/watch?v=vCadcBR95oU) (sorrynotsorry)
 
-if(y > (height-size) || y < size){ // if y is greater than the height (minus size) OR if y is less than size
+So, here we're going to fill an array using a for loop. We're going to use our new ```let``` declaration as we only need ```i``` whilst we're in the loop. Here is how we fill an array from 0 to 255, please do NOT copy this code:
+
+```javascript
+for (let i = 0; i < 256; i++) { // why 256?
+        myArr.push(i); 
+    }
+```
+
+In ```setup()```, try printing ```myArr``` to the console using:
+
+```javascript
+console.log(myArr);
+```
+
+Now, how do you open the console?
+
+OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos. Let's initialise it to the value of 0.
+
+We also need to stop p5 from drawing the edges round our rectangles, so we'll turn stroke off:
+
+```javascript
+function draw() {
+    noStroke();
 
 }
 ```
 
-What we're doing here is setting up conditional statements that are constantly testing whether our shape's position is hitting the boundaries of our canvas. Now we need to put in some code that changes the direction of travel inside our if statements. If we want to change direction, we need to change our xDir and yDir variables from a negative to a positive, or vice versa. That way, if our shape is travelling right (positive) and reaches the right hand edge of the screen, we can change xDir to -1 so that means xSpeed * xDir will be a negative value and our shape will start travelling left. The same goes for the y value...
+Still in the draw function, we now need to *iterate* through ```myArr``` and change the fill based on that. Why is the syntax ```myArr[i]```? What is ```i``` and how does it relate to ```myArr``` in this instance? 
 
 ```javascript
-if(x > (width-size) || x < size){
-            xDir = xDir * -1; // flip between positive 1 and negative 1
-            
-}
 
-if(y > (height-size) || y < size){
-            yDir = yDir * -1; // flip between positive 1 and negative 1
+    for (let i = 0; i < myArr.length; i++) {
+        fill(myArr[i]);
+    }
+
+```
+
+We still haven't drawn anything yet though, right?! So, finally we need to add two more lines in our for loop. One to draw the rectangle (what is going on with the third argument?) and one to increase our xPos each time the loop is repeated (can you see what's going on here?):
+
+```javascript
+
+    for (let i = 0; i < myArr.length; i++) {
+        fill(myArr[i]);
+        rect(xPos,0,width/256,height);
+        xPos = xPos+(width/256);
+    }
+
+```
+
+How smooth is that gradient? What happens if you change the value 256 (on both lines) to a value greater or lesser than 256?
+
+What happens if you change fill to be:
+
+```javascript
+fill(myArr[i],0, 120);
+```
+
+Try changing the values. Fill is now in Red-Blue-Green (RGB) mode.
+
+![gradient](./images/task2.png "GradientImage")
+
+Now we can try using one of the in built methods, in ```setup()```, beneath where you pushed all the values to the array, write the following line:
+
+```javascript
+myArr.reverse();
+```
+Can you guess what that's going to do?! This is a function that belongs to all Arrays. It is accessed by using the DOT Operator (a full stop). How are we supposed to know all the names of the functions that arrays can do to their data? Well, we can check on the [interplex.](https://www.w3schools.com/js/js_array_methods.asp) 
+
+There's another one called ```sort()```, what do you reckon that one will do?
+
+What happens if we want to randomise the array though? It doesn't seem as though there is such a function in built in JavaScript.
+
+Thankfully, p5.js does in fact have its own function, it's called ```shuffle()```. 
+
+
+```javascript
+
+myArr = shuffle(myArr);
+
+```
+
+See what happens?
+
+#### Super Extra Bonus Round - Shuffling the Array
+
+
+So, what about writing our own randomisation algorithm? When I say "our own", I really mean let's find out how someone cleverer than me did it by searching on the internet. The [Fisher-Yates Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm) is not in fact a 1930s dance craze, but an algorithm for randomisation. And it goes a little something like this (below your draw function):
+
+
+```javascript
+function shuffler(array) {
+    
+    for (let i = array.length - 1; i > 0; i--) { // iterating backwards?!
+        let j = Math.floor(Math.random() * (i + 1)); // Rounding down to the nearest integer, pick a random number and multiply it by i + 1, assign it to j
+        let temp = array[i]; // declare a temporary variable called temp and assign it to the value of our old array element
+        array[i] = array[j]; // the following two lines swap the new random element with the old one
+        array[j] = temp; // we made a temporary copy the old array element, which we can now assign to index where we just moved our new one from
+    }
+
+    return array;
 }
 ```
-So your if statements in your ```move()``` function should now look like the above. And your whole ```move()``` function should look like below:
+Now, underneath where you filled your array in ```setup()```, add this line"
 
 ```javascript
-function move() {
+
+myArr = shuffler(myArr);
+
+```
+
+This is actually almost exactly the same way that p5 does it, but it's interesting to know what's going on under the hood.
+
+### Task 3 - PacPerson
+
+The following is an example from the p5.js book. Give it a go (DO NOT COPY AND PASTE) and try changing some of the values, particularly x[i] and y in the draw() function for loop.
+
+```javascript
+
+let x = [];
+
+function setup() {
+    createCanvas(800,600);
+    noStroke();
+    fill(255,200);
+    for(let i = 0; i < 300; i++) {
+        x[i] = random(-1000,200); // different way of adding elements to an array
+    }
+}
+
+function draw() {
+    background(0);
+    for(let i = 0; i < 300; i++) {
+        x[i] += 0.5;
+        let y = i * 0.4;
+        arc(x[i],y,12,12,0.52,5.76);
+    }
+}
+
+```
+![pacperson](./images/task3.png "PacPerson")
+
+### Task 4 - Stringalingaling
+
+This task is designed to demonstrate that Strings can be chopped up into arrays... 
+
+New blank sketch with ```setup()``` and ```draw()``` functions.
+
+Create a canvas of size 800px by 200px.
+
+Set our frame rate to 2 frames per second:
+
+```javascript
+ frameRate(2);
+```
+
+Set the background to white in ```setup()```.
+
+Declare a set of global variables (at the top of your sketch) as follows:
+
+```javascript
+
+let myArr = [];
+let mySentence = "I like/love creative coding, so far";
+let chopper;
+let likeLove;
+
+```
+
+OK, now let's just check my sentence is working by drawing it in the draw function. Use the text function and set it be at 50px across and 100px down.
+
+So, what we're going to do now is chop up our sentence into an array using an in built String function.
+
+In ```setup()``` below where youve created the canvas, set the frame rate and background colour, write the following line:
+
+```javascript
+chopper = mySentence.split(" ");
+```
+
+This splits the String mySentence up at every point there is a space. The variable chopper is now an array. Trying printing it to the console in ```setup``` using:
+
+```javascript
+console.log(chopper);
+```
+
+Now let's try reversing the sentence!
+
+```javascript
+    chopper = chopper.reverse();
+    chopper = chopper.join(" ");
+```
+
+Here, we're reversing the array like we did before. Then sticking it back together as a whole sentence into a String.
+
+Try changing the variable in the text function in ```draw()``` to chopper...
+
+What about shuffling the sentence?
+
+```javascript
+chopper = shuffle(chopper);
+```
+Make sure you comment out the following line:
+
+```javascript
+    //chopper = chopper.reverse();
+```
+
+OK, now we're going to have a play with chucking the words of our sentence all over the screen. In your ```draw()``` function, add the following:
+
+```javascript
+background(255);
+ for (let i = 0; i < chopper.length; i++) {
         
-        x = x + (xSpeed * xDir);
-        y = y + (ySpeed * yDir);
-
-        if(x > (width-size) || x < size){
-            xDir = xDir * -1;
-            
+        text(chopper[i],xPos,random(10,height));
+        xPos = xPos+(width/1000);
+        if(xPos > width) {
+            xPos = 0;
         }
-
-        if(y > (height-size) || y < size){
-            yDir = yDir * -1;
-        }
-}
-```
-Save and refresh, how's it looking?! Can you see a shape moving around the screen? Ask for assistance if not...
-
-
-### Task 3 - VFX
-
-So it's mildly visually uninteresting right now. Let's just add a little bit of a vapour trail to the movement to show direction of travel. In order to do this, we're going to put an overlay fade on the whole canvas.
-
-There are loads of ways to do this, but our way is by drawing a slightly transparent rectangle over everything else.
-
-At the very top of your ```draw()``` function, add the following code:
-
-```javascript
-noStroke(); // no outline
-rectMode(CORNER); // draw from top left corner
-fill( 255, 255, 255, 80); //white 80 on the alpha channel
-rect(0, 0, width, height); // draw a rectangle over the whole canvas
+    }
 ```
 
-Try changing the alpha value to something lower than 80. Now try something higher... See what's happening?
-
-
-### Task 4 - Object Orientation-ifying...
-
-So this is kind of cool and all, but what if we wanted 20 rectangles all moving at different speeds in different directions? Or 200? or 2000? And what if we want some to be rectangles, some to be circles? With different colours or something? I personally can't be bothered to write all that out 2000 times. And imagine trying to find any errors or updating your code if you did do that?!
-
-This is where our Object Oriented approach comes into it's own. Instead of writing out the same code over and over in order to get individual variables of x,y speed etc etc, we can *encapsulate* all the stuff we need into one nice package: let's call it a MovingShape.
-
-Now, in order for us to that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or outline of the object that we are going to make.
-
-
-First of all, let's define our MovingShape class. At the bottom of your sketch, add the following:
+What happens if you keep the following line in or take it out?
 
 ```javascript
-class MovingShape {
-
-}
+    chopper = chopper.join(" ");
 ```
 
-Now, if you remember, every class needs a ```constructor``` method. This gets called every time we make a new version of MovingShape using the keyword ```new```. More on that later, but for now let's put an empty constructor in:
+Can you see what's going on now?
+
+Lastly, we're going to try manipulating our string based on whether we like or love creative coding(!). Comment out the line in ```setup()``` where we call the shuffle function on chopper.
+
+Now, below the line where we split mySentence and assign it to chopper, add the following two lines:
+
 
 ```javascript
-class MovingShape {
-    
-    constructor(){
+likeLove = chopper[1].split("/");
+chopper[1] = likeLove[1];
+```
 
+Can you see what's happening here? What do you need to change the sentence to "like" instead of "love"?
+
+![chopper](./images/task4.png "Chopper")
+
+### Task 5 - Iterating backwards
+
+This next code snippet is also another example from the book. Give it a shot - by typing it out, not copying and pasting - and comment the code (using //) on each line to explain what is happening...
+
+```javascript
+
+let num = 120;
+
+let x = [];
+let y = [];
+
+function setup() {
+    createCanvas(800,600);
+    noStroke();
+    fill(255,200);
+    for(let i = 0; i < 300; i++) {
+        x[i] = 0;
+        y[i] = 0;
     }
 }
-```
 
-Let's also define our ```move()``` and ```display()``` functions in our class definition:
-
-```javascript
-class MovingShape {
-    
-    constructor(){
-
+function draw() {
+    background(0);
+    for(let i = num-1; i > 0; i--) {
+        x[i] = x[i-1];
+        y[i] = y[i-1];
     }
 
-    move(){
+    x[0] = mouseX;
+    y[0] = mouseY;
 
-    }
-
-    display() {
-
+    for(let i = 0; i < num; i++) {
+        fill(i * 0.94);
+        ellipse(x[i],y[i],30,30);
     }
 }
 ```
-See what we mean about creating a blueprint? What's going to happen is that when we create a new *instance* of the class MovingShape, it will have its own move and display methods that only relate to it.
-
-OK, here's the mildly mind mangly bit: we now have methods that only relate to the instance of the class, but we need to make sure that all our variables also only relate to that instance. As you know, at first we defined all our variables in global scope at the top of the sketch. But now we need to change that. And that is where the ```this``` keyword comes in. Using the ```this``` keyword allows us to create variables that only belong to the object instance. So now, ```this.x``` will relate only to a single instance of our MovingShape object. From your ```setup()``` function, paste in your initialised variables into your MovingShape constructor method. Then add ```this.``` to the beginning of all the variable names. Remember the DOT operator means that we're accessing a property belonging to ```this```. And ```this``` is the object instance:
-
-
-```javascript
-class MovingShape {
-    
-    constructor(){
-        this.x = width/2;
-        this.y = height/2;
-        this.size = 10;
-        this.xSpeed = random(0.3,5);
-        this.ySpeed = random(0.3,5);
-        this.xDir = 1;
-        this.yDir = 1;
-    }
-
-    move(){
-
-    }
-
-    display() {
-
-    }
-}
-```
-OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names. We're also going to divide size by two now so look out for this change:
-
-
-```javascript
-move() {
-        
-        this.x = this.x + (this.xSpeed * this.xDir);
-        this.y = this.y + (this.ySpeed * this.yDir);
-
-        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
-            this.xDir = this.xDir * -1;
-            
-        }
-
-        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
-            this.yDir = this.yDir * -1;
-        }
-
-    }
-
-    display() {
-        stroke(10);
-        rectMode(CENTER);
-        fill(0);
-        rect(this.x, this.y,this.size,this.size)
-    }
-```
-
-So, your MovingShape class should look a little something like this now:
-
-```javascript
-class MovingShape {
-    
-    constructor(){
-        this.x = width/2;
-        this.y = height/2;
-        this.size = 10;
-        this.xSpeed = random(0.3,5);
-        this.ySpeed = random(0.3,5);
-        this.xDir = 1;
-        this.yDir = 1;
-    }
-
-    move() {
-        
-        this.x = this.x + (this.xSpeed * this.xDir);
-        this.y = this.y + (this.ySpeed * this.yDir);
-
-        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
-            this.xDir = this.xDir * -1;
-            
-        }
-
-        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
-            this.yDir = this.yDir * -1;
-        }
-
-    }
-
-    display() {
-        stroke(10);
-        rectMode(CENTER);
-        fill(0);
-        rect(this.x, this.y,this.size,this.size)
-    }
-
-}
-```
-
-Alright, so final part of this section, let's make an object, or two!
-
-In order to do that, we need to make a variable. Near the top of the sketch, in global scope, define a variable called shapey1:
-
-```javascript
-let shapey1;
-```
-
-In ```setup()```, let's assign an instance of our MovingShape object (the class that we have defined) by using the ```new``` keyword:
-
-```javascript
-shapey1 = new MovingShape();
-```
-
-OK now in ```draw()```, beneath our transparent rectangle code, let's move and display shapey1:
-
-```javascript
-    shapey1.move();
-    shapey1.display();
-```
-
-So we're using the DOT operator to call the methods ```move()``` and ```display()``` that only relate to shapey1.
-
-OK, now it's your turn, define shapey2 and assign a new object instance to it. Then add the correct lines for moving and displaying shapey2...
-
-What happens if we want more shapes though?
-
-
-
-<p align="center">
-  <img width="500" height="400" src="./images/capture1.JPG">
-</p>
-
-
-### Task 5 - An Array of Objects
-
-So we've *encapsulated* our code, and we've created a couple of instances that have their own related properties which allow them to move indepently of each other. Let's make 200 of them then! 
-
-Remember how we were filling arrays last time? We can do exactly the same thing here. So while we had an initial bit of pain writing our class, we can now reuse that class over and over without having to write loads more code.
-
-Let's define a global array. At the top of the sketch:
-
-```javascript
-let shapeArr = [];
-```
-
-Then in ```setup()```, let's add our objects:
-
-```javascript
-for(let i = 0; i < 200; i++) {
-        shapeArr.push(new MovingShape());  // add a new MovingShape to our array each loop     
-}
-```
-Now in ```draw()``` let's iterate through the array to move and display all of the objects inside the array on every frame:
-
-```javascript
-for(let i = 0; i < 200; i++) {
-        shapeArr[i].move();
-        shapeArr[i].display();
-}
-```
-
-Whoa.
-
-
-<p align="center">
-  <img width="500" height="400" src="./images/Capture.JPG">
-</p>
-
-### Task 6 - Passing Arguments to the Constructor
-
-So we're cooking on gas now, but we can see that all our objects start from the same position. It would be cool if they all started from different positions. And also if they had different sizes.
-
-Let's go ahead and update our constructor method so that we can pass variables into it when the object is created:
-
-```javascript
-class MovingShape {
-    
-    constructor(startX, startY, startSize){
-        this.x = startX;
-        this.y = startY;
-        this.size = startSize;
-
-        //etc etc
-    }
-
-    //etc etc
-}
-```
-Now we need to update our ```setup()``` function so that the initialisation for loop passes random positions and sizes
-
-```javascript
-for(let i = 0; i < 200; i++) {
-        shapeArr.push(new MovingShape(random(0,width),random(0,height),random(1,40)));  // add a new MovingShape to our array each loop at random pos and with random size   
-}
-```
-
-
-<p align="center">
-  <img width="500" height="400" src="./images/capture3.JPG">
-</p>
-
-
-### Task 7 - The Inheritors
-
-Finally, to demonstrate the concept of *inheritence*, let's make a new class beneath our MovingShape class. We're going to use the ```extends``` keyword when defining a new class of MovingCircle. This time we're going to define the colour in the constructor:
-
-```javascript
-class MovingCircle extends MovingShape {
-    
-    constructor(startX, startY, startSize, colour){
-     
-    }
-
-    move() {
-     
-    
-    }
-
-    display() {
-    
-    }
-
-}
-```
-Now, we don't actually need to write out all the same code again. Because MovingCircle inherits properties and methods from MovingShape, all we need to do is use the ```super``` keyword to access the parent methods. We're also adding a variable called ```this.colour``` and overriding our ```display()``` method to draw a circle instead of a rectangle:
-
-```javascript
-class MovingCircle extends MovingShape {
-    
-    constructor(startX, startY, startSize, colour){
-        super(startX,startY,startSize);
-        this.colour = colour;
-    }
-
-    move() {
-        super.move();
-    
-    }
-
-    display() {
-        noStroke();
-        fill(this.colour);
-        ellipse(this.x, this.y,this.size,this.size);
-    }
-
-}
-```
-
-So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
-
-<p align="center">
-  <img width="500" height="400" src="./images/capture4.JPG">
-</p>
-
-When you get here, come and find me for a digital high five.
-
-Now let's play:
-
-Can you add a way of making a random colour for every object?
-
-Can you add some different shapes?
+![trails](./images/task5.png "trails")
