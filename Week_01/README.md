@@ -16,7 +16,9 @@ OK it's all well and good being able to edit
 
 - Now go over to [p5 download page](https://p5js.org/download/) and navigate to the download button. Then download the .zip file:
 
-![Download](./images/download.gif "Download")
+<img src="./images/download.gif" alt="Download" width="200"/>
+
+
 
 - Unzip the p5 folder (double click on Mac or right click and select 'Extract All' on Windows)
 - Put the unzipped folder in a folder with the path ~/Documents/UWE/Year1/ICC/Week1
