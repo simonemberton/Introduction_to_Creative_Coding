@@ -44,5 +44,5 @@ OK it's all well and good being able to edit
 
 </p>
 
-
+Woohoo! Now you've made your first piece of creative code! Show one of the module tutors that you're done and you're free to go :)
 
