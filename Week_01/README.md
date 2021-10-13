@@ -4,13 +4,13 @@
 
 
 ### Task 1 - Getting Started
-<font size="6">
-- Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor
-</font>
+
+- Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor under the heading "Your First Sketch"
+
 
 ### Task 2 - Going Pro
 
-<font size="6">
+
 
 OK it's all well and good being able to edit
 
@@ -41,6 +41,6 @@ OK it's all well and good being able to edit
 <img src="./images/final_local.gif" alt="Final_Local" width="50%"/>
 
 
-</font>
+
 
 
