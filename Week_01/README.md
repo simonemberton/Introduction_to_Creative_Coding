@@ -16,7 +16,7 @@ OK it's all well and good being able to edit
 
 - Now go over to [p5 download page](https://p5js.org/download/) and navigate to the download button. Then download the .zip file:
 
-<img src="./images/download.gif" alt="Download" width="200"/>
+<img src="./images/download.gif" alt="Download" width="50%"/>
 
 
 
@@ -26,17 +26,21 @@ OK it's all well and good being able to edit
 - Create a new window in VS Code by going to file->new window
 - Drag the entire p5 folder onto the VS Code window:
 
+<img src="./images/drag.gif" alt="Drag" width="50%"/>
 
-![Drag](./images/drag.gif "Drag")
 
 - Now just take a look inside the 'empty-example' folder in VS code: we can see our blank sketch in sketch.js. 
 - Let's just open the index.html page in our browser too!
 
-![Navigate_and_Open](./images/navigate_and_open.gif "Navigate_and_Open")
+<img src="./images/navigate_and_open.gif" alt="Navigate_and_Open" width="50%"/>
+
+
 
 - OK, now simply follow the same instructions as on the Get Started page to re-create your sketch on your local machine:
 
-![Final_Local](./images/final_local.gif "Final_Local")
+<img src="./images/final_local.gif" alt="Final_Local" width="50%"/>
+
+
 </font>
 
 
