@@ -2,14 +2,20 @@
 
 ## Limbering Up
 
+The aim of this first workshop is just to ease ourselves into the tools and processes we'll be using throughout the module.
+
+First, we're just going to try using p5's online editor. Then we're going to get serious straight away with the professional level code editor VS code.
+
+We'll essentially be doing the same thing twice: making an interactive piece of creative code with the online editor, then making it again using "proper" separate html and javascript files!
 
 ### Task 1 - Getting Started
 
-- Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor under the heading "Your First Sketch"
+- Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor under the heading "Your First Sketch". 
+
+It's a good idea to right click (ctrl-click on Mac) link for the p5.js web editor and open that in a new window or tab. Then you can follow the instructions in one tab and add your code in the other one...
 
 
 ### Task 2 - Going Pro
-
 
 
 OK it's all well and good being able to edit
@@ -37,7 +43,9 @@ OK it's all well and good being able to edit
 </p>
 
 
-- OK, now simply follow the same instructions as on the [Get Started](https://p5js.org/get-started/) page to re-create your sketch on your local machine:
+- OK, now simply follow the same instructions as on the [Get Started](https://p5js.org/get-started/) page to re-create your sketch on your local machine
+
+- Each time you edit sketch.js in VS code, make sure you save it, then hit the refresh button in your web browser to see the results:
 
 <p align="center">
 <img src="./images/final_local.gif" alt="Final_Local" width="50%"/>
