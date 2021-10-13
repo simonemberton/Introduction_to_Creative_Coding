@@ -54,5 +54,5 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 
 Woohoo! Now you've made your first piece of creative code! Show one of the module tutors that you're done and you're free to go :)
 
-***Now, make sure you copy your entire Week1 folder into your Onedrive (or where ever you're keeping your work). You will need to get used to doing this every week!
+### Now, make sure you copy your entire Week1 folder into your Onedrive (or where ever you're keeping your work). You will need to get used to doing this every week!
 
