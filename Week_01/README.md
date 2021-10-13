@@ -18,7 +18,7 @@ It's a good idea to right click (ctrl-click on Mac) link for the p5.js web edito
 ### Task 2 - Going Pro
 
 
-OK it's all well and good being able to edit
+OK it's all well and good being able to edit code in the editor. But this is a BSc degree and we want to use the tools of the trade. We're going to be using the VS Code editor. So if you're working on your own machine, download and install it from [here](https://code.visualstudio.com/).
 
 - Now go over to [p5 download page](https://p5js.org/download/) and navigate to the download button. Then download the .zip file:
 <p align="center">
