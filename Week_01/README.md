@@ -4,11 +4,13 @@
 
 
 ### Task 1 - Getting Started
-
+<font size="6">
 - Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor
-
+</font>
 
 ### Task 2 - Going Pro
+
+<font size="6">
 
 OK it's all well and good being able to edit
 
@@ -33,6 +35,6 @@ OK it's all well and good being able to edit
 - OK, now simply follow the same instructions as on the Get Started page to re-create your sketch on your local machine:
 
 ![Final_Local](./images/final_local.gif "Final_Local")
-
+</font>
 
 
