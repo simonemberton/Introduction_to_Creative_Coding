@@ -27,7 +27,7 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 
 
 - Unzip the p5 folder (double click on Mac or right click and select 'Extract All' on Windows)
-- Put the unzipped folder in a folder with the path ~/Documents/UWE/Year1/ICC/Week1
+- Put the unzipped folder in a folder with the path /y-username/UWE_2021_2022/Year1/ICC/Week1
 - Open the application VS Code
 - Create a new window in VS Code by going to file->new window
 - Drag the entire p5 folder onto the VS Code window:
