@@ -79,7 +79,7 @@ function herringBone(xVal, yVal, unit) {
 
 Don't forget to call the function inside the for loop!
 
-* Try making at least three more functions each with a different pattern.  If you're looking for inspiration for one of your patterns you could code along with [THIS](https://www.youtube.com/watch?v=bEyTZ5ZZxZs) coding challenge by Daniel Shiffman of the Coding Train.
+* Try making at least three more functions each with a different pattern.  You could look at some of these [artworks](https://musingswithcode.studio/generative-design-workshop/) implmented in p5.js for some inspiration.
 
 * Try creating a new variable that increases/decreases on each frame which can also used as input to your function (e.g. to change the scale).
 
