@@ -9,7 +9,14 @@ Okay setup a new project as you've been shown previously and if you use the empt
 
 Next in the ```draw()``` function we're just drawing an ellipse.  Can you fill in the values inside the ellipse so that it is drawn at the mouse's location on the screen?
 
+
+<details>
+<summary>Want to see a hint?</summary>
+
+<p>
 [HINT](https://p5js.org/reference/#/p5/mouseX)
+</p>
+</details>  
 
 The end result of this task should look something like this:
 <p align="center">
