@@ -37,6 +37,11 @@ for (initialise; test; update) {
 }
 ```
 
+<details>
+<summary>Want to see a hint?</summary>
+https://p5js.org/reference/#/p5/for
+</details>  
+
 ### Task 2 - Repetition, Repetition
 
 Now try and write a nested for loop so that ellipses are drawn across the whole of the canvas.
