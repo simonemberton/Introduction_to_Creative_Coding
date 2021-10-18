@@ -34,7 +34,7 @@ function draw() {
 
 Here we're moving an ellipse across the canvas horizontally.  If you look at the console you can see the x location for each frame.  
 <p align="center">
-<img src="./images/Task_01.gif" alt="Download" width="100%"/>
+<img src="./images/Task_01.gif" alt="Download" width="75%"/>
 </p>
 
 Comment out the ```console.log()``` function and we'll try writing some commands directly into the console.  Notice if you just write ```x``` and click return you get the value of ```x``` in real time.  You can also change the value of the variable, try writing ```x = 50;``` and see how it jumps to that location.  You can stop the draw function all together with the ```noLoop()``` function and start it again with the ```loop()``` function.
@@ -100,7 +100,7 @@ If you try running this code you'll see that it was written in a hurry and is li
 
 When finished you should be able to create a new object each time you press the mouse like this:
 <p align="center">
-<img src="./images/Task_02.gif" alt="Download" width="100%"/>
+<img src="./images/Task_02.gif" alt="Download" width="75%"/>
 </p>
 
 ### Task 3 - Problem solving challenge
