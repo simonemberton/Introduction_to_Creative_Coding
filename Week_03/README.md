@@ -2,13 +2,11 @@
 
 ## Basic Interactivity
 
-
 ### Task 1 - Drawing with the mouse
 
 Okay setup a new project as you've been shown previously and if you use the empty example you should already have the `setup()` and `draw()` functions.  We're now going to recreate the first drawing sketch that you saw in the lecture so in the ```setup()``` function as well as our ```createCanvas()``` function we've got [```fill()```](https://p5js.org/reference/#/p5/fill) and [```noStroke()```](https://p5js.org/reference/#/p5/noStroke).  Check out the links to the reference pages if you're not sure what these do.  
 
 Next in the ```draw()``` function we're just drawing an ellipse.  Can you fill in the values inside the ellipse so that it is drawn at the mouse's location on the screen?
-
 
 <details>
 <summary>Want to see a hint?</summary>
@@ -43,7 +41,10 @@ Notice how we now need to specify [```strokeWeight()```](https://p5js.org/refere
 
 If you look at `line()`'s reference [page](https://p5js.org/reference/#/p5/line) you'll notice it takes four location values.  Can you remember a way to input the location of the mouse on the previous frame?
 
-[HINT](https://p5js.org/reference/#/p5/pmouseX)
+<details>
+<summary>Want to see a hint?</summary>
+https://p5js.org/reference/#/p5/pmouseX
+</details>
 
 The end result of this task should look something like this:
 <p align="center">
@@ -129,7 +130,10 @@ We're changing the colour of the line depending on whether the mouse is pressed.
 
 * Using ```if``` or ```if else``` statements make different things happen on screen when you press specific keys.
 
-[HINT](https://p5js.org/reference/#/p5/keyTyped)
+<details>
+<summary>Want to see a hint?</summary>
+https://p5js.org/reference/#/p5/keyTyped
+</details>
 
 The end result of this task should look something like this:
 <p align="center">
@@ -165,19 +169,3 @@ The end result of this task should look something like this:
 * Write your own function that is called inside the `draw()` function.  Make the input to your function different depending on whether a mouse or key is pressed.
 
 If you're looking for some help or inspiration for this task watch [THIS](https://www.youtube.com/watch?v=zkc417YapfE&list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA) Daniel Shiffman tutorial. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
