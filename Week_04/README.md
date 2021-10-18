@@ -9,16 +9,16 @@ Here is the code for the while loop we saw in the lecture
 
 ```javascript
 function setup() {
-  createCanvas(500, 500);
-  background(0);
-  fill(0, 0, 255);
+	createCanvas(500, 500);
+  	background(0);
+  	fill(0, 0, 255);
 }
 
 function draw() {
-let x = 25;
-while (x < width){
-	ellipse(x,25,50,50);
-	x = x+50;
+	let x = 25;
+	while (x < width){
+		ellipse(x,25,50,50);
+		x = x+50;
 	}
 }
 ```
