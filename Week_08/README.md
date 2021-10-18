@@ -127,10 +127,10 @@ There are a number of ways that you could complete this task but if you're reall
 
 <details>
 <summary>Want to see some hints?</summary>
-https://www.w3schools.com/jsref/jsref_split.asp
-https://www.w3schools.com/jsref/jsref_substring.asp
-https://www.w3schools.com/jsref/jsref_touppercase.asp
-https://www.w3schools.com/jsref/jsref_join.asp
+* https://www.w3schools.com/jsref/jsref_split.asp
+* https://www.w3schools.com/jsref/jsref_substring.asp
+* https://www.w3schools.com/jsref/jsref_touppercase.asp
+* https://www.w3schools.com/jsref/jsref_join.asp
 </details>  
 
 
