@@ -9,7 +9,7 @@
 
 - Then copy the folder called "empty-example" **in the same enclosing folder**, rename it to something like "tutorial-1".
 
-- Go into your newly copied folder and open both index.html and sketch.js in a text editor. Brackets or SublimeText are recommended
+- Go into your newly copied folder and open both index.html and sketch.js in a text editor. VS Code is recommended.
 
 - Remember, every time you change the code in your sketch.js file, you will need to refresh your browser to see the changes. 
 
