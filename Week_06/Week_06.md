@@ -3,36 +3,16 @@
 ## More on Scope; Fun with Arrays...
 
 
-### Task 1 - Let it be
 
-This is a very quick task to further test out how ```let``` and ```var``` work in their different ways...
+### Task 1 - Array Methods
 
-Create a blank sketch, what needs to be included? Is your new folder in the right place?
+This first task is designed to get you to explore the different methods that Arrays have.
 
-Work through the examples given in the lecture regarding ```let``` and ```var```. 
-
-Do [some more reading](https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var-to-declare-a-variable) on this if you're still a bit unclear. The first answer on the stack overflow forum is very helpful.
-
-```javascript
-function setup() {
-    console.log(x);
-    //define x here...
-
-    console.log(x);
-}
-```
-Try defining x as a ```let``` or a ```var```. 
-
-What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block by trying to console.log() it?
-
-
-### Task 2 - Array Methods
+Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions, what needs to be included in the folder? Is your new folder in the right place to find the p5.js library?
 
 Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".
 
-Create an empty sketch, you can reuse the one from the above task if you want.
-
-Declare an empty array that can be accessed globally within the sketch, where does this need to go?
+In your sketch.js, declare an empty array that can be accessed globally within the sketch, where does this need to go?
 
 ```javascript
 let myArr = [];
@@ -70,7 +50,7 @@ In ```setup()```, try printing ```myArr``` to the console using:
 console.log(myArr);
 ```
 
-Now, how do you open the console?
+Now, how do you open the console? HINT it's cmd+option+j...
 
 OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos. Let's initialise it to the value of 0.
 
@@ -168,7 +148,7 @@ myArr = shuffler(myArr);
 
 This is actually almost exactly the same way that p5 does it, but it's interesting to know what's going on under the hood.
 
-### Task 3 - PacPerson
+### Task 2 - PacPerson
 
 The following is an example from the p5.js book. Give it a go (DO NOT COPY AND PASTE) and try changing some of the values, particularly x[i] and y in the draw() function for loop.
 
@@ -197,7 +177,7 @@ function draw() {
 ```
 ![pacperson](./images/task3.png "PacPerson")
 
-### Task 4 - Stringalingaling
+### Task 3 - Stringalingaling
 
 This task is designed to demonstrate that Strings can be chopped up into arrays... 
 
@@ -298,7 +278,7 @@ Can you see what's happening here? What do you need to change the sentence to "l
 
 ![chopper](./images/task4.png "Chopper")
 
-### Task 5 - Iterating backwards
+### Task 4 (Final Task) - Iterating backwards
 
 This next code snippet is also another example from the book. Give it a shot - by typing it out, not copying and pasting - and comment the code (using //) on each line to explain what is happening...
 
@@ -336,3 +316,25 @@ function draw() {
 }
 ```
 ![trails](./images/task5.png "trails")
+
+### Stretch Task (not to be included in your journal entry) - Let it be
+
+This is a very quick extra task to further test out how ```let``` and ```var``` work in their different ways...
+
+Create another blank sketch, what needs to be included? Is your new folder in the right place?
+
+Work through the examples given in the lecture regarding ```let``` and ```var```. 
+
+Do [some more reading](https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var-to-declare-a-variable) on this if you're still a bit unclear. The first answer on the stack overflow forum is very helpful.
+
+```javascript
+function setup() {
+    console.log(x);
+    //define x here...
+
+    console.log(x);
+}
+```
+Try defining x as a ```let``` or a ```var```. 
+
+What happens when you create a block of code such as a for loop or if statement. Then, declare a ```let``` inside the block. Now, try and read variable ```let``` outside the block by trying to console.log() it?
