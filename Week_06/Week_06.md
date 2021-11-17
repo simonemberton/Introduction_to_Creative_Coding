@@ -175,7 +175,10 @@ function draw() {
 }
 
 ```
-![pacperson](./images/task3.png "PacPerson")
+
+<p align="center">
+  <img src="./images/task3.png">
+</p>
 
 ### Task 3 - Stringalingaling
 
@@ -276,7 +279,11 @@ chopper[1] = likeLove[1];
 
 Can you see what's happening here? What do you need to change the sentence to "like" instead of "love"?
 
-![chopper](./images/task4.png "Chopper")
+
+
+<p align="center">
+  <img src="./images/task4.png">
+</p>
 
 ### Task 4 (Final Task) - Iterating backwards
 
@@ -315,7 +322,11 @@ function draw() {
     }
 }
 ```
-![trails](./images/task5.png "trails")
+
+<p align="center">
+  <img src="./images/task5.png">
+</p>
+
 
 ### Stretch Task (not to be included in your journal entry) - Let it be
 
