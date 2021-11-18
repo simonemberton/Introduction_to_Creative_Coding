@@ -239,10 +239,11 @@ What about shuffling the sentence?
 ```javascript
 chopper = shuffle(chopper);
 ```
-Make sure you comment out the following line:
+Make sure you comment out the following lines:
 
 ```javascript
     //chopper = chopper.reverse();
+    //chopper = chopper.join(" ");
 ```
 
 OK, now we're going to have a play with chucking the words of our sentence all over the screen. In your ```draw()``` function, add the following:
@@ -259,13 +260,7 @@ background(255);
     }
 ```
 
-What happens if you keep the following line in or take it out?
 
-```javascript
-    chopper = chopper.join(" ");
-```
-
-Can you see what's going on now?
 
 Lastly, we're going to try manipulating our string based on whether we like or love creative coding(!). Comment out the line in ```setup()``` where we call the shuffle function on chopper.
 
