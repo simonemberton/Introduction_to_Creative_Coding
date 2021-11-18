@@ -327,6 +327,11 @@ function draw() {
   <img src="./images/task5.png">
 </p>
 
+### Task 5 - Independent Learning: Uploading to the Panel Server
+
+- Head back to Blackboard and follow the tutorial by Tom on how to upload your work to the panel server.
+
+- Use the sketch you created in Task 4 as the content that you will be putting onto the panel server.
 
 ### Stretch Task (not to be included in your journal entry) - Let it be
 
