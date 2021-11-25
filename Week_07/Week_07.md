@@ -9,24 +9,30 @@
 </p>
 
 
-### Task 1 - Starting Point Sketch
+### Task 1 - Starting Point Sketch: As Single Shape
 
 
-Create a blank sketch with a canvas 1200px wide and 800px high.
+Create a new project with a blank sketch thas has a canvas 1200px wide and 800px high.
 
 Set the background to white.
 
-*Below* the ```draw``` function, create two new functions, one called ```move()``` and one called ```display()```.
+*Below* the ```draw``` function, define two new functions, one called ```move()``` and one called ```display()```. Do remember how to do this? See below for the syntax:
+
+```javascript
+function myFunction () {
+
+}
+```
 
 What we're going to build first, is one rectangle in the centre of the screen. Seems simple enough but we're also going to add some bits that we'll use later.
 
-First of all, we need to define a bunch of variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
+First of all, we need to define a bunch of *global* variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
 
 ```javascript
 let x,y,size;
 ```
 
-Then directly below, we're going to declare some variables for later on once we get our rectangle moving:
+Then on the lines directly below, we're going to declare some variables for later on once we get our rectangle moving:
 
 ```javascript 
 let xSpeed,ySpeed,xDir,yDir;
@@ -41,7 +47,7 @@ y = height/2; //centre
 size = 10;
 ```
 
-Now, we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our 
+Now, we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our direction variables to 1:
 
 ```javascript 
 xSpeed = random(0.3,5);
@@ -49,7 +55,7 @@ ySpeed = random(0.3,5);
 xDir = 1;
 yDir = 1;
 ```
-OK it would be good to actually see something now. In the ```display()``` function you created earlier, let's make it draw our rectangle:
+OK it would be good to actually see something now, wouldn't it?! In the ```display()``` function you created earlier, let's make it draw our rectangle:
 
 ```javascript
 stroke(10);
@@ -57,24 +63,29 @@ rectMode(CENTER);
 fill(0);
 rect(x, y,size,size);
 ```
-OK, now call ```display()``` from ```draw()``` and you should see you shape in the middle of the screen when you refresh the page.
+OK, now call ```display()``` from ```draw()``` and you should see you shape in the middle of the screen when you refresh the page. Do you remember how to call a function? See below for the syntax:
 
 
-### Task 2 - Moving
+```javascript
+myFunction();
+```
 
-OK, here goes the animation part. There will be logic and there will be maths, please shout someone if you want clarification.
 
-So first of all we want to move our shape. In order to do this, we need to change the x and y positions of the shape every time a new frame happens. So we're going to call the ```move()``` function from the ```draw()``` function. Make sure you add this *before* the call to ```display()```.
+### Task 2 - Moving Our Shape
 
-Now, in ```move()```, we're going to add some simple maths to add to our shape's x and y positions every time it is called (don't copy):
+OK, here goes the animation part. There will be logic and there will be maths, please ask for help from a tutor in the workshop if you need further explanation or clarification. We're here to help in the timetabled sessions :)
+
+So first of all, we want to move our shape. In order to do this, we need to change the x and y positions of the shape every time a new frame is drawn to the screen. So we're going to call the ```move()``` function from the ```draw()``` function. Make sure you add this *before* the call to ```display()```.
+
+Now, we're going to work the in ```move()```function definition for a while. We're going to add some simple maths to add to our shape's x and y positions every time it is called (don't copy):
 
 ```javascript
 x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir (positive 1 or negative 1)
 y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir (positive 1 or negative 1)
 ```
-Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to been seen again!
+Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to be seen again!
 
-OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for OR in computer programming is ```||```.
+OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
 
 So let's write two if statements first:
 
@@ -118,7 +129,7 @@ function move() {
         }
 }
 ```
-Save and refresh, how's it looking?! Can you see a shape moving around the screen? Ask for assistance if not...
+Save and refresh, how's it looking?! Can you see a shape moving around the screen? Ask for assistance if not... If this isn't making sense to you, please ask one of the members of staff in the workshop for some further clarification.
 
 
 ### Task 3 - VFX
@@ -145,10 +156,10 @@ So this is kind of cool and all, but what if we wanted 20 rectangles all moving 
 
 This is where our Object Oriented approach comes into it's own. Instead of writing out the same code over and over in order to get individual variables of x,y speed etc etc, we can *encapsulate* all the stuff we need into one nice package: let's call it a MovingShape.
 
-Now, in order for us to that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or outline of the object that we are going to make.
+Now, in order for us to that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or template of the object that we are going to make ```instances``` of later on.
 
 
-First of all, let's define our MovingShape class. At the bottom of your sketch, add the following:
+First of all, let's define our MovingShape class. At the *bottom* of your sketch, add the following:
 
 ```javascript
 class MovingShape {
