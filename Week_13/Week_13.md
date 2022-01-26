@@ -1,4 +1,4 @@
-# Week 12
+# Week 13
 
 ## HTML, Pure JavaScript and Interaction with the DOM
 
