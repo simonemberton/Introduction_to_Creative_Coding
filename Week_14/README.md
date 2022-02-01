@@ -228,7 +228,7 @@ If you run this code you should see a very small thresholded image in the top le
 Here is a screenshot of this code running and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task3_1/) to see it working.
 
 <p align="center">
-  <img width="318" height="239" src="./images/Task3_1.png">
+  <img width="318" height="239" src="./images/Task3_1.gif">
 </p>
 
 Now try and incorporate the Vida code into your audio-visualiser.  Once you've copied over all the code that you need (don't forget to link to the Vida library in the `index.html file`) try using the `mappedMovement` variable to draw new shapes in the scene.  In my example I've used it to draw lines using the following code:
