@@ -1,10 +1,10 @@
-# Week 14
+# Week 15
 
 ## Simple Game Exercise
 
 This exercise leans heavily on [this tutorial](https://kellylougheed.medium.com/make-your-first-game-with-p5-js-38bfb308a671) by Kelly Lougheed. So credit goes to her for the idea and most of the implementation!
 
-OK we're going to be creating a game where we have to click on randomly appearing circles. It's basically a minimal geometric version of whackamole!
+OK we're going to be creating a game where we have to click on randomly appearing circles. It's basically a minimal geometric version of whackamole.
 
 [This](https://davemeckin.panel.uwe.ac.uk/Week_14_Demo/) is what we're going to be making. 
 
