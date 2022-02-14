@@ -13,7 +13,7 @@ Have a look at the [`p5.AudioIn`](https://p5js.org/reference/#/p5.AudioIn) examp
 
 Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
 
-If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you;re doing you can start from the code of this [`getLevel()` example](https://p5js.org/reference/#/p5.Amplitude/getLevel).
+If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you're doing you can start from the code of this [`getLevel()` example](https://p5js.org/reference/#/p5.Amplitude/getLevel).
 
 I'm going to base my audio-visualiser off of [Demo 3](https://tympanus.net/Development/AudioVisualizers/index3.html).  This example consists on rotating points and lines that move in time to the music.  
 
@@ -66,10 +66,10 @@ function draw(){
 
 Now put some music on and watch those points dance!  You might need to adjust the values inside the map function depending on how loud your music is.  
 
-Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week13/Task1/) to see it working.
+Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task1/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task1.png">
+  <img width="499" height="498" src="./images/Task1.gif">
 </p>
 
 
@@ -154,10 +154,10 @@ pop();
 ```
 Now we're getting somewhere.
 
-Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week13/Task2/) to see it working.
+Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task2/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task2.png">
+  <img width="499" height="498" src="./images/Task2.gif">
 </p>
 
 ### Task 3 - Camera input
@@ -225,10 +225,10 @@ If you run this code you should see a very small thresholded image in the top le
 
 `whiteCount` is calculated for each frame (notice that `frameRate` is set to 30fps) and then we use the `map()` function to map the values in `whiteCount` to be between zero and the width of the canvas.  This mapped value `mappedMovement` is then used to draw an ellipse.
 
-Here is a screenshot of this code running and a [link](https://simonemberton.panel.uwe.ac.uk/Week13/Task3_1/) to see it working.
+Here is a screenshot of this code running and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task3_1/) to see it working.
 
 <p align="center">
-  <img width="318" height="239" src="./images/Task3_1.png">
+  <img width="318" height="239" src="./images/Task3_1.gif">
 </p>
 
 Now try and incorporate the Vida code into your audio-visualiser.  Once you've copied over all the code that you need (don't forget to link to the Vida library in the `index.html file`) try using the `mappedMovement` variable to draw new shapes in the scene.  In my example I've used it to draw lines using the following code:
@@ -237,10 +237,10 @@ strokeWeight(2);
 line(mappedMovement, height/4, mappedMovement, height);
 ```
 
-Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week13/Task3_2/) to see it working.
+Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task3_2/) to see it working.
 
 <p align="center">
-  <img width="497" height="498" src="./images/Task3_2.png">
+  <img width="497" height="498" src="./images/Task3_2.gif">
 </p>
 
 ### Task 4 - Finishing touches
@@ -286,8 +286,8 @@ Finally I'm adding slight trails to the whole visualisation by putting some tran
 background(0,150);
 ```
 
-Here is a screenshot of the end of Task 4 and a [link](https://simonemberton.panel.uwe.ac.uk/Week13/Task4/) to see it working.
+Here is a screenshot of the end of Task 4 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task4/) to see it working.
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task4.png">
+  <img width="496" height="497" src="./images/Task4.gif">
 </p>

@@ -23,7 +23,6 @@ function draw() {
 	p1.update();
 	p1.display();
 	p1.checkEdges();
-
 }
 
 
@@ -37,7 +36,6 @@ class Particle {
 		this.xVel = random(0.5,2.5);
 		this.yVel = random(0.5,2.5);
 	}
-
 
 	update() {
 		this.x = this.x + this.xVel;
@@ -74,7 +72,7 @@ class Particle {
 }
 ```
 <p align="center">
-  <img width="497" height="499" src="./images/Task1.png">
+  <img width="497" height="499" src="./images/Task1.gif">
 </p>
 
 <!-- 1_2 Convert to vectors -->
@@ -121,7 +119,7 @@ update() {
 
 Now let's call the ```applyForce()``` function inside ```draw()``` and pass in random values which change on each frame.  Try changing the range of random values that are input to the function and see how it changes the direction and magnitude of the force.
 
-Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week16/Task2/).
+Here is an example of the running [code](https://simonemberton.panel.uwe.ac.uk/Week18/Task2/).
 
 ### Task 3 - Gravitational Attraction
 
@@ -195,10 +193,10 @@ applyForce(force) {
 	this.acc.add(force);
 }
 ```
-The output of this task should have a small ellipse orbiting around a larger central ellipse. You can see this code running [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task3/).
+The output of this task should have a small ellipse orbiting around a larger central ellipse. You can see this code running [here](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/).
 
 <p align="center">
-  <img width="497" height="495" src="./images/Task3.png">
+  <img width="497" height="495" src="./images/Task3.gif">
 </p>
 
 ### Task 4 - Arrays of particles
@@ -206,31 +204,31 @@ The output of this task should have a small ellipse orbiting around a larger cen
 <!-- 4 -->
 Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task02/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
 
-If you can get that working it should look something like [this](https://simonemberton.panel.uwe.ac.uk/Week16/Task4/):
+If you can get that working it should look something like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task4/):
 
 <p align="center">
-  <img width="495" height="496" src="./images/Task4.png">
+  <img width="495" height="496" src="./images/Task4.gif">
 </p>
 
 ### Extra challenges
 
 <!-- 5_1 -->
-* Try making each particle that you create in ```setup()``` have a different mass. Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_1/).
+* Try making each particle that you create in ```setup()``` have a different mass. Code example [here](https://simonemberton.panel.uwe.ac.uk/Week18/Task5_1/).
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task5_1.png">
+  <img width="496" height="497" src="./images/Task5_1.gif">
 </p>
 
 <!-- 5_2 -->
-* Try adding more attractors (not too many though or things get a bit out of control!). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_2/).
+* Try adding more attractors (not too many though or things get a bit out of control!). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week18/Task5_2/).
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task5_2.png">
+  <img width="496" height="497" src="./images/Task5_2.gif">
 </p>
 
 <!-- 5_3 -->
-* Make the attractors move around the screen (now you'll start to see 'interesting' behaviours emerging). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week16/Task5_3/).
+* Make the attractors move around the screen (now you'll start to see 'interesting' behaviours emerging). Code example [here](https://simonemberton.panel.uwe.ac.uk/Week18/Task5_3/).
 
 <p align="center">
-  <img width="497" height="499" src="./images/Task5_3.png">
+  <img width="497" height="499" src="./images/Task5_3.gif">
 </p>
