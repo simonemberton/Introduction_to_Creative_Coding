@@ -8,6 +8,8 @@ OK we're going to be creating a game where we have to click on randomly appearin
 
 [This](https://davemeckin.panel.uwe.ac.uk/Week_14_Demo/) is what we're going to be making. 
 
+**Where code is provided, please write it out and do not copy and paste.**
+
 ### Task 1 - Timing and Drawing a Random Circle
 
 OK let's get to it - first of all we're going to draw a random circle on the screen every second, as that is our main game mechanic here. 
