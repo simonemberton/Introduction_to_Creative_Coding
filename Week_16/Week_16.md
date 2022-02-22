@@ -13,7 +13,7 @@ We're going to create a very simple minimal version of [Flappy Bird](https://fla
 
 For this week's tutorial, we are going to work with some starter code. This is because we want to demonstrate a few particular concepts. If you would like to understand more about how all the code works, please do watch the Shiffman tutorial linked above after you've followed this worksheet. 
 
-Please download and work from the week_15_startercode.zip file in the Blackboard Learning Materials section for this week. Unzip the folder and place it in your Semester 2->Week 15 folder which should be located with all your other Introduction to Creative Coding materials.
+Please download and work from the week_16_startercode.zip file in the Blackboard Learning Materials section for this week. Unzip the folder and place it in your Semester 2->Week 16 folder which should be located with all your other Introduction to Creative Coding materials.
 
 
 ### Task 0 - Familiarisation
