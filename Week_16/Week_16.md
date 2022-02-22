@@ -20,7 +20,11 @@ Please download and work from the week_15_startercode.zip file in the Blackboard
 
 OK so the folder structure here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. First of all, take a look in index.html and see that we're using the script tags to include the pipe.js and bird.js files.
 
-Now also open the pipe.js and bird.js files. Take a look through the code and see what's going on, can you work out what each of them are going to do? And how we're going to use them? No worries if it's a bit unclear right now, all will be revealed as we get making our game...
+Now also open the pipe.js and bird.js files. Take a look through the code and see what's going on, can you work out what each of them are going to do? And how we're going to use them? Try adding comments to explain the parts that you do understand. 
+
+This should take a about 5-10 minutes.
+
+No worries if it's a bit unclear right now though, all will be revealed as we get making our game...
 
 
 ### Task 1 - The Birrrd
@@ -341,7 +345,7 @@ So now we have some pretty complex code in our runGame() and testLevel() functio
 
 
 <details>
-<summary>Want to see the code?</summary>
+<summary>Want to see the full code block for these functions?</summary>
 <br>
 This is what our runGame() and testLevel() functions look like now:
 <br><br>
@@ -429,11 +433,11 @@ OK, now what do you have to do to the different calls to runGame() in the switch
 
 Nice one! Now you've got a fairly complex game with timing and dexterity mechanics as well as levels!
 
-### Task 6 - Stretch Goals
+### Task 6 - Customisation Goals - These are all mandatory to try, apart from the last one
 
 - Can you change the shapes being drawn?
 - Can you make the game harder by increasing the velocity at which the pipes are moving depending on the level?
 - Can you make the game harder by increasing the amount of gravity or decreasing the amount of lift acting upon the Bird?
 - How can you really make this game your own in terms of colour scheme and fonts etc?
-- Can you use the microphone input to control the bird's flight?
+- **Stretch Task** : Can you use the microphone input to control the bird's flight?
 
