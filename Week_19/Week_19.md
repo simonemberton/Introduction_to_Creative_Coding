@@ -1,4 +1,4 @@
-# Week 17
+# Week 19
 
 ## Adding Sound
 
@@ -7,7 +7,7 @@
 - You will need to use a local server such as the python SimpleHTTPServer for this tutorial. Read through [this page](https://github.com/processing/p5.js/wiki/Local-server) from the lovely p5 peoples which explains more about local servers.
 
 
-- Make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path and keeping within your ITCC folder structure. Once you have made a blank sketch in your "Week 17 folder", carry on to the next point:
+- Make sure you start your work (make a blank sketch with the p5 complete folder downloaded from p5js.org) on the local disk of the machine you are working on. This means working in the Documents folder in your username path and keeping within your ITCC folder structure. Once you have made a blank sketch in your "Week 19 folder", carry on to the next point:
 
 - If you are happy with the Chrome Extension, just use that and move on to Task 1. Otherwise, if you are on Mac we have some instructions below for using the Mac terminal. If you are on Windows please follow the tutorial on the link above...
 
