@@ -96,7 +96,7 @@ OK, now let's create a couple of global variabls:
 
 ```javascript
 let osc;
-let playing = true;
+let playing = false;
 ```
 
 Next in our setup function let's make our oscillator and start it with a frequency of concert pitch A:
