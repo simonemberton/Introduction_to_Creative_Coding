@@ -120,7 +120,7 @@ class Shape {
 
 As you can see this class is for 2D, can you change it so that it works for 3D? 
 
-We'll also need to make some changes in our ```sketch.js``` file.  Create a new global array ```var shapes = [];```.  In the ```setup()``` function create a for loop which fills our ```shapes``` array with instances of our ```Shape``` class and provides three random values between ```negEdge``` and ```posEdge``` as the start locations for our object in each of the three dimensions. 
+We'll also need to make some changes in our ```sketch.js``` file.  Create a new global array ```let shapes = [];```.  In the ```setup()``` function create a for loop which fills our ```shapes``` array with instances of our ```Shape``` class and provides three random values between ```negEdge``` and ```posEdge``` as the start locations for our object in each of the three dimensions. 
 
 In the ```draw()``` function create another for loop which iterates through each of the objects in our ```shapes``` array and calls each of the class methods e.g. ```update()```, ```display()``` and ```checkEdges()```.  You'll also need to move the code that we just previously wrote for drawing and colouring a box to the ```display()``` method.
 
