@@ -52,7 +52,9 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 
 </p>
 
-Woohoo! Now you've made your first piece of creative code! Show one of the module tutors that you're done and you're free to go :)
+Woohoo! Now you've made your first piece of creative code!
 
-### Now, make sure you copy your entire Week1 folder into your Onedrive (or where ever you're keeping your work). You will need to get used to doing this every week!
+If you mangaged to get that done really quikcly speand some time exploring the p5.js [examples](https://p5js.org/examples/).  See if you can make a new project folder and get one of them running locally on your machine.
+
+### Before you go make sure you copy your entire Week1 folder into your OneDrive (or where ever you're keeping your work). You will need to get used to doing this every week!
 
