@@ -3,7 +3,7 @@
 ## Anatomy of a Sketch
 
 
-### Task 0 - Download the p5.zip folder on the link p5complete.zip from p5js.org
+## Task 0 - Download the p5.zip folder on the link p5complete.zip from p5js.org
 
 - Hopefully you already did this last week! 
 
@@ -14,7 +14,7 @@
 - Remember, every time you change the code in your sketch.js file, you will need to refresh your browser to see the changes. 
 
 
-### Task 1 - Ready, setup(); and draw();
+## Task 1 - Ready, setup(); and draw();
 
 #### As discussed in our lecture, what are the two most basic building block functions to get our p5 sketch going?
 
@@ -82,49 +82,78 @@ Try adding the following code to your ```draw()``` function:
 ```javascript
 text("Hello World!", 0,50);
 ```
+It should look like this:
+
+```javascript
+function draw() {
+	text("Hello World!", 0,50);
+}
+```
 
 This is your first computer program, nice one!
 
-Now, have a read of [this](https://p5js.org/examples/structure-coordinates.html) as it will help you understand a bit about the coordinate system used in p5.js - we talked about this in class.
-
-What do the parameters being passed to the ```text()``` function relate to? Hint: [this](https://p5js.org/reference/#/p5/text) will help you learn more...
-
-Now we need to add a circle:
+Now also add a circle to your ```draw()``` function:
 
 ```javascript
 ellipse(50,50,40,40);
 ```
-Hint: [this](https://p5js.org/reference/#/p5/ellipse) will give you more info on what the numbers being passed to the ellipse function mean.
+## &#x1F536; Code Challenge 1:
 
+```diff
+! Working in pairs...
+! One person reads and explains, the other person types in the code.
+
+! Using the p5 reference (link below)
+! Find the entry for text()
+! Work out what the parameters being passed to the text() function relate to
+! You may also have to refer to the 'Coordinates' example in the p5 examples (link below)
+
+! Make the text display on top of the ellipse (so you can see it)
+! Now position the text in the middle of the sketch
+! Change what the text says
+
+! Using the p5 reference 
+! Find out what the numbers being passed to the ellipse function mean.
+! Make an ellipse that touches all the sides of your canvas
+
+! Using the p5 reference
+! Work out how to colour the text and increase the text size
+```
+p5 reference [https://p5js.org/reference/](https://p5js.org/reference/)   
+p5 examples [https://p5js.org/examples/](https://p5js.org/examples/)
 
 
 ### Task 2 - All the 2D Shapes, well, quite a few anyway...
 
 
-#### Here's where we get a bit free to play. Your task now is to try adding the following shape functions to your code one by one. What happens if you have more than one?
-
 Have a look on [here](https://p5js.org/reference/) at the 2D primitives section to find out more info about each of the shape functions and their parameters.
 
-```javascript
-line(0,50,400,70);
-```
+Add a line to your sketch at the bottom of the ```draw()``` function.  
 
 ```javascript
-triangle(347,54,392,9,392,66);
+rect(0,50,400,70);
+```
+## &#x1F536; Code Challenge 2:
+
+```diff
+! Working in pairs... Reverse roles
+! One person reads and explains, the other person types in the code.
+
+! Using the p5 reference 
+! Find 2D primitives section
+! Your task now is to try adding the following shape functions to your code one by one.
+! triangle()
+! quad()
+! line()
+! arc()
+! Read the reference for each shape to work out how to include it
+
+! If you manage that quickly using the p5 reference find some more shapes to add.
+! Try changing the colour of each shape (refer to how you changed the ellipse colour)
 ```
 
-```javascript
-quad(158,55,199,14,392,66,351,107);
-```
+Also experiment with the ```noFill()``` and ```fill(0)``` functions to see what happens. Try placing them on different lines of the sketch within the ```draw()``` function. What do you think fill is referring to? What happens when you put the function calls on different lines?
 
-```javascript
-rect(25,50,25,25);
-```
-```javascript
-arc(300,300,50,50,90,270);
-```
-
-Experiment with the ```noFill()``` and ```fill(0)``` functions to see what happens. Try placing them on different lines of the sketch within the ```draw()``` function. What do you think fill is referring to? What happens when you put the function calls on different lines?
 
 ### Task 3 - Variables
 
@@ -158,9 +187,20 @@ See any change? No, because we've actually set them the same as they were before
 
 But now try changing ```rectWidth``` to something big like 500. Now see a change?
 
-Now try adding more ```rect()``` functions inside the ```draw()``` function. Make sure they are at different coordinates (the first two values) from each other so you can see them.
+## &#x1F536; Code Challenge 3:
 
-Then try changing the ```rectWidth``` and ```rectHeight``` values. What happens? Can you see that all the functions are sharing the value stored within the variables?
+```diff
+! Working in pairs... Reverse roles
+! One person reads and explains, the other person types in the code.
+
+! Add 3 more rect() shapes inside the draw() function. 
+! Use the rectWidth,rectHeight variables with these new rect() shapes.
+! Make sure they are at different coordinates (the first two values) from each other so you can see them.
+! Now try changing the rectWidth and rectHeight variable values. What happens? 
+```
+
+Can you see that all the functions are sharing the value stored within the variables?
+
 
 ### Task 4 - Operators (+ some maths)
 
