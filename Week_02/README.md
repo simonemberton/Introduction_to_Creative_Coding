@@ -161,6 +161,7 @@ Up to now, we've just been typing the values into the function calls. This can g
 
 So, we're going to make use of a programming construct called a **variable**. A variable is essentially a space in the computer's memory that can be used to store data. Data could be lots of different things (we'll talk about this later on in the module) but here we are going to store numbers. 
 
+Make a new sketch by duplicating the 'empty-example' folder and make a sketch with a simple rect()
 Make sure you have a
 
 ```javascript
@@ -168,6 +169,17 @@ rect(25,50,25,25);
 ```
 
 statement in your ```draw()``` function.
+
+```javascript
+function setup() {
+  createCanvas(400, 300);
+  background(color(200));
+}
+
+function draw() {
+  rect(25,50,25,25);
+}
+```
 
 We declare a variable by using the ```let``` keyword. And when we declare it, we have to give it a **unique** name. 
 
@@ -185,7 +197,7 @@ rect(25,50,rectWidth,rectHeight);
 ```
 See any change? No, because we've actually set them the same as they were before! 
 
-But now try changing ```rectWidth``` to something big like 500. Now see a change?
+But now try changing ```rectWidth``` to something big like 100. Now see a change?
 
 ## &#x1F536; Code Challenge 3:
 
@@ -195,11 +207,12 @@ But now try changing ```rectWidth``` to something big like 500. Now see a change
 
 ! Add 3 more rect() shapes inside the draw() function. 
 ! Use the rectWidth,rectHeight variables with these new rect() shapes.
-! Make sure they are at different coordinates (the first two values) from each other so you can see them.
+! Make sure that the first two values are different,
+! so they are at different coordinates / positions in the sketch so you can see them.
 ! Now try changing the rectWidth and rectHeight variable values. What happens? 
 ```
 
-Can you see that all the functions are sharing the value stored within the variables?
+Can you see that all the ```rect()``` shapes are sharing the value stored within the variables?
 
 
 ### Task 4 - Operators (+ some maths)
@@ -211,18 +224,23 @@ Can you see that all the functions are sharing the value stored within the varia
 
 - ``` + ``` for addition.
 - ``` - ``` for subtraction.
-- ``` * ``` for multiplication.
-- ``` / ``` for division.
 
 Now we have our ```rectWidth``` and ```rectHeight``` variables. We can start to manipulate them in different parts of the program. 
 
-- Try adding ```10``` to the height of the first rectangle. 
+## &#x1F536; Code Challenge 4:
 
-- Try subtracting ```10``` from the width of the second rectangle. 
+```diff
+! Working in pairs... Reverse roles
+! One person reads and explains, the other person types in the code.
 
-- Try multiplying the height of the third rectangle by ```2```. 
+! Try adding 10 to the height of the first rectangle. 
+! Try subtracting 10 from the width of the second rectangle. 
 
-- Try dividing the width of the fourth rectangle by ```2```. 
+! Find the symbol for division and multiplication (hint search javascript operator)
+! Try multiplying the height of the third rectangle by 2. 
+! Try dividing the width of the fourth rectangle by 2.
+! Now try changing the rectWidth and rectHeight variable values. What happens? 
+```
 
 Now try messing around with other values, what happens when you multiply something by a value less than 1 for instance?
 
@@ -300,65 +318,17 @@ function draw() {
 	noFill();
 	drawShape(rectWidth,rectHeight);
 
-	}
+}
 ```
+## &#x1F536; Code Challenge 5:
 
-Try refreshing the page over and over. What is happening? Are you seeing a new rectangle in a different position each time?
+```diff
+! Try refreshing the page over and over. What is happening?
+! Are you seeing a new rectangle in a different position each time?
 
-Try multiplying rectWidth and rectHeight by some small numbers like 2 or 3. Remember to keep refreshing to see the shape drawn in a different random spot.
-
-### Task 6 - Basic Procedural Drawing
-
-OK, it's important you add the following bits of code into the ```draw()``` function line by line and refresh the page each time to see what's going on... (and please don't copy once again)
-
-```javascript
-	rectMode(CENTER);
-	rect(100,100,20,100);
+! Try multiplying rectWidth and rectHeight by some small numbers like 2 or 3. 
+! Remember to keep refreshing to see the shape drawn in a different random spot.
 ```
-Then
-
-```javascript
-	ellipse(100,70,60,60);
-```
-Then
-
-```javascript
-	ellipse(81,70,16,16); 
-```
-Then
-
-```javascript
-	ellipse(119,70,16,16); 
-```
-Then
-
-```javascript
-	line(90,120,80,105);
-```
-Then
-
-```javascript
-	line(110,120,120,105);
-```
-
-Then
-
-```javascript
-	line(90,150,80,160);
-```
-Then
-
-```javascript
-	line(110,150,120,160);
-```
-
-
-### Task 7 - Repetition
-
-Try repeating the draw shape function call loads of times by copying and pasting. Make sure you have different multiplication values each time.
-
-### Task 8 - Play
-
 Try experimenting with different shapes (ellipse/rect/triangle), fills and multiplication values to see what kind of patterns and pictures you can create with these simple geometric shapes!
 
 For instance, what happens when you do this:
@@ -368,6 +338,20 @@ fill(random(0,255),random(0,255),random(0,255));
 ```
 
 Also, what happens when you take out ```noLoop()```?
+
+
+
+## &#x1F536; Code Challenge 6:
+
+```diff
+! Working in pairs... Reverse roles
+! One person reads and explains, the other person types in the code.
+
+! Using the simple 2D primitive shapes that we explored earlier.. 
+! ..create a portrait of one of you.
+```
+
+
 
 
 

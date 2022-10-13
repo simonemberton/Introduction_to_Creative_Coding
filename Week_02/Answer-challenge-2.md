@@ -1,6 +1,6 @@
 # Week 02
 
-## Code Challenge 1 - Answer
+## Code Challenge 2 - Answer
 
 Hopefully your sketch looks like a bit like this:  
 
