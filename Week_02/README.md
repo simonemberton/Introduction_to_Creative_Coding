@@ -108,8 +108,7 @@ ellipse(50,50,40,40);
 ! Work out what the parameters being passed to the text() function relate to
 ! You may also have to refer to the 'Coordinates' example in the p5 examples (link below)
 
-! Make the text display on top of the ellipse (so you can see it)
-! Now position the text in the middle of the sketch
+! Position the text in the middle of the sketch
 ! Change what the text says
 
 ! Using the p5 reference 
@@ -118,6 +117,7 @@ ellipse(50,50,40,40);
 
 ! Using the p5 reference
 ! Work out how to colour the text and increase the text size
+! Make the ellipse a different colour
 ```
 p5 reference [https://p5js.org/reference/](https://p5js.org/reference/)   
 p5 examples [https://p5js.org/examples/](https://p5js.org/examples/)
@@ -126,9 +126,9 @@ p5 examples [https://p5js.org/examples/](https://p5js.org/examples/)
 ### Task 2 - All the 2D Shapes, well, quite a few anyway...
 
 
-Have a look on [here](https://p5js.org/reference/) at the 2D primitives section to find out more info about each of the shape functions and their parameters.
+Have a look at the [p5 reference](https://p5js.org/reference/) and find the 2D primitives section to find out more info about each of the shape functions and their parameters.
 
-Add a line to your sketch at the bottom of the ```draw()``` function.  
+First make a rectangle by adding the following line of code to your sketch at the bottom of the ```draw()``` function.  
 
 ```javascript
 rect(0,50,400,70);
@@ -197,7 +197,18 @@ rect(25,50,rectWidth,rectHeight);
 ```
 See any change? No, because we've actually set them the same as they were before! 
 
-But now try changing ```rectWidth``` to something big like 100. Now see a change?
+But now try changing ```rectWidth``` to something big like 100. Now see a change?  
+
+You can also see the output of a variable by printing it to the developer console.
+In ```draw()``` add a statement to output the value of one of the variables.
+
+```javascript
+console.log(rectWidth);
+```
+Open the developer tools in Chrome by clicking on the 3 dots in the top right of the browser and got to More tools > Developer tools.
+
+Select the console in the tabs.
+
 
 ## &#x1F536; Code Challenge 3:
 
@@ -256,7 +267,7 @@ noLoop();
 So your ```setup()``` function should now look like this:
 
 ```javascript
-function setup(){
+function setup() {
 	createCanvas(800,600);
 	background(255);
 	noLoop();
@@ -264,7 +275,7 @@ function setup(){
 ```
 This just means our ```draw()``` function is only called once now, like ```setup()``` is.
 
-Now, beneath the ```draw()``` function, write a new function called "drawShape". Add two parameters that will be passed to this function called width and height:
+Now, beneath (and outside) the ```draw()``` function, write a new function called "drawShape". Add two parameters that will be passed to this function called rectangleWidth and rectangleHeight:
 
 **remember the syntax of how to write this stuff, it has to be exactly correct otherwise the script interpreter won't know what to do with it**
 
