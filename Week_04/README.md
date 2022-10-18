@@ -46,7 +46,7 @@ https://p5js.org/reference/#/p5/for
 
 Now try and write a nested for loop so that ellipses are drawn across the whole of the canvas.
 
-* Add random values to ```fill()``` to change the colour of the ellipse.  
+* Add [random](https://p5js.org/reference/#/p5/random) values to ```fill()``` to change the colour of the ellipse.  
 
 * Move the location of ```fill()``` and see how it changes what's drawn to the canvas.
 
