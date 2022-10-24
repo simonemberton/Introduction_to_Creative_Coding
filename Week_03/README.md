@@ -90,7 +90,7 @@ function draw() {
 
 * See how the difference between the two numbers that are output to the console (to open the console right-click the mouse and press 'Inspect', then find the console tab) are greater when you move the mouse and then comes closer together as you stop moving.
 
-* Change the code from Task 3 so that lines on both axis (X and Y) are drawn with the easing technique.
+* Change the code from Task 2 so that lines on both axis (X and Y) are drawn with the easing technique.
 
 * Try changing the value of the ```easing``` variable and see how it changes the movement.
 
@@ -126,9 +126,9 @@ function draw() {
 
 We're changing the colour of the line depending on whether the mouse is pressed.
 
-* Add an ```if else``` statement so that something else happens when a key is pressed.
+* Add an ```else if``` statement so that something else happens when a key is pressed.
 
-* Using ```if``` or ```if else``` statements make different things happen on screen when you press specific keys.
+* Using ```if``` or ```else if``` statements make different things happen on screen when you press specific keys.
 
 <details>
 <summary>Want to see a hint?</summary>
