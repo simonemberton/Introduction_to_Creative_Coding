@@ -105,8 +105,43 @@ function draw() {
 ! Change the text size and colour   
 ! Tweak the values until it is spaced and reads nicely.  
 ! Use textAlign(CENTER) to space the text.   
-! Completed that? Replace the x and y text text values with random values (but that still keep the text on the screen).    
+! Completed that? 
+! Replace the x and y text text values with random values   
+! (but that still keep the text on the screen).     
 ```
+
+## Task 3 - Adding to an Array 
+
+Now we will add the rest of the quote *"and change who runs it"* to the array and print it onto the screen with the rest of the text.
+
+To add the word *and* to the Array add
+```myWords.push("and");``` 
+At bottom of ```setup()```  
+
+To see the Array in the console also add ```console.log(myWords);``` 
+
+```push()``` adds elements to the end of the array. The loop will now add *and* to the screen.  
+
+```setup()```  should look like:  
+
+```javascript
+function setup() {
+    createCanvas(1024, 500);
+    background(color(200));
+    noLoop();
+    myWords.push("and");
+    console.log(myWords);
+}
+```
+ 
+### &#x1F536; Task 3 Code Challenge:
+
+```diff
+! Add the remaiaing words from the quote to the Array using push()  
+! Tweak the position and text size to fit on the screen     
+```
+<hr>
+## Task 4 - Adding lots of data to an Array 
 
 
 
