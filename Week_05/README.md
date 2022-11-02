@@ -87,7 +87,8 @@ function draw() {
 
 ```diff
 ! Using the p5 reference find the entry for text()
-! Add a couple of words of text to the screen in ```setup()``` just to test, and to remember how ```text()``` works.  
+! Add a couple of words of text to the screen in ```setup()``` just to test, 
+! and to remember how ```text()``` works.  
 
 ! Now add text() to your loop so that it uses myWords[i] and xVal to print the quote on the screen.
 ! Use textAlign(CENTER) to space the text. 
@@ -137,7 +138,7 @@ function setup() {
 ### &#x1F536; Task 3 Code Challenge:
 
 ```diff
-! Add the remaiaing words from the quote to the Array using push()  
+! Add the remaining words from the quote to the Array using push()  
 ! Tweak the position and text size to fit on the screen     
 ```
 
