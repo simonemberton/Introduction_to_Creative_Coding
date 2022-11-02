@@ -84,7 +84,7 @@ function draw() {
   }
 ```
 
-### &#x1F536; Task 2 Code Challenge:
+### &#x1F536; Task 2 First Code Challenge:
 
 ```diff
 ! Using the p5 reference find the entry for text()
@@ -98,7 +98,15 @@ function draw() {
   <img src="./images/task2-code-challenge.png">
 </p>
 
+### &#x1F536; Task 2 Second Code Challenge:
 
+```diff
+! Using the Let keyword add a new global variable for a y value to space the text vertically  
+! Change the text size and colour   
+! Tweak the values until it is spaced and reads nicely.  
+! Use textAlign(CENTER) to space the text.   
+! Completed that? Replace the x and y text text values with random values (but that still keep the text on the screen).    
+```
 
 
 
