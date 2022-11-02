@@ -6,24 +6,50 @@
 
 ### Task 1 - Array Methods
 
-This first task is designed to get you to explore the different methods that Arrays have.
+This first task is designed to get you to explore how to use Arrays.
 
 Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions, what needs to be included in the folder? Is your new folder in the right place to find the p5.js library?
 
-Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".
+Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".  
 
-In your sketch.js, declare an empty array that can be accessed globally within the sketch, where does this need to go?
+For this task we'll be using a quote from Malala Yousafzai, Nobel Peace Prize Winner, broken down into separate words. Each word will be a separate Array element.  
+
+The quote is:  
+"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."  
+
+In your sketch.js, create an array that can be accessed globally within the sketch. 
+Work out wehere this here needs to go?
+
+Add the quote, with each word as a separate element.
 
 ```javascript
-let myArr = [];
+let let myWords = ["Every", "girl", "deserves", "to", "take", "part", "in", "creating", "the", "technology", "that", "will", "change", "our world"];
 ```
-
 
 Now, in the ```setup()``` function, create a canvas that is 1024px wide and 400px high.
 
-Set the background to white.
+Set the background to a grey colour.  
 
-Make it so that the sketch only executes the ```draw()``` function once. (What function do we need to do that?)
+Make it so that the sketch only executes the ```draw()``` function once. (What function do we need to do that?).
+
+Now in ```draw()``` we will loop through the array using a for loop (that you explored last week).  
+
+```javascript
+function draw() {
+    for (var i = 0; i < myWords.length; i++) {
+      console.log(myWords[i]);
+    }
+  }
+```
+Look in your console to see the output. You should see something like the image below.   
+
+You've looped through every value in the Array.  
+
+<p align="center">
+  <img src="./images/task1.png">
+</p>
+
+
 
 Fill the array values from zero to 255, all of the following has to happen in the ```setup()``` function:
 
