@@ -22,6 +22,7 @@
   }
 
   function draw() {
+  	// this for loop outputs each element from the Array myWords
     for (var i = 0; i < myWords.length; i++) {
       console.log(myWords[i]);
     }
