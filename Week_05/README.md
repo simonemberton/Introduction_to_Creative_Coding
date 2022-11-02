@@ -1,4 +1,4 @@
-# Week 06
+# Week 05
 
 ## More on Scope; Fun with Arrays...
 
@@ -15,7 +15,7 @@ Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_ar
 For this task we'll be using a quote from Malala Yousafzai, Nobel Peace Prize Winner, broken down into separate words. Each word will be a separate Array element.  
 
 The quote is:  
-"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."  
+*"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."* 
 
 In your sketch.js, create an array that can be accessed globally within the sketch. 
 Work out wehere this here needs to go?
@@ -26,7 +26,7 @@ Add the quote, with each word as a separate element.
 let let myWords = ["Every", "girl", "deserves", "to", "take", "part", "in", "creating", "the", "technology", "that", "will", "change", "our world"];
 ```
 
-Now, in the ```setup()``` function, create a canvas that is 1024px wide and 400px high.
+In the ```setup()``` function, create a canvas that is 1024px wide and 400px high.
 
 Set the background to a grey colour.  
 
@@ -48,6 +48,14 @@ You've looped through every value in the Array.
 <p align="center">
   <img src="./images/task1.png">
 </p>
+
+
+
+
+
+
+
+
 
 
 
