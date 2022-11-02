@@ -4,7 +4,7 @@
 
 
 
-### Task 1 - Array Methods
+## Task 1 - Array Methods
 
 This first task is designed to get you to explore how to use Arrays.  
 
@@ -55,28 +55,50 @@ You've looped through every value in the Array and outputted it to the console.
 </p>
 
 
-### Task 2 - Add the text from the array to the screen  
+## Task 2 - Add the text from the array to the screen  
 
 Now using the sketch you already have you will add the text from the Array to the screen using ```text()``` 
 
 Find the text element using the P5 reference.  
 p5 reference [https://p5js.org/reference/](https://p5js.org/reference/)   
 p5 examples [https://p5js.org/examples/](https://p5js.org/examples/)  
+We will use this in a moment...   
 
+We will also use a a new global variable.  
 
+Add ```let xVal = 20;``` to the top of your script.  
 
-## &#x1F536; Task 2 Code Challenge:
+Inside ```draw()``` add 50px to the variable on every iteration of your loop.  
+
+Output the result to the console.   
+
+```draw()``` should look like this:  
+
+```javascript
+function draw() {
+    for (var i = 0; i < myWords.length; i++) {
+      console.log(myWords[i]);
+      console.log(xVal);
+      xVal += 50;
+    }
+  }
+```
+
+### &#x1F536; Task 2 Code Challenge:
 
 ```diff
 ! Using the p5 reference find the entry for text()
 ! Add a couple of words of text to the screen in ```setup()``` just to test, and to remember how ```text()``` works.  
 
-! Now add text() to your loop so that it uses myWords[i] to print the quote on the screen.
-! Why are all the words on top of each other?
+! Now add text() to your loop so that it uses myWords[i] and xVal to print the quote on the screen.
+! Use textAlign(CENTER) to space the text. 
+! Your sketch should look like the image below.  
 ```
 <p align="center">
   <img src="./images/task2-code-challenge.png">
 </p>
+
+
 
 
 
