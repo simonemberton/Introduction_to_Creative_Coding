@@ -2,8 +2,7 @@
 
 ## More on Scope; Fun with Arrays...
 
-
-
+*****
 ## Task 1 - Array Methods
 
 This first task is designed to get you to explore how to use Arrays.  
@@ -54,7 +53,7 @@ You've looped through every value in the Array and outputted it to the console.
   <img src="./images/task1.png">
 </p>
 
-
+*****
 ## Task 2 - Add the text from the array to the screen  
 
 Now using the sketch you already have you will add the text from the Array to the screen using ```text()``` 
@@ -110,6 +109,7 @@ function draw() {
 ! (but that still keep the text on the screen).     
 ```
 
+*****
 ## Task 3 - Adding to an Array 
 
 Now we will add the rest of the quote *"and change who runs it"* to the array and print it onto the screen with the rest of the text.
@@ -140,7 +140,8 @@ function setup() {
 ! Add the remaiaing words from the quote to the Array using push()  
 ! Tweak the position and text size to fit on the screen     
 ```
-<hr>
+
+*****
 ## Task 4 - Adding lots of data to an Array 
 
 
