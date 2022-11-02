@@ -14,13 +14,10 @@
   // Global variables
   let myWords = ["Every", "girl", "deserves", "to", "take", "part", "in", "creating", "the", "technology", "that", "will", "change", "our world"];
 
-  
-
   function setup() {
     console.log('hello world');
     createCanvas(1024, 500);
     background(color(200));
-    fill(0, 0, 255);
     noLoop();
   }
 
