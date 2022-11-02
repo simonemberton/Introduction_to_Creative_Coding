@@ -6,7 +6,10 @@
 
 ### Task 1 - Array Methods
 
-This first task is designed to get you to explore how to use Arrays.
+This first task is designed to get you to explore how to use Arrays.  
+
+Working in pairs...  
+One person reads and explains, the other person types in the code.  
 
 Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions, what needs to be included in the folder? Is your new folder in the right place to find the p5.js library?
 
@@ -34,26 +37,46 @@ Make it so that the sketch only executes the ```draw()``` function once. (What f
 
 Now in ```draw()``` we will loop through the array using a for loop (that you explored last week).  
 
+The for loop outputs each element from the Array myWords  
+
 ```javascript
 function draw() {
     for (var i = 0; i < myWords.length; i++) {
       console.log(myWords[i]);
     }
-  }
-```
-Look in your console to see the output. You should see something like the image below.   
+}
+```  
+Look in your console to see the output. You should see something like the image below.     
 
-You've looped through every value in the Array.  
+You've looped through every value in the Array and outputted it to the console.    
 
 <p align="center">
   <img src="./images/task1.png">
 </p>
 
 
+### Task 2 - Add the text from the array to the screen  
+
+Now using the sketch you already have you will add the text from the Array to the screen using ```text()``` 
+
+Find the text element using the P5 reference.  
+p5 reference [https://p5js.org/reference/](https://p5js.org/reference/)   
+p5 examples [https://p5js.org/examples/](https://p5js.org/examples/)  
 
 
 
+## &#x1F536; Task 2 Code Challenge:
 
+```diff
+! Using the p5 reference find the entry for text()
+! Add a couple of words of text to the screen in ```setup()``` just to test, and to remember how ```text()``` works.  
+
+! Now add text() to your loop so that it uses myWords[i] to print the quote on the screen.
+! Why are all the words on top of each other?
+```
+<p align="center">
+  <img src="./images/task2-code-challenge.png">
+</p>
 
 
 
