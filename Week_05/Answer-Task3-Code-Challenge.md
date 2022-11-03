@@ -1,6 +1,6 @@
 # Week 05
 
-## Task 2 Second Code Challenge Answer
+## Task 3 Code Challenge Answer
 
 - Hopefully your sketch looks something like this:  
 
