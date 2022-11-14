@@ -223,7 +223,7 @@ class MovingShape {
     }
 }
 ```
-OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names. As we're using ```RectMode(CENTER)``` inside ```display()``` we divide ```size``` by two inside ```move()```, so look out for this change:
+OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names. As we're using ```rectMode(CENTER)``` inside ```display()``` we divide ```size``` by two inside ```move()```, so look out for this change:
 
 
 ```javascript
