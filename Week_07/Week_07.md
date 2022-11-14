@@ -85,7 +85,7 @@ y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir
 ```
 Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to be seen again!
 
-OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use of statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
+OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use of if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
 
 So let's write two if statements first:
 
