@@ -47,7 +47,7 @@ y = height/2; //centre
 size = 10;
 ```
 
-Now, we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our direction variables to 1:
+Next and still inside ```setup()``` we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our direction variables to 1:
 
 ```javascript 
 xSpeed = random(0.3,5);
