@@ -63,7 +63,7 @@ rectMode(CENTER);
 fill(0);
 rect(x, y,size,size);
 ```
-OK, now call ```display()``` from ```draw()``` and you should see you shape in the middle of the screen when you refresh the page. Do you remember how to call a function? See below for the syntax:
+OK, now call ```display()``` from ```draw()``` and you should see your shape in the middle of the screen when you refresh the page. Do you remember how to call a function? See below for the syntax:
 
 
 ```javascript
