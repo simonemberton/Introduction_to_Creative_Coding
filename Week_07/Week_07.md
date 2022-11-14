@@ -447,7 +447,7 @@ So, just define a global variable call ```circ```. Now can you remember what you
   <img width="500" height="400" src="./images/capture4.JPG">
 </p>
 
-When you get here, come and find me for a digital high five.
+When you get here, come and find me for a congratulatory high five.
 
 Now let's play:
 
