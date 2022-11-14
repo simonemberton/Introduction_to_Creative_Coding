@@ -328,7 +328,7 @@ What happens if we want more shapes though?
 
 ### Task 5 - An Array of Objects
 
-So we've *encapsulated* our code, and we've created a couple of instances that have their own related properties which allow them to move indepently of each other. Let's make 200 of them then! 
+So we've *encapsulated* our code, and we've created a couple of instances that have their own related properties which allow them to move independently of each other. Let's make 200 of them then! 
 
 Remember how we were filling arrays last time? We can do exactly the same thing here. So while we had an initial bit of pain writing our class, we can now reuse that class over and over without having to write loads more code.
 
