@@ -441,7 +441,7 @@ class MovingCircle extends MovingShape {
 }
 ```
 
-So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may need to use the ```color()``` [function built into p5](https://p5js.org/reference/#/p5/color)...
+So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may also want to use [p5's ```color()``` function](https://p5js.org/reference/#/p5/color)...
 
 <p align="center">
   <img width="500" height="400" src="./images/capture4.JPG">
