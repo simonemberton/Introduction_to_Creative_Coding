@@ -156,7 +156,7 @@ So this is kind of cool and all, but what if we wanted 20 rectangles all moving 
 
 This is where our Object Oriented approach comes into it's own. Instead of writing out the same code over and over in order to get individual variables of x,y speed etc etc, we can *encapsulate* all the stuff we need into one nice package: let's call it a MovingShape.
 
-Now, in order for us to that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or template of the object that we are going to make ```instances``` of later on.
+Now, in order for us to do that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or template of the object that we are going to make ```instances``` of later on.
 
 
 First of all, let's define our MovingShape class. At the *bottom* of your sketch, add the following:
