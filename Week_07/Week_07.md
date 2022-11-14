@@ -80,12 +80,12 @@ So first of all, we want to move our shape. In order to do this, we need to chan
 Now, we're going to work the in ```move()```function definition for a while. We're going to add some simple maths to add to our shape's x and y positions every time it is called:
 
 ```javascript
-x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir (positive 1 or negative 1)
-y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir (positive 1 or negative 1)
+x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir
+y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir
 ```
 Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to be seen again!
 
-OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
+OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use of statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
 
 So let's write two if statements first:
 
