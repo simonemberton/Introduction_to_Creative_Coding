@@ -77,7 +77,7 @@ OK, here goes the animation part. There will be logic and there will be maths, p
 
 So first of all, we want to move our shape. In order to do this, we need to change the x and y positions of the shape every time a new frame is drawn to the screen. So we're going to call the ```move()``` function from the ```draw()``` function. Make sure you add this *before* the call to ```display()```.
 
-Now, we're going to work the in ```move()```function definition for a while. We're going to add some simple maths to add to our shape's x and y positions every time it is called (don't copy):
+Now, we're going to work the in ```move()```function definition for a while. We're going to add some simple maths to add to our shape's x and y positions every time it is called:
 
 ```javascript
 x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir (positive 1 or negative 1)
