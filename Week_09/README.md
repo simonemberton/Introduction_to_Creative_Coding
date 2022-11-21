@@ -147,7 +147,7 @@ The result of this task should look something like this:
 
 ### Task 4 - Array of bubbles
 
-At the moment we've only got two circles bouncing around.  Imagine we want to create a few more bubble objects but don't want to have to write a lot more lines of code.  Yes that's right we can use an array.  Please check back to the code from Task 5 of [Week_07](https://github.com/davemeckin/Intro_to_Creative_Programming/blob/master/Week_07/Week_07.md) if you can't remember how to do this. Let's create an empty array at the top of our sketch, include a for loop inside the ```setup()``` function which fills our array with new Bubble objects and in the ```draw()``` function write another for loop which calls the ```move()``` and ```display()``` methods.  
+At the moment we've only got two circles bouncing around.  Imagine we want to create a few more bubble objects but don't want to have to write a lot more lines of code.  Yes that's right we can use an array.  Please check back to the code from Task 5 of [Week_07](https://github.com/simonemberton/Introduction_to_Creative_Coding/blob/master/Week_07/Week_07.md) if you can't remember how to do this. Let's create an empty array at the top of our sketch, include a for loop inside the ```setup()``` function which fills our array with new Bubble objects and in the ```draw()``` function write another for loop which calls the ```move()``` and ```display()``` methods.  
 
 You'll notice now that the ```changeColor()``` isn't working as we intended.  We need to add another loop so that we can check through both arrays to see if there are any intersections.  Don't forget we don't want to check if a circle is intersecting with itself! 
 
