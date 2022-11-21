@@ -133,7 +133,7 @@ If you're struggling with this task see the hint below to see what you need to a
   
   ```javascript
   if (b1.intersects(b2)){
-  		b1.changeColor();
+  	b1.changeColor();
 		b2.changeColor();
   }
   ```
