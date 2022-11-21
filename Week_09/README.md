@@ -129,7 +129,7 @@ Once you've got that working, we want to move this code outside of the ```draw()
 If you're struggling with this task see the hint below to see what you need to add to the ```draw()``` function.
 
 <details>
-<summary>See here for a hint</summary>
+<summary>Hint</summary>
   
   ```javascript
   if (b1.intersects(b2)){
