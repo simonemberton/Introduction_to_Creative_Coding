@@ -90,7 +90,7 @@ function draw() {
 
 * See how the difference between the two numbers that are output to the console (to open the console right-click the mouse and press 'Inspect', then find the console tab) are greater when you move the mouse and then comes closer together as you stop moving.
 
-* Change the code from Task 2 so that lines on both axis (X and Y) are drawn with the easing technique.
+* Add to the code above so that the circle follows the mouse in both axis (X and Y) with the easing technique.
 
 * Try changing the value of the ```easing``` variable and see how it changes the movement.
 
