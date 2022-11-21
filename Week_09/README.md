@@ -124,9 +124,25 @@ You should be able to see two blue circles bouncing around the canvas.  Your tas
 
 ### Task 3 - Intersects
 
-Once you've got that working, we want to move this code outside of the draw function and put it into our Bubble class. Try writing a new method for the Bubble class called ```intersects()``` which checks for the intersecting circles and call this method inside the draw function.
+Once you've got that working, we want to move this code outside of the ```draw()``` function and put it into our ```Bubble``` class. Try writing a new method for the ```Bubble``` class called ```intersects()``` which checks for the intersecting circles and then call this method inside the ```draw()``` function.
+
+If you're struggling with this task see the hint below to see what you need to add to the ```draw()``` function.
 
 The result of this task should look something like this:
+
+<details>
+<summary>See here for a hint</summary>
+  
+  <p>
+  ```javascript
+  if (b1.intersects(b2)){
+  	b1.changeColor();
+	b2.changeColor();
+  }
+  ```
+  </p>
+  
+</details>
 
 <p align="center">
   <img width="498" height="498" src="./images/Task2_3.gif">
