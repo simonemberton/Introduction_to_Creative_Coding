@@ -1,0 +1,483 @@
+# Week 12
+
+## Mobile devices - Touch and Rotation
+
+### Task 1 - Get Started
+
+Create a new p5.js project as normal ([Download P5 here](https://p5js.org/download/))
+
+You can access the [documentation for p5.js here](https://p5js.org/reference/) , You will need to use this to refresh your memory and find the code you need to compleate this worksheet.
+
+Create a new canvas in your setup function and make it fill the window.
+
+Make the background White and set the stroke Weight to 5;
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function setup(){
+  createCanvas(windowWidth,windowHeight);
+  background('white');
+  strokeWeight(5);
+}
+```
+</details>
+
+### Task 2 - Touch this 
+
+![you can touch this](./mc_hammer.gif)
+
+P5.js has a few different ways to capture touch events.
+
+the TouchStarted function is called when a user touches anywhere on the screen.
+
+First, we want to create circles on screen wherever we touch.
+
+ Read the following function and then add it to the bottom of your script file:
+
+```javascript
+function touchStarted() {
+  noStroke();
+  // chooses a random RGB colour to fill
+  fill(random(0,255),random(0,255),random(0,255)); 
+  // creates an ellipse where the user touched with a random radius.
+  ellipse(mouseX,mouseY, random(20,100));  
+}
+```
+
+Test this in your browser.
+ 
+### Task 3 - Test your code
+
+You should be able to see that although we are now using touch, for single interactions mouseX and mouseY are still used to get the location of the touch.
+
+Additionally, if your device does not have a touch screen the touchStarted function will be called by a mouse press.
+
+Therefore you are able to test the code you have written on your computer even if it does not have a touch screen.
+
+However, It is a very good idea to also test your code with actual touch events. you can also do that in the browser.
+
+In Chrome, right click and select 'inspect' to open up the developer tools.
+
+If you now change the device by clicking the tablet button in the top left of the developer panel.
+
+![Google chrome change device button](./change_device.PNG)
+
+You can now test your project again, you should see a difference.
+<details>
+<summary>Answer</summary>
+When in touch device mode, circles are create when you press and release. In the normal mode, one is only created on press.
+</details>
+
+To fix this issues, the function just needs to 'return false'
+
+Your function should now look like this:
+```javascript
+function touchStarted() {
+  fill(random(0,255),random(0,255),random(0,255)); // chooses a random RGB colour to fill
+  ellipse(mouseX,mouseY, random(20,100));  // creates an ellipse where the user touched with a random radius.
+  return false;
+}
+```
+
+### Task 4 - Touch Ended
+
+P5 has a separate function which calls when you stop touching the screen ([touchEnded documentation](https://p5js.org/reference/#/p5/touchEnded)).
+
+Add the function to the bottom of your script:
+
+```javaScript
+function touchEnded(){
+	
+}
+```
+Now add some code to that function to create a rectangle  50px wide where you release your finger.
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function touchEnded(){
+   rectMode(CENTER);
+   rect(mouseX, mouseY,50); 
+}
+```
+</details>
+
+You should see that you can press then drag and release in a different location.
+
+### Task 5 - TouchMoved 
+
+The final touch function available in P5.js is Touch Moved
+
+Add the following to the bottom of your script file
+
+```javascript
+
+function touchMoved() {
+  line(mouseX, mouseY, pmouseX,pmouseY);
+  return false;
+}
+
+```
+
+You should now have a line connecting you shapes.
+
+### Task 6 - Multiple Touches
+
+So far we have seen that Touches have worked in a very similar way to mousePressed, mouseReleased and mouseMoved.
+
+But a mouse is limited to one pointer. With touch we can have multiple touch points.
+
+Create a new p5 project and create a canvas the size of the window with noStroke as before.
+
+Add a background colour in your draw function.
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function setup(){
+   createCanvas(windowWidth,windowHeight);
+   noStroke();   
+}
+
+function draw(){
+   background(220,20); // transparent grey
+}
+```
+</details>
+
+To access multiple touches on the screen we can use the touches property.
+
+This is an array so we can find out how many items it has by just doing.
+
+```javascript
+touches.length
+```
+
+In your Draw function,
+
+
+Create an ellipse at the centre of the screen. 
+
+Set the radius to be the number of touches ( you will also want to multiply this by 20 so its not too small)
+
+Lastly, change the fill colour so that it reacts to the number of touches.
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function draw(){
+   background(220,20);
+   // use map to convert the number of touches to a number between 0 and 255. 
+   let redValue = map(touches.length, 1, 10,255,0);
+   //set the colour
+   fill(redValue,0,0);
+   //draw and ellipse in the center of the screen
+   ellipse(width/2,height/2,touches.length * 20);
+}
+```
+[map documentation](https://p5js.org/reference/#/p5/map)
+
+</details>
+
+
+### Task 7 - Test it out on the Panel server.
+
+You can test individual touches on your computer by simulating it though the developer tools as we have been doing above.
+
+But to test multiple touches you need to be on an actual touch screen.
+
+The best way to do that is to upload your code to your panel server space and then open the page on your phone.
+
+If you have forgot how to do this, there is a guide on Blackboard under "learning Materials > Additional support"
+
+If you are struggling to get this working ask for help.
+
+#### Optional Extra challenge - Remote debugging
+
+An issue with testing on your phone is that you cannot access the developer tools to help debug your code.
+
+One solution to this on Android devices is to use remove debugging.  If this is something you are interested in you can follow this guide t o set it up 
+
+[https://developer.chrome.com/docs/devtools/remote-debugging/](https://developer.chrome.com/docs/devtools/remote-debugging/)
+
+This will not work on IOS, but you may be able to view the console log by going to "chrome://inspect" [https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html](https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html)
+
+### Task 8 - Multi Touch locations
+
+Now that we can access multiple touches, we can use the locations of those touches.
+
+Create a new project, or comment out your setup and draw functions and make new blank ones.
+
+In the setup function create a new canvas that fills the window and in the draw assign a background colour. 
+
+Lastly, we want to console log touches so that we can look in our console and see what the array contains.
+
+<details>
+<summary>Soluton</summary>
+
+```javascript
+function setup(){
+	createCanvas(windowWidth,windowHeight);
+}
+
+function draw(){
+	background(220); // grey	
+	
+	//first check if there are any touches
+	if(touches.length > 0){
+	   console.log(touches); //log out any touches to the console.
+	}
+	
+}
+```
+</details>
+
+Test this on your PC and if you open up your developer tools you will see in your console that the touches array contains an id, and an x and y property.
+
+![touches console log](./touches_output.PNG)
+
+We can use these to draw the locations to the screen
+
+Add a for loop in your draw function that loops thought all the elements of the touches array.
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function draw(){
+  background(220);
+  
+  if(touches.length > 0){
+    for(let i = 0; i< touches.length; i++){
+     
+    }
+  }
+}
+```
+</details>
+
+Inside the for loop create an ellipse and position it at the x and y co-ordinates of each touch.
+
+<details>
+<summary>Hint</summary>
+
+You can access the x location of the first touch using
+```javascript
+	touches[0].x
+```
+		
+</detatils>
+
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function draw(){
+  background(220);
+  
+  if(touches.length > 0){
+    for(let i = 0; i< touches.length; i++){
+       ellipse(touches[i].x, touches[i].y, 50); 
+    }
+  }
+}
+```
+</details>
+
+Create a text box above each ellipse that shows the ID for that touch. 
+
+</detatils>
+
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+function draw(){
+  background(220);
+  
+  if(touches.length > 0){
+    for(let i = 0; i< touches.length; i++){
+       ellipse(touches[i].x, touches[i].y, 50); 
+       textAlign(CENTER,CENTER);
+       textSize(30);
+       text(touches[i].id, touches[i].x,touches[i].y - 40)
+    }
+  }
+}
+```
+</details>
+
+Finally, upload this to your panel server and test it out.
+
+### Task 9 - More Multi Touch
+
+Now that we have a basic demo working we can build on it and 
+
+Try using the touch locations to draw shapes
+
+```javascript
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw(){
+  
+  beginShape(); //start a shape
+  
+  if(touches.length > 0){
+    for(let i = 0; i< touches.length; i++){
+        vertex(touches[i].x,touches[i].y); // add a corner to the shape
+    }  
+  }
+  
+  endShape(CLOSE); //close the shape
+}
+
+```
+
+When you test this on your phone do you come across any issues?
+
+The browser on touch devices uses multi touch gestures to scroll and zoom pages. 
+
+Luckily you can turn these off.
+
+Open up your index.html page.
+
+In the head you should see the following meta tag
+
+
+```html
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+We need to add some properties to this tag to turn off scaling
+
+```html
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+```
+
+Test your code on your touch device again.
+
+finally, try the code below to use lines instead of shapes:
+
+
+```javascript
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function draw(){
+  background(220);
+  
+  if(touches.length > 0){
+    for(let i = 0; i< touches.length; i++){
+       for(let j = 0; j< touches.length; j++){
+                    line(touches[i].x,touches[i].y,touches[j].x,touches[j].y) 
+       }
+     
+    }
+  }
+}
+```
+
+### Task 10 - Rotation
+
+Most mobile devices have an accelerometer built in to them, we can access that to find the rotation and use that in our code.
+
+In P5.js, you access the rotation through
+
+```javascript
+rotationX
+rotationY
+rotationZ
+```
+
+For this next project we want to control a shape on screen using the rotation of the device.
+
+First Make a new project.
+
+In the setup function create a canvas the size of the window.
+
+Then create 3 global variables x,y and size;
+
+in the setup function, set x and y to the middle of the screen, and set the radius to 25;
+
+lastly, add a background colour to the draw function.
+
+<details>
+<summary>Solution</summary>
+ 
+ ```javascript
+ let x;
+ let y;
+ let radius;
+ 
+ function setup(){
+    createCanvas(windowWidth, windowHeight);
+    
+    x = width/2;
+    y = height/2;
+    radius = 25;
+    
+ }
+ 
+ function draw(){
+    
+ }
+ 
+ ```
+</details>
+
+
+Now, in the draw function, add the following code to change x and y based on the rotation of the device:
+
+```javascript
+
+x += rotationX/10;
+y += rotationY/10
+
+ellipse(x,y,radius*2);
+```
+
+Now, same this and test it on your PC to make sure you do not have any   bugs.
+
+Then upload it to the panel server to test on your device.
+
+Add extra code before you draw the ellipse to stop it falling off the edge of the screen.
+
+<details>
+<summary>Solution</summary>
+
+```javascript
+//stop the ellipse falling off the top and bottom
+if(y<radius){
+   y = radius;
+} else if(y>(height-radius)){
+   y = height-radius;
+}
+ 
+//stop the ellipse falling off the sides.
+if( x< radius){
+   x = radius;
+}else if(x> (width-radius)){
+   x = width-radius;
+}
+```
+</details>
+
+
+#### Extra Challenge
+
+Use rotationZ to change the radius of the ball.
+
+
+### Task 6 - Acceleration
+
