@@ -12,7 +12,7 @@ You can access the [documentation for p5.js here](https://p5js.org/reference/) ,
 
 - Create a new canvas in your setup function and make it the size of the window.
 
-- Make the background White and set the stroke Weight to 5;
+- Make the background White and set the stroke Weight to 5.
 
 <details>
 <summary>Hint</summary>
@@ -35,9 +35,9 @@ function setup(){
 ```
 </details>
 
-Test your project in Chrome
+ - Test your project in Chrome
 
-### Task 2 - Touch this 
+#### Touch Started
 
 ![you can touch this](./mc_hammer.gif)
 
@@ -63,7 +63,7 @@ You can see that although we are now using touch, for single interactions **mous
 
 Test your code in Chrome on your computer.
 
-### Task 3 - Simulating touch events
+#### Simulating touch events
 
 You now need to test your code with actual touch events. Helpfully, Chrome allows you to simulate them using the developer tools.
 
@@ -95,7 +95,7 @@ function touchStarted() {
 }
 ```
 
-### Task 4 - Touch Ended
+#### Touch Ended
 
 P5 has a separate function which calls when you stop touching the screen **touchEnded**.
 
@@ -130,7 +130,7 @@ function touchEnded(){
 
 You should note that you can press then drag and release in a different location.
 
-### Task 5 - TouchMoved 
+#### TouchMoved 
 
 The final touch method available in P5.js is Touch Moved
 
@@ -149,7 +149,7 @@ This function will be called whenever your finger moves on the screen.
 
 Test this now you should have a line connecting your shapes.
 
-### Task 6 - Multiple Touches
+### Task 2 - Multi-touch
 
 So far we have seen that Touches have worked in a very similar way to mousePressed, mouseReleased and mouseMoved.
 
@@ -231,7 +231,7 @@ function draw(){
 Now try testing this out in Chrome on your computer. What issues will you face?
 
 
-### Task 7 - Test it out on the Panel server.
+#### Test it out on the Panel server.
 
 You can test individual touches on your computer by simulating it though the developer tools as we did earlier.
 
@@ -255,7 +255,7 @@ One solution to this on Android devices is to use remote debugging. If this is s
 
 This will not work on IOS, but you may be able to view the console log by going to "chrome://inspect" [https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html](https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html)
 
-### Task 8 - Multi Touch locations
+### Task 3 - Multi Touch locations
 
 Now that we can access multiple touches, we can access the locations of those touches.
 
@@ -371,7 +371,7 @@ function draw(){
 
 - Finally, upload this to your panel server and test it out.
 
-### Task 9 - More Multi Touch
+#### More Multi-touch
 
 Now that we have a basic demo working we can build on it.
 
@@ -476,7 +476,7 @@ function draw(){
 
 - Test this on your device.
 
-### Task 10 - Rotation
+### Task 4 - Rotation
 
 Most mobile devices have an accelerometer built in to them, we can access that to find the rotation and use that in our code.
 
@@ -531,7 +531,7 @@ ellipse(x,y,radius*2);
 
 Before we test this on the panel server, and your device we have one more thing to do.
 
-### Task 11 - IOS Permissions
+#### Apple IOS Permissions
 
 Modern IOS devices will not let you use the accelerometer to see the rotation of the device until you have given permission.
 
@@ -600,9 +600,7 @@ function touchEnded(){
 
 - You can now test your code on your computer to check for any bugs, then upload to the panel server. 
 
-### Extra Challenge 1
-
-#### Stop the ellipse from leaving the screen
+#### Extra Challenge - Stop the ellipse from leaving the screen
 
 - Add extra code before you draw the ellipse to stop it falling off the edge of the screen.
 
@@ -634,9 +632,9 @@ if( x< radius){
 ```
 </details>
 
-### Extra Challenge 2
+### Optional Task 5 - Device moved or shaken
 
-Use deviceMoved or device shaken to detect movement and change the colour or other visual element on screen.
+Use **device moved** or **device shaken** to detect movement and change the colour or other visual element on screen.
 
 <details>
 <summary>Hint</summary>
@@ -646,9 +644,9 @@ Use deviceMoved or device shaken to detect movement and change the colour or oth
 
 </details>
 
-### Final Extra Challenge
+### Optional Challenge - Create an artwork with what your have learnt
 
-- Create an artwork for the large touch screen in Q block corridor 
+- Create an artwork for the large touch screen in Q block corridor. This challenge is open for the rest of the semester.
 
 #### Design considerations
 
@@ -656,13 +654,16 @@ Use deviceMoved or device shaken to detect movement and change the colour or oth
 - Must have interactive elements
 - Must not allow users to create offensive content
 - Should have motion when not interacted with
-- Should encourage users to interact
+- Should encourage users to interact with the sc
+- Must only use touch for interactions
+
 
 Examples -
 - [boids](https://tomgarne.panel.uwe.ac.uk/boids/)
 - [game of touch](https://tomgarne.panel.uwe.ac.uk/gameoftouch/game/)
 
 Please send any completed projects to me (tom.garne@uwe.ac.uk) and if they fulfil all the design considerations above I will put them on the large screen for everyone to admire.
+
 
 
 
