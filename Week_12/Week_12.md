@@ -12,7 +12,7 @@ You can access the [documentation for p5.js here](https://p5js.org/reference/) ,
 
 - Create a new canvas in your setup function and make it the size of the window.
 
-- Make the background White and set the stroke Weight to 5.
+- Make the background a light colour and set the stroke Weight to 5.
 
 <details>
 <summary>Hint</summary>
@@ -29,13 +29,14 @@ You can access the [documentation for p5.js here](https://p5js.org/reference/) ,
 ```javascript
 function setup(){
   createCanvas(windowWidth,windowHeight);
-  background('white');
+  background('GhostWhite'); 
+  //css colours from https://www.w3schools.com/cssref/css_colors.php
   strokeWeight(5);
 }
 ```
 </details>
 
- - Test your project in Chrome
+ - Test your project in Chrome to check for errors.
 
 #### Touch Started
 
@@ -51,7 +52,6 @@ The following function will create a circle where you touch the screen.
 
 ```javascript
 function touchStarted() {
-  noStroke();
   // chooses a random RGB colour to fill
   fill(random(0,255),random(0,255),random(0,255)); 
   // creates an ellipse where the user touched with a random radius.
@@ -62,6 +62,9 @@ function touchStarted() {
 You can see that although we are now using touch, for single interactions **mouseX** and **mouseY** are still used to get the location of the touch.
 
 Test your code in Chrome on your computer.
+
+![task_1_1](./task_1-1.PNG)
+
 
 #### Simulating touch events
 
@@ -128,6 +131,8 @@ function touchEnded(){
 ```
 </details>
 
+- Test out your code.
+- 
 You should note that you can press then drag and release in a different location.
 
 #### TouchMoved 
@@ -147,7 +152,11 @@ function touchMoved() {
 
 This function will be called whenever your finger moves on the screen.
 
-Test this now you should have a line connecting your shapes.
+ - Test this now, you should have a line connecting your shapes.
+
+![task_1_2](./task_1-2.PNG)
+
+[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_1/)
 
 ### Task 2 - Multi-touch
 
@@ -243,7 +252,9 @@ If you have forgot how to do this, there is a guide on Blackboard under "learnin
 
 If you are struggling to get this working ask for help.
 
-- Once it is on the panel server, test it out on your phone and see if it works. 
+- Once it is on the panel server, test it out on your phone and see if it works.
+
+[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_2/) 
 
 #### Optional Extra challenge - Remote debugging
 
@@ -254,6 +265,8 @@ One solution to this on Android devices is to use remote debugging. If this is s
 [https://developer.chrome.com/docs/devtools/remote-debugging/](https://developer.chrome.com/docs/devtools/remote-debugging/)
 
 This will not work on IOS, but you may be able to view the console log by going to "chrome://inspect" [https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html](https://blog.chromium.org/2019/03/debugging-websites-in-chrome-for-ios.html)
+
+
 
 ### Task 3 - Multi Touch locations
 
@@ -369,7 +382,9 @@ function draw(){
 ```
 </details>
 
-- Finally, upload this to your panel server and test it out.
+- Finally, upload this to your panel server and test it out
+
+TIP : Use chrome in incognito mode to avoid any caching issues.
 
 #### More Multi-touch
 
@@ -388,8 +403,8 @@ function draw(){
   background('black');
     
   //this nested for loop creates a grid of ellipses as a background
-  for(let i =0; i< width; i+= 10){
-  	for(let j = 0; j<height; j+=10){
+  for(let i =0; i< width; i+= 30){
+  	for(let j = 0; j<height; j+=30){
   		ellipse(i,j,10,10);
   	}
   }
@@ -459,10 +474,12 @@ finally, comment out all your code and paste in the code below to use lines inst
 ```javascript
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  strokeWeight(0.1); 
 }
 
 function draw(){
-  background(220);
+  background(220,20);
   
   if(touches.length > 0){
     for(let i = 0; i< touches.length; i++){
@@ -474,7 +491,10 @@ function draw(){
 }
 ```
 
+- Read the code and predict what you are going to see.
 - Test this on your device.
+
+[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_3/)
 
 ### Task 4 - Rotation
 
@@ -600,6 +620,8 @@ function touchEnded(){
 
 - You can now test your code on your computer to check for any bugs, then upload to the panel server. 
 
+[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_4/)
+
 #### Extra Challenge - Stop the ellipse from leaving the screen
 
 - Add extra code before you draw the ellipse to stop it falling off the edge of the screen.
@@ -614,6 +636,8 @@ function touchEnded(){
 
 <details>
 <summary>Solution</summary>
+
+Add the following to the draw function:
 
 ```javascript
 //stop the ellipse falling off the top and bottom
