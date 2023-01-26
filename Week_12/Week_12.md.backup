@@ -637,6 +637,8 @@ function touchEnded(){
 <details>
 <summary>Solution</summary>
 
+Add the following to the draw function:
+
 ```javascript
 //stop the ellipse falling off the top and bottom
 if(y<radius){
