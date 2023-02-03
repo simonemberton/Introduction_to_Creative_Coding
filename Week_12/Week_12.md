@@ -456,7 +456,7 @@ we also need to add some css to the page
       /*new lines to stop zoom an mobile*/
       height:100%;
       touch-action: none;
-      overscroll-behaviour:none;
+      overscroll-behavior:none;
       /* */
     }
 
