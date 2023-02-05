@@ -454,15 +454,13 @@ we also need to add some css to the page
       margin: 0;
       background-color: #1b1b1b;
       /*new lines to stop zoom an mobile*/
-      height:100%;
-      touch-action: none;
-      overscroll-behavior:none;
-      /* */
+      height:100%; /* set height to 100% of screen */
+      touch-action: none; /* disables touch actions of brower  */
+      overscroll-behavior:none; /* stop bouce back of screen screen when scrolling */
     }
 
     html, body {
-      /*hide scroll bars*/
-      overflow:hidden;
+      overflow:hidden; /* hide scroll bars */
     }
 ```
 
