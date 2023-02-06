@@ -156,7 +156,7 @@ This function will be called whenever your finger moves on the screen.
 
 ![task_1_2](./task_1-2.PNG)
 
-[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_1/)
+[Completed Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_1/)
 
 ### Task 2 - Multi-touch
 
@@ -254,7 +254,7 @@ If you are struggling to get this working ask for help.
 
 - Once it is on the panel server, test it out on your phone and see if it works.
 
-[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_2/) 
+[Completed Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_2/) 
 
 #### Optional Extra challenge - Remote debugging
 
@@ -454,15 +454,13 @@ we also need to add some css to the page
       margin: 0;
       background-color: #1b1b1b;
       /*new lines to stop zoom an mobile*/
-      height:100%;
-      touch-action: none;
-      overscroll-behaviour:none;
-      /* */
+      height:100%; /* set height to 100% of screen */
+      touch-action: none; /* disables touch actions of brower  */
+      overscroll-behavior:none; /* stop bouce back of screen screen when scrolling */
     }
 
     html, body {
-      /*hide scroll bars*/
-      overflow:hidden;
+      overflow:hidden; /* hide scroll bars */
     }
 ```
 
@@ -494,7 +492,7 @@ function draw(){
 - Read the code and predict what you are going to see.
 - Test this on your device.
 
-[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_3/)
+[Completed Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_3/)
 
 ### Task 4 - Rotation
 
@@ -620,7 +618,7 @@ function touchEnded(){
 
 - You can now test your code on your computer to check for any bugs, then upload to the panel server. 
 
-[Compleated Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_4/)
+[Completed Task](https://tomgarne.panel.uwe.ac.uk/creative_coding/touch/task_4/)
 
 #### Extra Challenge - Stop the ellipse from leaving the screen
 
