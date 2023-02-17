@@ -91,7 +91,7 @@ function draw() {
   }
 ```
 
-### &#x1F536; Task 2 First Code Challenge:
+### &#x1F536; Task 2 first code challenge:
 
 ```diff
 ! Using the p5 reference find the entry for text()
