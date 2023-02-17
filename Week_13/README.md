@@ -6,7 +6,7 @@
 
 Create a new p5 empty example folder on your machine called DOM_DEMO_01 or something that is in line with your previous naming system.
 
-In index.html move the script tag for sketch.js to the bottom of the body so your html ```<body``` taglooks like this.
+In index.html move the script tag for sketch.js to the bottom of the body so your html ```<body>``` tag looks like this.
 
 ```html
 <body>
