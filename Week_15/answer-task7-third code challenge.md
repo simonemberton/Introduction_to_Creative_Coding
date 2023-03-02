@@ -8,7 +8,7 @@ To replace the circle with an image (like my 8 bit cat) add an images folder and
 Use the ```loadImage('assets/cat.png');``` function to prelaod the image in ```setup()```.    
 
 Use the ```image(img, x-100, y-100);``` to display the image instead of the ellipse. Note the ```-100``` co-ordinates to account for the image being located at the top left of x, y.  
-NOTE: if you are not sure what this refere to uncomment the ellipse and draw both the ellipse and image.  
+NOTE: if you are not sure what this refers to uncomment the ellipse and draw both the ellipse and image.  
 
 
 - Your sketch.js code should like this
