@@ -2,7 +2,7 @@
 
 ## A More Complex Game Exercise
 
-This exercise leans heavily on [this tutorial](https://thecodingtrain.com/CodingChallenges/031-flappybird.html) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". One key syntax difference between how we are working in this tutorial and how Dan Shiffman does it, is that we are using JavaScript Classes, in line with how we've been learning, where Dan Shiffman uses functions.
+This exercise leans heavily on [this tutorial](https://thecodingtrain.com/tracks/games/31-flappy-bird) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". One key syntax difference between how we are working in this tutorial and how Dan Shiffman does it, is that we are using JavaScript Classes, in line with how we've been learning, where Dan Shiffman uses functions.
 
 We're going to create a very simple minimal version of [Flappy Bird](https://flappybird.io/), but our version is going to:
 
