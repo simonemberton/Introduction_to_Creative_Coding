@@ -224,7 +224,7 @@ function Pipe() {
   // check if bird is within this.top or this.bottom 
   // and with the width of the bar
   this.hits = function(bird) {
-    if (bird.y < this.top || bird.y > height - this.bottom) {
+    if (bird.y < this.top || bird.y > this.bottom) {
       if (bird.x > this.x && bird.x < this.x + this.w) {
         this.highlight = true;
         return true;
