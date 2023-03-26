@@ -202,7 +202,7 @@ The output of this task should have a small ellipse orbiting around a larger cen
 ### Task 4 - Arrays of particles
 
 <!-- 4 -->
-Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task07/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
+Remember back to last term when we had an [array of Bubble objects](https://simonemberton.panel.uwe.ac.uk/Week07/Task_07/).  Using this example as a template can you now create an array of particle objects that are all attracted towards the central ellipse.
 
 If you can get that working it should look something like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task4/):
 
