@@ -355,11 +355,10 @@ Also, what happens when you take out ```noLoop()```?
 ## &#x1F536; Code Challenge 6:
 
 ```diff
-! Working in pairs... Reverse roles
-! One person reads and explains, the other person types in the code.
+! Working individually
 
 ! Using the simple 2D primitive shapes that we explored earlier.. 
-! ..create a portrait of one of you.
+! ..create a portrait of yourself.
 ```
 
 
