@@ -25,6 +25,7 @@ Now we're going to try and draw a continuous line!
 ```javascript
 function setup(){
   createCanvas(480,480);
+  background(255);
   strokeWeight(4);
   stroke(0, 102);
 }
