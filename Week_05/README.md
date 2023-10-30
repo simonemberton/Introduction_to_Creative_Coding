@@ -7,7 +7,7 @@
 
 This first task is designed to get you to explore how to use Arrays.  
 
-Working in pairs...  
+For the first task work in pairs...  
 One person reads and explains, the other person types in the code.  
 
 Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions, what needs to be included in the folder? Is your new folder in the right place to find the p5.js library?
@@ -20,7 +20,7 @@ The quote is:
 *"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."* 
 
 In your sketch.js, create an array that can be accessed globally within the sketch. 
-Work out wehere this here needs to go?
+Work out where this here needs to go?
 
 Add the quote, with each word as a separate element.
 
@@ -95,8 +95,8 @@ function draw() {
 
 ```diff
 ! Using the p5 reference find the entry for text()
-! Add a couple of words of text to the screen in ```setup()``` just to test, 
-! and to remember how ```text()``` works.  
+! Add a couple of words of text to the screen in setup() just to test, 
+! and to remember how text() works.  
 
 ! Now add text() to your loop so that it uses myWords[i] and xVal to print the quote on the screen.
 ! Use textAlign(CENTER) to space the text. 
@@ -186,7 +186,7 @@ for (let i = 0; i < 256; i++) { // why 256?
 }
 ```
 
-In ```setup()```, try printing ```myArr``` to the console using:
+In ```setup()```, try printing ```myColors``` to the console using:
 
 ```javascript
 console.log(myColors);
@@ -194,6 +194,10 @@ console.log(myColors);
 - **Step 3**
 
 OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos. Let's initialise it to the value of 0.
+
+```javascript
+let xPos = 0;
+```
 
 We also need to stop p5 from drawing the edges round our rectangles, so we'll turn stroke off:
 
@@ -204,7 +208,7 @@ function draw() {
 }
 ```
 
-Still in the draw function, we now need to *iterate* through ```myArr``` and change the fill based on that. Why is the syntax ```myArr[i]```? What is ```i``` and how does it relate to ```myArr``` in this instance? 
+Still in the draw function, we now need to *iterate* through ```myColors``` and change the fill based on that. Why is the syntax ```myColors[i]```? What is ```i``` and how does it relate to ```myColors``` in this instance? 
 
 ```javascript
 
