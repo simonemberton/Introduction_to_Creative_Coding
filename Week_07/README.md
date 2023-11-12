@@ -151,7 +151,7 @@ When finished it should look like this:
 <img src="./images/dots-3.gif" alt="Download" width="75%"/>
 </p>
 
-### Task 3 - Problem solving challenge
+### Task 4 - Problem solving challenge
 
 (This final task should be included in your WordPress journal).  
 
