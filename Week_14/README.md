@@ -1,293 +1,456 @@
-
 # Week 14
 
-## Interaction beyond keyboard and mouse
+## Object Orientation in JavaScript
 
-For this week's task we're going to make an interactive audio-visualiser.  This worksheet is inspired by Yannis Yannakopoulos' [audio-visualisers](https://tympanus.net/Development/AudioVisualizers) so spend a bit of time playing with them first.  You'll notice that the location of the mouse cursor on the canvas allows you to interact with them, we'll also see how we can use input from the microphone and camera as other ways to interact with our audio-visualisers.
 
-### Task 1 - Microphone input
-
-If you are using a recent version of p5 you'll need to run a local server for this worksheet.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).  When using a local server you may find that any changes you mkae to the code do not show up in the browser, this may be due to the browser cache and can be remedied with a hard refresh (Cmd+Shift+R on a Mac, and Ctrl+F5 on a PC).
-
-Have a look at the [`p5.AudioIn`](https://p5js.org/reference/#/p5.AudioIn) example and get it working on your machine. You might want to make the canvas bigger as on this example it's really tiny. At the time of writing there was an issue with `p5.AudioIn` (in the latest version of p5.sound) and Firefox, so please use Chrome or Safari.
-
-Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
-
-If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you're doing you can start from the code of this [`getLevel()` example](https://p5js.org/reference/#/p5.Amplitude/getLevel).
-
-I'm going to base my audio-visualiser off of [Demo 3](https://tympanus.net/Development/AudioVisualizers/index3.html).  This example consists on rotating points and lines that move in time to the music.  
-
-Notice that they all rotate around the centre of the canvas, so we need to change our point of origin using the `translate()` function.  Now let's use a for loop and the `rotate()` function to draw some [points](https://p5js.org/reference/#/p5/point) in a circle shape.  This is the code that I added to my `draw() function`:
-
-```javascript
-translate(width / 2, height / 2);
-
-let noOfPoints = 12;
-
-for (let i = 0; i < noOfPoints; i++) {
-  rotate(TWO_PI / noOfPoints);
-
-  strokeWeight(4);
-  stroke(255);
-  point(0, height/4);
-}
-```
-
-Now I want to use the values coming in from the micrphone to move the points.  If you look at the code you'll see that the `getLevel()` function is being used to access the volume level (amplitude) coming into the microphone.  `console.log()` the values in the `micLevel` variable to the console while making some noises and see how they change.  Note that you'll have to tap on the canvas to start the audio before you see these values.  In particular look for the extremes. What are the values when there is only background ambience? What are the values when you make a loud clapping noise?
-
-Next you'll need to use the `map()` function to map the minimum and maximum values from the microphone to the minimum and maximum values that you want the points to move to.
-
-Your `draw()` function should now look something like the following:
-
-```javascript
-function draw(){
-  background(0);
-  fill(255);
-  noStroke(); // so that the text below doesn't have a large stroke value
-  text('tap to start', width/2, 20);
-
-  let micLevel = mic.getLevel();
-  let mappedMicLevel = map(micLevel, 0, 0.1, 0, 200); // map micLevel to desirable range
-
-  translate(width / 2, height / 2); // move point of origin to centre of canvas
-
-  let noOfPoints = 12; // total number of points to draw
-
-  for (let i = 0; i < noOfPoints; i++) { // for all of the points
-    rotate(TWO_PI / noOfPoints); // rotate around a circle - default for p5 is radians
-
-    strokeWeight(4);
-    stroke(255);
-    point(mappedMicLevel, height/4);
-  }
-
-}
-```
-
-Now put some music on and watch those points dance!  You might need to adjust the values inside the map function depending on how loud your music is.  
-
-Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task1/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task1.gif">
+  <img width="500" height="400" src="./images/classes.png">
 </p>
 
 
-### Task 2 - Frequency Analysis
+### Task 1 - Starting Point Sketch: As Single Shape
 
-Let's try and develop this a bit further by applying some audio analysis to the incoming signal so that we can isolate the high, mid and low frequency bands rather than just overall amplitude.  The method of audio analysis we'll be using is the Fast Fourier Transform [FFT](https://p5js.org/reference/#/p5.FFT).  
 
-First we need to create a new global variable called `fft` at the top of the `sketch.js` file.  Remember it's a global variable so it's outside of the `setup()` function.  Next at the end of the `setup()` function we'll make our `fft` variable equal to a new `p5.FFT` object and then set the input to `fft` to be the `mic` variable from the `p5.AudioIn` object using the following code:
-```javascript
-fft = new p5.FFT();
-fft.setInput(mic);
-```
-Then inside the `draw()` function instead of calling `mic.getLevel()` we'll use the following code to get the frequency spectrum of the microphone signal:
-```javascript
-let spectrum = fft.analyze();
-```
-Now `console.log` the `spectrum` variable and see the output in the console. You'll need to comment out the rest of the code so that errors don't prevent the code from running.  You'll see in the console that the `spectrum` variable contains an array of length 1024 where each location in the array has a value between 0-255 which represents the amplitude at that slice of the frequency spectrum.
+Create a new project with a blank sketch thas has a canvas 1200px wide and 800px high.
 
-We could use the data from `fft.analyze()` to create some interesting visuals but instead I want to make use of fft's [`getEnergy()`](https://p5js.org/reference/#/p5.FFT/getEnergy) function to get the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  FYI we always have to use `fft.analyze()` before using `fft.getEnergy()`.  Add the following code:
-```javascript
-let treble = fft.getEnergy("treble");
-let mid = fft.getEnergy("mid");
-let bass = fft.getEnergy("bass");
-```
-Now print the values from the `treble`, `mid` and `bass` variables to the console. You'll see that we now have a value between 0-255 for each of the three frequency bands.  Let's draw circles of points for each of these frequency bands.  We need to use `map()` functions for each of the bands to map the values within appropriate ranges.  Here are what my `map()` functions look like:
-```javascript
-let mappedTreble = map(treble, 0, 50, 0, 200); 
-let mappedMid = map(mid, 0, 255, -100, 100); 
-let mappedBass = map(bass, 0, 255, -200, 0);
-```
-Next inside the for loop add more `point()` functions so that we've got one for each frequency band, where the `x` location of each `point()` takes a mapped frequency band as the input. I've made mine a different colour too so that you can see the difference:
-```javascript
-// treble
-strokeWeight(6);
-stroke(255,0,0);
-point(mappedTreble, height/4);
+Set the background to white.
 
-// mid
-strokeWeight(4);
-stroke(0,0,255);
-point(mappedMid, height/4);
+*Below* the ```draw``` function, define two new functions, one called ```move()``` and one called ```display()```. Do remember how to do this? See below for the syntax:
 
-// bass
-strokeWeight(6);
-stroke(255);
-point(mappedBass, height/4);
-```
-Now you should be able to see each of the points reacting slightly differently to different parts of the music.  If you can't see all three points try adjusting the map function values so that it works well for you.
-
-Let's make those differences a bit more pronounced by adding a scaling factor to each of the circles of points.  We'll create some more `map()` functions so that we have a bit more control over the exact values to use.
 ```javascript
-let scaleTreble = map(treble, 0, 50, 0.8, 1.2); 
-let scaleMid = map(mid, 0, 255, -0.9, 0.9); 
-let scaleBass = map(bass, 0, 255, -1, 1);
+function myFunction () {
+
+}
 ```
 
-We'll then use these mapped scaling variables as input to the [`scale()`](https://p5js.org/reference/#/p5/scale) function for each of the circles of points.  This function scales from the point of origin, so moves the points further from the centre.  We need to isolate the scaling and point functions for each of the frequency bands so that they don't interfere with each other, for that we'll use `push()` and `pop()` to make the drawing of each circle of points self contained.  For example:
+What we're going to build first, is one rectangle in the centre of the screen. Seems simple enough but we're also going to add some bits that we'll use later.
+
+First of all, we need to define a bunch of *global* variables. We need them for the x and y positions; the size of our shape; and half the size of our shape. So declare the following at the very top of the sketch:
+
 ```javascript
-// treble
-push();
-  strokeWeight(2);
-  stroke(255,0,0);
-  scale(scaleTreble);
-  point(mappedTreble, height/4);
-pop();
-
-// mid
-push();
-  strokeWeight(3);
-  stroke(0,0,255);
-  scale(scaleMid);
-  point(mappedMid, height/4);
-pop();
-
-// bass
-push();
-  strokeWeight(4);
-  stroke(255);
-  scale(scaleBass);
-  point(mappedBass, height/4);
-pop();
-```
-Now we're getting somewhere.
-
-Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task2/) to see it working.
-
-<p align="center">
-  <img width="499" height="498" src="./images/Task2.gif">
-</p>
-
-### Task 3 - Camera input
-
-At the moment we've got some visual elements reacting to the audio input but it would be good to make the piece a bit more interactive to the user.  For this task we'll use input from your web camera to capture movement and then use this data to influence parameters of the visualisation.  If you don't have a web camera feel free to skip this task and try and use the location of your mouse cursor (e.g. `mouseX`, `mouseY`) to influence some parameters instead.
-
-To start with we're going to make use of an external library for p5 to get some extra functionality.  If you go to [this](https://p5js.org/libraries/) page you'll see that quite a few external libraries have been written by the p5 community.  The library we want to use is called [Vida](https://www.tetoki.eu/vida/) (it's near the bottom of the page).  Vida is a simple library that adds camera (or video) based motion detection and blob tracking functionality to p5js.  The library allows motion detection based on a static or progressive background.  We're going to be making use of the motion detection based on a progressive background.  You can see the example working [here](https://www.tetoki.eu/vida/progressive_background_camera.html).  Notice in the bottom right threshold image any pixels that change between frames are displayed in white and any that don't change are black.  We're going to use the number of white pixels in each frame as an indication of movement and as an input to our visualisation.
-
-First let's start off by creating a new p5 project (e.g. by copy pasting the empty example folder).
-
-To make this library work we need to add a link to the code in our `index.html` file.  Specifcially add the following line after the link to the p5.js file:
-```html
-<script src="https://tetoki.eu/vida/vida/p5.vida.min.js"></script>
+let x,y,size;
 ```
 
-Now copy paste the following code to replace the content of your `sketch.js` file:
+Then on the lines directly below, we're going to declare some variables for later on once we get our rectangle moving:
+
+```javascript 
+let xSpeed,ySpeed,xDir,yDir;
+```
+These will relate to the speed of the object as it moves and whether it is travelling in a positive direction (to the right on the x axis and down on the y) or in a negative direction (to the left on the x axis and up on the y).
+
+In ```setup()```, we're going to initialise our variables. First, we'll do the position and size:
+
+```javascript 
+x = width/2; //middle
+y = height/2; //centre
+size = 10;
+```
+
+Next and still inside ```setup()``` we're going to initialise our xSpeed and ySpeed to random numbers between 0.3 and 5. And our direction variables to 1:
+
+```javascript 
+xSpeed = random(0.3,5);
+ySpeed = random(0.3,5);
+xDir = 1;
+yDir = 1;
+```
+OK it would be good to actually see something now, wouldn't it?! In the ```display()``` function you created earlier, let's make it draw our rectangle:
+
 ```javascript
-let myCapture; // camera
-let myVida;    // VIDA
+stroke(10);
+rectMode(CENTER);
+fill(0);
+rect(x, y,size,size);
+```
+OK, now call ```display()``` from ```draw()``` and you should see your shape in the middle of the screen when you refresh the page. Do you remember how to call a function? See below for the syntax:
 
-function setup() {
-  createCanvas(320, 240);
-  myCapture = createCapture(VIDEO);
-  myCapture.size(32, 24);
-  myCapture.hide();
-    
-  myVida = new Vida(this); // create the vida object
-  myVida.progressiveBackgroundFlag = true; // Turn on the progressive background mode.
-  
-  // The value of the feedback for the procedure that calculates the background
-  // image in progressive mode. The value should be in the range from 0.0 to 1.0
-  // (float). Typical values of this variable are in the range between ~0.9 and
-  // ~0.98.
-  myVida.imageFilterFeedback = 0.92;
-    
-  // The value of the threshold for the procedure that calculates the threshold
-  // image. The value should be in the range from 0.0 to 1.0 (float).
-  myVida.imageFilterThreshold = 0.15;
 
-  frameRate(30); // set framerate
+```javascript
+myFunction();
+```
+
+
+### Task 2 - Moving Our Shape
+
+OK, here goes the animation part. There will be logic and there will be maths, please ask for help from a tutor in the workshop if you need further explanation or clarification. We're here to help in the timetabled sessions :)
+
+So first of all, we want to move our shape. In order to do this, we need to change the x and y positions of the shape every time a new frame is drawn to the screen. So we're going to call the ```move()``` function from the ```draw()``` function. Make sure you add this *before* the call to ```display()```.
+
+Now, we're going to work the in ```move()```function definition for a while. We're going to add some simple maths to add to our shape's x and y positions every time it is called:
+
+```javascript
+x = x + (xSpeed * xDir); //add xSpeed multiplied by xDir
+y = y + (ySpeed * yDir); //add ySpeed multiplied by yDir
+```
+Save the sketch and refresh the page. Your shape will likely move down and to the right and then off the canvas never to be seen again!
+
+OK so you see the issue we have here? We need to *constrain* the movement of our shape. And we do this by use of if statements. We'll also introduce the fact that if statements can contain more than one condition. For instance, we could say "if this AND that happen, do this". Or in our case, we're going to say "if this OR that happen, do this". The symbol for the logical OR operator in computer programming is ```||```.
+
+So let's write two if statements first:
+
+```javascript
+if(x > (width-size) || x < size){ // if x is greater than the width (minus size) OR if x is less than size
+
 }
 
-function draw() {
-  background(120);
-  myVida.update(myCapture);
-  image(myVida.thresholdImage, 0, 0);
+if(y > (height-size) || y < size){ // if y is greater than the height (minus size) OR if y is less than size
 
-  // count the number of pixels that change on each frame
-  let whiteCount = 0;
-  for (let i = 0; i < myVida.thresholdImage.pixels.length; i++){
-    if(myVida.thresholdImage.pixels[i] == 255){
-      whiteCount = whiteCount+1;
+}
+```
+
+What we're doing here is setting up conditional statements that are constantly testing whether our shape's position is hitting the boundaries of our canvas. Now we need to put in some code that changes the direction of travel inside our if statements. If we want to change direction, we need to change our xDir and yDir variables from a negative to a positive, or vice versa. That way, if our shape is travelling right (positive) and reaches the right hand edge of the screen, we can change xDir to -1 so that means xSpeed * xDir will be a negative value and our shape will start travelling left. The same goes for the y value...
+
+```javascript
+if(x > (width-size) || x < size){
+            xDir = xDir * -1; // flip between positive 1 and negative 1
+            
+}
+
+if(y > (height-size) || y < size){
+            yDir = yDir * -1; // flip between positive 1 and negative 1
+}
+```
+So your if statements in your ```move()``` function should now look like the above. And your whole ```move()``` function should look like below:
+
+```javascript
+function move() {
+        
+        x = x + (xSpeed * xDir);
+        y = y + (ySpeed * yDir);
+
+        if(x > (width-size) || x < size){
+            xDir = xDir * -1;
+            
+        }
+
+        if(y > (height-size) || y < size){
+            yDir = yDir * -1;
+        }
+}
+```
+Save and refresh, how's it looking?! Can you see a shape moving around the screen? Ask for assistance if not... If this isn't making sense to you, please ask one of the members of staff in the workshop for some further clarification.
+
+
+### Task 3 - VFX
+
+So it's mildly visually uninteresting right now. Let's just add a little bit of a vapour trail to the movement to show direction of travel. In order to do this, we're going to put an overlay fade on the whole canvas.
+
+There are loads of ways to do this, but our way is by drawing a slightly transparent rectangle over everything else.
+
+At the very top of your ```draw()``` function, add the following code:
+
+```javascript
+noStroke(); // no outline
+rectMode(CORNER); // draw from top left corner
+fill( 255, 255, 255, 80); //white 80 on the alpha channel
+rect(0, 0, width, height); // draw a rectangle over the whole canvas
+```
+
+Try changing the alpha value to something lower than 80. Now try something higher... See what's happening?
+
+
+### Task 4 - Object Orientation-ifying...
+
+So this is kind of cool and all, but what if we wanted 20 rectangles all moving at different speeds in different directions? Or 200? or 2000? And what if we want some to be rectangles, some to be circles? With different colours or something? I personally can't be bothered to write all that out 2000 times. And imagine trying to find any errors or updating your code if you did do that?!
+
+This is where our Object Oriented approach comes into it's own. Instead of writing out the same code over and over in order to get individual variables of x,y speed etc etc, we can *encapsulate* all the stuff we need into one nice package: let's call it a MovingShape.
+
+Now, in order for us to do that, we need to shift our moving and displaying functions around a bit and put them into the thing discussed in the lecture called a ```class```. A class is like a blueprint or template of the object that we are going to make ```instances``` of later on.
+
+
+First of all, let's define our MovingShape class. At the *bottom* of your sketch, add the following:
+
+```javascript
+class MovingShape {
+
+}
+```
+
+Now, if you remember, every class needs a ```constructor``` method. This gets called every time we make a new version of MovingShape using the keyword ```new```. More on that later, but for now let's put an empty constructor in:
+
+```javascript
+class MovingShape {
+    
+    constructor(){
+
     }
-  }
+}
+```
+
+Let's also define our ```move()``` and ```display()``` functions in our class definition:
+
+```javascript
+class MovingShape {
     
-  // console.log(whiteCount);
-  let mappedMovement = map(whiteCount, 768, 1400, 0, width);
-  // console.log(mappedMovement);
-  ellipse(mappedMovement, height/2, 10);
+    constructor(){
+
+    }
+
+    move(){
+
+    }
+
+    display() {
+
+    }
+}
+```
+See what we mean about creating a blueprint? What's going to happen is that when we create a new *instance* of the class MovingShape, it will have its own move and display methods that only relate to it.
+
+OK, here's the mildly mind mangly bit: we now have methods that only relate to the instance of the class, but we need to make sure that all our variables also only relate to that instance. As you know, at first we defined all our variables in global scope at the top of the sketch. But now we need to change that. And that is where the ```this``` keyword comes in. Using the ```this``` keyword allows us to create variables that only belong to the object instance. So now, ```this.x``` will relate only to a single instance of our MovingShape object. From your ```setup()``` function, paste in your initialised variables into your MovingShape constructor method. Then add ```this.``` to the beginning of all the variable names. Remember the DOT operator means that we're accessing a property belonging to ```this```. And ```this``` is the object instance:
+
+
+```javascript
+class MovingShape {
+    
+    constructor(){
+        this.x = width/2;
+        this.y = height/2;
+        this.size = 10;
+        this.xSpeed = random(0.3,5);
+        this.ySpeed = random(0.3,5);
+        this.xDir = 1;
+        this.yDir = 1;
+    }
+
+    move(){
+
+    }
+
+    display() {
+
+    }
+}
+```
+OK now let's update our ```move()``` and ```display()``` methods so that the variables inside them relate to ```this``` instead of the global ones we defined earlier. We're just adding ```this.``` to the beginning of all the variable names. As we're using ```rectMode(CENTER)``` inside ```display()``` we divide ```size``` by two inside ```move()```, so look out for this change:
+
+
+```javascript
+move() {
+        
+        this.x = this.x + (this.xSpeed * this.xDir);
+        this.y = this.y + (this.ySpeed * this.yDir);
+
+        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
+            this.xDir = this.xDir * -1;
+            
+        }
+
+        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
+            this.yDir = this.yDir * -1;
+        }
+
+    }
+
+    display() {
+        stroke(10);
+        rectMode(CENTER);
+        fill(0);
+        rect(this.x, this.y,this.size,this.size)
+    }
+```
+
+So, your MovingShape class should look a little something like this now:
+
+```javascript
+class MovingShape {
+    
+    constructor(){
+        this.x = width/2;
+        this.y = height/2;
+        this.size = 10;
+        this.xSpeed = random(0.3,5);
+        this.ySpeed = random(0.3,5);
+        this.xDir = 1;
+        this.yDir = 1;
+    }
+
+    move() {
+        
+        this.x = this.x + (this.xSpeed * this.xDir);
+        this.y = this.y + (this.ySpeed * this.yDir);
+
+        if(this.x > (width-(this.size/2)) || this.x < (this.size/2)){
+            this.xDir = this.xDir * -1;
+            
+        }
+
+        if(this.y > (height-(this.size/2)) || this.y < (this.size/2)){
+            this.yDir = this.yDir * -1;
+        }
+
+    }
+
+    display() {
+        stroke(10);
+        rectMode(CENTER);
+        fill(0);
+        rect(this.x, this.y,this.size,this.size)
+    }
 
 }
 ```
 
-If you run this code you should see a very small thresholded image in the top left corner of the canvas (I've made it this size so that we don't have to process too many pixels, which can be quite processor intensive).  In the for loop we're going through all the pixels in the thresholded image, counting the ones that are white in the `whiteCount` variable.  If you `console.log()` `whiteCount` you'll get an idea of the minimum and maximum values to expect when there is little movement versus a lot of movement.  You might need to change the `myVida.imageFilterThreshold` value in the `setup()` if you need to change the sensitivity of your thresholded image.  
+Alright, so final part of this section, let's make an object, or two!
 
-`whiteCount` is calculated for each frame (notice that `frameRate` is set to 30fps) and then we use the `map()` function to map the values in `whiteCount` to be between zero and the width of the canvas.  This mapped value `mappedMovement` is then used to draw an ellipse.
+In order to do that, we need to make a variable. Near the top of the sketch, in global scope, define a variable called shapey1:
 
-Here is a screenshot of this code running and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task3_1/) to see it working.
-
-<p align="center">
-  <img width="318" height="239" src="./images/Task3_1.gif">
-</p>
-
-Now try and incorporate the Vida code into your audio-visualiser.  Once you've copied over all the code that you need (don't forget to link to the Vida library in the `index.html file`) try using the `mappedMovement` variable to draw new shapes in the scene.  In my example I've used it to draw lines using the following code:
 ```javascript
-strokeWeight(2);
-line(mappedMovement, height/4, mappedMovement, height);
+let shapey1;
 ```
 
-Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task3_2/) to see it working.
+In ```setup()```, let's assign an instance of our MovingShape object (the class that we have defined) by using the ```new``` keyword:
 
-<p align="center">
-  <img width="497" height="498" src="./images/Task3_2.gif">
-</p>
-
-### Task 4 - Finishing touches
-
-The audio-visualiser is nearly there but I want to add a few finishing touches as it still feels a bit static.  
-
-First I'm going to add rotations to each of the frequency band shapes which uses the constantly increasing `frameCount` value to drive the rotation.  Then I'll use values from the scaled frequency bands to modify the rotation speed of the shapes.  I'm also going to use values directly from frequency bands to change the colour of the points.  For this I've taken the value from 255 so that the value stays high as the default.
-
-The code for drawing the shapes now looks like this:
 ```javascript
-// treble
-push();
-  strokeWeight(6);
-  stroke(255-treble,0,0);
-  scale(scaleTreble);
-  rotate(-frameCount * scaleTreble/100);
-  point(mappedTreble, height/4);
-pop();
-
-// mid
-push();
-  strokeWeight(4);
-  stroke(0,0,255-mid);
-  scale(scaleMid);
-  rotate(frameCount * scaleMid/100);
-  point(mappedMid, height/4);
-  strokeWeight(2);
-  line(mappedMovement, height/4, mappedMovement, height);
-pop();
-
-// bass
-push();
-  strokeWeight(6);
-  stroke(255-bass);
-  scale(scaleBass);
-  rotate(-frameCount * scaleBass/100);
-  point(mappedBass, height/4);
-pop();
+shapey1 = new MovingShape();
 ```
 
-Finally I'm adding slight trails to the whole visualisation by putting some transparency on the `background()` function at the top of `draw()` like this:
+OK now in ```draw()```, beneath our transparent rectangle code, let's move and display shapey1:
+
 ```javascript
-background(0,150);
+    shapey1.move();
+    shapey1.display();
 ```
 
-Here is a screenshot of the end of Task 4 and a [link](https://simonemberton.panel.uwe.ac.uk/Week14/Task4/) to see it working.
+So we're using the DOT operator to call the methods ```move()``` and ```display()``` that only relate to shapey1.
+
+OK, now it's your turn, define shapey2 and assign a new object instance to it. Then add the correct lines for moving and displaying shapey2...
+
+What happens if we want more shapes though?
+
+
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task4.gif">
+  <img width="500" height="400" src="./images/capture1.JPG">
 </p>
+
+
+### Task 5 - An Array of Objects
+
+So we've *encapsulated* our code, and we've created a couple of instances that have their own related properties which allow them to move independently of each other. Let's make 200 of them then! 
+
+Remember how we were filling arrays last time? We can do exactly the same thing here. So while we had an initial bit of pain writing our class, we can now reuse that class over and over without having to write loads more code.
+
+Let's define a global array. At the top of the sketch:
+
+```javascript
+let shapeArr = [];
+```
+
+Then in ```setup()```, let's add our objects:
+
+```javascript
+for(let i = 0; i < 200; i++) {
+        shapeArr.push(new MovingShape());  // add a new MovingShape to our array each loop     
+}
+```
+Now in ```draw()``` let's iterate through the array to move and display all of the objects inside the array on every frame:
+
+```javascript
+for(let i = 0; i < 200; i++) {
+        shapeArr[i].move();
+        shapeArr[i].display();
+}
+```
+
+Whoa.
+
+
+<p align="center">
+  <img width="500" height="400" src="./images/Capture.JPG">
+</p>
+
+### Task 6 - Passing Arguments to the Constructor
+
+So we're cooking on gas now, but we can see that all our objects start from the same position. It would be cool if they all started from different positions. And also if they had different sizes.
+
+Let's go ahead and update our constructor method so that we can pass variables into it when the object is created:
+
+```javascript
+class MovingShape {
+    
+    constructor(startX, startY, startSize){
+        this.x = startX;
+        this.y = startY;
+        this.size = startSize;
+
+        //etc etc
+    }
+
+    //etc etc
+}
+```
+Now we need to update our ```setup()``` function so that the initialisation for loop passes random positions and sizes
+
+```javascript
+for(let i = 0; i < 200; i++) {
+        shapeArr.push(new MovingShape(random(0,width),random(0,height),random(1,40)));  // add a new MovingShape to our array each loop at random pos and with random size   
+}
+```
+
+
+<p align="center">
+  <img width="500" height="400" src="./images/capture3.JPG">
+</p>
+
+
+### Task 7 - The Inheritors
+
+Finally, to demonstrate the concept of *inheritence*, let's make a new class beneath our MovingShape class. We're going to use the ```extends``` keyword when defining a new class of MovingCircle. This time we're going to define the colour in the constructor:
+
+```javascript
+class MovingCircle extends MovingShape {
+    
+    constructor(startX, startY, startSize, colour){
+     
+    }
+
+    move() {
+     
+    
+    }
+
+    display() {
+    
+    }
+
+}
+```
+Now, we don't actually need to write out all the same code again. Because MovingCircle inherits properties and methods from MovingShape, all we need to do is use the ```super``` keyword to access the parent methods. We're also adding a variable called ```this.colour``` and overriding our ```display()``` method to draw a circle instead of a rectangle:
+
+```javascript
+class MovingCircle extends MovingShape {
+    
+    constructor(startX, startY, startSize, colour){
+        super(startX,startY,startSize);
+        this.colour = colour;
+    }
+
+    move() {
+        super.move();
+    
+    }
+
+    display() {
+        noStroke();
+        fill(this.colour);
+        ellipse(this.x, this.y,this.size,this.size);
+    }
+
+}
+```
+
+So, just define a global variable call ```circ```. Now can you remember what you need to do to initialise circ, the move and display it?! HINT take a look towards the end of Task 4... You may also want to use [p5's ```color()``` function](https://p5js.org/reference/#/p5/color)...
+
+<p align="center">
+  <img width="500" height="400" src="./images/capture4.JPG">
+</p>
+
+When you get here, come and find me for a congratulatory high five.
+
+Now let's play:
+
+Can you add a way of making a random colour for every object?
+
+Can you add some different shapes?
