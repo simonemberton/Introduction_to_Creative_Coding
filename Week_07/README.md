@@ -149,9 +149,9 @@ class Jitter {
 
 If you try running this code you'll see that it was written in a hurry and is littered with errors.  Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that is runs successfully.  
 
-When finished you should be able to create a new object each time you press the mouse like this:
+When finished it should look like this:
 <p align="center">
-<img src="./images/Task_02.gif" alt="Download" width="75%"/>
+<img src="./images/dots-2.gif" alt="Download" width="75%"/>
 </p>
 
 ### Task 3 - Problem solving challenge
