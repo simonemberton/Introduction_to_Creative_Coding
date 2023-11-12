@@ -153,6 +153,8 @@ When finished it should look like this:
 
 ### Task 3 - Problem solving challenge
 
+(This final task should be included in your WordPress journal).  
+
 Making use of the following code
 
 ```javascript
