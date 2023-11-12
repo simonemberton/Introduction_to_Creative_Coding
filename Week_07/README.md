@@ -99,51 +99,48 @@ Look at the following code
 ```javascript
 
 function setup() {
-  let dots = []; // array of Jitter objects
-  createcanvas(710, 400);
+  createCanvas(710, 400);
   noFill()
-  Stroke(255);
+  stroke(255,0,);
   // Create objects
   for (let i = 0; i < 50; i++) {
-    dots.push(new Jitter(random(w), random(h), random(10, 30)));
+    // create a an object data type to store each dot values
+    let ellipseObj = {
+      x: random(w),
+      y: random(h),
+      diameter: random(10, 50),
+      speedX: random(-2, 2), // Random horizontal speed
+      speedY: random(-2, 2), // Random vertical speed
+    };
+    dotsArray.push(ellipseObj);
   }
+  console.log(dotsArray);
 }
 
-// create new object when mouse is pressed
-function mousepressed() {
-  let r = random(10, 30)
-  let b = new Jitter(mouseX, mouseY, r);
-  dots.push(b);
-}
 
 function draw() {
   background(0);
-  // move and display all the objects
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].move();
-    dots[i].display();
+  // draw all the dots on each frame, moving there position
+  for (let i = 0; i < 50; i++) {
+    ellipseObj = dotsArray[i];
+
+    // Move the ellipse
+    ellipseObj.x += ellipseObj.speedX;
+    ellipseObj.x += ellipseObj.speedY;
+
+    // Check boundaries and bounce back
+    if (ellipseObj.x < 0 || ellipseObj.x > width) {
+      ellipseObj.speedX *= -1;
+    }
+    if (ellipseObj.y < 0 || ellipseObj.y > height) {
+      ellipseObj.speedY *= -1;
+    }
+
+    // Draw the ellipse
+    ellipse(ellipseObj.x, ellipseObj.y, ellipseObj.diameter);
   }
 }
 
-// Jitter class
-class Jitter {
-
-  constructor(x_, y_, r_) {
-    x = x;
-    y = y;
-    diameter = r;
-    speed = 2;
-  }
-
-  move() {
-    x += random(-speed, speed);
-    y += random(-speed, speed)
-  }
-
-  display() {
-    ellipse(x, y, diameter, diameter);
-  }
-}
 
 ```
 
@@ -151,7 +148,7 @@ If you try running this code you'll see that it was written in a hurry and is li
 
 When finished it should look like this:
 <p align="center">
-<img src="./images/dots-2.gif" alt="Download" width="75%"/>
+<img src="./images/dots-3.gif" alt="Download" width="75%"/>
 </p>
 
 ### Task 3 - Problem solving challenge
@@ -172,7 +169,7 @@ function letterCapitalise(str) {
 }
 ```
    
-your challange is to write some more code inside the ```letterCapitalise(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
+your challenge is to write some more code inside the ```letterCapitalise(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
 
 There are a number of ways that you could complete this task but if you're really stuck see below for some links to the functions that I made use of in my solution.
 
