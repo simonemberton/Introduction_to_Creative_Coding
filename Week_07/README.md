@@ -84,6 +84,9 @@ To add a breakpoint click on the line number you want the code to stop running a
 
 Now refresh the browser and navigate back to the console. The message ```"draw() is running"``` never appears in the console because the code stops running at the end of ```setup()```. 
 
+![breakpoints](https://github.com/simonemberton/Introduction_to_Creative_Coding/assets/16240228/c607f0d8-c60a-4b8f-9995-b0ab300a2e7b)
+
+
 <p align="center">
 <img src="./images/breakpoints.gif" alt="breakpoints" width="100%"/>
 </p>
