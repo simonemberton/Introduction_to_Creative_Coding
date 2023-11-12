@@ -171,7 +171,10 @@ function letterCapitalise(str) {
    
 your challenge is to write some more code inside the ```letterCapitalise(str)``` function that takes the ```str``` parameter being passed and capitalises the first letter of each word.  For example if the input is "hello world" the output should be "Hello World".  You can assume that words will be separated by only one space.
 
-There are a number of ways that you could complete this task but if you're really stuck see below for some links to the functions that I made use of in my solution.
+There are a number of ways that you could complete this task but if you're really stuck see below for some links to the functions that you could use solution.  
+
+#### How to start:  
+Breakdown the task programmatically into steps. Then add each step as a comment inside ```letterCapitalise(str)```.
 
 <details>
 <summary>Want to see some hints?</summary>
