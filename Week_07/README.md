@@ -151,9 +151,14 @@ When finished it should look like this:
 <img src="./images/dots-3.gif" alt="Download" width="75%"/>
 </p>
 
-### Task 4 - Problem solving challenge
+### Task 4 - Final task for your  WordPress journal
+### EITHER Solve the Capitalise challenge below OR make a new sketch and glitch image / artwork using p5.glitch.me  
 
-(This final task should be included in your WordPress journal).  
+#### p5.glitch.me challenge
+The Glitch me library and instructions can be found here:    
+[https://p5.glitch.me/](https://p5.glitch.me/)   
+
+#### Capitalise challenge:  
 
 Making use of the following code
 
