@@ -1,6 +1,6 @@
 # Week 08
 
-## Tranformations
+## Transformations
 
 ### Task 1 - Rotating rects
 
