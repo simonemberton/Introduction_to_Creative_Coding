@@ -40,7 +40,7 @@ Team up with someone and help each other with these tasks. (Perhaps you will cap
 - I used my face with and without glasses.    
 
 <p align="center">
-<img src="./images/teachable3.png" alt="Download" width="30%"/><img src="./teachable7.png" alt="Download" width="30%"/>
+<img src="./images/teachable3.png" alt="Download" width="30%"/><img src="./images/teachable7.png" alt="Download" width="30%"/>
 </p>
 
 - Then click 'train the model' and preview and test it. **Don't close the webpage!** 
