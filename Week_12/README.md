@@ -64,6 +64,7 @@ Copy the P5.js code and paste into the body of your ```index.html``` page.
 ```html
 <body
     <div>Teachable Machine Image Model - p5.js and ml5.js</div>
+    ...
     <!-- rest of the copied teachable machine code -->
     ...
     classifyVideo();
@@ -73,7 +74,7 @@ Copy the P5.js code and paste into the body of your ```index.html``` page.
 </body>
 ```
 Add the downloaded and unzipped model folder into your renamed empty example directory.
-![teachable machine](./p5-folders.png)
+![teachable machine](./images/p5-folders.png)
 
 Now change the following line so that ```'./my_model/'``` is the name of your model folder.  
 
