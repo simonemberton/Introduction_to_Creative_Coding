@@ -120,7 +120,26 @@ Once the page is running you should see a web cam view with the classification o
 ! Display the video image in index.html so it is much bigger.
 ```
 
+Before we move on let's look at how the classifier works. In the ```function gotResult()``` at the bottom of the script change the commented out console message to:
 
+```javascript
+// The results are in an array ordered by confidence.
+console.log(results);
+```
+Run the page with the local server and look at the output in the console (in the developer tools). As the webcam runs and the image is classified the model returns a prediction about the likelihood of each classifier.
+
+When I have glasses on the prediction has high (0.98) confidence in glasses:
+<p align="center">
+<img src="./images/confidence.png" alt="Download" width="100%"/>
+</p>
+
+In machine learning confidence is always expressed as a value between 0 and 1.  
+In machine learning the system does not 'know' that I am wearing glasses it makes a prediction about the likelhood that I might be. This prediction is a confidence value.  
+
+### Task 4 - P5 - Using the classifier to trigger other code to run  
+
+Instead of displaying a video image from the webcam we will use classifier and model we have created to change an image on the web page.    
+We will use the confidence value of the prediction to change what we see on the screen. 
 
 
 
