@@ -9,7 +9,7 @@ Then we will move onto implement ML with P5 using the ml5.js library.
 
 You will need a webcam for this workshop.  
 
-Team up with someone and help each other with these tasks. (Perhaps you will captute each other for the dataset).    
+Team up with someone and help each other with these tasks. (Help each other capture images for the dataset).    
 
 ### Task 1 - Teachable Machine - Creating a model from dataset with classes
 
