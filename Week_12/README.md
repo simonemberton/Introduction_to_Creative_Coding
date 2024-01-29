@@ -20,7 +20,7 @@ Team up with someone and help each other with these tasks. (Help each other capt
 
 - Click to get started with teachable machine and choose 'Image Project' https://teachablemachine.withgoogle.com/train 
 
-- Initially we will create a data set of images of our chosen object using the teachable machine platform and following the instructions on the teachable machine web page.  
+- Initially we will create a dataset of images of our chosen object using the teachable machine platform and following the instructions on the teachable machine web page.  
 
 - choose a new Image project and Standard image model.   
 
@@ -54,7 +54,7 @@ Team up with someone and help each other with these tasks. (Help each other capt
 ## Task 2 - Teachable Machine - Deploying your model into a web page
 
 Export your model from the Teachable Machine page. Select **Tensorflow.js** and **Download**.   
-**Don't close the webpage!**   
+**Don't close the webpage!** (it will download as a .zip file). 
 
 Download a new P5 empty example onto your machine. Rename the ```empty-example```  directory.  
 
@@ -63,7 +63,7 @@ Download a new P5 empty example onto your machine. Rename the ```empty-example``
 <img src="./images/teachable6-download.png" alt="Download" width="70%"/>
 </p>
 
-Copy the P5.js code and paste into the body of your ```index.html``` page.
+Copy the P5.js code and paste into the ```<body>``` of your ```index.html``` page.
 
 ```html
 <body
@@ -103,7 +103,13 @@ You will also need to comment out the P5 ```<scripts>``` that are included in th
 ## Task 3 - Teachable Machine - Testing your model and web page with a local server
 To test and run your model and web page you will need **to run it as a local server**
 
-Visual studio code provides this as part of its code environment.  
+<details>
+<summary>Find out what a local server is:</summary>
+https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server
+</details>
+
+
+Visual studio code provides a local server as part of its code environment.  
 Open the p5 folder in Visual studio code. Accept the propmpts to 'trust the author'.
 Click Go live at the bottom right of the window. A new window will open with a view of your html file which uses ```http://127.0.0.1/``` or ```localhost```
 
@@ -187,7 +193,7 @@ function setup() {
 ! Add them to your example folder.
 ! Use P5 to add one of the images onto the center of the canvas 
 ! (I'm using an emoji but you can use what you like).
-! If you aren't sure how to do this search the P5 reference.
+! If you aren't sure how to do this search the P5 reference to how to add an image.
 ```
 
 Now we will add another image and swap them based on the classifiers 'glasses' / 'no glasses'.  
@@ -233,13 +239,13 @@ Your sketch should now work something like this:
 
 ## Task 5 - P5 - Using an existing trained model for object recognition  
 
-It is common to use models that have already been trained on datasets to undertake various classification tasks.  
-ml5.js implements a variety of these for image recognition, pose recognition, sentiment analysis and so on.  
+It is common to use pretrained models to undertake various classification tasks.  
+ml5.js implements a variety of these models for image recognition, pose recognition, sentiment analysis and so on.  
 Explore them here https://learn.ml5js.org/#/  
 
-We will use an object recognition model called COCOSSD. It has been trained to recognise hundreds of everyday objects.  
+We will use an object recognition model called COCOSSD to recognise objects. COCOSSD has been pretrained to recognise hundreds of everyday objects.  
 
-You will need a new P5 'empty example'.
+You will need to download a new P5 'empty example'.
 
 #### Configure index.html:
 
@@ -256,7 +262,7 @@ This is a common way to include script files for libraries and modules.
 The ml5.js script file is hosted on a Content Delivery Network (cdn).  
 </details>
 
-#### Configure sketch.js:  
+#### Step 1. Configure sketch.js:  
 
 First of all we are going to capture the video from our webcam and draw it onto the canvas.  
 In ```sketch.js``` create a video variable at the top of the script.  
@@ -290,28 +296,32 @@ Now we can add the object detection model and detection functions.
 Still in ```sketch.js``` add 2 more variables at the top of the script.   
 
 ```javascript
-let video;
+let video; // we already have this
 let detector;
 let detections = [];
 ```
 
+#### Step 2. Load the COCOSSD model and detect objects: 
 Next we will add some functions to start the machine learning detection and load the COCOSSD model.  
 
-These functions are chained together in 'callbacks'. (with the person sitting next to you look up and discuss what a callback is).  
+These functions are chained together using 'callbacks'. (With the person sitting next to you look up and discuss what a callback is).  
 
 Underneath ```draw()``` at the bottom ```sketch.js``` add the following functions: 
 
 
 ```javascript
+// video capture is ready and working
 function videoReady() {
   // Models available are 'cocossd', 'yolo'
   detector = ml5.objectDetector('cocossd', modelReady);
 }
 
+// model has loaded
 function modelReady() {
   detector.detect(video, gotDetections);
 }
 
+// got object detections
 function gotDetections(error, results) {
   if (error) {
     console.error(error);
@@ -327,7 +337,7 @@ In ```setup()``` amend ```createCapture(VIDEO);``` to include a callback to ```v
 ```javascript
 function setup() {
   createCanvas(640, 480);
-  video = createCapture(VIDEO, videoReady);
+  video = createCapture(VIDEO, videoReady); 
   video.size(640, 480);
   video.hide();
 }
@@ -353,7 +363,7 @@ The functions are chained together and work like this...
 - ```gotDetections()``` contains the results that you see in the console (in the image above). ```gotDetections()``` runs in an endless loop returning detections on every frame of the video. ```console.log(detections);``` sends the detections to the console so we can see them.  
 
 
-#### Last step:  
+#### Step 3. Last step - draw the detections onto the video image:  
 
 Now in the last step we will draw the detections onto the video image... Like this (Cheers)...
 
