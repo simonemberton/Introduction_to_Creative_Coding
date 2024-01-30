@@ -110,21 +110,30 @@ https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/
 
 
 Visual studio code provides a local server as part of its code environment.  
-Open the p5 folder in Visual studio code. Accept the propmpts to 'trust the author'.
-Click Go live at the bottom right of the window. A new window will open with a view of your html file which uses ```http://127.0.0.1/``` or ```localhost```
+You will first need to install this in Visual studio code.  
+Click on the blocks icon in the left hand nav.  
+Search for 'live' and install the 'Live Server'.
+
+<p align="center">
+<img src="./images/live-server.png" alt="Download" width="50%"/>
+</p>
+
+Once installed open the **whole p5 folder** in Visual studio code. Accept the prompts to 'trust the author'.
+Click on ```index.html``` and then 'Go live' at the bottom right of the window. A new window will open with a view of your html file which uses ```http://127.0.0.1/``` or ```localhost```
 
 ![teachable machine](./images/vis-studio-code.png)
 
 From now on you should **ALWAYS** run any web pages as a local server **whatever the project**.
-You can also create a local server using the python programming language.
-<details>
-<summary>How to create a local server using python</summary>
 
-```python
-$ python3 -m http.server
-```
+<details>
+<summary>Other ways to create a local server</summary>
+You can also create a local server using the python programming language in the terminal or command line, or by installing a Chrome extension.   
+
+
 More here:  
-https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server
+https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server  
+And here:  
+https://github.com/processing/p5.js/wiki/Local-server  
 </details>
 
 Once the page is running you should see a web cam view with the classification of the image below
@@ -161,8 +170,22 @@ We will use the classifier and model we have created to change an image on the w
 We will use the confidence value of the prediction to change what we see on the screen. 
 
 Before we do this duplicate your folder / make a new folder with all your existing code in it. 
-- Delete the ```setup()``` and ```draw()``` functions in ```sketch.js```. So ```sketch.js``` is empty.  
-- Move all the javascript from the ```<script> ... </script>``` tags in ```index.html``` into ```sketch.js```. So now your ```index.html``` does not have any Javascript in it.  
+- Delete the ```setup()``` and ```draw()``` functions in ```sketch.js```. So ```sketch.js``` is completely empty.  
+- Move the javascript inside the ```<script type="text/javascript"> ... </script>``` tag in ```index.html``` into ```sketch.js```.   
+- Move everything from:
+
+```javascript
+// Classifier Variable
+let classifier;
+
+...
+
+// Classifiy again!
+  classifyVideo();
+}
+```
+(Don't move the ```<script type="text/javascript"> ... </script>``` tags. You can delete these).  
+So now your ```index.html``` does not have any Javascript in it.  
 - Check everything still runs (run ```index.html``` as a local server / localhost).  
 
 Make the P5 canvas bigger and video image smaller:  
