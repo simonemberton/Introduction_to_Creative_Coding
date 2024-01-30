@@ -111,7 +111,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/
 
 Visual studio code provides a local server as part of its code environment.  
 You will first need to install this in Visual studio code.  
-Click on the blocks icon in the left hand nav.  
+Click on the blocks (extensions) icon in the left hand nav.  
 Search for 'live' and install the 'Live Server'.
 
 <p align="center">
