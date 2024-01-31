@@ -1,6 +1,6 @@
-# Week 12
+# Week 13
 
-## Code Challenge 3 - Answer
+## Code Challenge 1 - Answer
 
 - Your final sketch.js code should look like this 
 
