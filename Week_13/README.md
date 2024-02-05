@@ -227,7 +227,9 @@ Now you need to make 3 screens that you will switch between: A 'Start' Screen, a
 <img src="./images/mlgame-start.png" alt="me" width="32%"/><img src="./images/mlgame-gotcha.png" alt="me" width="32%"/><img src="./images/mlgame-success.png" alt="game" width="32%"/>
 </p>
 
-The game will work as follows, if a 'person' is detected then you have been caught and lose. And is 'cell phone' is detected you've won and tricked the system to not recognise you as you approached the camera.   
+The game will work as follows:   
+If a 'person' is detected then they have been caught and the 'Gotcha' screen displays. 
+If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'Success' screen displays.   
 
 <p align="center">
 <img src="./images/mlgame-flow.png" alt="me" width="100%"/>
@@ -349,9 +351,9 @@ function draw() {
 
 #### Use the the switch statement based on detections
 
-Now we need to use the detections that the Machine Learning system detects to trigger the switch statement.  
+Now we need to use the detections that the Machine Learning system produces to trigger the switch statement.  
 
-We are already detecting and logging results in
+Detections are already being logged here:
 ```javascript
 function gotDetections(error, results) {
   if (error) {
