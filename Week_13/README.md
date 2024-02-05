@@ -349,7 +349,7 @@ function draw() {
 ```
 
 
-#### Use the the switch statement based on detections
+#### Use the switch statement
 
 Now we need to use the detections that the Machine Learning system produces to trigger the switch statement.  
 
