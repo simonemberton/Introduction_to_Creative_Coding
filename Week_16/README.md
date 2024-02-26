@@ -23,7 +23,7 @@ function draw() {
 **DO NOT** add anything else to  ```setup()``` or ```draw()``` (But you may add as many variables and functions as you need) 
 
 *****
-### &#x1F536; Code challenge 1: Using states, switch statements and functions  
+### &#x1F536; Code challenge 1: Using states, switch statements, modulus and functions  
 
 ```diff
 ! Create a new p5 sketch that displays a countdown from 45 to 0.
@@ -36,7 +36,7 @@ The modulus operator may help you with this task.
 </details>  
 
 *****
-### &#x1F536; Code challenge 2: Using states, switch statements and functions  
+### &#x1F536; Code challenge 2: Using states, switch statements, time and functions  
 
 ```diff
 ! Amend your countdown so that it uses seconds.
