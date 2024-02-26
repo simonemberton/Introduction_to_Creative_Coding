@@ -23,7 +23,7 @@ function draw() {
 **DO NOT** add anything else to  ```setup()``` or ```draw()``` (But you may add as many variables and functions as you need) 
 
 *****
-### &#x1F536; Code challenge 1: States, switch statements and functions  
+### &#x1F536; Code challenge 1: Using states, switch statements and functions  
 
 ```diff
 ! Create a new p5 sketch that displays a countdown from 45 to 0.
@@ -36,7 +36,7 @@ The modulus operator may help you with this task.
 </details>  
 
 *****
-### &#x1F536; Code challenge 2: Using States, switch statements and functions  
+### &#x1F536; Code challenge 2: Using states, switch statements and functions  
 
 ```diff
 ! Amend your countdown so that it uses seconds.
@@ -95,7 +95,7 @@ You can use whichever font you like.
 </details>  
 
 *****
-### &#x1F536; Code challenge 4: Create an alarm for your digital clock / Using conditionals  
+### &#x1F536; Code challenge 4: Create an alarm for your digital clock / Using switch and conditionals  
 
 ```diff
 ! Use a switch statement to visually change the clock to a different state at a set time.
