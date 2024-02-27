@@ -2,12 +2,8 @@
 
 ### Code challenge (in the recap slides): Talk is cheap show me the code
 
-In your function create a loop to print out the every item in the array to the console if it contains the letter ‘i’.  Amend it to print out every item that contains two vowels…
+In your function create a loop to print every item that contains two vowels…
 
-
-<p align="center">
-<img src="./assets/analogue-clock.gif" alt="Drag" width="50%"/>
-</p>
 
 Your ```sketch.js``` should look as follows:  
 
