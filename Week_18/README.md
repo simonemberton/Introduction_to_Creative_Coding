@@ -69,7 +69,7 @@ Now put some music on and watch those points dance!  You might need to adjust th
 Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task1/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task1.gif">
+  <img width="499" height="498" src="./images/Task_1.gif">
 </p>
 
 
@@ -157,7 +157,7 @@ Now we're getting somewhere.
 Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task2/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task2.gif">
+  <img width="499" height="498" src="./images/Task_2.gif">
 </p>
 
 ### Task 3 - Finishing touches
@@ -211,5 +211,5 @@ background(0,150);
 Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/) to see it working.
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task3.gif">
+  <img width="496" height="497" src="./images/Task_3.gif">
 </p>
