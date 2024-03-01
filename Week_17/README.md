@@ -1,26 +1,14 @@
 # Week 17
 
-## A More Complex Game Exercise
+## Object-Oriented Programming with Space Invaders!
 
-This exercise leans heavily on [this tutorial](https://thecodingtrain.com/tracks/games/31-flappy-bird) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". 
+Since we learned **Object-Oriented Programming** in the previous three weeks. Let's put our new knowledge into practice! This week, we are going to create a simplified game with p5.js, inspired by one of the most iconic video games in history: [Space Invaders](https://en.wikipedia.org/wiki/Space_Invaders)
 
-We're going to create a very simple minimal version of [Flappy Bird](https://flappybird.io/), but our version is going to:
-
- - Have a health value that decreases when you hit a pipe. 
- - (Possibly) have an interaction mechanic changes increases the level of difficulty over time.
-
-![alt text](./images/finished-game.gif "finished game")  
-
-For this week's tutorial, we are going to work with some starter code. This is because we want to demonstrate a few particular concepts. If you would like to understand more about how all the code works, please do watch the Shiffman tutorial linked above after you've followed this worksheet. 
-
-Please download and work from the Flappy-Bird-handout-code.zip file in the Blackboard Learning Materials section for this week. Unzip the folder and place it in new P5 empty example folder. Save it with all your other Introduction to Creative Coding materials.
+![Space Invaders](./images/aliens.gif)  
 
 *****
-### Task 0 - Familiarisation
+### Task 0 - Familiar with the Class Diagram of our game project
 
-The files  here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. First of all, take a look in index.html and see that we're using the script tags to include the pipe.js and bird.js files.
-
-Now also open the bird.js file. Take a look through the code and see what's going on, can you work out what they are going to do? And how we're going to use them? Try adding comments to explain the parts that you do understand. 
 
 This should take a about 5-10 minutes.
 
@@ -29,10 +17,10 @@ No worries if it's a bit unclear right now though, all will be revealed as we ge
 *****
 ### Task 1 - The Bird
 
-#### Setting Up
-First we are going to make the bird (which is just a circle / ellipse) using the ```Bird()``` constructor in bird.js.   
+#### 1. Creating `index.html`
 
-Open your sketch.js file. This is just a blank sketch with our setup() and draw() functions. add ```bird``` variable and use the ```Bird()``` constructor to make a ```new Bird()```:
+#### 2. Creating `GameObject.js`
+#### 3. Creating `sketch.js`
 
 ```javascript
 let bird;
