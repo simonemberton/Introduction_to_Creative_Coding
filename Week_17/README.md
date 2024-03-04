@@ -88,10 +88,13 @@ If everything works well, we will see a red rectangle inside the canvas.
 ### Task 2 - Creating `Player` Class
 
 ![Game Object Class Diagram](./images/Class_Diagram_4.jpg)
+<!--RD-->
+<!--Should this diagram have draw() in Player? as the override-->
 
 #### 1. Inherit from `GameObject`
 
 As the Diagram demonstrated, the `Player` Class is inherited from its superclass `GameObject`, therefore, we need to use the statement `extends` to create the `Player` class. Since the `Player` class is inherited from the `GameObject` class, we just need to add new variables of `Player` on top of `GameObject`. How good is that! 🥳
+<!--RD-->
 <!--It could be helpful to say which file to edit-->
 
 ```javascript
@@ -102,6 +105,7 @@ class Player extends GameObject
 ```
 
 #### 2. Overriding `draw()`
+<!--RD-->
 <!--Because there are a lot of draw() functions it could be helpful to say which file to edit-->
 However, we should create different looks between the spaceship and the enemies. We need to create a custom look for the player by **overriding** the `draw()` function, which we inherit from its superclass `GameObject`. 
 
