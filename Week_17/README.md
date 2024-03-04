@@ -406,17 +406,17 @@ Congratulations! You have completed this coding worksheet. If you are looking fo
 ### &#x1F536; 5rd code challenge:  
 
 ```diff
-! What would happened after the player is being shoot?
 ! Please give the player 3 chances to play, 
-! if the player killed all ememies, they win the game,
-! or reduce player's health rate by 1,
-! and restart the game!
+! if the player hit by a bullet, reduce player's health rate by 1 and restart.
+! However, if player already lost 3 times, game over!
 ``` 
 
 ### &#x1F536; 6rd code challenge:  
 
 ```diff
-! Don't let the player shooting bullets alone.
-! Let's the enemies joins our bullets party as well!
-! Please enable them to shoot towards the opposite direction.
+! Make the game more difficult!
+! Create the second level of this game, 
+! change the bullet speed or quantity,
+! or slow down player's moving speed, 
+! or make it more difficult to control. Make it yours!
 ``` 
