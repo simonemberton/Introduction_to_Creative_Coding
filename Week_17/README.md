@@ -393,7 +393,7 @@ function draw()
 ! But beaware, do not let the enemies killing each other with their own bullets!
 ``` 
 
-Idealistically, after you finish the challenge above, there will be a few rows of enemies and a player on your sketch. 
+Idealistically, after you finish the challenge above, it means you have completed this coding worksheet! 
 
 ![Game Object Class Diagram](./images/Screenshot_4.gif)
 
