@@ -171,7 +171,8 @@ You might need to use the [`keyIsDown`](https://p5js.org/reference/#/p5/keyIsDow
 ! with a customised looks and moving logic,
 ! and add a few rows of enemies into your sketch!
 ``` 
-
+<!--RD-->
+<!--This is pretty hard - could offer more clues and partial solution-->
 <details>
 <summary>Tip:</summary>
 
