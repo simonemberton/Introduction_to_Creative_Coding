@@ -92,6 +92,7 @@ If everything works well, we will see a red rectangle inside the canvas.
 #### 1. Inherit from `GameObject`
 
 As the Diagram demonstrated, the `Player` Class is inherited from its superclass `GameObject`, therefore, we need to use the statement `extends` to create the `Player` class. Since the `Player` class is inherited from the `GameObject` class, we just need to add new variables of `Player` on top of `GameObject`. How good is that! 🥳
+<!--It could be helpful to say which file to edit-->
 
 ```javascript
 class Player extends GameObject
