@@ -9,7 +9,7 @@ Since we learned **Object-Oriented Programming** in the previous three weeks. Le
 
 As you are now more comfortable to work with the Class Diagram. Before we start coding, let's take a few minutes to **look** at the Class Diagram below, to understand the structure of our game project. To complete this project, you need to create 5 classes, including:
 
-![Class_Diagram](images/Class_Diagram.jpg)
+![Class_Diagram](images/Class_Diagram_0.jpg)
 
 - `Game`, a **singleton** Class where we stored data, including `level`, `health`, `enemies`, `bullets` and `player`.
 - `GameObject`, is a **superclass** where we store, `x`, `y`, `width`, and `height` properties.
@@ -151,7 +151,9 @@ function draw()
 
 <details>
 <summary>Tip:</summary>
-You might need to use the <a href="https://p5js.org/reference/#/p5/keyIsDown">keyIsDown</a> to detect keyboard events.
+
+You might need to use the [`keyIsDown`](https://p5js.org/reference/#/p5/keyIsDown) to detect keyboard events.
+
 </details>  
 
 ### &#x1F536; 2nd code challenge:  
@@ -165,20 +167,24 @@ You might need to use the <a href="https://p5js.org/reference/#/p5/keyIsDown">ke
 ! and add a few rows of enemies into your sketch!
 ``` 
 
+<details>
+<summary>Tip:</summary>
+
+You will need to use [`for`](https://www.w3schools.com/js/js_loop_for.asp) loops to create a few rows of `enemies`, and you will also need to customize the `movingSpeedX` of enemies based on their row number!
+
+</details>  
+
 Idealistically, after you finish the two challenges above, there will be a few rows of enemies and a player on your sketch. 
 
 ![Game Object Class Diagram](./images/Screenshot_2.gif)
-
-<details>
-<summary>Tip:</summary>
-You will need to use For loops to create a few rows of enemies, and you will also need to customize the moving speed of enemies based on their row number!
-</details>  
 
 *****
 
 ### Task 3 - Let's bullets Fly!
 
 If you have completed these tasks, it's time to enable our player to shoot bullets!
+
+#### 1. Creating the `Bullet` Class
 
 ![Game Object Class Diagram](./images/Class_Diagram_5.jpg)
 
@@ -195,7 +201,9 @@ class Bullet extends GameObject
   // Create a new bullet by passing who is the shooter.
   constructor(shooter)
   {
-    // Use super() statement to call its superclass - GameObject, to initialise a new Bullet object. based on current shooter's x and y axis.
+    // Use super() statement to call its superclass - GameObject
+    // to initialise a new Bullet object. 
+    // based on current shooter's x and y axis.
     super(shooter.x,shooter.y,2,20);
 
     // Record who shoot the bullet
@@ -211,12 +219,204 @@ class Bullet extends GameObject
 }
 ```
 
-To enable our player to shoot Bullets. We need to add the new function `shoot()` into our `Player` Class. If we detect a player pressing a key, it will generate a bullet from the current player's position.
+#### 2. Shooting bullets from the `Player`.
+
+To enable our player to shoot Bullets. We need to add this skill to our `Player` class. If we detect a player pressing a key, it will generate a bullet from the current player's position. In `sketch.js`, we need to create an empty array of `bullets` as a global variable:
+
+```javascript
+// An empty bullets array to record all the bullets
+let bullets = [];
+```
+
+and draw the `bullets` array with a for loop inside the `draw()`:
+
+```javascript
+// Render all the bullets inside our array.
+for (let i=0; i<bullets.length; i++)
+{
+  bullets[i].move();
+  bullets[i].draw();
+}
+```
+
+...and lastly, create a new `Bullet` object when we press the Space bar.
+
+```javascript
+function keyPressed()
+{
+  // When we detect the space bar (keyCode 32) is being pressed
+  if (keyCode == 32)
+  {
+    // Create a new bullet with the player's object
+    let bullet = new Bullet(player);
+    // Add the bullet into our bullets array.
+    bullets.push(bullet);
+  }
+}
+```
+
+### &#x1F536; 3rd code challenge:  
+
+```diff
+! Don't let the player shooting bullets alone.
+! Let's the enemies joins our bullets party as well!
+! Please enable them to shoot towards the opposite direction.
+``` 
+
+<details>
+<summary>Tip:</summary>
+Please take a look at the Enemy Class Diagram. You will need to:
+
+1. Generate a random number to set the `shootInterval` of shooting bullets, and a `shootTimer` to record how long since we shoot the last bullet.
+2. If the `shootTimer` is equal to or bigger than the `shootInterval`, create a new `Bullet`, push it into our `bullet` array, and reset the `shootTimer` and `shootInterval`.
+3. If the shooter is not the player, reverse the `moveSpeedY` of the bullet.
+</details>  
+
+Idealistically, after you finish the two challenges above, the enemies will shoot their bullets like rain!
+
+![Game Object Class Diagram](./images/Screenshot_3.gif)
 
 *****
 
-### Task 4 - Implementing the `Game` Class into `sketch.js`
+### Task 4 - GAME OVER!
+
+The `Player` and the `enemies` are indeed shooting a lot of `bullets`! But those `bullets` seem quite harmless. Let's do some damage! Since we learned about the [Singleton Design Pattern](https://en.wikipedia.org/wiki/Singleton_pattern) today. Let's put it into real practice!
 
 ![Game Object Class Diagram](./images/Class_Diagram_2.jpg)
 
+#### 1. Create the Singleton Class `Game`
+Based on the `Game` Class Diagram above, it should include a few arrays of `enemies`, `bullets` and one `player` object. Meanwhile, it also provides a `Game` object named as `shared`. Therefore, we can access all the properties inside the singleton class `Game`.
+
+Firstly, let's replace our global variables inside the `sketch.js`, including `player`, `enemies` and `bullets` into our new `Game` class.
+
+```javascript
+class Game
+{
+  // A Single and only access to our Game Data. 
+  // When we need to access the data in other classes or files. 
+  // We just need to use Game.shared to access all the necessary data.
+  static shared = new Game();
+
+  // We put all our previous global variable into the `Game` class. 
+  // Therefore, 
+  player = new Player(320, 420, 20, 20);
+  enemies = [];
+  bullets = [];
+}
+```
+
+#### 2. Refactor our global variables.
+
+If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**. If you have no idea where to find those variable still haven't replace. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
+
+#### 3. GAME OVER!
+
+In the `Bullet` class, we need to add another function for detecting if the bullet is colliding with other GameObjects. In the following script, by accessing the Singleton Class with `Game.shared.player`, if the bullet is colliding with the player, it will set the player as dead.
+
+```javascript
+detectCollision()
+{
+  // Get the player Object from our Game Singleton Class
+  let player = Game.shared.player
+
+  // If the bullet is not shoot by the bullet, 
+  // detect if the bullet is collide with the player.
+  if (this.shooter != player)
+  {
+    // If the bullet is within the range of the bullet...
+    if (this.x > player.x && this.x < player.x + player.width && 
+        this.y > player.y && this.y < player.y + player.height)
+    {
+      // If the player haven't die yet.
+      if (!player.isDead)
+      {
+        // The Player is now dead!
+        player.isDead = true;
+      }
+    }
+  }
+}
+```
+
+We also need to execute the detection function when it's drawing the bullet
+```javascript
+draw()
+{
+  fill('white');
+  this.y += this.moveSpeedY;
+  rect(this.x,this.y,this.width,this.height);
+  // Add the detectCollision function in draw();
+  this.detectCollision();
+}
+```
+
+Finally, inside our `sketch.js` file, if we found out the player was already dead. Let's end our game by adding a Game Over Scene by refactoring our draw() function with:
+
+```javascript
+function draw() 
+{
+  background(0);
+  
+  // If the player is already dead, let's display game over instead.
+  if (Game.shared.player.isDead) 
+  { 
+    textFont('Helvetica');
+    textSize(64);
+    text('GAME OVER!', 120, 260); 
+  }
+  // If the player is still alive, let's continue our game.
+  else
+  {
+    Game.shared.player.move();
+    Game.shared.player.draw();
+    
+    for (let i=0; i<Game.shared.enemies.length; i++)
+    {
+      Game.shared.enemies[i].move();
+      Game.shared.enemies[i].draw();
+    }
+
+    for (let i=0; i<Game.shared.bullets.length; i++)
+    {
+      Game.shared.bullets[i].move();
+      Game.shared.bullets[i].draw();
+    }
+  }
+}
+```
+
+### &#x1F536; 4rd code challenge:  
+
+```diff
+! Let's the enemies can be hit by the player's bullets!
+! If there's no enemies on the screen anymore, declare victory!
+! But beaware, do not let the enemies killing each other with their own bullets!
+``` 
+
+Idealistically, after you finish the challenge above, there will be a few rows of enemies and a player on your sketch. 
+
+![Game Object Class Diagram](./images/Screenshot_4.gif)
+
 *****
+
+### Task 5 - LEVEL UP!
+
+Congratulations! You have completed this coding worksheet. If you are looking for hard mode. Let's continue with these two additional challenges!
+
+### &#x1F536; 5rd code challenge:  
+
+```diff
+! What would happened after the player is being shoot?
+! Please give the player 3 chances to play, 
+! if the player killed all ememies, they win the game,
+! or reduce player's health rate by 1,
+! and restart the game!
+``` 
+
+### &#x1F536; 6rd code challenge:  
+
+```diff
+! Don't let the player shooting bullets alone.
+! Let's the enemies joins our bullets party as well!
+! Please enable them to shoot towards the opposite direction.
+``` 
