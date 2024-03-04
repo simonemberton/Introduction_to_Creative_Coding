@@ -101,7 +101,7 @@ class Player extends GameObject
 ```
 
 #### 2. Overriding `draw()`
-<!--Text-->
+<!--Because there are a lot of draw() functions it could be helpful to say which file to edit-->
 However, we should create different looks between the spaceship and the enemies. We need to create a custom look for the player by **overriding** the `draw()` function, which we inherit from its superclass `GameObject`. 
 
 To make things simple, let's just use a triangle to represent the spaceship. However, you could choose to use any other shapes or images to draw the spaceship!
