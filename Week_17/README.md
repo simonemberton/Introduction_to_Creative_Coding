@@ -310,6 +310,49 @@ class Game
 
 If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**. If you have no idea where to find those variables still haven't been replaced. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
 
+```javascript
+function draw() 
+{
+  background(0);
+  
+  // -- REMOVED
+  // player.move();
+  // player.draw();
+
+  // ++ ADDED
+  Game.shared.player.move();
+  Game.shared.player.draw();
+  
+  // -- REMOVED
+  // for (let i=0; i<enemies.length; i++)
+  // {
+  //   enemies[i].move();
+  //   enemies[i].draw();
+  // }
+
+  // ++ ADDED
+  for (let i=0; i<Game.shared.enemies.length; i++)
+  {
+    Game.shared.enemies[i].move();
+    Game.shared.enemies[i].draw();
+  }
+
+  // -- REMOVED
+  // for (let i=0; i<Game.shared.bullets.length; i++)
+  // {
+  //   bullets[i].move();
+  //   bullets[i].draw();
+  // }
+
+  // ++ ADDED
+  for (let i=0; i<Game.shared.bullets.length; i++)
+  {
+    Game.shared.bullets[i].move();
+    Game.shared.bullets[i].draw();
+  }
+}
+```
+
 #### 3. GAME OVER!
 
 In the `Bullet` class, we need to add another function for detecting if the bullet is colliding with other GameObjects. In the following script, by accessing the Singleton Class with `Game.shared.player`, if the bullet is colliding with the player, it will set the player as dead.
