@@ -166,17 +166,13 @@ You might need to use the [`keyIsDown`](https://p5js.org/reference/#/p5/keyIsDow
 ! with a customised looks and moving logic,
 ! and add a few rows of enemies into your sketch!
 ``` 
-
-<details>
-<summary>Tip:</summary>
  
 This is going to be a pretty tough challenge! However, we could observe how the enemies behave in the image below, and then we could split it into a to-do list, and tackle these challenges step by step.
 
-1. The enemies move themselves automatically between left and right on the x-axis. Therefore, we need to use `movingSpeedX` to move the enemies in the `draw()` function.
+1. The enemies move themselves automatically between left and right on the x-axis. Therefore, we need to override the `constructor()` of `Enemy` to accept an additional property: `movingSpeedX`, we use it to move the enemies in the `draw()` function. To override its superclass, you will need to use the [`super`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super) statement.
 2. We need to use [`for`](https://www.w3schools.com/js/js_loop_for.asp) loops to create a few rows of `enemies` in the `sketch.js` file. Therefore, we can create 3 rows of enemies with 4 enemies on each line.
 3. We need to let the enemies move differently between different rows. If we can find out [the row number is even or odd](https://stackoverflow.com/questions/6211613/testing-whether-a-value-is-odd-or-even#6211660), we could potentially force them to move differently.
 4. Lastly, if the enemies had reached the edge of our canvas, we needed to change the `movingSpeedX` and change its moving direction!
-
 </details>  
 
 Idealistically, after you finish the two challenges above, there will be a few rows of enemies and a player on your sketch. 
@@ -312,7 +308,7 @@ class Game
 
 #### 2. Refactor our global variables.
 
-If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**. If you have no idea where to find those variable still haven't replace. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
+If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**. If you have no idea where to find those variables still haven't been replaced. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
 
 #### 3. GAME OVER!
 
