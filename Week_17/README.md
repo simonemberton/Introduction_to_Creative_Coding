@@ -299,7 +299,7 @@ class Game
   static shared = new Game();
 
   // We put all our previous global variable into the `Game` class. 
-  // Therefore, 
+  // Therefore, we could access them everywhere within our project.
   player = new Player(320, 420, 20, 20);
   enemies = [];
   bullets = [];
