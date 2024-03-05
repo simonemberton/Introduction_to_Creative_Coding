@@ -308,7 +308,7 @@ class Game
 
 #### 2. Refactor our global variables.
 
-If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**. If you have no idea where to find those variables still haven't been replaced. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
+If you run your project now. There will be a lot of red errors popping out! Don't panic! This is a normal process. You just need to replace all codes that are still using the previous global variables `player`, `enemies` and `bullets` with the new `Game.shared.player`, `Game.shared.enemies` and the `Game.shared.bullets`. In the programming world, we call this process **Refactoring**.
 
 ```javascript
 function draw() 
@@ -352,6 +352,8 @@ function draw()
   }
 }
 ```
+
+ Since you have been using these global variables all around different files. You will also need to make these changes as well! If you have no idea where to find those variables still haven't been replaced. Just open the **Inspect** Panel on the Web Browser and take a look at the error messages in the **Console panel**!
 
 #### 3. GAME OVER!
 
