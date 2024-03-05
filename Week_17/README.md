@@ -88,14 +88,12 @@ If everything works well, we will see a red rectangle inside the canvas.
 ### Task 2 - Creating `Player` Class
 
 ![Game Object Class Diagram](./images/Class_Diagram_4.jpg)
-<!--RD-->
-<!--Should this diagram have draw() in Player? as the override-->
 
 #### 1. Inherit from `GameObject`
 
-As the Diagram demonstrated, the `Player` Class is inherited from its superclass `GameObject`, therefore, we need to use the statement `extends` to create the `Player` class. Since the `Player` class is inherited from the `GameObject` class, we just need to add new variables of `Player` on top of `GameObject`. How good is that! 🥳
-<!--RD-->
-<!--It could be helpful to say which file to edit-->
+As the Diagram demonstrated, inside the `player.js` file, the `Player` Class is inherited from its superclass `GameObject`, therefore, we need to use the statement `extends` to create the `Player` class. 
+
+Since the `Player` class is inherited from the `GameObject` class, we just need to add new variables of `Player` on top of `GameObject`. How good is that! 🥳
 
 ```javascript
 class Player extends GameObject
@@ -105,9 +103,7 @@ class Player extends GameObject
 ```
 
 #### 2. Overriding `draw()`
-<!--RD-->
-<!--Because there are a lot of draw() functions it could be helpful to say which file to edit-->
-However, we should create different looks between the spaceship and the enemies. We need to create a custom look for the player by **overriding** the `draw()` function, which we inherit from its superclass `GameObject`. 
+However, we should create different looks between the spaceship and the enemies. We need to create a custom look for the player by **overriding** the `draw()` function inside the `player.js` file, which we inherit from its superclass `GameObject`. 
 
 To make things simple, let's just use a triangle to represent the spaceship. However, you could choose to use any other shapes or images to draw the spaceship!
 
@@ -129,7 +125,6 @@ Since we had created a new `Player` Class based on the `GameObject` class, let's
 
 let player = new Player(320, 420, 20, 20); // +ADDED
 // let gameObject = new GameObject(320, 420, 20, 20); -REMOVED
-
 
 function setup() 
 {
@@ -171,12 +166,16 @@ You might need to use the [`keyIsDown`](https://p5js.org/reference/#/p5/keyIsDow
 ! with a customised looks and moving logic,
 ! and add a few rows of enemies into your sketch!
 ``` 
-<!--RD-->
-<!--This is pretty hard - could offer more clues and partial solution-->
+
 <details>
 <summary>Tip:</summary>
+ 
+This is going to be a pretty tough challenge! However, we could observe how the enemies behave in the image below, and then we could split it into a to-do list, and tackle these challenges step by step.
 
-You will need to use [`for`](https://www.w3schools.com/js/js_loop_for.asp) loops to create a few rows of `enemies`, and you will also need to customize the `movingSpeedX` of enemies based on their row number!
+1. The enemies move themselves automatically between left and right on the x-axis. Therefore, we need to use `movingSpeedX` to move the enemies in the `draw()` function.
+2. We need to use [`for`](https://www.w3schools.com/js/js_loop_for.asp) loops to create a few rows of `enemies` in the `sketch.js` file. Therefore, we can create 3 rows of enemies with 4 enemies on each line.
+3. We need to let the enemies move differently between different rows. If we can find out [the row number is even or odd](https://stackoverflow.com/questions/6211613/testing-whether-a-value-is-odd-or-even#6211660), we could potentially force them to move differently.
+4. Lastly, if the enemies had reached the edge of our canvas, we needed to change the `movingSpeedX` and change its moving direction!
 
 </details>  
 
