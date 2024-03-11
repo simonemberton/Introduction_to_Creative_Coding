@@ -168,12 +168,11 @@ checkEdges() {
 }
 ```
 
-<!-- The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task4/):
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task4/):
 
 <p align="center">
   <img width="499" height="498" src="./images/Task4.gif">
 </p>
- -->
 
 ### Task 5 - Make it beep
 
