@@ -231,7 +231,6 @@ I've also added the same to the `Sphere` class but changed the parameters a bit.
 
 The output of this task should look and sound like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task5/):
 
-
 ### Stretch goals
 
 * Create an array of Shapes filled with either Shape or Sphere objects. Try using an if statement and the modulo operator so that when iterating through the for loop when ```i``` is odd you create a ```Shape``` object and when even a ```Sphere``` object. 
