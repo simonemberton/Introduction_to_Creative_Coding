@@ -83,7 +83,9 @@ function draw() {
 
 You should be able to see a line of rotating ellipses that gradually get smaller towards the centre of the canvas.  Alot of the code is very similar to Task 1 but we're now using the ```draw()``` function so the values are updated on each frame.  
 
-If you leave it running for a while the rotation creates some interesting patterns but let's try and make it even more interesting.  We're going to make multiple instances of our line of rotating ellipse by putting the for loop inside another for loop where each iteration of the new for loop is rotated around 360 degrees.  We don't want the new ```rotate()``` function to impact the previous one so we need to isolate the first for loop by calling two functions, one before the for loop and one after it.  Do you remeber from the lecture the names of these functions?
+If you leave it running for a while the rotation creates some interesting patterns but let's try and make it even more interesting.  
+
+We're going to make multiple instances of our line of rotating ellipses by putting the existing for loop inside another for loop where each iteration of the new outer for loop is rotated around 360 degrees.  We don't want the new ```rotate()``` function to impact the previous one so we need to isolate the inner for loop by calling two functions, one before the for loop and one after it.  Do you remember from the lecture the names of these functions?
 
 <details>
 <summary>See here for a hint</summary>
@@ -92,7 +94,7 @@ If you leave it running for a while the rotation creates some interesting patter
   
 </details>
 
-Next let's create our new for loop that will iterate from 0 to 360, with 22.5 added to the iterator on each loop.  Make sure to use a different variable name from the first for loop!  We will then call the ```rotate()``` function inside the for loop with the iterated variable as input to ```rotate()```: 
+Next let's create our new outer for loop that will iterate from 0 to 360, with 22.5 added to the iterator on each loop.  Make sure to use a different variable name from the inner for loop!  We will then call the ```rotate()``` function inside the outer for loop with the iterated variable as input to ```rotate()```: 
 ```javascript
 for (let a = 0; a < 360; a += 22.5){
 	rotate(a);
