@@ -10,7 +10,7 @@ We'll essentially be doing the same thing twice: making an interactive piece of 
 
 ### Task 1 - Getting Started
 
-- Head to the [p5 website](https://p5js.org/get-started/) and do the "Get Started" section using the online code editor under the heading "Your First Sketch". 
+- Head to the [p5 website]([https://p5js.org/tutorials/setting-up-your-environment/]) and follow this tutorial.
 
 It's a good idea to right click (ctrl-click on Mac) link for the p5.js web editor and open that in a new window or tab. Then you can follow the instructions in one tab and add your code in the other one...
 
