@@ -10,7 +10,7 @@ We'll essentially be doing the same thing twice: making an interactive piece of 
 
 ### Task 1 - Setting up
 
-- Head to the [p5 website](https://p5js.org/tutorials/setting-up-your-environment/) and follow this tutorial.
+- Head to the [p5 website](https://p5js.org/tutorials/setting-up-your-environment/) and follow this tutorial omn setting up your environment.
 
 It's a good idea to right click (ctrl-click on Mac) link for the p5.js web editor and open that in a new window or tab. Then you can follow the instructions in one tab and add your code in the other one...
 
