@@ -8,9 +8,9 @@ First, we're just going to try using p5's online editor. Then we're going to get
 
 We'll essentially be doing the same thing twice: making an interactive piece of creative code with the online editor, then making it again using "proper" separate html and javascript files!
 
-### Task 1 - Getting Started
+### Task 1 - Setting up
 
-- Head to the [p5 website]([https://p5js.org/tutorials/setting-up-your-environment/]) and follow this tutorial.
+- Head to the [p5 website](https://p5js.org/tutorials/setting-up-your-environment/) and follow this tutorial.
 
 It's a good idea to right click (ctrl-click on Mac) link for the p5.js web editor and open that in a new window or tab. Then you can follow the instructions in one tab and add your code in the other one...
 
