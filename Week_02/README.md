@@ -213,8 +213,7 @@ Select the console in the tabs.
 ## &#x1F536; Code Challenge 3:
 
 ```diff
-! Working in pairs... Reverse roles
-! One person reads and explains, the other person types in the code.
+! Work individually but compare your code once you've started... Discuss any differences
 
 ! Add 3 more rect() shapes inside the draw() function. 
 ! Use the rectWidth,rectHeight variables with these new rect() shapes.
@@ -241,8 +240,7 @@ Now we have our ```rectWidth``` and ```rectHeight``` variables. We can start to 
 ## &#x1F536; Code Challenge 4:
 
 ```diff
-! Working in pairs... Reverse roles
-! One person reads and explains, the other person types in the code.
+! Work individually but compare your code once you've started... Discuss any differences
 
 ! Try adding 10 to the height of the first rectangle. 
 ! Try subtracting 10 from the width of the second rectangle. 
@@ -334,6 +332,8 @@ function draw() {
 ## &#x1F536; Code Challenge 5:
 
 ```diff
+! Work individually but compare your code once you've started... Discuss any differences.
+
 ! Try refreshing the page over and over. What is happening?
 ! Are you seeing a new rectangle in a different position each time?
 
