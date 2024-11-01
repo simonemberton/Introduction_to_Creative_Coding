@@ -91,7 +91,7 @@ function draw() {
   }
 ```
 
-### &#x1F536; Task 2 first code challenge:
+### &#x1F536; Code challenge 1:
 
 ```diff
 ! Using the p5 reference find the entry for text()
@@ -106,7 +106,7 @@ function draw() {
   <img src="./images/task2-code-challenge.png">
 </p>
 
-### &#x1F536; Task 2 Second Code Challenge:
+### &#x1F536; Code Challenge 2:
 
 ```diff
 ! Using the Let keyword add a new global variable for a y value to space the text vertically  
@@ -143,7 +143,7 @@ function setup() {
 }
 ```
  
-### &#x1F536; Task 3 Code Challenge:
+### &#x1F536; Code Challenge 3:
 
 ```diff
 ! Add the remaining words from the quote to the Array using push()  
@@ -273,7 +273,7 @@ What happens if you change the value 256 (on both lines) to a value greater or l
 
 Add a comment to your code above the ```rect()``` explaining what each element of the ```rect()``` parameters does.
 
-### &#x1F536; Task 4 Code Challenge:
+### &#x1F536; Code Challenge 4:
 
 ```diff
 ! At the moment the gradient is grayscale.  
@@ -348,7 +348,7 @@ function draw() {
 }
 ```
 
-### &#x1F536; Task 5 Code Challenge: Design a STOP / GO sign:
+### &#x1F536; Code Challenge 5: Design a STOP / GO sign:
 
 ```diff
 ! At the moment i increases infinitely so that the array items are only displayed once.  
