@@ -153,30 +153,45 @@ function setup() {
 *****
 ## Task 4 - Adding lots of data to an Array 
 
-It is very common to start with an empty Array and add data to it using a loop. The data is then  stored and accessed when required. 
+Lets imagine that we want array of numbers from 0 to 255.
 
+We could just write it like this:
 
-In this task you'll create an empty array. Add data to it (numbers) with a For Loop. Then use a For Loop to retrieve the data and draw a gradient.    
+```javascript
+let let myColors = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255];
 
-- **Step 1**  
+```
+
+(Notice the numbers are not in " " because they are numbers not strings)
+
+But it also possible to generate the array with a ```for()``` loop adding +1 on very loop / iteration.
+
+Let's do that: To make the array above with a loop start with an empty array. Then add data to it (numbers 0 to 255) with a For Loop. 
+
+- **Step 1: create the empty array**  
 
 Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions.  
 
 In the ```setup()``` function, create a canvas that is 1024px wide and 400px high.  
-Include the ```noLoop()``` function.
+Include the ```noLoop()``` function in ```setup()```.
+
+
+```diff
+! Discuss with person next to you what noLoop() does.  
+```
 
 At the top of your sketch.js (outside and above ```setup()```), create an empty array that can be accessed globally within the sketch. 
 
 ```javascript
-let let myColors = [];
+let myColors = [];
 ```
 
-- **Step 2**  
+- **Step 2: add the data / numbers to it**  
 
 In ```setup()``` create a 'For Loop' to add values to the array. Add numbers / integers from 0 to 255 using a 'For Loop':
 
 
-We already have our empty array, use the same technique you used to push data into the loop.  
+We already have our empty array, use ```push()``` to add the numbers into the loop.  
 
 So, here we're going to fill an array using a for loop. We're going to use our new ```let``` declaration as we only need ```i``` whilst we're in the loop. Here is how we fill an array from 0 to 255, do NOT copy this code:  
 
@@ -185,15 +200,23 @@ for (let i = 0; i < 256; i++) { // why 256?
     myColors.push(i); 
 }
 ```
+```diff
+! Discuss with person next to you why  256? (Rather than 255). 
+! Discuss what each part of the loop does. 
+```
 
 In ```setup()```, try printing ```myColors``` to the console using:
 
 ```javascript
 console.log(myColors);
 ```
-- **Step 3**
+You should see this:
+![gradient](./images/array-nos.jpg "Array of Nos")
 
-OK, now we're going to make a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos. Let's initialise it to the value of 0.
+
+- **Step 3: use the array of numbers to create a gradient effect**
+
+OK, so now we're going to use the array of numbers to generate a smooth gradient of thin rectangles across our canvas. In order to do this, we're going to need to create another global variable, called xPos at the top of sketch.js. Let's initialise it to the value of 0.
 
 ```javascript
 let xPos = 0;
@@ -208,7 +231,8 @@ function draw() {
 }
 ```
 
-Still in the draw function, we now need to *iterate* through ```myColors``` and change the fill based on that. Why is the syntax ```myColors[i]```? What is ```i``` and how does it relate to ```myColors``` in this instance? 
+Still in the ```draw()``` function, we now need to *iterate* through ```myColors``` and change the fill based on ```i``` the iterator. 
+So add this inside ```draw()```.
 
 ```javascript
 
@@ -216,6 +240,11 @@ Still in the draw function, we now need to *iterate* through ```myColors``` and 
         fill(myColors[i]);
     }
 
+```
+```diff
+! Discuss with person next to you: 
+! Why is the syntax myColors[i]? 
+! What is i and how does it relate to myColors in this instance?  
 ```
 
 We still haven't drawn anything yet though, right?! So, finally we need to add two more lines in our for loop. One to draw the rectangle (what is going on with the third argument 'height'?) and one to increase our xPos each time the loop is repeated (can you see what's going on here?):
@@ -371,5 +400,5 @@ function draw() {
 
 - Head back to Blackboard and follow the tutorial by Tom on how to upload your work to the panel server.
 
-- Use the STOP / GO you created in Task 5 as the content that you will be putting onto the panel server.
+- Use the STOP / GO you created in Task 5 as the content that you will be putting onto the panel server. Create a Journal entry in your Wordpress blog and add a description, screenshot and link to the STOP / GO on the panel server.
 
