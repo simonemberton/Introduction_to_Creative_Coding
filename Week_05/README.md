@@ -2,6 +2,8 @@
 
 ## More on Scope; Fun with Arrays...
 
+Note: All the answers to each code challenge are in separate files in this week 05 folder. Only look at them if you get really stuck!   
+
 *****
 ## Task 1 - Array Methods
 
