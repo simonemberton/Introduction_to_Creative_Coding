@@ -16,7 +16,7 @@ Create a new "empty-example" folder with a blank sketch.js with ```setup()``` an
 
 Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".  
 
-For this task we'll be using a quote from Malala Yousafzai, Nobel Peace Prize Winner, broken down into separate words. Each word will be a separate Array element.  
+For this task we'll be using a quote from [Malala Yousafzai](https://malala.org/malalas-story), who became a Nobel Peace Prize Winner at aged 17 for championing girls rights, broken down into separate words. Each word will be a separate Array element.  
 
 The quote is:  
 *"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."* 
