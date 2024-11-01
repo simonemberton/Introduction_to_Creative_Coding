@@ -151,7 +151,7 @@ function setup() {
 ```
 
 *****
-## Task 4 - Adding lots of data to an Array 
+## Task 4 - Adding lots of data to an Array (and making a gradient)
 
 Lets imagine that we want array of numbers from 0 to 255.
 
