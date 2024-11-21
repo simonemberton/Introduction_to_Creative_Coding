@@ -92,9 +92,17 @@ Also please read the following tutorial on debugging in Chrome [HERE](https://ja
 
 ### Task 3 - Debugging challenge  
 
-Okay now you're ready to try and fix some errors!
+Okay now you're nearly ready to try and fix some errors!   
+Before you do that let's install the p5 autocomplete for Visual Studio Code.
 
-Look at the following code
+Open the extensions panel in Visual Studio Code. (green hilite below) and search for "p5.vscode" and install p5.vscode.
+
+<p align="center">
+<img src="./images/autocomplete.png" alt="autocomplete" width="100%"/>
+</p>
+
+Download the [task-3-fix-errors.zip]("./assets/task-3-fix-errors.zip") and load the folder into Visual Studio Code. 
+Look at the following code in sketch.js
 
 ```javascript
 
@@ -144,7 +152,16 @@ function draw() {
 
 ```
 
-If you try running this code you'll see that it was written in a hurry and is littered with errors.  Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that is runs successfully.  
+Try running it by using the "go live" Button at the bottom of Visual Studio Code. This will launch a new browser window using a local server with address of http://127.0.0.1:5500/ (or something similar).   
+Note: If the window opens in Safari copy the local server address to Chrome and open the inspect > console.  
+
+The page will automatically refresh when you edit and save your code.
+
+<p align="center">
+<img src="./images/go-live.png" alt="go live" width="75%"/>
+</p>
+
+When you run this code you'll see (in the console) that it was written in a hurry and is littered with errors.  Your task is to use your programming knowledge and debugging skills to find and fix all the errors in the code so that it runs successfully.  
 
 When finished it should look like this:
 <p align="center">

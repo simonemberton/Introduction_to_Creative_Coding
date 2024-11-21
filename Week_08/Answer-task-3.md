@@ -1,6 +1,6 @@
-# Week 07
+# Week 08
 
-## Task 2 - Answer
+## Task 3 - Answer
 
 - Hopefully your sketch and console output now looks something like this:  
 
