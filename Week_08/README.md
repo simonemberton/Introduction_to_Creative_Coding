@@ -101,7 +101,7 @@ Open the extensions panel in Visual Studio Code. (green hilite below) and search
 <img src="./images/autocomplete.png" alt="autocomplete" width="100%"/>
 </p>
 
-Download the [task-3-fix-errors.zip]("/assets/task-3-fix-errors.zip") and load the folder into Visual Studio Code. 
+Download (right click > save as) [task-3-fix-errors.zip]("/assets/task-3-fix-errors.zip") and load the folder into Visual Studio Code. 
 Look at the following code in sketch.js
 
 ```javascript
