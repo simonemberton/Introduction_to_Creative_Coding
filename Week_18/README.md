@@ -11,13 +11,13 @@ If you are using a recent version of p5 you'll need to run a local server for th
 
 Have a look at the [`p5.AudioIn`](https://archive.p5js.org/reference/#/p5.AudioIn) example and get it working on your machine. You might want to make the canvas bigger as on this example it's really tiny. At the time of writing there was an issue with `p5.AudioIn` (in the latest version of p5.sound) and Firefox, so please use Chrome or Safari.
 
-Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
+Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://archive.p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
 
-If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you're doing you can start from the code of this [`getLevel()` example](https://p5js.org/reference/#/p5.Amplitude/getLevel).
+If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you're doing you can start from the code of this [`getLevel()` example](https://archive.p5js.org/reference/#/p5.Amplitude/getLevel).
 
 I'm going to base my audio-visualiser off of [Demo 3](https://tympanus.net/Development/AudioVisualizers/index3.html).  This example consists on rotating points and lines that move in time to the music.  
 
-Notice that they all rotate around the centre of the canvas, so we need to change our point of origin using the `translate()` function.  Now let's use a for loop and the `rotate()` function to draw some [points](https://p5js.org/reference/#/p5/point) in a circle shape.  This is the code that I added to my `draw() function`:
+Notice that they all rotate around the centre of the canvas, so we need to change our point of origin using the `translate()` function.  Now let's use a for loop and the `rotate()` function to draw some [points](https://p5js.org/reference/p5/point/) in a circle shape.  This is the code that I added to my `draw() function`:
 
 ```javascript
 translate(width / 2, height / 2);
@@ -75,7 +75,7 @@ Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.pane
 
 ### Task 2 - Frequency Analysis
 
-Let's try and develop this a bit further by applying some audio analysis to the incoming signal so that we can isolate the high, mid and low frequency bands rather than just overall amplitude.  The method of audio analysis we'll be using is the Fast Fourier Transform [FFT](https://p5js.org/reference/#/p5.FFT).  
+Let's try and develop this a bit further by applying some audio analysis to the incoming signal so that we can isolate the high, mid and low frequency bands rather than just overall amplitude.  The method of audio analysis we'll be using is the Fast Fourier Transform [FFT](https://p5js.org/reference/p5.sound/p5.FFT/).  
 
 First we need to create a new global variable called `fft` at the top of the `sketch.js` file.  Remember it's a global variable so it's outside of the `setup()` function.  Next at the end of the `setup()` function we'll make our `fft` variable equal to a new `p5.FFT` object and then set the input to `fft` to be the `mic` variable from the `p5.AudioIn` object using the following code:
 ```javascript
@@ -88,7 +88,7 @@ let spectrum = fft.analyze();
 ```
 Now `console.log` the `spectrum` variable and see the output in the console. You'll need to comment out the rest of the code so that errors don't prevent the code from running.  You'll see in the console that the `spectrum` variable contains an array of length 1024 where each location in the array has a value between 0-255 which represents the amplitude at that slice of the frequency spectrum.
 
-We could use the data from `fft.analyze()` to create some interesting visuals but instead I want to make use of fft's [`getEnergy()`](https://p5js.org/reference/#/p5.FFT/getEnergy) function to get the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  FYI we always have to use `fft.analyze()` before using `fft.getEnergy()`.  Add the following code:
+We could use the data from `fft.analyze()` to create some interesting visuals but instead I want to make use of fft's [`getEnergy()`](https://p5js.org/reference/p5.FFT/getEnergy/) function to get the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  FYI we always have to use `fft.analyze()` before using `fft.getEnergy()`.  Add the following code:
 ```javascript
 let treble = fft.getEnergy("treble");
 let mid = fft.getEnergy("mid");
@@ -126,7 +126,7 @@ let scaleMid = map(mid, 0, 255, -0.9, 0.9);
 let scaleBass = map(bass, 0, 255, -1, 1);
 ```
 
-We'll then use these mapped scaling variables as input to the [`scale()`](https://p5js.org/reference/#/p5/scale) function for each of the circles of points.  This function scales from the point of origin, so moves the points further from the centre.  We need to isolate the scaling and point functions for each of the frequency bands so that they don't interfere with each other, for that we'll use `push()` and `pop()` to make the drawing of each circle of points self contained.  For example:
+We'll then use these mapped scaling variables as input to the [`scale()`](https://p5js.org/reference/p5/scale/) function for each of the circles of points.  This function scales from the point of origin, so moves the points further from the centre.  We need to isolate the scaling and point functions for each of the frequency bands so that they don't interfere with each other, for that we'll use `push()` and `pop()` to make the drawing of each circle of points self contained.  For example:
 ```javascript
 // treble
 push();
