@@ -237,6 +237,4 @@ The output of this task should look and sound like [this](https://simonemberton.
 
 * Make another class that also inherits from ```Shape``` but behaves differently to ```Sphere```.
 
-* Try adding different audio effects for example triggering a different notes each time an object collides with the edge of the cube space.  You could use this [example](https://p5js.org/examples/sound-note-envelope.html) as a starting point.
-
-
+* Try adding different audio effects for example triggering a different notes each time an object collides with the edge of the cube space.  You could use this [example](https://archive.p5js.org/examples/sound-note-envelope.html) as a starting point.
