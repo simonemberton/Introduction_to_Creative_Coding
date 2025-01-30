@@ -81,9 +81,15 @@ Copy the P5.js code and paste into the ```<body>``` of your ```index.html``` pag
 <details>
 <summary>Note:</summary>
 
-Notice that you are using javascript inside the ```index.html``` file rather than in ```sketch.js```. For this to work the Javascript has to be included in ```<script> ... </script>``` tags. It should also be at the bottom of your ```<body>``` tag so the ```html``` in the page loads first.
+
 </details>
 
+Your script is now using the P5 library and Ml5 Library from a remote repository called a 'Content Delivery Network' or CDN.   
+Look at the code in ```index.html``` and you will see the following two lines:   
+```
+<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+```
 
 Add the downloaded and unzipped model folder into your renamed empty example directory.
 ![teachable machine](./images/p5-folders.png)
