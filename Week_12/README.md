@@ -56,12 +56,28 @@ Team up with someone and help each other with these tasks. (Help each other capt
 Export your model from the Teachable Machine page. Select **Tensorflow.js** and **Download**.   
 **Don't close the webpage!** (it will download as a .zip file). 
 
-Download a new P5 empty example onto your machine. Rename the ```empty-example```  directory.  
+Download a new P5 empty example onto your machine. Rename the ```empty-example```  directory.  I've called mine ```machine-learning-example```.
 
 
 <p align="center">
 <img src="./images/teachable6-download.png" alt="Download" width="70%"/>
 </p>
+
+Add the downloaded and unzipped model folder (probably called ```tm-my-image-model```) into your renamed empty example directory, next to ```sketch.js```.  
+
+![teachable machine](./images/p5-folders.png)  
+
+Replace the content of your ```sketch.js``` with the code from the example ```sketch.js``` code here:  
+https://editor.p5js.org/roddicki/sketches/21J3iubL-   
+
+![P5 editor](./images/editor-p5.png)  
+
+Now change the following line so that ```'./my_model/'``` is the name of your model folder you downloaded.  
+
+```javascript
+  let imageModelURL = './my_model/';
+```   
+
 
 Copy the P5.js code and paste into the ```<body>``` of your ```index.html``` page.
 
@@ -78,34 +94,38 @@ Copy the P5.js code and paste into the ```<body>``` of your ```index.html``` pag
 </body>
 ```
 
-<details>
-<summary>Note:</summary>
 
-
-</details>
-
-Your script is now using the P5 library and Ml5 Library from a remote repository called a 'Content Delivery Network' or CDN.   
-Look at the code in ```index.html``` and you will see the following two lines:   
+Your ```index.html``` is now using the P5 library and Ml5 Library from a remote repository called a 'Content Delivery Network' or CDN.   
+Look at the code in ```index.html``` and you will see the following two CDN lines:   
 ```
 <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
 ```
 
-Add the downloaded and unzipped model folder into your renamed empty example directory.
-![teachable machine](./images/p5-folders.png)
+Before we can run this page we need to change the version of the Ml5 library we are using to version 0.50.   
+Replace 
+```
+<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+```
+with
+```
+<script src="https://cdn.jsdelivr.net/npm/ml5@0.5.0/dist/ml5.min.js"></script>
+```
+You will also need to comment out the P5 ```<scripts>``` that are included in the ```<head>``` of the ```index.html``` file as they are included with p5 code you have copied.  
 
-Now change the following line so that ```'./my_model/'``` is the name of your model folder.  
+HTML comments are different to p5 / JavaScript comments.   
+HTML comments look like this: ```<!-- this is a comment -->```    
 
-```javascript
-  let imageModelURL = './my_model/';
-```    
-You will also need to comment out the P5 ```<scripts>``` that are included in the ```empty-example/index.html``` file as they are included with p5 code you have copied.
+Edit your code to look like this:
 
 ```html
 <!-- <script src="../p5.js"></script> -->
 <!-- <script src="../addons/p5.sound.js"></script> --> 
 <script src="sketch.js"></script>
 ```
+
+ 
+
 ## Task 3 - Teachable Machine - Testing your model and web page with a local server
 To test and run your model and web page you will need **to run it as a local server**
 
