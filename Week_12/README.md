@@ -72,59 +72,25 @@ https://editor.p5js.org/roddicki/sketches/21J3iubL-
 
 ![P5 editor](./images/editor-p5.png)  
 
-Now change the following line so that ```'./my_model/'``` is the name of your model folder you downloaded.  
+Now also in ```sketch.js``` change the following line so that ```'./my_model/'``` is the name of your model folder you downloaded.  
 
 ```javascript
   let imageModelURL = './my_model/';
 ```   
 
+Next in ```index.html``` add a ```<script>``` tag to include the ml5 p5 library.   
+  Edit your code so it looks like the following:
 
-Copy the P5.js code and paste into the ```<body>``` of your ```index.html``` page.
-
-```html
-<body
-    <div>Teachable Machine Image Model - p5.js and ml5.js</div>
-    ...
-    <!-- rest of the copied teachable machine code -->
-    ...
-    classifyVideo();
-  }
-</script>
-
-</body>
 ```
-
-
-Your ```index.html``` is now using the P5 library and Ml5 Library from a remote repository called a 'Content Delivery Network' or CDN.   
-Look at the code in ```index.html``` and you will see the following two CDN lines:   
-```
-<script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/addons/p5.dom.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
-```
-
-Before we can run this page we need to change the version of the Ml5 library we are using to version 0.50.   
-Replace 
-```
-<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
-```
-with
-```
+<script src="../p5.min.js"></script>
+<!-- <script src="../addons/p5.sound.js"></script> -->  
+<!-- Comment: add the p5 ml5 library: -->
 <script src="https://cdn.jsdelivr.net/npm/ml5@0.5.0/dist/ml5.min.js"></script>
-```
-You will also need to comment out the P5 ```<scripts>``` that are included in the ```<head>``` of the ```index.html``` file as they are included with p5 code you have copied.  
-
-HTML comments are different to p5 / JavaScript comments.   
-HTML comments look like this: ```<!-- this is a comment -->```    
-
-Edit your code to look like this:
-
-```html
-<!-- <script src="../p5.js"></script> -->
-<!-- <script src="../addons/p5.sound.js"></script> --> 
+<!-- Comment: Be sure that the script link to sketch.js is BENEATH the other code libraries: -->
 <script src="sketch.js"></script>
 ```
 
- 
+That's it! You are now ready to test and run your code. 
 
 ## Task 3 - Teachable Machine - Testing your model and web page with a local server
 To test and run your model and web page you will need **to run it as a local server**
@@ -192,27 +158,8 @@ In machine learning the system does not 'know' that I am wearing glasses it make
 
 ## Task 4 - P5 - Using the classifier to trigger other code to run  
 
-We will use the classifier and model we have created to change an image on the web page.    
+We will use the classifier and model we have created to change an image on our ```index.html``` page.    
 We will use the confidence value of the prediction to change what we see on the screen. 
-
-Before we do this duplicate your folder / make a new folder with all your existing code in it. 
-- Delete the ```setup()``` and ```draw()``` functions in ```sketch.js```. So ```sketch.js``` is completely empty.  
-- Move the javascript inside the ```<script type="text/javascript"> ... </script>``` tag in ```index.html``` into ```sketch.js```.   
-- Move everything from:
-
-```javascript
-// Classifier Variable
-let classifier;
-
-...
-
-// Classifiy again!
-  classifyVideo();
-}
-```
-(Don't move the ```<script type="text/javascript"> ... </script>``` tags. You can delete these).  
-So now your ```index.html``` does not have any Javascript in it.  
-- Check everything still runs (run ```index.html``` as a local server / localhost).  
 
 Make the P5 canvas bigger and video image smaller:  
 
