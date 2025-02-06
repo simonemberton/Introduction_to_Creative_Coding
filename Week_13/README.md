@@ -30,10 +30,10 @@ You will need to download a new P5 'empty example'.
 
 #### Configure index.html:
 
-In the ```<head>``` of ```index.html``` add a link to the ml5.js libray
+In the ```<head>``` of ```index.html``` add a link to the ml5.js library. Notice we are using version 0.50  
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ml5@0.5.0/dist/ml5.min.js"></script>
 ```
 
 <details>
@@ -188,12 +188,23 @@ You can find the answers to the code challenges including the final sketch.js co
 
 ## Task 3 - Use the classifications to make a simple classification avoidance game  
 
-We will now use all the sketch to make a simple game. The game will work as follows:  
+We will now use all the sketch to make a simple game. 
 
 #### How to play
 A single player starts in the field of vision of the camera hiding behind something (a chair or table). They have to get close enough to the camera without being detected as a person to show the camera their phone. 
 If they are detected as a person a 'Gotcha!' screen will appear.  
-To succeed players will have to disguise themselves, move fast, crawl or hide behind objects...  
+To succeed players will have to disguise themselves, move fast, crawl or hide behind objects... 
+
+#### How the game will works:   
+If a 'person' is detected then they have been caught and the 'Gotcha' screen displays. 
+If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'Success' screen displays.   
+
+<p align="center">
+<img src="./images/mlgame-flow.png" alt="me" width="100%"/>
+</p> 
+
+
+ 
 
 To begin with we will move all the code from ```draw()``` into a function called ```videoUI()```
 And run ```videoUI()``` from draw.  
@@ -227,13 +238,7 @@ Now you need to make 3 screens that you will switch between: A 'Start' Screen, a
 <img src="./images/mlgame-start.png" alt="me" width="32%"/><img src="./images/mlgame-gotcha.png" alt="me" width="32%"/><img src="./images/mlgame-success.png" alt="game" width="32%"/>
 </p>
 
-The game will work as follows:   
-If a 'person' is detected then they have been caught and the 'Gotcha' screen displays. 
-If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'Success' screen displays.   
 
-<p align="center">
-<img src="./images/mlgame-flow.png" alt="me" width="100%"/>
-</p>
 
 The 3 screens will be generated from one new function ```textUI()```, passing different parameters to it to style each screen. 
 
