@@ -420,10 +420,10 @@ Test your project. The game should now work (you'll need to refresh the page to 
 
 
 
-
+## &#x1F536; Code Challenge 2:
 The last thing to do is register a mousePressed click on the 'Start Again' button to do the reset and set the ```state = "video";``` to reset the video feed.
 
-## &#x1F536; Code Challenge 2:
+
 
 ```diff
 ! Create a new mousePressed() function.  
