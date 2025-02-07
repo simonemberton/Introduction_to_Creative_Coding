@@ -184,7 +184,7 @@ Run your sketch **using a local server**, you should see the bounding box and la
 
 <details>
 <summary>Hint:</summary>
-You can find the answers to the code challenges including the final sketch.js code above at the top of the page.
+You can find the answers to the code challenges including the final sketch.js code in this weeks folder.
 </details>  
 
 ## Task 3 - Use the detections to make a simple classification avoidance game  
@@ -439,7 +439,8 @@ Done that? Add a restart function (on a keypress).
 
 <details>
 <summary>Hint:</summary>
-You can find the answers to the code challenges including the final whole sketch.js code above at the top of the page.
+You can find the answers to the code challenges including the final sketch.js code in this weeks folder.
+
 
 See the finished sketch running here  
 https://editor.p5js.org/roddicki/sketches/cZt3R4BYQ
