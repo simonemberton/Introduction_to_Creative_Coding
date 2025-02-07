@@ -350,9 +350,9 @@ Uncomment each one to see it in turn.
 #### Set up the switch statement
 Now let's use the object detections to switch between the screens so that when a person is detected the 'Gotcha' screen displays and when a cell phone is detected a the 'Success' screen is displayed.
 
-We will add a switch statement to ```draw()``` to switch between our Start, Video, Gotcha and Success screens.  
+We will replace everything in ```draw()```  with a switch statement to switch between our Video, Gotcha and Success screens.  
 
-Then we will switch between the these states depending on the result from the object detection.  
+Then we will switch between the these states depending on the results from the object detection.  
 
 
 Add a global variable
