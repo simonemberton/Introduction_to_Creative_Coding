@@ -187,7 +187,7 @@ Run your sketch **using a local server**, you should see the bounding box and la
 You can find the answers to the code challenges including the final sketch.js code above at the top of the page.
 </details>  
 
-## Task 3 - Use the classifications to make a simple classification avoidance game  
+## Task 3 - Use the detections to make a simple classification avoidance game  
 
 We will now use all the sketch to make a simple game. 
 
