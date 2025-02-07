@@ -306,7 +306,7 @@ Now we will make 2 screens that you will switch between: A 'Gotcha!' screen, a '
 
 We will write a function to create each screen. (Then switch between them).  
 
-Write the following functions beneath your ```videoUI``` function.   
+Write the following functions beneath your ```videoUI()``` function.   
 The Gotcha function:
 ```
 // Gotcha 
