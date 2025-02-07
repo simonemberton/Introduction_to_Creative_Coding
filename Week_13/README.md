@@ -421,23 +421,24 @@ Test your project. The game should now work (you'll need to refresh the page to 
 
 
 ## &#x1F536; Code Challenge 2 (stretch goal):
-The last thing to do is register a mousePressed click on the 'Start Again' button to do the reset and set the ```state = "video";``` to reset the video feed.
+To improve the whole experience add a start screen that switches to the video, on a key press, to start the game.   
 
+In a bit more detail:  
 
 
 ```diff
-! Create a new mousePressed() function.  
-! Use the mousePressed() function to detect a click on the 'Start again' button / rectangle.
-! Tip: use rectWidth & rectHeight
-! Tip: detect the mouseX and MouseY position on mousePressed()
+! Create a start() function which creates a start screen.  
+! Use a key press to switch state / case to 'video'.
+! Change the initial starting state to 'start'.
 ```
+
+Done that? Add a restart function (on a keypress).  
 
 <details>
 <summary>Hint:</summary>
 You can find the answers to the code challenges including the final whole sketch.js code above at the top of the page.
 </details>  
 
-Finally change the value of the variable ```state``` at the top of ```sketch.js``` to ```let state = "start";``` so that the 'Start' screen loads initally.  
 
 
 
