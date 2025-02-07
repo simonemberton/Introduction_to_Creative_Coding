@@ -355,7 +355,7 @@ We will replace everything in ```draw()```  with a switch statement to switch be
 Then we will switch between the these states depending on the results from the object detection.  
 
 
-Add a global variable
+Add a global variable at the top of your ```sketch.js```
 ```javascript
 let state = "video";
 ```
@@ -420,7 +420,7 @@ Test your project. The game should now work (you'll need to refresh the page to 
 
 
 
-## &#x1F536; Code Challenge 2:
+## &#x1F536; Code Challenge 2 (stretch goal):
 The last thing to do is register a mousePressed click on the 'Start Again' button to do the reset and set the ```state = "video";``` to reset the video feed.
 
 

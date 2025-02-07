@@ -2,7 +2,7 @@
 
 ## Code Challenge 1 - Answer
 
-- Your final sketch.js code should look like this 
+- Your final sketch.js code should look like this with the confidence value rounded to 2 decimal places and a red bounding box (or another colour you choose)
 
 ```javascript
 let video;
@@ -54,5 +54,5 @@ function gotDetections(error, results) {
 }
 ```
 <p align="center">
-<img src="./images/cocossd-3.png" alt="me" width="100%"/>
+<img src="./images/mlgame-detections.jpg" alt="me" width="100%"/>
 </p>
