@@ -307,9 +307,10 @@ Now we will make 2 screens that you will switch between: A 'Gotcha!' screen, a '
 We will write a function to create each screen. (Then switch between them).  
 
 Write the following functions beneath your ```videoUI()``` function.   
-The Gotcha function:
-```
-// Gotcha 
+
+The Gotcha function that creates the Gotcha red screen:
+```javascript
+// Gotcha screen
 function gotcha(){
   background(255,0,0);
   // Set up text properties
@@ -319,9 +320,9 @@ function gotcha(){
   text("Gotcha!", width/2, height/2);
 }
 ```
-The You Win function
-```
-// you win
+The You Win function that creates the You Win green screen:
+```javascript
+// you win screen
 function youWin(){
   background(0,255,0);
   // Set up text properties
@@ -345,7 +346,7 @@ function draw() {
 }
 ```
 
-Uncomment each one to see it in turn.    
+Uncomment each one to see it run in turn.    
 
 #### Set up the switch statement
 Now let's use the object detections to switch between the screens so that when a person is detected the 'Gotcha' screen displays and when a cell phone is detected a the 'Success' screen is displayed.
@@ -428,7 +429,9 @@ In a bit more detail:
 
 ```diff
 ! Create a start() function which creates a start screen.  
+! Add a 'start' case to the switch statement.
 ! Use a key press to switch state / case to 'video'.
+! Only allow the state to change to 'caught' or 'success' if the 'video' is active. 
 ! Change the initial starting state to 'start'.
 ```
 
@@ -437,6 +440,9 @@ Done that? Add a restart function (on a keypress).
 <details>
 <summary>Hint:</summary>
 You can find the answers to the code challenges including the final whole sketch.js code above at the top of the page.
+
+See the finished sketch running here  
+https://editor.p5js.org/roddicki/sketches/cZt3R4BYQ
 </details>  
 
 
