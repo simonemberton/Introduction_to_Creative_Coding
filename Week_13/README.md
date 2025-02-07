@@ -148,7 +148,7 @@ The functions are chained together and work like this...
 Now we will draw the detections onto the video image... Like this (Cheers)...
 
 <p align="center">
-<img src="./images/cocossd-2.png" alt="me" width="100%"/>
+<img src="./images/mlgame-detections.jpg" alt="me" width="100%"/>
 </p>
 
 
@@ -167,7 +167,7 @@ function draw() {
     noStroke();
     fill(255);
     textSize(24);
-    text(object.label, object.x + 10, object.y + 24);
+    text(object.label +" "+ object.confidence, object.x + 10, object.y + 24);
   }
 }
 ```
@@ -179,6 +179,7 @@ Run your sketch **using a local server**, you should see the bounding box and la
 
 ```diff
 ! Change the colour of the bounding box.
+! Round the confidence value to two decimal places (so it looks like my photo above).
 ```
 
 <details>
@@ -191,13 +192,16 @@ You can find the answers to the code challenges including the final sketch.js co
 We will now use all the sketch to make a simple game. 
 
 #### How to play
-A single player starts in the field of vision of the camera hiding behind something (a chair or table). They have to get close enough to the camera without being detected as a person to show the camera their phone. 
-If they are detected as a person a 'Gotcha!' screen will appear.  
-To succeed players will have to disguise themselves, move fast, crawl or hide behind objects... 
+A single player starts in the field of vision of the camera disguised or camouflaged and a few metres away. They have to show their phone to the camera before they are detected as a person.  
 
-#### How the game will works:   
-If a 'person' is detected then they have been caught and the 'Gotcha' screen displays. 
-If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'Success' screen displays.   
+If they are detected as a person a 'Gotcha!' screen will appear.  
+To succeed players will have to disguise themselves or move fast, or even hide behind objects... 
+
+#### How the game works:   
+If a 'person' is detected then they have been caught and the 'Gotcha!' screen displays. 
+If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'You Win!' screen displays.   
+
+The game can be retarted by refreshing the browser page.   
 
 <p align="center">
 <img src="./images/mlgame-flow.png" alt="me" width="100%"/>
@@ -205,6 +209,13 @@ If a 'cell phone' is detected they have won and tricked the system to not recogn
 
 
  
+#### Lets get started: 
+We are going to need to make 3 screens:  
+- The detection screen (we've mostly made this already)  
+- The Gotcha screen  
+- The You Win screen  
+
+Then we will switch between them using the ```switch (state)``` function (from week 4).  
 
 To begin with we will move all the code from ```draw()``` into a function called ```videoUI()```
 And run ```videoUI()``` from draw.  
@@ -227,136 +238,12 @@ function videoUI() {
     noStroke();
     fill(255);
     textSize(24);
-    text(object.label, object.x + 10, object.y + 24);
+    text(object.label +" "+ object.confidence, object.x + 10, object.y + 24);
   }
 }
 ```
-
-Now you need to make 3 screens that you will switch between: A 'Start' Screen, a 'Gotcha!' screen, a 'Success' screen.  
-
-<p align="left">
-<img src="./images/mlgame-start.png" alt="me" width="32%"/><img src="./images/mlgame-gotcha.png" alt="me" width="32%"/><img src="./images/mlgame-success.png" alt="game" width="32%"/>
-</p>
-
-
-
-The 3 screens will be generated from one new function ```textUI()```, passing different parameters to it to style each screen. 
-
-Create some new global variables* for the width and height of the 'Start Again' button.  
-```javascript
-let rectWidth = 150;
-let rectHeight = 60;
-```
-
-*Where should these two global variables be declared? 
-
-
-Add the ```textUI()``` function at the bottom of ```sketch.js```.  
-
-
-```javascript
-function textUI(r,g,b, btnText) {
-  background(r,g,b);
-  let rectX = (width - rectWidth) / 2;
-  let rectY = (height - rectHeight) / 2;
-
-  // Draw the centered button rectangle
-  strokeWeight(1);
-  stroke(255);
-  fill(r,g,b);
-  rect(rectX, rectY, rectWidth, rectHeight);
-
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(20);
-  fill(255); // White text
-
-  // Calculate the position for the centered text
-  let textX = width / 2;
-  let textY = height / 2;
-
-  // Draw centered button text
-  text(btnText, textX, textY);
-  // Draw alert text
-  textSize(60);
-  text("my message", textX, textY-100);
-}
-```
-
-Style the background colour and button text by passing parameters to ```textUI()```.  
-E.G. ```textUI(0,255,0, "Start Again");``` will produce a green background screen and text in the button that says "Start Again".  
-
-Test and run ```textUI()``` from  ```draw()``` by commenting out each ```textUI()``` line in turn.
-
-```javascript
-function draw() {
-  //videoUI();
-
-  //textUI(200,200,200, "Start"); //uncomment this line to test
-
-  textUI(0,255,0, "Start Again");
-  
-  //textUI(255,0,0, "Start Again"); //uncomment this line to test
-}
-```
-
-You should see the screen colour change and text in the rectangular button.  
-
-## &#x1F536; Code Challenge 2:
-
-```diff
-! Now change the text in each of the screens to 'Start Here', 'Gotcha' and 'Success'.
-! Tip: You will need to pass the text (string) to the textUI() function as a parameter...
-```
-
-<details>
-<summary>Hint:</summary>
-You can find the answers to the code challenges including the whole sketch.js code above at the top of the page.
-</details>  
-
-Now let's use the object detections to switch between the screens so that when a person is detected the 'Gotcha' screen displays and when a cell phone is detected a the 'Success' screen is displayed.
-
-We will add a switch statement to ```draw()``` to switch between our Start, Video, Gotcha and Success screens.  
-
-Then we will switch between the these states depending on the result from the object detection.  
-
-
-#### Set up the switch statement
-
-Add a global variable
-```javascript
-let state = "video";
-```
-
-Add the switch statement to ```draw()``` 
-```javascript
-function draw() {
-  
-  switch (state) {
-    case "video":
-      videoUI();
-      break;
-    
-    case "start":
-      textUI("Start Here", 200,200,200, "Start");
-      break;
-    
-    case "caught":
-      textUI("Gotcha!", 255,0,0, "Start Again");
-      break;
-
-    case "success":
-      textUI("Success!", 0,255,0, "Start Again");
-      break;
-    
-  }
-}
-```
-
-
-#### Use the switch statement
-
-Now we need to use the detections that the Machine Learning system produces to trigger the switch statement.  
+#### Testing for a "person" or "cell phone": 
+Next we need to see whether the detection results contain a label that is a 'person' or 'cell phone'.  
 
 Detections are already being logged here:
 ```javascript
@@ -377,8 +264,11 @@ These results are logged as an array, as below, each result has a label and conf
 </p>
 
 
+
 We can loop through the results and test whether the results contain a label that is a 'person' or 'cell phone'.  
 In addition we can test if the result has a high confidence value.  
+For now we will output the result to the console.  
+
 Amend the ```gotDetections()``` function as follows:  
 
 ```javascript
@@ -387,30 +277,153 @@ function gotDetections(error, results) {
     console.error(error);
   }
   detections = results;
-  console.log(detections);
-
-  // new : loop through the array of detections
+ 
+  // Loop through the detections array [] and test the results for "person" and "cell phone"
   for (let i = 0; i < detections.length; i++) {
-    // if label is 0.9 person
-    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.9) {
-      // you were caught - change the 'state' variable to caught
-      state = "caught";
+    //console.log(detections[i]["label"]);
+    // label is 0.8 person or greater
+    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.8) {
+      // you were caught
+      console.log("caught");
     }
-    // if label is 0.8 cell phone
-    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.8) {
-      // you won - change the 'state' variable to success
-      state = "success";
+    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.3) {
+      // you won 
+      console.log("success");
     }
-    
   }
   detector.detect(video, gotDetections);
 }
 ```
-Test your project. A basic version of the game should now work (you'll need to refresh the page to reset).  
+Try changing the confidence value to 0.99 to see if you can be detected as a person and "caught" so easily.  
+
+
+#### Gotcha and You Win screens
+Now we will make 2 screens that you will switch between: A 'Gotcha!' screen, a 'You Win' screen.  
+
+<p align="left">
+<img src="./images/mlgame-gotcha.png" alt="me" width="32%"/><img src="./images/mlgame-success.png" alt="game" width="32%"/>
+</p>
+
+We will write a function to create each screen. (Then switch between them).  
+
+Write the following functions beneath your ```videoUI``` function.   
+The Gotcha function:
+```
+// Gotcha 
+function gotcha(){
+  background(255,0,0);
+  // Set up text properties
+  textAlign(CENTER, CENTER);
+  textSize(60);
+  fill(255); // White text
+  text("Gotcha!", width/2, height/2);
+}
+```
+The You Win function
+```
+// you win
+function youWin(){
+  background(0,255,0);
+  // Set up text properties
+  textAlign(CENTER, CENTER);
+  textSize(60);
+  fill(255); // White text
+  text("You Win!", width/2, height/2);
+}
+```
+
+
+Test and run ```gotcha()``` and ```youWin()``` from inside  ```draw()``` by commenting / uncommenting each in turn.
+
+```javascript
+function draw() {
+  //videoUI(); //uncomment this line to test
+
+  //youWin(); //uncomment this line to test
+  
+  //gotcha(); //uncomment this line to test
+}
+```
+
+Uncomment each one to see it in turn.    
+
+#### Set up the switch statement
+Now let's use the object detections to switch between the screens so that when a person is detected the 'Gotcha' screen displays and when a cell phone is detected a the 'Success' screen is displayed.
+
+We will add a switch statement to ```draw()``` to switch between our Start, Video, Gotcha and Success screens.  
+
+Then we will switch between the these states depending on the result from the object detection.  
+
+
+Add a global variable
+```javascript
+let state = "video";
+```
+
+Add the switch statement to ```draw()``` 
+```javascript
+function draw() { 
+  switch (state) {
+    case "video":
+      videoUI();
+      break;
+    
+    case "caught":
+      gotcha();
+      break;
+
+    case "success":
+      youWin();
+      break; 
+  } 
+}
+```
+
+
+#### Use the switch statement
+Now we need to set the ```state``` variable to ```"caught"``` or ```"success"``` depending on the result of the detections in the ```gotDetections()``` function.  
+
+Add ```state = "caught";``` and ```state = "success";``` to ```gotDetections()```   
+
+<details>
+<summary>Solution:</summary>
+
+```javascript
+function gotDetections(error, results) {
+  if (error) {
+    console.error(error);
+  }
+  detections = results;
+ 
+  // Loop through the detections array [] and test the results for "person" and "cell phone"
+  for (let i = 0; i < detections.length; i++) {
+    //console.log(detections[i]["label"]);
+    // label is 0.9 person
+    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.6) {
+      // you were caught
+      console.log("caught");
+      state = "caught"; // change the 'state' variable to caught
+    }
+    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.3) {
+      // you won 
+      console.log("success");
+      state = "success"; //change the 'state' variable to success
+    }
+  }
+  detector.detect(video, gotDetections);
+}
+```
+</details> 
+
+
+Test your project. The game should now work (you'll need to refresh the page to reset).  
+
+
+
 
 The last thing to do is register a mousePressed click on the 'Start Again' button to do the reset and set the ```state = "video";``` to reset the video feed.
 
-## &#x1F536; Code Challenge 3:
+## &#x1F536; Code Challenge 2:
 
 ```diff
 ! Create a new mousePressed() function.  

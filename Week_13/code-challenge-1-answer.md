@@ -31,7 +31,7 @@ function draw() {
     noStroke();
     fill(255);
     textSize(24);
-    text(object.label, object.x + 10, object.y + 24);
+    text(object.label +" "+ round(object.confidence, 2), object.x + 10, object.y + 24);
   }
 }
 
