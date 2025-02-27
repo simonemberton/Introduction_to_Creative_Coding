@@ -18,11 +18,15 @@ Please download and work from the Flappy-Bird-handout-code.zip file in the Black
 *****
 ### Task 0 - Familiarisation
 
-The files  here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. First of all, take a look in index.html and see that we're using the script tags to include the pipe.js and bird.js files.
+The files here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. 
+
+![alt text](./images/image-uml.png "Flappy Bird UML Diagram")  
+
+As we learned about UML Class diagrams two weeks ago, based on the image above, this could help you quickly understand the current structure of the project.
+
+If you take a deeper look in ```index.html``` and see that we're using the script tags to include the ```pipe.js``` and ```bird.js``` files. Please be aware! When the web browser is loading JavaScript. It will load in the exact order of how you code them. If you load the ```sketch.js``` before loading the ```pipe.js```, the Web Inspector will complains something is not found.
 
 Now also open the bird.js file. Take a look through the code and see what's going on, can you work out what they are going to do? And how we're going to use them? Try adding comments to explain the parts that you do understand. 
-
-This should take a about 5-10 minutes.
 
 No worries if it's a bit unclear right now though, all will be revealed as we get making our game...
 
