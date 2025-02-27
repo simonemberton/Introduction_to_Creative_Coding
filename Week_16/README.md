@@ -144,7 +144,7 @@ Now we have a pipe being created by the ```Pipe()``` constructor we need to crea
 The easiest way to do this is to make an array of pipes in sketch.js and add to it as the game progresses.  
 
 We will create a pipe every 400 frames using the modulus operator (we used it last week).  
-Then we will ```show()``` and '''update()``` each pipe.  
+Then we will ```show()``` and ```update()``` each pipe.  
 
 All of this will happen in sketch.js in draw()  
 I've commented out the earlier lines ```pipe.show()``` and ```pipe.update()``` because these are now handled by the ```for`` loop.   
