@@ -20,7 +20,7 @@ Please download and work from the Flappy-Bird-handout-code.zip file in the Black
 
 The files here shouldn't be new to you by now. It's our standard empty example. But you'll see that there are some extra files here. 
 
-![alt text](./images/image-uml.png "Flappy Bird UML Diagram")  
+![alt text](./images/uml-0.png "Flappy Bird UML Diagram")  
 
 As we learned about UML Class diagrams two weeks ago, based on the image above, this could help you quickly understand the current structure of the project.
 
@@ -312,6 +312,10 @@ function keyPressed() {
   }
 }
 ```
+
+![alt text](./images/uml-0.png "Flappy Bird UML Diagram")  
+
+Since we had made a few changes of the code. The updated UML diagram will help us understand the current structure of our project.
 
 *****
 ### Task 5 - Add a 'health' coefficient
