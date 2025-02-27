@@ -120,7 +120,7 @@ Your bars should move across the screen! (look at the answer if you are stuck).
 
 ```diff
 ! In pipe.js
-! Make the Pipe move across the screen using the this.update() function in pipe.js
+! Make the Pipe move across the screen using the update() function in pipe.js
 ``` 
 
 *****
@@ -205,25 +205,27 @@ Amend pipe.js and sketch.js as following.
 pipe.js should look this - read my comments *very* carefully:
 
 ```javascript
-function Pipe() {
-  // start off screem
-  this.x = width-50;
-  this.origin = random(height-100);
-  this.gap = 200;
-  // add a width for your bars
-  this.w = 55;
-  // add the top of the gap
-  this.top = this.origin - (this.gap/2);
-  // add the bottom of the gap
-  this.bottom = this.origin + (this.gap/2);
+class Pipe
+{
+  constructor()
+  {
+    // Initialse a Pipe Object
+    this.x = width-50;
+    this.origin = random(height-100);
+    this.gap = 200;
+    // add a width for your bars
+    this.w = 55;
+    // add the top of the gap
+    this.top = this.origin - (this.gap/2);
+    // add the bottom of the gap
+    this.bottom = this.origin + (this.gap/2);
+    // set a boolean for a hit
+    this.highlight = false;
+  }
 
-  // set a boolean for a hit
-  this.highlight = false;
-
-  // create a hit function
-  // check if bird is within this.top or this.bottom 
-  // and with the width of the bar
-  this.hits = function(bird) {
+  // Detect if the bird hits the pipe
+  hits(bird)
+  {
     if (bird.y < this.top || bird.y > this.bottom) {
       if (bird.x > this.x && bird.x < this.x + this.w) {
         this.highlight = true;
@@ -234,8 +236,10 @@ function Pipe() {
     return false;
   }
 
-  this.show = function() {
-   fill(220);
+  // Show the pipe
+  show()
+  {
+    fill(220);
     // rect(x, y, w, h);
     fill(120);
     // top bar with this.w and this.top
@@ -244,8 +248,9 @@ function Pipe() {
     rect(this.x, this.bottom, this.w, height);
   }
 
-  this.update = function(){
-    // move across screen
+  // Update the pipe to move to the left
+  update()
+  {
     this.x --;
   }
 }
@@ -284,7 +289,7 @@ function draw() {
     pipes[i].show();
     pipes[i].update();
 
-    // if the current pipe hits the bird using this.hits in pipe.js
+    // if the current pipe hits the bird using hits() in pipe.js
     if (pipes[i].hits(bird)) {
       console.log("HIT");
     }
