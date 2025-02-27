@@ -313,9 +313,9 @@ function keyPressed() {
 }
 ```
 
-![alt text](./images/uml-0.png "Flappy Bird UML Diagram")  
+Since we had made a few changes of the code. The updated UML diagram below will help us understand the current structure of our project.
 
-Since we had made a few changes of the code. The updated UML diagram will help us understand the current structure of our project.
+![alt text](./images/uml-1.png "Flappy Bird UML Diagram")  
 
 *****
 ### Task 5 - Add a 'health' coefficient
