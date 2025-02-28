@@ -1,215 +1,244 @@
-
 # Week 18
 
-## Audio reactive visuals
+## Exploring concepts of 3D space
 
-For this week's task we're going to make an interactive audio-visualiser.  This worksheet is inspired by Yannis Yannakopoulos' [audio-visualisers](https://tympanus.net/Development/AudioVisualizers) so spend a bit of time playing with them first.  You'll notice that the location of the mouse cursor on the canvas allows you to interact with them, we'll also see how we can use input from the microphone and camera as other ways to interact with our audio-visualisers.
+First off have a quick look at [this](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5) information describing the main differences when working in p5's WEBGL mode.  You might find it useful to refer back to this page during the following tasks.
 
-### Task 1 - Microphone input
+### Task 1 - Draw the edges of our space
 
-If you are using a recent version of p5 you'll need to run a local server for this worksheet.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).  When using a local server you may find that any changes you mkae to the code do not show up in the browser, this may be due to the browser cache and can be remedied with a hard refresh (Cmd+Shift+R on a Mac, and Ctrl+F5 on a PC).
-
-Have a look at the [`p5.AudioIn`](https://archive.p5js.org/reference/#/p5.AudioIn) example and get it working on your machine. You might want to make the canvas bigger as on this example it's really tiny. At the time of writing there was an issue with `p5.AudioIn` (in the latest version of p5.sound) and Firefox, so please use Chrome or Safari.
-
-Notice in this example you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you'll notice there is a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio).  One way to get around this is to call the [`userStartAudio()`](https://archive.p5js.org/reference/#/p5/userStartAudio) function inside the `setup()` function.  In this example pressing the mouse cursor on the canvas calls `userStartAudio()`.
-
-If you don't have a microphone on your computer you could instead just use an audio track for the audio input.  If this is what you're doing you can start from the code of this [`getLevel()` example](https://archive.p5js.org/reference/#/p5.Amplitude/getLevel).
-
-I'm going to base my audio-visualiser off of [Demo 3](https://tympanus.net/Development/AudioVisualizers/index3.html).  This example consists on rotating points and lines that move in time to the music.  
-
-Notice that they all rotate around the centre of the canvas, so we need to change our point of origin using the `translate()` function.  Now let's use a for loop and the `rotate()` function to draw some [points](https://p5js.org/reference/p5/point/) in a circle shape.  This is the code that I added to my `draw() function`:
+Start from the following code:
 
 ```javascript
-translate(width / 2, height / 2);
+let negEdge = -100;
+let posEdge = 100;
+let count = 0;
 
-let noOfPoints = 12;
+function setup() {
+	createCanvas(500,500, WEBGL);
+}
 
-for (let i = 0; i < noOfPoints; i++) {
-  rotate(TWO_PI / noOfPoints);
+function draw() {
+	background(0);
+	ambientLight(255,255,255);
 
-  strokeWeight(4);
-  stroke(255);
-  point(0, height/4);
+	rotateY(count);
+	count = count + (0.003);
+
+	stroke(255);
+	drawEdges();
+}
+
+function drawEdges() {
+	// draw lines here 
+
 }
 ```
 
-Now I want to use the values coming in from the micrphone to move the points.  If you look at the code you'll see that the `getLevel()` function is being used to access the volume level (amplitude) coming into the microphone.  `console.log()` the values in the `micLevel` variable to the console while making some noises and see how they change.  Note that you'll have to tap on the canvas to start the audio before you see these values.  In particular look for the extremes. What are the values when there is only background ambience? What are the values when you make a loud clapping noise?
+In the ```drawEdges()``` function use [lines](https://p5js.org/reference/#/p5/line) or [vertices](https://p5js.org/reference/#/p5/vertex) to draw a cube that will define the edges of our 3D space.  Use the global variables ```negEdge``` and ```posEdge``` as the negative and positive edge values. 
 
-Next you'll need to use the `map()` function to map the minimum and maximum values from the microphone to the minimum and maximum values that you want the points to move to.
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task1/):
 
-Your `draw()` function should now look something like the following:
+<p align="center">
+  <img width="498" height="498" src="./images/Task1.gif">
+</p>
+
+### Task 2 - Draw our first 3D shape
+
+Add the following code to the ```draw()``` function to draw a box in a random location within our 3D space on each frame.  Notice how we have to use the ```translate()``` function here and the value input to ```box()``` changes its size.  Try commenting out ```push()``` and ```pop()``` to see what happens.
 
 ```javascript
-function draw(){
-  background(0);
-  fill(255);
-  noStroke(); // so that the text below doesn't have a large stroke value
-  text('tap to start', width/2, 20);
+let xVal = random(negEdge,posEdge);
+let yVal = random(negEdge,posEdge);
+let zVal = random(negEdge,posEdge);
 
-  let micLevel = mic.getLevel();
-  let mappedMicLevel = map(micLevel, 0, 0.1, 0, 200); // map micLevel to desirable range
+push();
+translate(xVal, yVal, zVal);
+box(10);
+pop();
+```
 
-  translate(width / 2, height / 2); // move point of origin to centre of canvas
+Next add the following code so that we change the colour of the box depending on it's location in the 3D space where each dimension is mapped to a different colour channel.
 
-  let noOfPoints = 12; // total number of points to draw
+```javascript
+let red = map(xVal, -100, 100, 0, 255);
+let green = map(yVal, -100, 100, 0, 255);
+let blue = map(zVal, -100, 100, 0, 255);
+ambientMaterial(red, green, blue);
+```
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task2/):
 
-  for (let i = 0; i < noOfPoints; i++) { // for all of the points
-    rotate(TWO_PI / noOfPoints); // rotate around a circle - default for p5 is radians
+<p align="center">
+  <img width="499" height="497" src="./images/Task2.gif">
+</p>
 
-    strokeWeight(4);
-    stroke(255);
-    point(mappedMicLevel, height/4);
+### Task 3 - 3D Shape class
+
+Create a new file called ```Shape.js```, copy the following code into it and save it in the current working directory. Make sure you link to this file in the ```index.html``` (e.g. <script src="Shape.js"></script>).
+
+```javascript
+class Shape {
+	
+	constructor(startX, startY){
+		this.x = startX;
+		this.y = startY;
+		this.r = 18;
+
+		this.xVel = random(0.1,1);
+		this.yVel = random(0.1,1);
+	}
+	
+	update() {
+		this.x = this.x + this.xVel;
+		this.y = this.y + this.yVel;
+	}
+
+	display() {
+	
+	}
+
+	checkEdges() {
+		if (this.x > posEdge-(this.r/2)) {
+		  	this.xVel *= -1;
+			this.x = posEdge-(this.r/2);
+		} else if (this.x < negEdge+(this.r/2)) {
+		  	this.xVel *= -1;
+			this.x = negEdge+(this.r/2);
+		}
+
+		if (this.y > posEdge-(this.r/2)) {
+			this.yVel *= -1;
+			this.y = posEdge-(this.r/2);
+		} else if (this.y < negEdge+(this.r/2)) {
+			this.yVel *= -1;
+			this.y = negEdge+(this.r/2);
+		}
+		
+	}
+
+}
+```
+
+As you can see this class is for 2D, can you change it so that it works for 3D? 
+
+We'll also need to make some changes in our ```sketch.js``` file. Create a new global variable (remember at the top and outside any functions) called shape1 e.g. ```let shape1;```.  
+
+In the ```setup()``` function allocate a new instance of the ```Shape``` class to our ```shape1``` variable.  The constructor of the ```Shape``` class requires three values for the start locations for the x, y and z axes. Here I'm providing random values inside our cube:
+```javascript
+shape1 = new Shape(random(negEdge,posEdge), random(negEdge,posEdge), random(negEdge,posEdge));
+```
+
+Then inside the ```draw()``` function we need to call the ```update(), display() and checkEdges()``` methods for the `shape1` object:
+```javascript
+shape1.update();
+shape1.display();
+shape1.checkEdges(); 
+```
+
+Finally we need to add some code to the ```display()``` method of the ```Shape``` class to draw and colour the box:
+```javascript
+display() {
+	let red = map(this.x, -100, 100, 0, 255);
+	let green = map(this.y, -100, 100, 0, 255);
+	let blue = map(this.z, -100, 100, 0, 255);
+	ambientMaterial(red, green, blue);
+
+	push();
+		translate(this.x, this.y, this.z);
+		box(this.r);
+	pop();
+}
+```
+
+Hopefully now you can see a slightly larger cube moving around the space!
+
+The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/):
+
+<p align="center">
+  <img width="499" height="497" src="./images/Task3.gif">
+</p>
+
+### Task 4 - Inheritance
+
+Create a new file called ```Sphere.js``` and save it in the same folder, don't forget to link to this file in your ```index.html``` file.
+
+In this file create a ```Sphere``` class which extends the ```Shape``` class.  Remember you've done this before in [Task 7 of Week 14](https://github.com/simonemberton/Introduction_to_Creative_Coding/tree/master/Week_14/).  If you look at this example you'll notice that you need to use the ```extends``` keyword.  In the constructor you need to use the line ```super(startX, startY, startZ);``` to get access to the initiation values from the Shape class.  Now change the ```update()``` and ```display()``` methods so that this class has its own behaviours i.e. moves and looks different.  For the methods that you want to keep the same as the parent class you must again use the ```super``` keyword e.g.:
+```javascript
+checkEdges() {
+	super.checkEdges();
+}
+```
+
+<!-- The output of this task should look like [this](https://simonemberton.panel.uwe.ac.uk/Week19/Task4/):
+
+<p align="center">
+  <img width="499" height="498" src="./images/Task4.gif">
+</p>
+ -->
+
+### Task 5 - Make it beep
+
+Next I want to add some reactive element to the piece.  This could be using preloaded sound files (e.g. see the [p5.js example](https://p5js.org/examples/sound-load-and-play-sound.html) or the [Coding Train example](https://www.youtube.com/watch?v=40Me1-yAtTc&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=5&ab_channel=TheCodingTrain)) or with synthesied sounds (e.g. see these Coding Train examples on [Sound Synthesis](https://www.youtube.com/watch?v=Bk8rLzzSink&ab_channel=TheCodingTrain) and [ADSR Envelope](https://www.youtube.com/watch?v=wUSva_BnedA&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=7&ab_channel=TheCodingTrain)).
+
+For this example we're going to synthesise sounds using the [```p5.Oscillator()```](https://p5js.org/reference/#/p5.Oscillator) function.
+
+To start with though remember when using sound with p5 we need to use the [p5.sound library](https://p5js.org/reference/#/libraries/p5.sound) so make sure you have that file and are linking to it in your `sketch.js` file.  We'll also need to use a [local server](https://github.com/processing/p5.js/wiki/Local-server) (e.g. Live Server in Visual Studio Code).
+
+As modern browsers require users to press a button before the audio is allowed to play we're going to turn the canvas into a button and ask users to press it if there is no audio playing.  Writing text to the canvas is different in WebGL mode (you can read out a few different ways to do it [here](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5)).  
+
+Firstly we're going to find a font to use and add the font file to our project folder. I chose the `Inconsolata-Regular.ttf` from [here](https://fonts.google.com/specimen/Inconsolata). Next we'll create a global variable for our font e.g. `let inconsolata;`, then we'll use the `preload()` function to load the font before the `setup()` function is called:
+```javascript
+function preload() {
+	inconsolata = loadFont('Inconsolata-Regular.ttf');
   }
+```
+Next in the `setup()` function we will make our canvas into a clickable button, which when pressed calls the `userStartAudio` function therefore enabling the audio.  We'll also define the font, size and alignment parameters for the text:
+```javascript
+let cnv = createCanvas(500,500, WEBGL);
+cnv.mousePressed(userStartAudio);
+textFont(inconsolata);
+textSize(width / 20);
+textAlign(CENTER, CENTER);
+```
 
+Next at the top of the `draw()` function after the background is drawn we'll check to see if audio is running and if not write a message to the user to 'tap to start':
+```javascript
+if (getAudioContext().state !== 'running') {
+	fill(255);
+  	text('tap to start', 0, 0);
 }
 ```
 
-Now put some music on and watch those points dance!  You might need to adjust the values inside the map function depending on how loud your music is.  
-
-Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task1/) to see it working.
-
-<p align="center">
-  <img width="499" height="498" src="./images/Task_1.gif">
-</p>
-
-
-### Task 2 - Frequency Analysis
-
-Let's try and develop this a bit further by applying some audio analysis to the incoming signal so that we can isolate the high, mid and low frequency bands rather than just overall amplitude.  The method of audio analysis we'll be using is the Fast Fourier Transform [FFT](https://p5js.org/reference/p5.sound/p5.FFT/).  
-
-First we need to create a new global variable called `fft` at the top of the `sketch.js` file.  Remember it's a global variable so it's outside of the `setup()` function.  Next at the end of the `setup()` function we'll make our `fft` variable equal to a new `p5.FFT` object and then set the input to `fft` to be the `mic` variable from the `p5.AudioIn` object using the following code:
+Great now we've got that working we can add some audio elements to our objects.  Inside the constructor of our `Shape` class we're going to add a new [p5.Oscillator](https://p5js.org/reference/#/p5.Oscillator) with a sine wave, set the amplitude and then call the `start()` method of the oscillator:
 ```javascript
-fft = new p5.FFT();
-fft.setInput(mic);
+this.osc =  new p5.Oscillator('sine');
+this.osc.amp(0.2);
+this.osc.start();
 ```
-Then inside the `draw()` function instead of calling `mic.getLevel()` we'll use the following code to get the frequency spectrum of the microphone signal:
+Next in the `update()` method of the `Shape` class we're going to map the x, y and z locations to the frequency, amplitude and panning respectively:
 ```javascript
-let spectrum = fft.analyze();
+// change oscillator frequency based x axis
+let freq = map(this.x, -100, 100, 440, 660);
+this.osc.freq(freq);
+		
+// change oscillator amplitude based y axis
+let amp = map(this.y, -100, 100, 0.2, 0.1);
+this.osc.amp(amp);
+
+// change oscillator panning based z axis
+let pan = map(this.z, -100, 100, 0.9, 0.1);
+this.osc.pan(pan);
 ```
-Now `console.log` the `spectrum` variable and see the output in the console. You'll need to comment out the rest of the code so that errors don't prevent the code from running.  You'll see in the console that the `spectrum` variable contains an array of length 1024 where each location in the array has a value between 0-255 which represents the amplitude at that slice of the frequency spectrum.
+I've also added the same to the `Sphere` class but changed the parameters a bit.
 
-We could use the data from `fft.analyze()` to create some interesting visuals but instead I want to make use of fft's [`getEnergy()`](https://p5js.org/reference/p5.FFT/getEnergy/) function to get the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  FYI we always have to use `fft.analyze()` before using `fft.getEnergy()`.  Add the following code:
-```javascript
-let treble = fft.getEnergy("treble");
-let mid = fft.getEnergy("mid");
-let bass = fft.getEnergy("bass");
-```
-Now print the values from the `treble`, `mid` and `bass` variables to the console. You'll see that we now have a value between 0-255 for each of the three frequency bands.  Let's draw circles of points for each of these frequency bands.  We need to use `map()` functions for each of the bands to map the values within appropriate ranges.  Here are what my `map()` functions look like:
-```javascript
-let mappedTreble = map(treble, 0, 50, 0, 200); 
-let mappedMid = map(mid, 0, 255, -100, 100); 
-let mappedBass = map(bass, 0, 255, -200, 0);
-```
-Next inside the for loop add more `point()` functions so that we've got one for each frequency band, where the `x` location of each `point()` takes a mapped frequency band as the input. I've made mine a different colour too so that you can see the difference:
-```javascript
-// treble
-strokeWeight(6);
-stroke(255,0,0);
-point(mappedTreble, height/4);
+The output of this task should look and sound like [this](https://simonemberton.panel.uwe.ac.uk/Week18/Task5/):
 
-// mid
-strokeWeight(4);
-stroke(0,0,255);
-point(mappedMid, height/4);
 
-// bass
-strokeWeight(6);
-stroke(255);
-point(mappedBass, height/4);
-```
-Now you should be able to see each of the points reacting slightly differently to different parts of the music.  If you can't see all three points try adjusting the map function values so that it works well for you.
+### Stretch goals
 
-Let's make those differences a bit more pronounced by adding a scaling factor to each of the circles of points.  We'll create some more `map()` functions so that we have a bit more control over the exact values to use.
-```javascript
-let scaleTreble = map(treble, 0, 50, 0.8, 1.2); 
-let scaleMid = map(mid, 0, 255, -0.9, 0.9); 
-let scaleBass = map(bass, 0, 255, -1, 1);
-```
+* Create an array of Shapes filled with either Shape or Sphere objects. Try using an if statement and the modulo operator so that when iterating through the for loop when ```i``` is odd you create a ```Shape``` object and when even a ```Sphere``` object. 
 
-We'll then use these mapped scaling variables as input to the [`scale()`](https://p5js.org/reference/p5/scale/) function for each of the circles of points.  This function scales from the point of origin, so moves the points further from the centre.  We need to isolate the scaling and point functions for each of the frequency bands so that they don't interfere with each other, for that we'll use `push()` and `pop()` to make the drawing of each circle of points self contained.  For example:
-```javascript
-// treble
-push();
-  strokeWeight(2);
-  stroke(255,0,0);
-  scale(scaleTreble);
-  point(mappedTreble, height/4);
-pop();
+* Make another class that also inherits from ```Shape``` but behaves differently to ```Sphere```.
 
-// mid
-push();
-  strokeWeight(3);
-  stroke(0,0,255);
-  scale(scaleMid);
-  point(mappedMid, height/4);
-pop();
+* Try adding different audio effects for example triggering a different notes each time an object collides with the edge of the cube space.  You could use this [example](https://p5js.org/examples/sound-note-envelope.html) as a starting point.
 
-// bass
-push();
-  strokeWeight(4);
-  stroke(255);
-  scale(scaleBass);
-  point(mappedBass, height/4);
-pop();
-```
-Now we're getting somewhere.
 
-Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task2/) to see it working.
-
-<p align="center">
-  <img width="499" height="498" src="./images/Task_2.gif">
-</p>
-
-### Task 3 - Finishing touches
-
-The audio-visualiser is nearly there but I want to add a few finishing touches as it still feels a bit static.  
-
-First I'm going to add rotations to each of the frequency band shapes which uses the constantly increasing `frameCount` value to drive the rotation.  Then I'll use values from the scaled frequency bands to modify the rotation speed of the shapes.  I'm also going to use values directly from frequency bands to change the colour of the points.  For this I've taken the value from 255 so that the value stays high as the default.
-
-I'm also going to add another shape to the scene for the mid frequencies.  In my example I've used it to draw lines but you could use other shapes here. I want to draw my line from around the centre to the edge of the canvas so I'll create a `map` function which maps the mid frequencies to within that range using the following code:
-```javascript
-let scaleMidLine = map(mid, 0, 255, 0, width); 
-```
-
-The code for drawing the shapes now looks like this:
-```javascript
-// treble
-push();
-  strokeWeight(6);
-  stroke(255-treble,0,0);
-  scale(scaleTreble);
-  rotate(-frameCount * scaleTreble/100);
-  point(mappedTreble, height/4);
-pop();
-
-// mid
-push();
-  strokeWeight(4);
-  stroke(0,0,255-mid);
-  scale(scaleMid);
-  rotate(frameCount * scaleMid/100);
-  point(mappedMid, height/4);
-  strokeWeight(2);
-  line(0, height/4, scaleMidLine, height);
-pop();
-
-// bass
-push();
-  strokeWeight(6);
-  stroke(255-bass);
-  scale(scaleBass);
-  rotate(-frameCount * scaleBass/100);
-  point(mappedBass, height/4);
-pop();
-```
-
-Finally I'm adding slight trails to the whole visualisation by putting some transparency on the `background()` function at the top of `draw()` like this:
-```javascript
-background(0,150);
-```
-
-Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week18/Task3/) to see it working.
-
-<p align="center">
-  <img width="496" height="497" src="./images/Task_3.gif">
-</p>
