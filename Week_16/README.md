@@ -64,7 +64,7 @@ To do this you will use ```bird.up()``` one of the functions in the bird constru
 ! Add a function in sketch.js underneath the draw function that catches the space bar being pressed:  
 ! Output a message to the console every time the space bar is pressed
 ! Add bird.up() to the function to make the bird / ellipse jump.
-! Tip: search for mouse pressed in the p5 reference
+! Tip: search for key pressed in the p5 reference
 ``` 
 
 Your bird / ellipse should now jump up and down.
