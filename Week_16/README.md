@@ -114,9 +114,6 @@ function keyPressed() {
 ```
 Your sketch should show the first two pipes with hard coded values.   
 
-Your bars should move across the screen! (look at the answer if you are stuck).   
-
-
 ![alt text](./images/pipe-1.png "bouncing circle")  
 
 *****
@@ -145,7 +142,9 @@ Your bars should move across the screen! (look at the answer if you are stuck).
 
 Now we have a pipe being created by the ```Pipe()``` constructor we need to create pipes constantly so that there is a flow of them moving across the scene.  
 
-The easiest way to do this is to make an array of pipes in sketch.js and add to it as the game progresses.  
+The easiest way to do this is to make an array of pipes in sketch.js and add to it as the game progresses.
+
+```let pipes = [];```
 
 We will create a pipe every 400 frames using the modulus operator (we used it last week).  
 Then we will ```show()``` and ```update()``` each pipe.  
@@ -286,7 +285,6 @@ function draw() {
   if (frameCount % 400 == 0) {
     //console.log(frameCount);
     pipes.push(new Pipe());
-
   }
 
   for (var i = 0; i < pipes.length; i++) {

@@ -8,12 +8,17 @@
 - Im my example code the gap between them stays the same.  
 
 ```javascript
-function Pipe() {
-  this.x = width-50; // start nearly off screem
-  this.origin = random(height-100);
-  this.gap = 200;
-
-  this.show = function() {
+class Pipe
+{
+  constructor()
+  {
+    this.x = width-50; // start nearly off screem
+    this.origin = random(height-100);
+    this.gap = 200;
+  }
+  
+  show()
+  {
     fill(220);
     // rect(x, y, w, h);
     // the gap rectangle
@@ -25,7 +30,8 @@ function Pipe() {
     rect(this.x, this.origin + (this.gap/2), 55, height);
   }
 
-  this.update = function(){
+  update()
+  {
     // move across screen
     this.x --;
   }
