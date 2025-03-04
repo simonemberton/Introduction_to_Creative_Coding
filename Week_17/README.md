@@ -107,10 +107,10 @@ function draw(){
 
 Now run this and watch those points dance!  You might need to adjust the values inside the map function depending on how loud your music is.  
 
-Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task_1/) to see it working.
+Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task1/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task1.gif">
+  <img width="499" height="498" src="./images/Task_1.gif">
 </p>
 
 
@@ -160,10 +160,10 @@ point(mappedBass, height/4);
 ```
 Now you should be able to see each of the points reacting slightly differently to different parts of the music.  If you can't see all three points try adjusting the map function values so that it works well for your song.
 
-Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task_2/) to see it working.
+Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task2/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task2.gif">
+  <img width="499" height="498" src="./images/Task_2.gif">
 </p>
 
 ### Task 3 - Finishing touches
@@ -190,8 +190,8 @@ Finally I'm adding slight trails to the whole visualisation by putting some tran
 background(0,50);
 ```
 
-Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task_3/) to see it working.
+Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task3/) to see it working.
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task3.gif">
+  <img width="496" height="497" src="./images/Task_3.gif">
 </p>
