@@ -110,7 +110,7 @@ Now run this and watch those points dance!  You might need to adjust the values 
 Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task1/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task_1.gif">
+  <img width="500" height="500" src="./images/Task_1.gif">
 </p>
 
 
@@ -163,7 +163,7 @@ Now you should be able to see each of the points reacting slightly differently t
 Here is a screenshot of my end of Task 2 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task2/) to see it working.
 
 <p align="center">
-  <img width="499" height="498" src="./images/Task_2.gif">
+  <img width="500" height="500" src="./images/Task_2.gif">
 </p>
 
 ### Task 3 - Finishing touches
@@ -193,5 +193,5 @@ background(0,50);
 Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.panel.uwe.ac.uk/Week17/Task3/) to see it working.
 
 <p align="center">
-  <img width="496" height="497" src="./images/Task_3.gif">
+  <img width="500" height="500" src="./images/Task_3.gif">
 </p>
