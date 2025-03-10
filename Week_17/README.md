@@ -11,7 +11,7 @@ For all the tasks in this weeksheet you'll need to run a local server.  If you'v
 
 To start with we need to load an audio track to play.  You can find one via [Soundsnap](https://www.soundsnap.com/) (of which you should have licenses).  Alternatively you could use generative AI to create on from a text prompt such as [MusicGen](https://huggingface.co/spaces/facebook/MusicGen).
 
-Now you have your audio file place it in th same folder as your ```index.html``` and ```sketch.js``` files.  Next paste the following code into your ```sketch.js``` file:
+Now you have your audio file place it in the same folder as your ```index.html``` and ```sketch.js``` files.  Next paste the following code into your ```sketch.js``` file:
 
 ```javascript
 let mySound;
@@ -123,7 +123,7 @@ First we need to create a new global variable called `fft` at the top of the `sk
 fft = new p5.FFT();
 fft.setInput(mySound);
 ```
-Then inside the `draw()` function instead of calling `mySound.getLevel()` we'll use the following code to get the frequency spectrum of the audio signal:
+Then inside the `draw()` function instead of calling `amp.getLevel()` we'll use the following code to get the frequency spectrum of the audio signal:
 ```javascript
 let spectrum = fft.analyze();
 ```
