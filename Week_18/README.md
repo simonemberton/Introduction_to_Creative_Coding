@@ -177,7 +177,7 @@ checkEdges() {
 
 ### Task 5 - Make it beep
 
-Next I want to add some reactive element to the piece.  This could be using preloaded sound files (e.g. see the [p5.js example](https://p5js.org/examples/sound-load-and-play-sound.html) or the [Coding Train example](https://www.youtube.com/watch?v=40Me1-yAtTc&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=5&ab_channel=TheCodingTrain)) or with synthesied sounds (e.g. see these Coding Train examples on [Sound Synthesis](https://www.youtube.com/watch?v=Bk8rLzzSink&ab_channel=TheCodingTrain) and [ADSR Envelope](https://www.youtube.com/watch?v=wUSva_BnedA&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=7&ab_channel=TheCodingTrain)).
+Next I want to add some reactive element to the piece.  This could be using preloaded sound files (e.g. see [p5 loadSound()](https://p5js.org/reference/p5/loadSound/) or the [Coding Train example](https://www.youtube.com/watch?v=40Me1-yAtTc&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=5&ab_channel=TheCodingTrain)) or with synthesied sounds (e.g. see these Coding Train examples on [Sound Synthesis](https://www.youtube.com/watch?v=Bk8rLzzSink&ab_channel=TheCodingTrain) and [ADSR Envelope](https://www.youtube.com/watch?v=wUSva_BnedA&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=7&ab_channel=TheCodingTrain)).
 
 For this example we're going to synthesise sounds using the [```p5.Oscillator()```](https://p5js.org/reference/p5.Oscillator) function.
 
