@@ -179,7 +179,7 @@ checkEdges() {
 
 Next I want to add some reactive element to the piece.  This could be using preloaded sound files (e.g. see [p5 loadSound()](https://p5js.org/reference/p5/loadSound/) or the [Coding Train example](https://www.youtube.com/watch?v=40Me1-yAtTc&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=5&ab_channel=TheCodingTrain)) or with synthesied sounds (e.g. see these Coding Train examples on [Sound Synthesis](https://www.youtube.com/watch?v=Bk8rLzzSink&ab_channel=TheCodingTrain) and [ADSR Envelope](https://www.youtube.com/watch?v=wUSva_BnedA&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=7&ab_channel=TheCodingTrain)).
 
-For this example we're going to synthesise sounds using the [```p5.Oscillator()```](https://p5js.org/reference/p5.Oscillator) function.
+For this example we're going to synthesise sounds using the [```p5.Oscillator()```](https://p5js.org/reference/p5.sound/p5.Oscillator/) function.
 
 To start with though remember when using sound with p5 we need to use the [p5.sound library](https://p5js.org/reference/libraries/p5.sound) so make sure you have that file and are linking to it in your `sketch.js` file.  We'll also need to use a [local server](https://github.com/processing/p5.js/wiki/Local-server) (e.g. Live Server in Visual Studio Code).
 
@@ -208,7 +208,7 @@ if (getAudioContext().state !== 'running') {
 }
 ```
 
-Great now we've got that working we can add some audio elements to our objects.  Inside the constructor of our `Shape` class we're going to add a new [p5.Oscillator](https://p5js.org/reference/p5.Oscillator) with a sine wave, set the amplitude and then call the `start()` method of the oscillator:
+Great now we've got that working we can add some audio elements to our objects.  Inside the constructor of our `Shape` class we're going to add a new [p5.Oscillator](https://p5js.org/reference/p5.sound/p5.Oscillator/) with a sine wave, set the amplitude and then call the `start()` method of the oscillator:
 ```javascript
 this.osc =  new p5.Oscillator('sine');
 this.osc.amp(0.2);
