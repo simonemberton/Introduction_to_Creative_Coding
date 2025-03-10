@@ -181,7 +181,7 @@ Next I want to add some reactive element to the piece.  This could be using prel
 
 For this example we're going to synthesise sounds using the [```p5.Oscillator()```](https://p5js.org/reference/p5.sound/p5.Oscillator/) function.
 
-To start with though remember when using sound with p5 we need to use the [p5.sound library](https://p5js.org/reference/libraries/p5.sound) so make sure you have that file and are linking to it in your `sketch.js` file.  We'll also need to use a [local server](https://github.com/processing/p5.js/wiki/Local-server) (e.g. Live Server in Visual Studio Code).
+To start with though remember when using sound with p5 we need to use the [p5.sound library](https://p5js.org/reference/p5.sound/) so make sure you have that file and are linking to it in your `sketch.js` file.  We'll also need to use a [local server](https://github.com/processing/p5.js/wiki/Local-server) (e.g. Live Server in Visual Studio Code).
 
 As modern browsers require users to press a button before the audio is allowed to play we're going to turn the canvas into a button and ask users to press it if there is no audio playing.  Writing text to the canvas is different in WebGL mode (you can read out a few different ways to do it [here](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5)).  
 
