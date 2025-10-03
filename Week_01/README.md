@@ -43,7 +43,7 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 </p>
 
 
-- OK, now simply follow the same instructions as on the [Get Started](https://p5js.org/get-started/) page to re-create your sketch on your local machine
+- OK, now simply follow the same instructions as on the [Get Started](https://p5js.org/tutorials/get-started/) page to re-create your sketch on your local machine
 
 - Each time you edit sketch.js in VS code, make sure you save it, then hit the refresh button in your web browser to see the results:
 
