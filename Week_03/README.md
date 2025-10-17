@@ -10,7 +10,7 @@ Next in the ```draw()``` function we're just drawing an ellipse.  Can you fill i
 
 <details>
 <summary>Want to see a hint?</summary>
-https://p5js.org/reference/#/p5/mouseX
+https://p5js.org/reference/p5/mouseX
 </details>  
 
 The end result of this task should look something like this:
