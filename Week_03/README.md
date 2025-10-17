@@ -44,7 +44,7 @@ If you look at `line()`'s reference [page](https://p5js.org/reference/p5/line/) 
 
 <details>
 <summary>Want to see a hint?</summary>
-https://p5js.org/reference/#/p5/pmouseX
+https://p5js.org/reference/p5/pmouseX
 </details>
 
 The end result of this task should look something like this:
@@ -133,7 +133,7 @@ We're changing the colour of the line depending on whether the mouse is pressed.
 
 <details>
 <summary>Want to see a hint?</summary>
-https://p5js.org/reference/#/p5/keyTyped
+https://p5js.org/reference/p5/keyTyped
 </details>
 
 The end result of this task should look something like this:
