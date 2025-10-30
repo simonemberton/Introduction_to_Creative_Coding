@@ -5,14 +5,44 @@
 Note: All the answers to each code challenge are in separate files in this week 05 folder. Only look at them if you get really stuck!   
 
 *****
-## Task 1 - Array Methods
+## Task 1 - Variable Refresher
 
-This first task is designed to get you to explore how to use Arrays.  
+Variables are containers that contain data such as words (strings) or numbers (integers).
 
-For the first task work in pairs...  
-One person reads and explains, the other person types in the code.  
+Often variables will be created at the top of the script / sketch.js. This allows them to be accessed by any part of sketch.js and this is called a global variable. Or a variable with global scope.   
 
-Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions, what needs to be included in the folder? Is your new folder in the right place to find the p5.js library?
+Download a new P5 Complete Library with "empty-example" folder with a blank sketch.js.     
+Open sketch.js it contains ```setup()``` and ```draw()``` functions.   
+
+Right at the top of the page create 4 new variables. Each variable must have a unique name.
+declare the variable with ```let``` then give it a name ```myVariable```. Next assign it to a value ```= "Rod"```. 
+```javascript
+let nameOne = "Rod";
+let nameTwo = "Simon";
+let numOne = 10;
+let numTwo = 30;
+```
+Remember words (strings) need to be in ```" "``` and numbers (integers) should not be.
+
+Inside ```setup()``` try adding them together in various combinations and output the result to the console.  
+(Open the console using the developer tools). What happens when you add strings and integers?
+
+```javascript
+function setup() {
+    console.log(nameOne + nameTwo);
+}
+``` 
+
+
+
+
+*****
+## Task 2 - Array Methods
+
+This next task is designed to get you to explore how to use Arrays.  
+
+For this task work in pairs...  
+Team up with someone and look ate ach others code
 
 Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".  
 
@@ -55,16 +85,18 @@ function draw() {
 }
 ```  
 Look in your console to see the output. You should see something like the image below.  
-(Open the console in Chrome by right clicking on your sketch and selecting 'inspect')       
+(Open the console in Chrome by right clicking on your sketch and selecting 'inspect').       
 
-You've looped through every value in the Array and outputted it to the console.    
 
 <p align="center">
   <img src="./images/task1.png">
 </p>
 
+You've looped through every value in the Array and outputted it to the console.    
+
+NOTE: notice that ```myWords.length``` gets the number of items (words) in the array.
 *****
-## Task 2 - Add the text from the array to the screen  
+## Task 3 - Add the text from the array to the screen  
 
 Now using the sketch you already have you will add the text from the Array to the screen using ```text()``` 
 
@@ -121,7 +153,7 @@ function draw() {
 ```
 
 *****
-## Task 3 - Adding to an Array 
+## Task 4 - Adding to an Array 
 
 Now we will add the rest of the quote *"and change who runs it"* to the array and print it onto the screen with the rest of the text.
 
@@ -153,7 +185,7 @@ function setup() {
 ```
 
 *****
-## Task 4 - Adding lots of data to an Array (and making a gradient)
+## Task 5 - Adding lots of data to an Array (and making a gradient)
 
 Lets imagine that we want array of numbers from 0 to 255.
 
@@ -306,9 +338,16 @@ myColors = shuffle(myColors);
 ```
 
 See what happens? Try also randomising the width and height of the ```rect()```  
+*****
+### Task 6 - Independent Learning: Uploading to the Panel Server
+
+- Head back to Blackboard and follow the tutorial by Tom on how to upload your work to the panel server.
+
+- Use the coloured gradient you have created in Task 5 as the content that you will be putting onto the panel server.   
+<strong> Create a Journal entry in your Wordpress blog and add a description, screenshot and link to the coloured gradient sketch on the panel server.</strong>
 
 *****
-## Task 5 - Arrays and conditionals
+## Done all of that? Stretch goal Task 7 - Arrays and conditionals
 
 In this last example we will alternate between values in an array.  
 
@@ -350,7 +389,7 @@ function draw() {
 }
 ```
 
-### &#x1F536; Code Challenge 5: Design a STOP / GO sign:
+### &#x1F536; Stretch goal Code Challenge 5: Design a STOP / GO sign:
 
 ```diff
 ! At the moment i increases infinitely so that the array items are only displayed once.  
@@ -364,43 +403,5 @@ function draw() {
 ```
 
 
-*****
-## Extra Stretch Task... Task 6 - PacPerson (not to be included in your journal entry) 
 
-The following is an example from the p5.js book. Give it a go (DO NOT COPY AND PASTE) and try changing some of the values, particularly x[i] and y in the draw() function for loop.
-
-```javascript
-
-let x = [];
-
-function setup() {
-    createCanvas(800,600);
-    noStroke();
-    fill(255,200);
-    for(let i = 0; i < 300; i++) {
-        x[i] = random(-1000,200); // different way of adding elements to an array
-    }
-}
-
-function draw() {
-    background(0);
-    for(let i = 0; i < 300; i++) {
-        x[i] += 0.5;
-        let y = i * 0.4;
-        arc(x[i],y,12,12,0.52,5.76);
-    }
-}
-
-```
-
-<p align="center">
-  <img src="./images/task3.png">
-</p>
-
-
-### Task 7 - Independent Learning: Uploading to the Panel Server
-
-- Head back to Blackboard and follow the tutorial by Tom on how to upload your work to the panel server.
-
-- Use the STOP / GO you created in Task 5 as the content that you will be putting onto the panel server. Create a Journal entry in your Wordpress blog and add a description, screenshot and link to the STOP / GO on the panel server.
 
