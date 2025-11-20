@@ -173,7 +173,13 @@ When finished it should look like this:
 
 #### p5.glitch.me challenge
 The Glitch me library and instructions can be found here:    
-[https://p5.glitch.me/](https://p5.glitch.me/)   
+[https://p5.glitch.me/](https://p5.glitch.me/)  
+
+Example:   
+<p align="center">
+<img src="./images/shark.png" alt="glitch image" width="75%"/>
+</p>
+
 
 #### Capitalise challenge:  
 
