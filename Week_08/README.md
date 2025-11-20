@@ -2,6 +2,7 @@
 
 ## Debugging and problem solving
 
+*****   
 ### Task 1 - The console is your friend
 
 You should now be pretty familiar with looking for errors in the console if something isn't working.  You can actually do some other cool things with the console.  Let's have a look.
@@ -42,6 +43,7 @@ One of the main uses of the console is to track the value of variables so that y
 
 Comment out the ```console.log()``` function and we'll try writing some commands directly into the console.  Notice if you just write ```x``` and click return you get the value of ```x``` in real time.  You can also change the value of the variable, try writing ```x = 50;``` and see how it jumps to that location.  You can stop the draw function all together with the ```noLoop()``` function and start it again with the ```loop()``` function.
 
+*****   
 ### Task 2 - Debugging challenge
 
 As well as writing to the console there are also a few other ways of doing debugging in Chrome.  In particular you might want to use breakpoints to pause or stop the program at a specific location to explore the current state of the program.  
@@ -90,6 +92,7 @@ Now refresh the browser and navigate back to the console. The message ```"draw()
 
 Also please read the following tutorial on debugging in Chrome [HERE](https://javascript.info/debugging-chrome).   
 
+*****   
 ### Task 3 - Debugging challenge  
 
 Okay now you're nearly ready to try and fix some errors!   
@@ -168,11 +171,12 @@ When finished it should look like this:
 <img src="./images/dots-3.gif" alt="Download" width="75%"/>
 </p>
 
+*****   
 ### Task 4 - Final task for your WordPress journal
 ### Make a new sketch and EITHER
 ### Solve the Capitalise challenge (below) 
 ### OR make a new sketch and glitch image / artwork using p5.glitch.me  
-
+*****  
 ### p5.glitch.me challenge
 The Glitch me library and instructions can be found here:    
 [https://p5.glitch.me/](https://p5.glitch.me/)  
@@ -182,7 +186,7 @@ Example:
 <img src="./images/shark.png" alt="glitch image" width="75%"/>
 </p>
 
-
+*****  
 ### Capitalise challenge:  
 
 Making use of the following code
