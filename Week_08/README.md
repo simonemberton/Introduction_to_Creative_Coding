@@ -171,7 +171,7 @@ When finished it should look like this:
 ### Task 4 - Final task for your WordPress journal
 ### EITHER Solve the Capitalise challenge below OR make a new sketch and glitch image / artwork using p5.glitch.me  
 
-#### p5.glitch.me challenge
+### p5.glitch.me challenge
 The Glitch me library and instructions can be found here:    
 [https://p5.glitch.me/](https://p5.glitch.me/)  
 
@@ -181,7 +181,7 @@ Example:
 </p>
 
 
-#### Capitalise challenge:  
+### Capitalise challenge:  
 
 Making use of the following code
 
