@@ -173,8 +173,8 @@ When finished it should look like this:
 
 *****   
 ### Task 4 - Final task for your WordPress journal
-### Make a new sketch and EITHER
-### Solve the Capitalise challenge (below) 
+### Make a new sketch and 
+### EITHER Solve the Capitalise challenge (below) 
 ### OR make a new sketch and glitch image / artwork using p5.glitch.me  
 *****  
 ### p5.glitch.me challenge
