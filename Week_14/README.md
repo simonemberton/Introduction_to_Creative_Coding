@@ -161,7 +161,7 @@ The output of this task should look like [this](https://simonemberton.panel.uwe.
 
 Create a new file called ```Sphere.js``` and save it in the same folder, don't forget to link to this file in your ```index.html``` file.
 
-In this file create a ```Sphere``` class which extends the ```Shape``` class.  Remember you've done this before in [Task 7 of Week 14](https://github.com/simonemberton/Introduction_to_Creative_Coding/tree/master/Week_14/).  If you look at this example you'll notice that you need to use the ```extends``` keyword.  In the constructor you need to use the line ```super(startX, startY, startZ);``` to get access to the initiation values from the Shape class.  Now change the ```update()``` and ```display()``` methods so that this class has its own behaviours i.e. moves and looks different.  For the methods that you want to keep the same as the parent class you must again use the ```super``` keyword e.g.:
+In this file create a ```Sphere``` class which extends the ```Shape``` class.  Remember you've done this before in [Task 7 of Week 13](https://github.com/simonemberton/Introduction_to_Creative_Coding/tree/master/Week_13/).  If you look at this example you'll notice that you need to use the ```extends``` keyword.  In the constructor you need to use the line ```super(startX, startY, startZ);``` to get access to the initiation values from the Shape class.  Now change the ```update()``` and ```display()``` methods so that this class has its own behaviours i.e. moves and looks different.  For the methods that you want to keep the same as the parent class you must again use the ```super``` keyword e.g.:
 ```javascript
 checkEdges() {
 	super.checkEdges();
