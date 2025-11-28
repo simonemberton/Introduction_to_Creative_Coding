@@ -9,7 +9,7 @@ For this week's task we're going to make an interactive audio-visualiser.  This 
 
 For all the tasks in this weeksheet you'll need to run a local server.  If you've forgotten how to do that you can check [here](https://github.com/processing/p5.js/wiki/Local-server).  If you are using Visual Studio Code you can use the Live Server extension.
 
-To start with we need to load an audio track to play.  You can find one via [Soundsnap](https://www.soundsnap.com/) (of which you should have licenses).  Alternatively you could use generative AI to create on from a text prompt such as [MusicGen](https://huggingface.co/spaces/facebook/MusicGen).
+To start with we need to load an audio track to play.  You can find one via [Soundsnap](https://www.soundsnap.com/) (of which you should have licenses).
 
 Now you have your audio file place it in the same folder as your ```index.html``` and ```sketch.js``` files.  Next paste the following code into your ```sketch.js``` file:
 
@@ -195,3 +195,4 @@ Here is a screenshot of the end of Task 3 and a [link](https://simonemberton.pan
 <p align="center">
   <img width="500" height="500" src="./images/Task_3.gif">
 </p>
+
