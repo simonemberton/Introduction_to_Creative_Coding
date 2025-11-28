@@ -232,6 +232,10 @@ I've also added the same to the `Sphere` class but changed the parameters a bit.
 
 The output of this task should look and sound like [this](https://simonemberton.panel.uwe.ac.uk/Week14/Task5/):
 
+<p align="center">
+  <img width="500" height="500" src="./images/Task5.gif">
+</p>
+ -->
 
 ### Stretch goals
 
