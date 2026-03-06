@@ -3,7 +3,11 @@
 ## AI and Machine Learning pt 1
 
 This week and next week we are focusing on AI and Machine Learning (ML) for p5.  
-This week we will focus on machine vision and object recognition.  
+This week we will focus on machine vision and object recognition. Like this example of me wearing glasses and not wearing glasses.  
+
+<p align="center">
+<img src="./images/canvas-working.gif" alt="Download" width="50%"/>
+</p>
 
 To start with we will see how ML works using Google's Teachable Machine platform.  
 Then we will move onto implement ML with P5 using the ml5.js library.  
