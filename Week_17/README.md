@@ -68,7 +68,7 @@ Add the downloaded and unzipped model folder (probably called ```tm-my-image-mod
 ![teachable machine](./images/p5-folders.png)  
 
 Replace the content of your ```sketch.js``` with the code from the example ```sketch.js``` code here:  
-https://editor.p5js.org/roddicki/sketches/21J3iubL-   
+https://editor.p5js.org/roddicki/sketches/jILLP3M5N   
 
 ![P5 editor](./images/editor-p5.png)  
 
