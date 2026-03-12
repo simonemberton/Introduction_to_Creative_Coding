@@ -1,135 +1,61 @@
 # Week 18
 
-## Code Challenge 2 - Answer
+Code Challenge 2:  
 
-- Your final sketch.js code should now look like this, with a start screen and Gotcha and You Win screens all working
+Use the dist() function to calculate the distance between the index and thumb.
+Console.log() the result (distance)
+HINT: the index and thumb both have x, y properties index.x etc
 
+Sketch.js should look like this:
 
 ```javascript
 let video;
-let detector;
-let detections = [];
-let state = "start";
+let handPose;
+let hands = [];
+
+function preload() {
+  // Initialize HandPose model with flipped video input
+  handPose = ml5.handPose({ flipped: true });
+}
+
+function mousePressed() {
+  console.log(hands);
+}
+
+function gotHands(results) {
+  hands = results;
+}
 
 function setup() {
   createCanvas(640, 480);
-  background(220);
-  video = createCapture(VIDEO, videoReady);
-  //video = createCapture(VIDEO);
-  video.size(640, 480);
+  video = createCapture(VIDEO, { flipped: true });
   video.hide();
+
+  // Start detecting hands
+  handPose.detectStart(video, gotHands);
 }
 
-
-function draw() { 
-  switch (state) {
-    case "start":
-      start();
-      break;
-
-    case "video":
-      videoUI();
-      break;
-    
-    case "caught":
-      gotcha();
-      break;
-
-    case "success":
-      youWin();
-      break; 
-  } 
-}
-
-// show video detections
-function videoUI() {
+function draw() {
   image(video, 0, 0);
 
-  for (let i = 0; i < detections.length; i += 1) {
-    const object = detections[i];
-    stroke(255, 0, 0);
-    strokeWeight(4);
-    noFill();
-    rect(object.x, object.y, object.width, object.height);
+  // Ensure at least one hand is detected
+  if (hands.length > 0) {
+    console.log(hands[0].handedness);
+    // get the index finger tip and thumb tip (look at the console results for the names)
+    let index = hands[0].index_finger_tip;
+    let thumb = hands[0].thumb_tip;
+    // set the fill color
+    fill(255,255,0); 
     noStroke();
-    fill(255);
-    textSize(24);
-    text(object.label +" "+ round(object.confidence, 2), object.x + 10, object.y + 24);
+  
+    // use the dist function to get the proximity of both
+    let d = dist(index.x, index.y, thumb.x, thumb.y);
+    console.log(d);
+
+    // draw the circles
+    circle(index.x, index.y, 20);
+    circle(thumb.x, thumb.y, 20);
+  
   }
 }
-
-// Start screen
-function start(){
-  background(0,0,0);
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(60);
-  fill(255); // White text
-  text("Press space to start", width/2, height/2);
-}
-
-// Gotcha screen
-function gotcha(){
-  background(255,0,0);
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(60);
-  fill(255); // White text
-  text("Gotcha!", width/2, height/2);
-}
-
-// you win screen
-function youWin(){
-  background(0,255,0);
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(60);
-  fill(255); // White text
-  text("You Win!", width/2, height/2);
-}
-
-function videoReady() {
-  // Models available are 'cocossd', 'yolo'
-  detector = ml5.objectDetector('cocossd', modelReady);
-}
-
-function modelReady() {
-  detector.detect(video, gotDetections);
-}
-
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
- 
-  // Loop through the detections array [] and test the results for "person" and "cell phone"
-  for (let i = 0; i < detections.length; i++) {
-    //console.log(detections[i]["label"]);
-    // label is 0.9 person
-    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.8 && state == 'video') {
-      // you were caught
-      console.log("caught");
-      state = "caught"; // change the 'state' variable to caught
-    }
-    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.3 && state == 'video') {
-      // you won 
-      console.log("success");
-      state = "success"; //change the 'state' variable to success
-    }
-  }
-  detector.detect(video, gotDetections);
-}
-
-// if space bar pressed change state to video or back to start
-function keyPressed() {
-  if (key === ' ' && state == 'start') {
-    state = "video";
-  }
-  else {
-    state = "start";
-  }
-}
-
-
 ```

@@ -5,39 +5,50 @@
 This week we will continue our focus on machine vision and object recognition and implement Machine Learning with P5 using the ml5.js library.  
 https://ml5js.org/  
 
-It is common to use pretrained **models** to undertake various **classification** tasks.  ml5.js implements a variety of these models for image recognition, pose recognition, sentiment analysis and so on.  
-Explore them here https://learn.ml5js.org/#/  
+This week we are going to focus on using machine learning to detect our hands and fingers and then we are going to code our sketch so that we can draw on the canvas moving our finger.   
 
-We will use an object recognition model called COCOSSD to recognise objects. COCOSSD has been pretrained to recognise hundreds of everyday objects.  
+ml5.js Already has a pretrained machine learning model to recognise hands called handpose.   
+https://docs.ml5js.org/#/reference/handpose 
 
-Ultimately we will make a game that uses Machine Learning & COCOSSD, where your objective is to trick the Machine Learning model into **NOT** recognising you as a person...  
+This workshop is a variation of The Coding Train video:  
+Hand Pose Detection with ml5.js   
+https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/hand-pose   
+
+
+## Steps / Tasks:  
+
+
+This workshop is divided into the following steps:   
+- **Step 1:** Capture the video from our webcam and draw it onto the canvas.  
+- **Step 2:** Use the webcam image to detect our hands and fingers using the handpose machine learning model 
+- **Step 3:** See it working detecting our fingers.   
+- **Step 4:** Narrow down its focus so that it only detect our index finger and thumb. We will get a circle to track their movement.   
+- **Step 5:** Use the tracking of our index finger to draw a line on the canvas.  
+- **Step 6:** Integrate the webcam image with the line drawing  
 
 You will need a webcam for this workshop.  
 
-Team up with someone and help each other with these tasks. (You will need two people to test the game).  
+Team up with someone and help each other with these tasks so you can problem solve together.  
 
-#### Steps / Tasks:  
 
-There are 3 steps or tasks for the session today:  
-- **Task 1:** Get P5 to capture and display the video from your webcam  
-- **Task 2:** Use the webcam image and a pretrained **model** to undertake **classifications**  
-- **Task 3:** Use the classifications to make a simple **classification** avoidance game     
-
-## Task 1 - Get P5 to capture and display the video from your webcam  
+## Step 1 - Use the handpose machine learning model to detect your fingers 
 
 
 You will need to download a new P5 'empty example'.
 
 #### Configure index.html:
 
-In the ```<head>``` of ```index.html``` add a link to the ml5.js library. Notice we are using version 0.50  
+In the ```<head>``` of ```index.html``` add a link to the ml5.js library above the link to your ```sketch.js``` file.
+Use the following (the exact versions are important)  
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/ml5@0.5.0/dist/ml5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+<script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+<script src="sketch.js"></script>
 ```
 
 <details>
-<summary>Note:</summary>
+<summary>Note about script links:</summary>
 Notice that you are using a link to ml5.js library rather than downloading into your example folder.  
 This is a common way to include script files for libraries and modules.  
 The ml5.js script file is hosted on a Content Delivery Network (cdn).  
@@ -53,7 +64,7 @@ let video;
 
 function setup() {
   createCanvas(640, 480);
-  video = createCapture(VIDEO);
+  video = createCapture(VIDEO, { flipped: true });
   video.size(640, 480);
   video.hide();
 }
@@ -72,114 +83,162 @@ If you are not sure how to set up Visual Studio Code to run a local server see l
 
 
 
-## Task 2 - Use the webcam image and a pretrained model to undertake classifications  
+## Step 2 - Use the webcam image to detect our hands and fingers using handpose  
 
-Next we will add some functions to load the COCOSSD model and start the machine learning detection. 
+Next we will use the webcam image to detect our hands and fingers using the handpose machine learning model and see it working detecting our fingers.
 
-In ```sketch.js``` add 2 more variables at the top of the script.   
+Add some variable to the top of the ```sketch.js```  
 
 ```javascript
 let video; // we already have this
-let detector;
-let detections = [];
+let handPose;
+let hands = [];
+``` 
+Like last week add a preload function to load the ml5 handpose model. This should be above ```setup```.   
+
+```javascript
+function preload() {
+  // Initialize HandPose model with flipped video input
+  handPose = ml5.handPose({ flipped: true });
+}
 ``` 
 
-These functions are chained together using 'callbacks'. (With the person sitting next to you look up and discuss what a callback is).  
-
-Underneath ```draw()``` at the bottom ```sketch.js``` add the following functions: 
-
-
-```javascript
-// video capture is ready and working
-function videoReady() {
-  // Models available are 'cocossd', 'yolo'
-  detector = ml5.objectDetector('cocossd', modelReady);
-}
-
-// model has loaded
-function modelReady() {
-  detector.detect(video, gotDetections);
-}
-
-// got object detections
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
-  console.log(detections);
-  detector.detect(video, gotDetections);
-}
-```
-
-In ```setup()``` amend ```createCapture(VIDEO);``` to include a callback to ```videoReady()```  
-
+Start detecting hands in setup
 ```javascript
 function setup() {
-  createCanvas(640, 480);
-  video = createCapture(VIDEO, videoReady); // add videoReady
-  video.size(640, 480);
-  video.hide();
+  createCanvas(640, 480); // we already have this
+  video = createCapture(VIDEO, { flipped: true }); // we already have this
+  video.hide(); // we already have this
+
+  // Start detecting hands
+  handPose.detectStart(video, gotHands);
+}
+``` 
+Draw stays as it is for the moment. But we will add a function to recieve the results of the hand detection called ```gotHands()```.  
+
+This function sets the results to the ```hands``` global variable.   
+
+```javascript
+function gotHands(results) {
+  hands = results;
+}
+````
+
+Finally we will use a mousepress to send the results the console. Add this function underneath ```gotHands()```.   
+
+```javascript
+function mousePressed() {
+  console.log(hands);
 }
 ```
+Open the console when you run the sketch and you should see this when you click the mouse with one of your hands in view:
 
-Run your sketch **using a local server**, you should see ouput in the console.  Labelling whatever is in front of the camera (in my case 'person'). You should also be able to see a confidence value and some coordinates (we will use these in a moment).  
-
-<p align="center">
-<img src="./images/cocossd-1.png" alt="Download" width="100%"/>
-</p>
-
-Let's take a moment to understand how all these functions are working.  
-
-Read the following whilst looking at your ```sketch.js``` file:  
-The functions are chained together and work like this...  
-
-- When the video starts working it calls ```videoReady()``` from ```video = createCapture(VIDEO, videoReady);```
-
-- ```videoReady()``` loads the 'cocossd' model and when that is complete it calls ```modelReady()```
-
-- ```modelReady()``` starts the object detections and when it detects an object calls ```gotDetections()```
-
-- ```gotDetections()``` contains the results that you see in the console (in the image above). ```gotDetections()``` runs in an endless loop returning detections on every frame of the video. ```console.log(detections);``` sends the detections to the console so we can see them.  
-
-
-#### Draw the detections onto the video image:  
-
-Now we will draw the detections onto the video image... Like this (Cheers)...
+Notice the name of all the finger joints and parts in the console. Next we will visualise them!   
 
 <p align="center">
-<img src="./images/mlgame-detections.jpg" alt="me" width="100%"/>
-</p>
+<img src="./images/hands-console-webcam.jpg" alt="me" width="100%"/>
+</p> 
+
+<details>
+<summary>Note:</summary>
+Your complete sketch.js should look this:   
+
+```javascript
+let video;
+let handPose;
+let hands = [];
+
+function preload() {
+  // Initialize HandPose model with flipped video input
+  handPose = ml5.handPose({ flipped: true });
+}
+
+function setup() {
+  createCanvas(640, 480);
+  video = createCapture(VIDEO, { flipped: true });
+  video.hide();
+
+  // Start detecting hands
+  handPose.detectStart(video, gotHands);
+}
+
+function draw() {
+  image(video, 0, 0);
+}
+
+function gotHands(results) {
+  hands = results;
+}
+
+function mousePressed() {
+  console.log(hands);
+}
+
+```
+</details>
 
 
-Inside ```draw()``` add the following code to draw the bounding box of the detection and add the label as text.  
+## Step 3 - Draw circles on our joints using the handpose model.
+
+Now we will take all those finger parts and visualise them by drawing a circle on each joint.  
+Notice that in the console each finger part has an array with a name and x and y coordinate. This is the place it appears on the canvas that we will use to draw our circle. (Don't worry about the other 3D coordinates).  
+
+Open up a finger array in the console so you can see it like this:  
+
+<p align="center">
+<img src="./images/hands-index-tip.jpg" alt="me" width="70%"/>
+</p> 
+
+To draw a circle on each joint we need to loop through each finger and each joint and extract the X and Y values and use these to draw a circle.  
+
+We will add to ```draw()```.  
+
+Add an ```if``` statement to ```draw()``` to check that handpose can see and has returned data about one or more hands.   
+The hands are returned as an array so we will check the array has more than 1 item (```hands.length > 0```).    
+
+Next add a ```for``` loop that loops through each finger part:  
+
+Draw should look like this: 
 
 ```javascript
 function draw() {
   image(video, 0, 0);
 
-  for (let i = 0; i < detections.length; i += 1) {
-    const object = detections[i];
-    stroke(0, 255, 0);
-    strokeWeight(4);
-    noFill();
-    rect(object.x, object.y, object.width, object.height);
-    noStroke();
-    fill(255);
-    textSize(24);
-    text(object.label +" "+ object.confidence, object.x + 10, object.y + 24);
+  // Check that handpose can see one or more hands
+  if (hands.length > 0) {
+
+    // loop through the result getting all the keypoints
+    for (let i = 0; i < hands[0].keypoints.length; i++) {
+      let keypoint = hands[0].keypoints[i];
+
+      fill(255, 255, 0);
+      noStroke();
+      // draw a circle using the x, y keypoints
+      circle(keypoint.x, keypoint.y, 16);
+    }
+
   }
+
 }
 ```
-How does this work? Write some comments in your code explaining how this draws the bounding boxes.  
 
-Run your sketch **using a local server**, you should see the bounding box and label on the video.
+It should look like this, with 21 markers per hand. 
+
+The markers and video image are drawn on every frame, making it look like the circles are tracking the hand as it moves.  
+
+<p align="center">
+<img src="./images/hands-markers.jpg" alt="me" width="100%"/>
+</p> 
+
+
+This adds circles to the first hand on the screen. You can detect if it is the left or right hand with handedness property in the hand array. Using ```hands[0].handedness```.
+
 
 ## &#x1F536; Code Challenge 1:
 
 ```diff
-! Change the colour of the bounding box.
-! Round the confidence value to two decimal places (so it looks like my photo above).
+! Output if is the left or right hand using hands[0].handedness.
+! Change the colour of the circles for the left and right hand.
 ```
 
 <details>
@@ -187,272 +246,167 @@ Run your sketch **using a local server**, you should see the bounding box and la
 You can find the answers to the code challenges including the final sketch.js code in this weeks folder.
 </details>  
 
-## Task 3 - Use the detections to make a simple classification avoidance game  
+## Step 4 - Only detect our index finger and thumb. We will get a circle to track their movement.
 
-We will now use all the sketch to make a simple game. 
+We will change draw, delete the ```for`` loop and instead directly access the ```index_finger_tip``` and ```thumb_tip```.
+Draw a circle for each
 
-#### How to play
-A single player starts in the field of vision of the camera disguised or camouflaged and a few metres away. They have to show their phone to the camera before they are detected as a person.  
+```draw``` should look like this:
 
-If they are detected as a person a 'Gotcha!' screen will appear.  
-To succeed players will have to disguise themselves or move fast, or even hide behind objects... 
+```javascript
+function draw() {
+  image(video, 0, 0);
 
-#### How the game works:   
-If a 'person' is detected then they have been caught and the 'Gotcha!' screen displays. 
-If a 'cell phone' is detected they have won and tricked the system to not recognise them as they approached the camera. The 'You Win!' screen displays.   
+  // Ensure at least one hand is detected
+  if (hands.length > 0) {
+    console.log(hands[0].handedness);
+    // get the index finger tip and thumb tip (look at the previous console results for the names)
+    let index = hands[0].index_finger_tip;
+    let thumb = hands[0].thumb_tip;
+    // next draw them using there x y
+     fill(255, 255, 0);
+    noStroke();
+    circle(index.x, index.y, 20);
+    circle(thumb.x, thumb.y, 20);
+  }
+}
 
-The game can be retarted by refreshing the browser page.   
+```
+
+Your sketch should now track your thumb and index finger (you should still be able to see if it is the right or left hand in the console).
 
 <p align="center">
-<img src="./images/mlgame-flow.png" alt="me" width="100%"/>
+<img src="./images/hands-index-thumb.jpg" alt="me" width="100%"/>
+</p> 
+
+Ultimately we are going to draw a line using our index finger. But let's only do that when the index finger and thumb are close together.
+We will use the ```dist()``` p5 function to calculate the distance between the index and thumb.  
+https://p5js.org/reference/p5.Vector/dist/  
+
+<p align="left">
+<img src="./images/hands-index-thumb-together.jpg" alt="me" width="50%"/>
+</p> 
+
+## &#x1F536; Code Challenge 2:
+
+```diff
+! use the dist() function to calculate the distance between the index and thumb.
+! console.log() the result (distance)
+! HINT: the index and thumb both have x, y properties index.x etc
+```
+
+We can change the colour of the circles when they touch using an if statement.
+if distance is less than 20 fill the circles blue.
+
+Add this ```if``` statement in ```draw()``` under your distance calculation (if you didn't solve that see the code challenge 2 answer at the top of the page).
+
+```javascript
+if(d < 20) {
+  fill(0,0,255);
+}
+
+// draw the circles
+circle(index.x, index.y, 20);
+circle(thumb.x, thumb.y, 20);
+````
+
+<details>
+<summary>Hint:</summary>
+You can find the answers to the code challenges including the final sketch.js code in this weeks github folder.
+</details>  
+
+## Step 5: Use the tracking of our index finger to draw a line on the canvas.  
+
+If you comment out ```image(video, 0, 0);``` in ```draw()``` you will see we are already drawing circles on the canvas
+```javascript
+//image(video, 0, 0);
+```
+<p align="left">
+<img src="./images/hands-draw-circles.jpg" alt="me" width="50%"/>
+</p> 
+
+However we want to draw a continous line and only with the index finger (when it is close to the thumb).
+
+In p5 lines need the x and y for two points, so that P5 can draw a line between them.
+```line(x1, y1, x2, y2);```  
+https://p5js.org/reference/p5/line/
+
+We will capture the point in the previous frame where the index finger was and draw line between the previous point and the current point.   
+The current point is ```index.x``` and ```index.y``` (already in the sketch).
+To get the point in the previous frame where the index finger was create two new global variables at the very top of your script:
+```javascript
+let indexPreviousX;
+let indexPreviousY;
+```
+
+in ```draw()```
+Remove the following lines
+```javascript
+// set the fill color
+fill(255,255,0); 
+noStroke();
+```
+
+```javascript
+fill(0,0,255);
+```
+
+```javascript
+// draw the circles
+circle(index.x, index.y, 20);
+circle(thumb.x, thumb.y, 20);```
+
+```
+
+Now edit draw to set the colour and width of the line, draw the line and update ```indexPreviousX``` and ```indexPreviousY``` so it looks like this:   
+
+```javascript
+function draw() {
+  //image(video, 0, 0);
+
+  // Ensure at least one hand is detected
+  if (hands.length > 0) {
+    console.log(hands[0].handedness);
+    // get the index finger tip and thumb tip (look at the console results for the names)
+    let index = hands[0].index_finger_tip;
+    let thumb = hands[0].thumb_tip;
+
+    // next use the dist function to get the proximity of both
+    let d = dist(index.x, index.y, thumb.x, thumb.y);
+    console.log(d);
+    // if distance is less than 20 draw with the index
+    if(d < 20) {
+      // set the colour and width of the line
+      stroke(255, 255, 0);
+      strokeWeight(8);
+
+      // draw the line - a line needs a current position and a previous position
+      line(index.x, index.y, indexPreviousX, indexPreviousY);
+    }
+    
+    indexPreviousX = index.x;
+    indexPreviousY = index.y;
+    
+  }
+}
+```
+
+You should now be able to draw a line when you index finger and thumb are together.  
+
+## Step 6: Stretch goal: Integrate the webcam image with the line drawing  
+
+Well done if you have got this far. At the moment we can't see the webcam image beacause we commented out. because it re draws every frame it obscures our drawing. So try to work out a way to save the the (coordinates) of the drawing and redraw them every frame...
+
+<p align="left">
+<img src="./images/hands-final.jpg" alt="me" width="50%"/>
 </p> 
 
 
- 
-#### Lets get started: 
-We are going to need to make 3 screens:  
-- The detection screen (we've mostly made this already)  
-- The Gotcha screen  
-- The You Win screen  
-
-Then we will switch between them using the ```switch (state)``` function (from week 4).  
-
-To begin with we will move all the code from ```draw()``` into a function called ```videoUI()```
-And run ```videoUI()``` from draw.  
-Everything should work the same, but ```draw()``` will only have one line of code in it.   
-
-```javascript
-function draw() {
-  videoUI();
-}
-
-// show video detections
-function videoUI() {
-  image(video, 0, 0);
-  for (let i = 0; i < detections.length; i += 1) {
-    const object = detections[i];
-    stroke(255, 0, 0);
-    strokeWeight(4);
-    noFill();
-    rect(object.x, object.y, object.width, object.height);
-    noStroke();
-    fill(255);
-    textSize(24);
-    text(object.label +" "+ object.confidence, object.x + 10, object.y + 24);
-  }
-}
-```
-#### Testing for a "person" or "cell phone": 
-Next we need to see whether the detection results contain a label that is a 'person' or 'cell phone'.  
-
-Detections are already being logged here:
-```javascript
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
-  console.log(detections); // shows the results as an array of objects
-  detector.detect(video, gotDetections);
-}
-```
-
-These results are logged as an array, as below, each result has a label and confidence value as well as  x / y co-ordinates to plot the bounding box:  
-
-<p align="left">
-<img src="./images/mlgame-results.png" alt="me" width="70%"/>
-</p>
-
-
-
-We can loop through the results and test whether the results contain a label that is a 'person' or 'cell phone'.  
-In addition we can test if the result has a high confidence value.  
-For now we will output the result to the console.  
-
-Amend the ```gotDetections()``` function as follows:  
-
-```javascript
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
- 
-  // Loop through the detections array [] and test the results for "person" and "cell phone"
-  for (let i = 0; i < detections.length; i++) {
-    //console.log(detections[i]["label"]);
-    // label is 0.8 person or greater
-    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.8) {
-      // you were caught
-      console.log("caught");
-    }
-    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.3) {
-      // you won 
-      console.log("success");
-    }
-  }
-  detector.detect(video, gotDetections);
-}
-```
-Try changing the confidence value to 0.99 to see if you can be detected as a person and "caught" so easily.  
-
-
-#### Gotcha and You Win screens
-Now we will make 2 screens that you will switch between: A 'Gotcha!' screen, a 'You Win' screen.  
-
-<p align="left">
-<img src="./images/mlgame-gotcha.png" alt="me" width="32%"/><img src="./images/mlgame-success.png" alt="game" width="32%"/>
-</p>
-
-We will write a function to create each screen. (Then switch between them).  
-
-Write the following functions beneath your ```videoUI()``` function.   
-
-The Gotcha function that creates the Gotcha red screen:
-```javascript
-// Gotcha screen
-function gotcha(){
-  background(255,0,0);
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(60);
-  fill(255); // White text
-  text("Gotcha!", width/2, height/2);
-}
-```
-The You Win function that creates the You Win green screen:
-```javascript
-// you win screen
-function youWin(){
-  background(0,255,0);
-  // Set up text properties
-  textAlign(CENTER, CENTER);
-  textSize(60);
-  fill(255); // White text
-  text("You Win!", width/2, height/2);
-}
-```
-
-
-Test and run ```gotcha()``` and ```youWin()``` from inside  ```draw()``` by commenting / uncommenting each in turn.
-
-```javascript
-function draw() {
-  //videoUI(); //uncomment this line to test
-
-  //youWin(); //uncomment this line to test
-  
-  //gotcha(); //uncomment this line to test
-}
-```
-
-Uncomment each one to see it run in turn.    
-
-#### Set up the switch statement
-Now let's use the object detections to switch between the screens so that when a person is detected the 'Gotcha' screen displays and when a cell phone is detected a the 'Success' screen is displayed.
-
-We will replace everything in ```draw()```  with a switch statement to switch between our Video, Gotcha and Success screens.  
-
-Then we will switch between the these states depending on the results from the object detection.  
-
-
-Add a global variable at the top of your ```sketch.js```
-```javascript
-let state = "video";
-```
-
-Add the switch statement to ```draw()``` 
-```javascript
-function draw() { 
-  switch (state) {
-    case "video":
-      videoUI();
-      break;
-    
-    case "caught":
-      gotcha();
-      break;
-
-    case "success":
-      youWin();
-      break; 
-  } 
-}
-```
-
-
-#### Use the switch statement
-Now we need to set the ```state``` variable to ```"caught"``` or ```"success"``` depending on the result of the detections in the ```gotDetections()``` function.  
-
-Add ```state = "caught";``` and ```state = "success";``` to ```gotDetections()```   
-
-<details>
-<summary>Solution:</summary>
-
-```javascript
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
-  }
-  detections = results;
- 
-  // Loop through the detections array [] and test the results for "person" and "cell phone"
-  for (let i = 0; i < detections.length; i++) {
-    //console.log(detections[i]["label"]);
-    // label is 0.9 person
-    if(detections[i]["label"] == "person" && detections[i]["confidence"] > 0.6) {
-      // you were caught
-      console.log("caught");
-      state = "caught"; // change the 'state' variable to caught
-    }
-    else if(detections[i]["label"] == "cell phone" && detections[i]["confidence"] > 0.3) {
-      // you won 
-      console.log("success");
-      state = "success"; //change the 'state' variable to success
-    }
-  }
-  detector.detect(video, gotDetections);
-}
-```
-</details> 
-
-
-Test your project. The game should now work (you'll need to refresh the page to reset).  
-
-
-
-## &#x1F536; Code Challenge 2 (stretch goal):
-To improve the whole experience add a start screen that switches to the video, on a key press, to start the game.   
-
-In a bit more detail:  
-
-
-```diff
-! Create a start() function which creates a start screen.  
-! Add a 'start' case to the switch statement.
-! Use a key press to switch state / case to 'video'.
-! Only allow the state to change to 'caught' or 'success' if the 'video' is active. 
-! Change the initial starting state to 'start'.
-```
-
-Done that? Add a restart function (on a keypress).  
-
 <details>
 <summary>Hint:</summary>
-You can find the answers to the code challenges including the final sketch.js code in this weeks folder.
-
-
-See the finished sketch running here  
-https://editor.p5js.org/roddicki/sketches/cZt3R4BYQ
+Youc an use an array to store the coordinates of the drawing on every frame.
+You can find the solution with the final sketch.js code in this weeks github folder. Look for stretch-goal.md
 </details>  
-
-
-
-
-
-
-
-
 
 
 
