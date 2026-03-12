@@ -237,7 +237,7 @@ This adds circles to the first hand that appears on the screen. You can detect i
 ## &#x1F536; Code Challenge 1:
 
 ```diff
-! Output if is the left or right hand using hands[0].handedness.
+! Output if the left or right hand is on the screen using hands[0].handedness.
 ! Change the colour of the circles for the left and right hand.
 ```
 
