@@ -2,16 +2,16 @@
 
 ## AI and Machine Learning pt 2
 
-This week we will continue our focus on machine vision and object recognition and implement Machine Learning with P5 using the ml5.js library.  
+This week we will continue our focus on machine vision and Machine Learning with P5 using the ml5.js library.  
 https://ml5js.org/  
 
-This week we are going to focus on using machine learning to detect our hands and fingers and then we are going to code our sketch so that we can draw on the canvas moving our finger.   
+We are going to use machine learning to detect our hands and fingers and then we are going to code our sketch so that we can draw on the canvas moving our finger.   
 
 ml5.js Already has a pretrained machine learning model to recognise hands called handpose.   
 https://docs.ml5js.org/#/reference/handpose 
 
 This workshop is a variation of The Coding Train video:  
-Hand Pose Detection with ml5.js   
+Hand Pose Detection with ml5.js (highly reccomended)  
 https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/hand-pose   
 
 
@@ -19,11 +19,11 @@ https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/hand-pose
 
 
 This workshop is divided into the following steps:   
-- **Step 1:** Capture the video from our webcam and draw it onto the canvas.  
-- **Step 2:** Use the webcam image to detect our hands and fingers using the handpose machine learning model 
-- **Step 3:** See it working detecting our fingers.   
-- **Step 4:** Narrow down its focus so that it only detect our index finger and thumb. We will get a circle to track their movement.   
-- **Step 5:** Use the tracking of our index finger to draw a line on the canvas.  
+- **Step 1:** Capture the video from your webcam and draw it onto the canvas.  
+- **Step 2:** Use the webcam image to detect your hands and fingers using the handpose machine learning model 
+- **Step 3:** See it working detecting our fingers by drawing markers / circles.   
+- **Step 4:** Set it to only detect your index finger and thumb. We will get a circle to track their movement.   
+- **Step 5:** Use tracking our index finger to draw a line on the canvas.  
 - **Step 6:** Integrate the webcam image with the line drawing  
 
 You will need a webcam for this workshop.  
@@ -56,7 +56,7 @@ The ml5.js script file is hosted on a Content Delivery Network (cdn).
 
 #### Step 1. Configure sketch.js:  
 
-First of all we are going to capture the video from our webcam and draw it onto the canvas.  
+First of all you are going to capture the video from your webcam and draw it onto the canvas.  
 Setup ```sketch.js``` as follows.  
 
 ```javascript
@@ -85,9 +85,9 @@ If you are not sure how to set up Visual Studio Code to run a local server see l
 
 ## Step 2 - Use the webcam image to detect our hands and fingers using handpose  
 
-Next we will use the webcam image to detect our hands and fingers using the handpose machine learning model and see it working detecting our fingers.
+Next you will use the webcam image to detect your hands and fingers using the handpose machine learning model.
 
-Add some variable to the top of the ```sketch.js```  
+Add 2 variables to the top of the ```sketch.js```  
 
 ```javascript
 let video; // we already have this
@@ -114,9 +114,11 @@ function setup() {
   handPose.detectStart(video, gotHands);
 }
 ``` 
-Draw stays as it is for the moment. But we will add a function to recieve the results of the hand detection called ```gotHands()```.  
+Draw does not need any additions or edits for the moment. But we will add a function to recieve the results of the hand detection called ```gotHands()```.  
 
 This function sets the results to the ```hands``` global variable.   
+
+Add it under ```preload()```
 
 ```javascript
 function gotHands(results) {
@@ -191,9 +193,7 @@ Open up a finger array in the console so you can see it like this:
 
 To draw a circle on each joint we need to loop through each finger and each joint and extract the X and Y values and use these to draw a circle.  
 
-We will add to ```draw()```.  
-
-Add an ```if``` statement to ```draw()``` to check that handpose can see and has returned data about one or more hands.   
+Add an ```if``` statement to ```draw()``` to check that handpose can see one or more hands.   
 The hands are returned as an array so we will check the array has more than 1 item (```hands.length > 0```).    
 
 Next add a ```for``` loop that loops through each finger part:  
@@ -222,7 +222,7 @@ function draw() {
 }
 ```
 
-It should look like this, with 21 markers per hand. 
+Your sketch should look like this, with 21 markers per hand. 
 
 The markers and video image are drawn on every frame, making it look like the circles are tracking the hand as it moves.  
 
@@ -231,7 +231,7 @@ The markers and video image are drawn on every frame, making it look like the ci
 </p> 
 
 
-This adds circles to the first hand on the screen. You can detect if it is the left or right hand with handedness property in the hand array. Using ```hands[0].handedness```.
+This adds circles to the first hand that appears on the screen. You can detect if it is the left or right hand with ```handedness``` property in the hand array. Using ```hands[0].handedness```.
 
 
 ## &#x1F536; Code Challenge 1:
@@ -246,12 +246,12 @@ This adds circles to the first hand on the screen. You can detect if it is the l
 You can find the answers to the code challenges including the final sketch.js code in this weeks folder.
 </details>  
 
-## Step 4 - Only detect our index finger and thumb. We will get a circle to track their movement.
+## Step 4 - Only detect our index finger and thumb. (Using a circle to track their movement).
 
-We will change draw, delete the ```for`` loop and instead directly access the ```index_finger_tip``` and ```thumb_tip```.
+We will change draw, delete the ```for``` loop and instead directly access the ```index_finger_tip``` and ```thumb_tip```.
 Draw a circle for each
 
-```draw``` should look like this:
+```draw()``` should look like this:
 
 ```javascript
 function draw() {
@@ -292,11 +292,11 @@ https://p5js.org/reference/p5.Vector/dist/
 ```diff
 ! use the dist() function to calculate the distance between the index and thumb.
 ! console.log() the result (distance)
-! HINT: the index and thumb both have x, y properties index.x etc
+! HINT: the index and thumb both have x, y properties called index.x index.y etc
 ```
 
 We can change the colour of the circles when they touch using an if statement.
-if distance is less than 20 fill the circles blue.
+if distance is less than 20 (pixels) fill the circles blue.
 
 Add this ```if``` statement in ```draw()``` under your distance calculation (if you didn't solve that see the code challenge 2 answer at the top of the page).
 
@@ -327,7 +327,7 @@ If you comment out ```image(video, 0, 0);``` in ```draw()``` you will see we are
 
 However we want to draw a continous line and only with the index finger (when it is close to the thumb).
 
-In p5 lines need the x and y for two points, so that P5 can draw a line between them.
+In p5 the line function need the x and y for two points, so that P5 can draw a line between them:
 ```line(x1, y1, x2, y2);```  
 https://p5js.org/reference/p5/line/
 
@@ -358,7 +358,7 @@ circle(thumb.x, thumb.y, 20);```
 
 ```
 
-Now edit draw to set the colour and width of the line, draw the line and update ```indexPreviousX``` and ```indexPreviousY``` so it looks like this:   
+Now edit ```draw()``` to set the colour and width of the line, draw the line and update ```indexPreviousX``` and ```indexPreviousY``` so it looks like this:   
 
 ```javascript
 function draw() {
@@ -395,7 +395,9 @@ You should now be able to draw a line when you index finger and thumb are togeth
 
 ## Step 6: Stretch goal: Integrate the webcam image with the line drawing  
 
-Well done if you have got this far. At the moment we can't see the webcam image beacause we commented out. because it re draws every frame it obscures our drawing. So try to work out a way to save the the (coordinates) of the drawing and redraw them every frame...
+Well done if you have got this far. At the moment we can't see the webcam image beacause we commented it out. It re-draws every frame so would obscure our drawing (uncomment it to try this).   
+
+So try to work out a way to save the the (coordinates) of the drawing and redraw them every frame...
 
 <p align="left">
 <img src="./images/hands-final.jpg" alt="me" width="50%"/>
