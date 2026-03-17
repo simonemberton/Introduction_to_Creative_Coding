@@ -5,7 +5,11 @@
 This week we will continue our focus on machine vision and Machine Learning with P5 using the ml5.js library.  
 https://ml5js.org/  
 
-You are going to use machine learning to detect your hands and fingers and then code your sketch so that you can draw a line on the canvas by moving your finger.   
+You are going to use machine learning to detect your hands and fingers and then code your sketch so that you can draw a line on the canvas by moving your finger.  
+
+<p align="center">
+<img src="./images/handpose-drawing.gif" alt="me" width="50%"/>
+</p>  
 
 ml5.js Already has a pretrained machine learning model to recognise hands called handpose.   
 https://docs.ml5js.org/#/reference/handpose 
@@ -33,8 +37,9 @@ Team up with someone and help each other with these tasks so you can problem sol
 
 ## Step 1 - Use the handpose machine learning model to detect your fingers 
 
+If you have downloaded the "starter sketch" from blackboard skip this step.   
 
-You will need to download a new P5 'empty example'.
+Otherwise you will need to download a new P5 'complete library'  from https://p5js.org/download/. This contains an empty example folder with a ```sketch.js``` and ```index.html```.
 
 #### Configure index.html:
 
