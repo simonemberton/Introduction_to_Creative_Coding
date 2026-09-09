@@ -28,7 +28,7 @@ async function setup(){
   stroke(255);
 
   amp = new p5.Amplitude();
-  amp.setInput(mySound);
+  mySound.connect(amp);
 }
 
 function draw(){
@@ -116,28 +116,43 @@ Here is a screenshot of my end of Task 1 and a [link](https://simonemberton.pane
 
 Let's try and develop this a bit further by applying some audio analysis to the incoming signal so that we can isolate the high, mid and low frequency bands rather than just overall amplitude.  The method of audio analysis we'll be using is the Fast Fourier Transform [FFT](https://p5js.org/reference/p5.sound/p5.FFT/).  
 
-First we need to create a new global variable called `fft` at the top of the `sketch.js` file.  Remember it's a global variable so it's outside of the `setup()` function.  Next at the end of the `setup()` function we'll make our `fft` variable equal to a new `p5.FFT` object and then set the input to `fft` to be the `mySound` variable from our sound file using the following code:
+First we need to create a new global variable called `fft` at the top of the `sketch.js` file.  Remember it's a global variable so it's outside of the `setup()` function.  Next at the end of the `setup()` function we'll make our `fft` variable equal to a new `p5.FFT` object and then connect the `fft` variable to our `mySound` variable from our sound file using the following code:
 ```javascript
 fft = new p5.FFT();
-fft.setInput(mySound);
+mySound.connect(fft);
 ```
 Then inside the `draw()` function instead of calling `amp.getLevel()` we'll use the following code to get the frequency spectrum of the audio signal:
 ```javascript
 let spectrum = fft.analyze();
 ```
-Now `console.log` the `spectrum` variable and see the output in the console. You'll need to comment out the rest of the code so that errors don't prevent the code from running.  You'll see in the console that the `spectrum` variable contains an array of length 1024 where each location in the array has a value between 0-255 which represents the amplitude at that slice of the frequency spectrum.
+Now `console.log` the `spectrum` variable and see the output in the console. You'll need to comment out the rest of the code so that errors don't prevent the code from running.  You'll see in the console that the `spectrum` variable contains an array of length 1024 where each location in the array has a value between 0-1 which represents the amplitude at that slice of the frequency spectrum.
 
-We could use the data from `fft.analyze()` to create some interesting visuals but instead I want to make use of fft's [`getEnergy()`](https://p5js.org/reference/p5.FFT/getEnergy/) function to get the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  FYI we always have to use `fft.analyze()` before using `fft.getEnergy()`.  Add the following code:
+We're now going to use the data from `fft.analyze()` to create some interesting visuals by getting the average values from predefined frequencies ranges, in particular the treble, mid and bass frequencies.  To calculate the average values for each frequency band add this function to the bottom of your code (outside of any other functions):
 ```javascript
-let treble = fft.getEnergy("treble");
-let mid = fft.getEnergy("mid");
-let bass = fft.getEnergy("bass");
+function getAverage(spectrum, startPercent, endPercent) {
+  let start = floor(spectrum.length * startPercent);
+  let end = floor(spectrum.length * endPercent);
+
+  let sum = 0;
+
+  for (let i = start; i < end; i++) {
+    sum += spectrum[i];
+  }
+
+  return sum / (end - start);
+}
 ```
-Now print the values from the `treble`, `mid` and `bass` variables to the console. You'll see that we now have a value between 0-255 for each of the three frequency bands.  Let's draw circles of points for each of these frequency bands.  We need to use `map()` functions for each of the bands to map the values within appropriate ranges.  Here are what my `map()` functions look like:
+Next inside the §draw()§ function just after making the spectrum variable add the following code to create variables with values for each of the frequency bands:
 ```javascript
-let mappedTreble = map(treble, 0, 50, 0, 200); 
-let mappedMid = map(mid, 0, 255, -200, 100); 
-let mappedBass = map(bass, 0, 255, -200, 50);
+let bass = getAverage(spectrum, 0, 0.3);
+let mid = getAverage(spectrum, 0.3, 0.6);
+let treble = getAverage(spectrum, 0.6, 1.0);
+```
+Now print the values from the `treble`, `mid` and `bass` variables to the console. You'll see that we now have a value between 0-1 for each of the three frequency bands (although the values I'm getting are more like 0-0.0001).  Let's draw circles of points for each of these frequency bands.  We need to use `map()` functions for each of the bands to map the values within appropriate ranges.  Here are what my `map()` functions look like:
+```javascript
+let mappedTreble = map(treble, 0, 0.0005, -100, 200);
+let mappedMid = map(mid, 0, 0.005, -150, 150);
+let mappedBass = map(bass, 0, 0.05, -200, 50);
 ```
 Next inside the for loop add more `point()` functions so that we've got one for each frequency band, where the `x` location of each `point()` takes a mapped frequency band as the input. I've made mine a different colour too so that you can see the difference:
 ```javascript
@@ -170,7 +185,7 @@ The audio-visualiser is nearly there but I want to add a few finishing touches.
 
 First I'm going to add another shape to the scene for the mid frequencies.  In my example I've used it to draw lines but you could use other shapes here. I want to draw my line from around the centre to the edge of the canvas so I'll create a `map` function which maps the mid frequencies to within that range using the following code:
 ```javascript
-let scaleMidLine = map(mid, 0, 255, 0, width); 
+let scaleMidLine = map(mid, 0, 0.005, 0, width);
 ```
 
 The code for drawing the mid frequency shapes now looks like this:
