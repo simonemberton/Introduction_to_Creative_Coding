@@ -17,11 +17,9 @@ Now you have your audio file place it in the same folder as your ```index.html``
 let mySound;
 let amp;
 
-function preload() {
-  mySound = loadSound('reggae30s.wav');
-}
+async function setup(){
+  mySound = await loadSound('reggae30s.wav');
 
-function setup(){
   let cnv = createCanvas(500, 500);
   cnv.mousePressed(canvasPressed);
   textAlign(CENTER);
@@ -51,7 +49,7 @@ function canvasPressed() {
 }
 ````
 
-This code [loads an audio file](https://p5js.org/reference/p5/loadSound/) in a `preload()` function (this runs before `setup()`) and then uses the [`p5.Amplitude`](https://p5js.org/reference/p5.sound/p5.Amplitude/) object to get the amplitude (volume) of the audio file.  NB: You'll need to change the name of the sound file in the code.
+This code [loads an audio file](https://p5js.org/reference/p5/loadSound/) by calling `loadSound()` from an async function with await to ensure the sound is loaded before use. We then use the [`p5.Amplitude`](https://p5js.org/reference/p5.sound/p5.Amplitude/) object to get the amplitude (volume) of the audio file.  NB: You'll need to change the name of the sound file in the code.
 
 If you run this example you will notice you are required to press the mouse cursor on the canvas before it starts working.  If you are using Chrome you can see a warning in the console about the AudioContext not being allowed to start.  This is to force developers to include a play button or such like so that users can choose to play a sound rather than it just blasting as soon as you open a webpage.  You can read more about it [here](https://developer.chrome.com/blog/autoplay/#webaudio)).
 
