@@ -43,7 +43,7 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 </p>
 
 
-- OK, now simply follow the same instructions as on the [Get Started](https://p5js.org/tutorials/get-started/) page to re-create your sketch on your local machine
+- OK, now simply follow the same instructions as on the [Setting up your environment](https://p5js.org/tutorials/setting-up-your-environment/) page to re-create your sketch on your local machine.
 
 - Each time you edit sketch.js in VS code, make sure you save it, then hit the refresh button in your web browser to see the results:
 
@@ -54,7 +54,9 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 
 Woohoo! Now you've made your first piece of creative code!
 
-If you mangaged to get that done really quickly spend some time exploring the p5.js [examples](https://p5js.org/examples/).  See if you can make a new project folder and get one of them running locally on your machine.
+If you mangaged to get that done really quickly spend some time going through the p5.js [Getting Started](https://p5js.org/tutorials/get-started/).  
+
+If you're feeling really adventurous explore some of the p5.js [examples](https://p5js.org/examples/).  See if you can make a new project folder and get one of them running locally on your machine.
 
 ### Before you go make sure you copy your entire Week1 folder into your OneDrive (or where ever you're keeping your work). You will need to get used to doing this every week!
 
