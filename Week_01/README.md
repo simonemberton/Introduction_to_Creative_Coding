@@ -10,7 +10,7 @@ We'll essentially be doing the same thing twice: making an interactive piece of 
 
 ### Task 1 - Setting up
 
-- Head to the [p5 website](https://p5js.org/tutorials/setting-up-your-environment/) and follow this tutorial on setting up your environment.
+- Head to the p5 website and follow this tutorial on [Setting up your Environment](https://p5js.org/tutorials/setting-up-your-environment/).
 
 It's a good idea to right click (ctrl-click on Mac) link for the p5.js web editor and open that in a new window or tab. Then you can follow the instructions in one tab and add your code in the other one...
 
@@ -43,7 +43,7 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 </p>
 
 
-- OK, now simply follow the same instructions as on the [Setting up your environment](https://p5js.org/tutorials/setting-up-your-environment/) page to re-create your sketch on your local machine.
+- OK, now simply follow the same instructions as on the [Setting up your Environment](https://p5js.org/tutorials/setting-up-your-environment/) page to re-create your sketch on your local machine.
 
 - Each time you edit sketch.js in VS code, make sure you save it, then hit the refresh button in your web browser to see the results:
 
