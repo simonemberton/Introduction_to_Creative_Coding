@@ -185,19 +185,21 @@ To start with though remember when using sound with p5 we need to use the [p5.so
 
 As modern browsers require users to press a button before the audio is allowed to play we're going to turn the canvas into a button and ask users to press it if there is no audio playing.  Writing text to the canvas is different in WebGL mode (you can read out a few different ways to do it [here](https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5)).  
 
-Firstly we're going to find a font to use and add the font file to our project folder. I chose the `Inconsolata-Regular.ttf` from [here](https://fonts.google.com/specimen/Inconsolata). Next we'll create a global variable for our font e.g. `let inconsolata;`, then we'll use the `preload()` function to load the font before the `setup()` function is called:
+Firstly we're going to find a font to use and add the font file to our project folder. I chose the `Inconsolata-Regular.ttf` from [here](https://fonts.google.com/specimen/Inconsolata). Next we'll create a global variable for our font e.g. `let inconsolata;`, 
+
+Next we'll add `async` functionality to our `setup()` function and use the `await` keyword to load the font.  We'll also temporarily pause the Web Audio API AudioContext with `getAudioContext().suspend();` to stop the audio from playing straight away.  We then make our canvas into a clickable button, which when pressed calls the `userStartAudio` function therefore enabling the audio.  We'll also define the font, size and alignment parameters for the text:
 ```javascript
-function preload() {
-	inconsolata = loadFont('Inconsolata-Regular.ttf');
-  }
-```
-Next in the `setup()` function we will make our canvas into a clickable button, which when pressed calls the `userStartAudio` function therefore enabling the audio.  We'll also define the font, size and alignment parameters for the text:
-```javascript
-let cnv = createCanvas(500,500, WEBGL);
-cnv.mousePressed(userStartAudio);
-textFont(inconsolata);
-textSize(width / 20);
-textAlign(CENTER, CENTER);
+async function setup() {
+	inconsolata = await loadFont('Inconsolata-Regular.ttf');
+
+	getAudioContext().suspend();
+	let cnv = createCanvas(500,500, WEBGL);
+	cnv.mousePressed(userStartAudio);
+	
+	textFont(inconsolata);
+	textSize(width / 20);
+	textAlign(CENTER, CENTER);
+}
 ```
 
 Next at the top of the `draw()` function after the background is drawn we'll check to see if audio is running and if not write a message to the user to 'tap to start':
@@ -208,8 +210,9 @@ if (getAudioContext().state !== 'running') {
 }
 ```
 
-Great now we've got that working we can add some audio elements to our objects.  Inside the constructor of our `Shape` class we're going to add a new [p5.Oscillator](https://p5js.org/reference/p5.sound/p5.Oscillator/) with a sine wave, set the amplitude and then call the `start()` method of the oscillator:
+Great now we've got that working we can add some audio elements to our objects.  Inside the constructor of our `Shape` class we're going to add a new [p5.Panner](https://beta.p5js.org/reference/p5.sound/p5.panner/) object to control the panning and a [p5.Oscillator](https://p5js.org/reference/p5.sound/p5.Oscillator/) object with a sine wave, set the amplitude and then call the `start()` method of the oscillator:
 ```javascript
+this.panner = new p5.Panner(); // this changed
 this.osc =  new p5.Oscillator('sine');
 this.osc.amp(0.2);
 this.osc.start();
@@ -226,7 +229,7 @@ this.osc.amp(amp);
 
 // change oscillator panning based z axis
 let pan = map(this.z, -100, 100, 0.9, 0.1);
-this.osc.pan(pan);
+this.panner.pan(pan, 0.1);
 ```
 I've also added the same to the `Sphere` class but changed the parameters a bit.
 
