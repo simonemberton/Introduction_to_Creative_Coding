@@ -33,7 +33,7 @@ let rectHeight = 40;
 
 function setup() {
   createCanvas(400, 300);
-  background(color(200));
+  background(200);
 }
 
 function draw() {

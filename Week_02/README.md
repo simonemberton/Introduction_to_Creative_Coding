@@ -3,15 +3,15 @@
 ## Anatomy of a Sketch
 
 
-## Task 0 - Download the p5.zip folder on the link p5complete.zip from p5js.org
+## Task 0 - Download p5.zip from p5js.org
 
-- Hopefully you already did this last week! 
+- Hopefully you already did this last week! (From [p5js.org/download](https://p5js.org/download/), download the complete library **p5.zip**).
 
 - Then copy the folder called "empty-example" **in the same enclosing folder**, rename it to something like "tutorial-2".
 
 - Go into your newly copied folder and open both index.html and sketch.js in a text editor. VS Code is recommended.
 
-- Remember, every time you change the code in your sketch.js file, you will need to refresh your browser to see the changes. 
+- Remember, every time you change the code in your sketch.js file, you will need to refresh your browser to see the changes. *(Tip: If you use the VS Code **Live Server** extension, your browser will reload automatically whenever you save!)*
 
 
 ## Task 1 - Ready, setup(); and draw();
@@ -97,6 +97,8 @@ Now also add a circle to your ```draw()``` function:
 ```javascript
 ellipse(50,50,40,40);
 ```
+
+*(Tip: In modern p5.js, you can also write `circle(50, 50, 40);` when the width and height are equal!)*
 ## &#x1F536; Code Challenge 1:
 
 ```diff
@@ -133,6 +135,8 @@ First make a rectangle by adding the following line of code to your sketch at th
 ```javascript
 rect(0,50,400,70);
 ```
+
+*(Tip: Similar to `circle()`, modern p5.js also provides `square(x, y, size)` when drawing equal-sided rectangles/squares!)*
 ## &#x1F536; Code Challenge 2:
 
 ```diff
@@ -173,7 +177,7 @@ statement in your ```draw()``` function.
 ```javascript
 function setup() {
   createCanvas(400, 300);
-  background(color(200));
+  background(200);
 }
 
 function draw() {
