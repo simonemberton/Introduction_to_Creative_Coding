@@ -5,13 +5,15 @@
 
 To replace the circle with an image (like my 8 bit cat) add an images folder and image file (jpg / png).  
 
-Use the ```loadImage('assets/cat.png');``` function to prelaod the image in ```setup()```.    
+Use `loadImage('assets/cat.png')` to load the image.
+- **In p5.js 2.0+**: Make `setup()` an `async` function and use `await loadImage('assets/cat.png');`.
+- **In p5.js 1.x**: Load the image in a `preload()` function.
 
-Use the ```image(img, x-100, y-100);``` to display the image instead of the ellipse. Note the ```-100``` co-ordinates to account for the image being located at the top left of x, y.  
-NOTE: if you are not sure what this refers to uncomment the ellipse and draw both the ellipse and image.  
+Use `image(img, x-100, y-100);` to display the image instead of the ellipse. Note the `-100` coordinates to account for the image being drawn from its top-left at (x, y).  
+NOTE: If you are not sure what this refers to, uncomment the ellipse and draw both the ellipse and image.  
 
 
-- Your sketch.js code should like this
+- Your sketch.js code should look like this:
 
 ```javascript
 let x, y;
@@ -23,11 +25,10 @@ let score = 0;
 let gameOver = false;
 let img;
 
-function setup() {
-  // put setup code here
-  console.log('hello world 2 mar');
-  img = loadImage('assets/cat.png');
+// For p5.js 2.0+ (use async / await):
+async function setup() {
   createCanvas(windowWidth, windowHeight);
+  img = await loadImage('assets/cat.png');
   background(220);
   x = random(windowWidth);
   y = random(windowHeight);
@@ -35,6 +36,11 @@ function setup() {
   g = random(255);
   b = random(255);
 }
+
+// (If using older p5.js 1.x, load via preload instead:)
+// function preload() {
+//   img = loadImage('assets/cat.png');
+// }
 
 function draw() {
   fill(0, 0, 0);

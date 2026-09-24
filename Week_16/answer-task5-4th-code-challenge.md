@@ -29,7 +29,7 @@ function draw() {
 
   }
 
-  for (var i = 0; i < pipes.length; i++) {
+  for (let i = 0; i < pipes.length; i++) {
     pipes[i].show();
     pipes[i].update();
 

@@ -39,14 +39,15 @@ for (initialise; test; update) {
 
 <details>
 <summary>Want to see a hint?</summary>
-https://p5js.org/reference/#/p5/for
+
+Check the p5.js tutorial on [Repeating with Loops](https://p5js.org/tutorials/repeating-with-loops/) or MDN's [for loop reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for).
 </details>  
 
 ### Task 2 - Repetition, Repetition
 
 Now try and write a nested for loop so that ellipses are drawn across the whole of the canvas.
 
-* Add [random](https://p5js.org/reference/#/p5/random) values to ```fill()``` to change the colour of the ellipse.  
+* Add [random](https://p5js.org/reference/p5/random/) values to ```fill()``` to change the colour of the ellipse.  
 
 * Move the location of ```fill()``` and see how it changes what's drawn to the canvas.
 

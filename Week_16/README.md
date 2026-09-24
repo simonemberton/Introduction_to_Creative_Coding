@@ -2,7 +2,7 @@
 
 ## A More Complex Game Exercise
 
-This exercise leans heavily on [this tutorial](https://thecodingtrain.com/tracks/games/31-flappy-bird) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". 
+This exercise leans heavily on [this tutorial](https://thecodingtrain.com/challenges/31-flappy-bird) by Dan Shiffman. So credit goes to him for the idea and most of the implementation! Our aim for this session is to demonstrate how we can use simple interaction design (a single spacebar key press) to create an engaging experience with multiple "states". 
 
 We're going to create a very simple minimal version of [Flappy Bird](https://flappybird.io/), but our version is going to:
 
@@ -150,28 +150,26 @@ We will create a pipe every 400 frames using the modulus operator (we used it la
 Then we will ```show()``` and ```update()``` each pipe.  
 
 All of this will happen in sketch.js in draw()  
-I've commented out the earlier lines ```pipe.show()``` and ```pipe.update()``` because these are now handled by the ```for`` loop.   
+I've commented out the earlier lines ```pipe.show()``` and ```pipe.update()``` because these are now handled by the ```for``` loop.   
 
 ```javascript
 function draw() {
   background(0);
   bird.show();
   bird.update();
-  i++
+
   if (frameCount % 400 == 0) {
     //console.log(frameCount);
     pipes.push(new Pipe());
-
   }
 
-  for (var i = 0; i < pipes.length; i++) {
+  for (let i = 0; i < pipes.length; i++) {
     pipes[i].show();
     pipes[i].update();
   }
 
   //pipe.show();
   //pipe.update();
-
 }
 ```
 
@@ -248,7 +246,7 @@ class Pipe
     // top bar with this.w and this.top
     rect(this.x, 0, this.w, this.top);
     // bottom bar with this.w and this.bottom 
-    rect(this.x, this.bottom, this.w, height);
+    rect(this.x, this.bottom, this.w, height - this.bottom);
   }
 
   // Update the pipe to move to the left
@@ -287,7 +285,7 @@ function draw() {
     pipes.push(new Pipe());
   }
 
-  for (var i = 0; i < pipes.length; i++) {
+  for (let i = 0; i < pipes.length; i++) {
     pipes[i].show();
     pipes[i].update();
 
@@ -415,7 +413,7 @@ function runGame() {
 
   }
 
-  for (var i = 0; i < pipes.length; i++) {
+  for (let i = 0; i < pipes.length; i++) {
     pipes[i].show();
     pipes[i].update();
 
@@ -459,6 +457,8 @@ function keyPressed() {
 ! Add another level that increaseses the difficulty
 ! Fix my bug in hits() !!!!
 ``` 
+
+*(Note for modern p5.js / p5.js 2.0: When loading images, use `async function setup()` and `await loadImage('...');`, or use `preload()` in p5.js 1.x!)* 
 
 
 

@@ -12,7 +12,7 @@ class Pipe
 {
   constructor()
   {
-    this.x = width-50; // start nearly off screem
+    this.x = width-50; // start nearly off screen
     this.origin = random(height-100);
     this.gap = 200;
   }

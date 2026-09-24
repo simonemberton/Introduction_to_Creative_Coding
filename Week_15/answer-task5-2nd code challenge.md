@@ -1,10 +1,10 @@
 # Week 15
 
-## Answer - Task 5 - sceond Code Challenge
+## Answer - Task 6 - Second Code Challenge
 
-See the solution for the final code to get ```gameOver`` working.   
+See the solution for the final code to get `gameOver` working.   
 
-- Your sketch.js code should like this
+- Your sketch.js code should look like this:
 
 ```javascript
 let x, y;
