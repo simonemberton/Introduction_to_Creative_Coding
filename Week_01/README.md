@@ -54,7 +54,7 @@ OK it's all well and good being able to edit code in the editor. But this is a B
 
 Woohoo! Now you've made your first piece of creative code!
 
-If you mangaged to get that done really quickly spend some time going through the p5.js [Getting Started](https://p5js.org/tutorials/get-started/).  
+If you managed to get that done really quickly spend some time going through the p5.js [Getting Started](https://p5js.org/tutorials/get-started/).  
 
 If you're feeling really adventurous explore some of the p5.js [examples](https://p5js.org/examples/).  See if you can make a new project folder and get one of them running locally on your machine.
 
