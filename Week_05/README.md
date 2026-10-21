@@ -42,9 +42,9 @@ function setup() {
 This next task is designed to get you to explore how to use Arrays.  
 
 For this task work in pairs...  
-Team up with someone and look ate ach others code
+Team up with someone and look at each others code
 
-Remember what an array is? Take a look [here](https://www.w3schools.com/js/js_arrays.asp) to refresh your memory. Read down to the section "Access the Full Array".  
+Remember what an array is? Take a look [here](https://p5js.org/reference/p5/Array/) to refresh your memory. Read down to the examples.  
 
 For this task we'll be using a quote from [Malala Yousafzai](https://malala.org/malalas-story), who became a Nobel Peace Prize Winner at aged 17 for championing girls rights. We will break her quote down into separate words. Each word will be a separate Array element.  
 
@@ -52,12 +52,12 @@ The quote is:
 *"Every girl deserves to take part in creating the technology that will change our world, and change who runs it."* 
 
 In your sketch.js, create an array that can be accessed globally within the sketch. 
-Work out where this here needs to go?
+Work out where this needs to go... (hint next to the other variables we just created).
 
 Add the quote, with each word as a separate element.
 
 ```javascript
-let let myWords = ["Every", "girl", "deserves", "to", "take", "part", "in", "creating", "the", "technology", "that", "will", "change", "our world"];
+let myWords = ["Every", "girl", "deserves", "to", "take", "part", "in", "creating", "the", "technology", "that", "will", "change", "our world"];
 ```
 
 In the ```setup()``` function, create a canvas that is 1024px wide and 400px high.
@@ -127,30 +127,43 @@ function draw() {
 
 ### &#x1F536; Code challenge 1:
 
-```diff
-! Using the p5 reference find the entry for text()
-! Add a couple of words of text to the screen in setup() just to test, 
-! and to remember how text() works.  
 
-! Now add text() to your loop so that it uses myWords[i] and xVal to print the quote on the screen.
-! Use textAlign(CENTER) to space the text. 
-! Your sketch should look like the image below.  
-```
+> <mark>Find the p5 reference entry for ```text()```.   </mark>  
+
+> <mark>Use the first example to add a couple of words of text to the screen in ```setup()``` just to test how this works</mark>   
+
+> <mark> Next, add ```text()``` to your loop so that it uses ```myWords[i]``` and ```xVal``` to print the quote on the screen.</mark>    
+
+> <mark> Use ```textAlign(CENTER)``` to space the text.</mark>       
+> <mark> Your sketch should look like the image below.</mark>         
+> </mark>  
+
+If you can't get this working check the Code Challenge solution from the nav / menu on the left:     
+(Answer-Code-Challenge-1.md)
+
 <p align="center">
   <img src="./images/task2-code-challenge.png">
 </p>
 
+Once you have got this working the next challenge is to space the words diagonally (not just horizontally) across the screen (and change the text color). Like this....
+
+<p align="center">
+  <img src="./images/task2-2nd-challenge.png">
+</p>
+
+To do this you'll need a new global variable the top of sketch.js set to a y value to space the text vertically.   And change the text size and colour 
+
 ### &#x1F536; Code Challenge 2:
 
-```diff
-! Using the Let keyword add a new global variable for a y value to space the text vertically  
-! Change the text size and colour   
-! Tweak the values until it is spaced and reads nicely.  
-! Use textAlign(CENTER) to space the text.   
-! Completed that? 
-! Replace the x and y text text values with random values   
-! (but that still keep the text on the screen).     
-```
+> <mark> So... step by step...</mark>.  
+
+> <mark> Using the ```let``` keyword add a new global variable for a y value to space the text vertically</mark>.   
+
+> <mark> Change the text size and colour </mark>.   
+> <mark> Tweak the values until it is spaced and reads nicely</mark>.   
+
+> <mark> Completed that?</mark>.   
+> <mark> Replace the x and y text text values with random values (but that still keep the text on the screen)...</mark>  
 
 *****
 ## Task 4 - Adding to an Array 
@@ -179,10 +192,8 @@ function setup() {
  
 ### &#x1F536; Code Challenge 3:
 
-```diff
-! Add the remaining words from the quote to the Array using push()  
-! Tweak the position and text size to fit on the screen     
-```
+> <mark> Add the remaining words from the quote to the Array using push()</mark>    
+> <mark> Tweak the position and text size to fit on the screen</mark>     
 
 *****
 ## Task 5 - Adding lots of data to an Array (and making a gradient)
