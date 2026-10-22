@@ -138,8 +138,7 @@ function draw() {
 > <mark> Your sketch should look like the image below.</mark>         
 > </mark>  
 
-If you can't get this working check the Code Challenge solution from the nav / menu on the left:     
-(Answer-Code-Challenge-1.md)
+If you can't get this working check the Code Challenge solutions from the nav / menu on the left.  
 
 <p align="center">
   <img src="./images/task2-code-challenge.png">

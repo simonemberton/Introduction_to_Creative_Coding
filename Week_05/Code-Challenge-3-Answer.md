@@ -1,11 +1,11 @@
 # Week 05
 
-## Task 2 Second Code Challenge Answer
+## Code Challenge 3 - Answer
 
-- Hopefully your sketch and console output now looks something like this:  
+- Hopefully your sketch looks something like this:  
 
 <p align="center">
-  <img src="./images/task2-2nd-challenge.png">
+  <img src="./images/task3-code-challenge.png">
 </p>
 
 - Your code should like this
@@ -16,12 +16,20 @@
   let xVal = 30;
   let yVal = 30;
 
+  //Every girl deserves to take part in creating the technology that will change our world, and change who runs it.
+  //Malala Yousafzai, Nobel Peace Prize Winner
+
   function setup() {
     console.log('hello world');
     createCanvas(1024, 500);
     background(color(200));
-    fill(0, 0, 255);
     noLoop();
+    myWords.push("and");
+    myWords.push("change");
+    myWords.push("who");
+    myWords.push("runs");
+    myWords.push("it.");
+    console.log(myWords);
   }
 
   function draw() {
@@ -29,12 +37,12 @@
       console.log(myWords[i]);
       console.log(xVal);
       fill(200, 102, 153);
-      textSize(22);
+      textSize(12);
       textAlign(CENTER);
       //text(myWords[i], random(width), random(height));
       text(myWords[i], xVal, yVal);
-      xVal += 50;
-      yVal += 30;
+      xVal += 43;
+      yVal += 20;
     }
   }
 ```

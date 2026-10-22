@@ -1,6 +1,6 @@
 # Week 05
 
-## Task 4 Code Challenge Answer
+## Code Challenge 4 Answer
 
 ### Coloured Gradient Using RGB
 

@@ -1,6 +1,6 @@
 # Week 05
 
-## Task 5 Code Challenge Answer
+## Code Challenge 5 - Answer
 
 ### Create a STOP / GO sign
 
