@@ -2,76 +2,51 @@
 
 ## Code Challenge 5 - Answer
 
-### Create a STOP / GO sign
+### Create a gradient with alternating text
 
 - My sketch looks  like this:  
 
-![gradient](./images/task5stop-go.gif "GradientImage")
+![gradient](./images/helloworld-foobar.gif "Alternating text")
 
-- My code looks like this
-
-```javascript
-  let myCommands = ["STOP", "GO"];
-  let i = 0;
-
-  function setup() {
-    createCanvas(600, 600);
-    background(color(200));
-    frameRate(1);
-  }
-
-  function draw() {
-    // runs every second 
-    noStroke();
-    background(color(0)); // set background
-    fill(0, 255, 0);
-    
-    translate(width / 2, height / 2);
-    rotate(0.6);
-    rect(26, -200, 30, 302);
-    rotate(-1.5);
-    rect(-100, -90, 30, 150);
-    rotate(0.9);
-    translate(-width / 2, -height / 2);
-    fill(255, 255, 255);
-    i++;
-    if (i >= myCommands.length) {
-      background(color(255)); // set background
-      noStroke();
-      fill(255, 0, 0);
-      ellipse(width/2, height/2, 600, 600);
-      fill(255, 255, 255);
-      i = 0;
-    }
-    textSize(200);
-    textAlign(CENTER, CENTER);
-    text(myCommands[i], 300, 300);
-
-  }
-```
-
-
-### Alternating between values in an array.  
-
-- To show each value in array your code should look like this
+- My ```sketch.js``` looks like this
 
 ```javascript
-  let myCommands = ["Hello", "Goodbye", "See You later"];
-  let i = 0;
+let messages = ["Hello World", "Foo Bar"]; // change
+let j = 0;
+let myColors = [];
+let xPos = 0;
 
-  function setup() {
-    createCanvas(600, 600);
-    background(color(200));
-    frameRate(1);
-  }
 
-  function draw() {
-    // runs every second 
-    background(color(200)); // set background every second
-    text(myCommands[i], 300, 300);
-    i++;
-    if (i > myCommands.length) {
-      i = 0;
-    }
+function setup() {
+  createCanvas(1024, 500);
+  background(color(200));
+  frameRate(1); 
+  for (let i = 0; i < 256; i++) { // why 256?
+    myColors.push(i); 
   }
+ }
+ 
+ function draw() {
+   noStroke();
+   for(let i = 0; i < myColors.length; i++) {
+      fill(myColors[i], 0, 100);
+      rect(xPos, 0, width/256, height);
+      xPos = xPos+(width/256);
+   }
+   // set back to 0
+   xPos = 0;
+
+   // add +1 to j
+   j++;
+
+   // is j greater or equal to the number of items  messages array    
+   if(j >= messages.length) {
+      j = 0;
+   }
+   // add some text on the screen
+   textSize(50);
+   textAlign(CENTER);
+   text(messages[j], width/2, height/2);
+ }
+
 ```
