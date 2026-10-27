@@ -439,6 +439,8 @@ Then finally draw some text on the screen.
  }
 ```
 
+At the moment the text doesn't alternate between "Hello World" and "Foo Bar"...   
+
 ### &#x1F536; Code Challenge 5:
 
 > <mark> Change the text so it uses the phrases in the array "Hello World" and "Foo Bar" (and alternates between them). </mark>    
