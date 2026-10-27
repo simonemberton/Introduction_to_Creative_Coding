@@ -138,7 +138,7 @@ function draw() {
 > <mark> Your sketch should look like the image below.</mark>         
 > </mark>  
 
-If you can't get this working check the Code Challenge solutions from the nav / menu on the left.  
+If you can't get this working check the Code Challenge Answers from the nav / menu on the left.  
 
 <p align="center">
   <img src="./images/task2-code-challenge.png">
@@ -197,6 +197,23 @@ function setup() {
 *****
 ## Task 5 - Adding lots of data to an Array (and making a gradient)
 
+In this task we will add data to array to make a gradient effect like this:   
+
+![gradient](./images/task4-grad.png "GradientImage")
+
+
+To get started create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions.  
+
+In the ```setup()``` function, create a canvas that is 1024px wide and 400px high.  
+Include the ```noLoop()``` function in ```setup()```.
+
+
+```diff
+! Discuss with person next to you what noLoop() does.  
+```
+
+- **Step 1: create the empty array**  
+
 Lets imagine that we want array of numbers from 0 to 255.
 
 We could just write it like this:
@@ -212,17 +229,6 @@ But it also possible to generate the array with a ```for()``` loop adding +1 on 
 
 Let's do that: To make the array above with a loop start with an empty array. Then add data to it (numbers 0 to 255) with a For Loop. 
 
-- **Step 1: create the empty array**  
-
-Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions.  
-
-In the ```setup()``` function, create a canvas that is 1024px wide and 400px high.  
-Include the ```noLoop()``` function in ```setup()```.
-
-
-```diff
-! Discuss with person next to you what noLoop() does.  
-```
 
 At the top of your sketch.js (outside and above ```setup()```), create an empty array that can be accessed globally within the sketch. 
 
@@ -296,7 +302,7 @@ We still haven't drawn anything yet though, right?! So, finally we need to add t
 ```javascript
 function draw() {
     noStroke();
-    for (var i = 0; i < myColors.length; i++) {
+    for (let i = 0; i < myColors.length; i++) {
       fill(myColors[i]);
       // add your comment here
       rect(xPos, 0, width/256, height); // new line
@@ -319,15 +325,17 @@ Add a comment to your code above the ```rect()``` explaining what each element o
 
 ### &#x1F536; Code Challenge 4:
 
-```diff
-! At the moment the gradient is grayscale.  
-! Change fill() to use an Red-Blue-Green (RGB) value.
-! Experiment with the values to create something like the image below. 
-! Add a shuffle() to randomise the array (see below) 
-! and use random to change the width and height of each rectangle
-```
+
+> <mark> At the moment the gradient is grayscale.</mark>    
+> <mark> Change fill() to use an Red-Blue-Green (RGB) value.</mark>    
+> <mark> Experiment with the values to create something like the image below.</mark>    
+> <mark> Add a shuffle() to randomise the array (see below).</mark>    
+> <mark> and use random to change the width and height of each rectangle.</mark>    
+
 
 ![gradient](./images/task2.png "GradientImage")
+
+<i>Include this coloured gradient in your journal, as the final task for the week.</i>   
 
 Now we can try using one of the in built methods, in ```setup()```, beneath where you pushed all the values to the array, write the following line:
 
@@ -349,15 +357,7 @@ myColors = shuffle(myColors);
 
 See what happens? Try also randomising the width and height of the ```rect()```  
 *****
-### Task 6 - Independent Learning: Uploading to the Panel Server
-
-- Head back to Blackboard and follow the tutorial by Tom on how to upload your work to the panel server.
-
-- Use the coloured gradient you have created in Task 5 as the content that you will be putting onto the panel server.   
-<strong> Create a Journal entry in your Wordpress blog and add a description, screenshot and link to the coloured gradient sketch on the panel server.</strong>
-
-*****
-## Done all of that? Stretch goal Task 7 - Arrays and conditionals
+## Done all of that? Stretch goal Task 6 - Arrays and conditionals
 
 In this last example we will alternate between values in an array.  
 
