@@ -360,57 +360,94 @@ See what happens? Try also randomising the width and height of the ```rect()```
 ## Done all of that? Stretch goal Task 6 - Arrays and conditionals
 
 In this last example we will alternate between values in an array.  
+In this case it will be an array containing two phrases "Hello World" and "Foo Bar" and we will alternate between them like this:   
 
-- **Step 1**  
+![gradient](./images/helloworld-foobar.gif "Alternating text")
 
-Create a new "empty-example" folder with a blank sketch.js with ```setup()``` and ```draw()``` functions.  
-
-In the ```setup()``` function, create a canvas that is 600px wide and 600px high.  
-Include the ```frameRate(1);``` function so that the sketch redraws once per second.
-
-At the top of your sketch.js (outside and above ```setup()```), create an  array that can be accessed globally within the sketch. We will also need a counter variable ```i```.
+**Step 1**  
+Make any neccessary changes to your ```sketch.js``` file, so it draws the gradient and looks like this:   
 
 ```javascript
-let myCommands = ["Hello", "Goodbye", "See You later"];
-let i = 0;
-```
+let myColors = [];
+let xPos = 0;
 
-To access the items from an array you use its 'index', or its position in the array.  
-In ```myCommands``` ```"Goodbye"``` is at position 1. (The first array element is always at position 0).  
-We can access ```"Goodbye"``` with  ```myCommands[1]```  
-
-Try outputting ```myCommands[1]``` to the console.  
-
-In ```draw()``` we will use this to access each array item in turn.  
-Add a background color so that the whole sketch redraws every frame (once a second).
-Then we will access an array using i. ```myCommands[i]```
-Finally we will increment (add 1) to ```i``` every frame.  
-
-Output ```i``` to the console.   
-
-```draw()``` should look like this.
+function setup() {
+  createCanvas(1024, 500);
+  background(color(200));
+  noLoop();
+  for (let i = 0; i < 256; i++) { // why 256?
+    myColors.push(i); 
+  }
+ }
+ 
+ function draw() {
+   noStroke();
+   for(let i = 0; i < myColors.length; i++) {
+      fill(myColors[i], 0, 100);
+      rect(xPos, 0, width/256, height);
+      xPos = xPos+(width/256);
+   }
+ }
+ ```
+**Step 2**  
+Create the array and a counter variable ```j``` at the very top of the script.   
 
 ```javascript
-function draw() {
-    // runs every second 
-    background(color(200)); // set background
-    text(myCommands[i], 300, 300);
-    i++;
-}
+let messages = ["Hello World", "Foo Bar"]; 
+let j = 0;
 ```
 
-### &#x1F536; Stretch goal Code Challenge 5: Design a STOP / GO sign:
+**Step 3**   
+Edit ```setup()```
 
-```diff
-! At the moment i increases infinitely so that the array items are only displayed once.  
-! Use a conditional if statement to reset i so that the array items are shown again and again.
+Change ```noLoop();``` to ```frameRate(1);``` so that draw runs once every second.  
 
-! Design a STOP / GO sign...
-! Change the values of myCommands to STOP and GO
-! Use any other techniques you have learnt to create a sign (sketch) that includes text & graphics
-! It should alternate between Stop and Go. 
-! And it should use appropriate shapes, colours and design elements
+**Step 4**     
+Edit ```draw()```    
+
+Underneath the ```for``` loop but still in draw set ```xPos = 0``` (so that the gradient redraws from the left on every frame) and add +1 to j (```j++```).   
+
+Create an ```if``` statement to test if ```j``` is greater or equal to the number of items (2 phrases) in the ```messages``` array.   If true set ```j = 0```.   
+
+Then finally draw some text on the screen.   
+
+```draw()``` should look like this:    
+
+```javascript
+  function draw() {
+   noStroke();
+   for(let i = 0; i < myColors.length; i++) {
+      fill(myColors[i], 0, 100);
+      rect(xPos, 0, width/256, height);
+      xPos = xPos+(width/256);
+   }
+
+   // set back to 0
+   xPos = 0;
+
+   // add +1 to j
+   j++;        
+
+   // is j greater or equal to the number of items  messages array    
+   if(j >= messages.length) { 
+      j = 0;
+   }
+
+   // add some text on the screen
+   textSize(50);
+   text("my text", 100, 100);
+ }
 ```
+
+### &#x1F536; Code Challenge 5:
+
+> <mark> Change the text so it uses the phrases in the array "Hello World" and "Foo Bar" (and alternates between them). </mark>    
+> <mark> Change the position of the text so it is centred on the screen. </mark> 
+
+(you can always find the solution to each Code Challenge in the menu / nav on the left).   
+
+You should now have this...
+![gradient](./images/helloworld-foobar.gif "Alternating text")
 
 
 
