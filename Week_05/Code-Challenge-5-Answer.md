@@ -11,7 +11,7 @@
 - My ```sketch.js``` looks like this
 
 ```javascript
-let messages = ["Hello World", "Foo Bar"]; // change
+let messages = ["Hello World", "Foo Bar"]; 
 let j = 0;
 let myColors = [];
 let xPos = 0;
@@ -21,7 +21,7 @@ function setup() {
   createCanvas(1024, 500);
   background(color(200));
   frameRate(1); 
-  for (let i = 0; i < 256; i++) { // why 256?
+  for (let i = 0; i < 256; i++) { 
     myColors.push(i); 
   }
  }
