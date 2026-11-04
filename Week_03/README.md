@@ -141,7 +141,7 @@ The end result of this task should look something like this:
 <img src="./images/Task_05.gif" alt="Download" width="50%"/>
 </p>
 
-## (Journal Task)
+### Journal Task:
 ### Task 6 - Find the cursor
 
 

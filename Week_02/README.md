@@ -355,7 +355,7 @@ fill(random(0,255),random(0,255),random(0,255));
 Also, what happens when you take out ```noLoop()```?
 
 
-## (Journal Task)
+### Journal Task:
 ## &#x1F536; Code Challenge 6:
 
 
