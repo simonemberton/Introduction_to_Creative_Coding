@@ -141,7 +141,9 @@ The end result of this task should look something like this:
 <img src="./images/Task_05.gif" alt="Download" width="50%"/>
 </p>
 
+## (Journal Task)
 ### Task 6 - Find the cursor
+
 
 For this task start by creating a new sketch with the following code:
 
