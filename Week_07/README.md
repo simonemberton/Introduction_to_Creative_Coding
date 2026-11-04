@@ -107,7 +107,7 @@ The result of this task should look something like this:
   <img width="600" height="600" src="./images/Task2.gif">
 </p>
 
-## (Journal Task)
+### Journal Task:
 ### Task 3 - Prepare to be mesmerised
 
 This is already looking pretty mermerising but let's add one more thing to take things up a notch.  For this task all we need to do is make another copy of our first for loop together with our ```push()``` and ```pop()``` functions.  The whole of our ```draw()``` function should now look like this:
